@@ -139,7 +139,13 @@ $endif$
 $if(subtitle)$
 \subtitle{$subtitle$}
 $endif$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+\author{$for(author)$
+$if(author.name)$
+$author.name$$if(author.affiliation)$ ($author.affiliation$) \\* $endif$
+$else$
+$author$
+$endif$
+$endfor$}
 \date{$date$}
 
 \begin{document}
@@ -158,6 +164,13 @@ $if(toc)$
 \tableofcontents
 }
 $endif$
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
 $body$
 
 $if(natbib)$
