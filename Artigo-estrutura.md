@@ -11,7 +11,7 @@
 **Autor(es):**  <nome (s) do(s) autor(es) do artigo>  
 **Responsável:** <nome do chefe imediato>  
 
-## Sumário
+## Resumo
 
 <resumo identificando ou destacando ponto importantes do artigo. Traz o pontencial leitor a se sentir atraído a ler o todo.>
 
