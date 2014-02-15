@@ -171,6 +171,13 @@ $abstract$
 \end{abstract}
 $endif$
 
+Tags: 
+{$for(tags)$
+$tags$  
+$endfor$}
+
+
+
 $body$
 
 $if(natbib)$
