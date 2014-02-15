@@ -171,11 +171,12 @@ $abstract$
 \end{abstract}
 $endif$
 
+$if(tags)$
 Tags: 
 {$for(tags)$
 $tags$  
 $endfor$}
-
+$endif$
 
 
 $body$
