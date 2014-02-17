@@ -1,7 +1,19 @@
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
-\usepackage[utf8]{inputenc}
-\usepackage[brazil]{babel}
+
+\usepackage[bottom=2cm,top=3cm,left=2cm,right=2cm]{geometry}
+\usepackage{setspace}
+%\onehalfspacing
+%\doublespacing
+%\setstretch{1.5}
+
 \usepackage{graphicx}
+
+
+% page counting, header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancypagestyle{plain}
+
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
@@ -136,6 +148,25 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+\fancyhead{}
+\fancyhead[LE,LO]{
+	\includegraphics[width=0.4\textwidth]{imagens/logo-mpsdtp2.jpg}
+}
+\fancyhead[RO,RE]{\fontsize{10}{12} \textit{
+$if(diretoria)$
+$diretoria$ \\* 
+$endif$
+$if(superintendencia)$
+$superintendencia$ \\* 
+$endif$
+$if(departamento)$
+$departamento$
+$endif$
+}}
+
+\fancyfoot{}
+\fancyfoot[RO,RE]{\small \tiny\sc{Página \thepage \pageref{LastPage}}}
+
 $if(title)$
 \title{$title$}
 $endif$
@@ -152,6 +183,7 @@ $endfor$}
 \date{$date$}
 
 \begin{document}
+
 $if(title)$
 \maketitle
 $endif$
@@ -175,12 +207,14 @@ $abstract$
 $endif$
 
 $if(tags)$
+\centerline{
 Tags: 
 {$for(tags)$
 $tags$  
-$endfor$}
+$endfor$}}
 $endif$
 
+%\setstretch{1.5}
 
 $body$
 
