@@ -1,3 +1,5 @@
+% Arquivo obtido de saída padrão para pdf no pandoc
+
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
 \usepackage[bottom=2cm,top=3cm,left=2cm,right=2cm]{geometry}
@@ -148,6 +150,7 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+% Contéudo do cabeçalho das páginas
 \fancyhead{}
 \fancyhead[LE,LO]{
 	\includegraphics[width=0.4\textwidth]{imagens/logo-mpsdtp2.jpg}
@@ -164,8 +167,9 @@ $departamento$
 $endif$
 }}
 
+% Contéudo do rodapé das páginas
 \fancyfoot{}
-\fancyfoot[RO,RE]{\small \tiny\sc{Página \thepage \pageref{LastPage}}}
+\fancyfoot[RO,RE]{\small \tiny\sc{Página \thepage}}
 
 $if(title)$
 \title{$title$}
@@ -214,7 +218,7 @@ $tags$
 $endfor$}}
 $endif$
 
-%\setstretch{1.5}
+\setstretch{1.5}
 
 $body$
 
