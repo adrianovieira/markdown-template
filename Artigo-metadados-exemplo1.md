@@ -1,10 +1,4 @@
 ---
-fontsize: 12pt
-papersize: a4paper
-documentclass: article
-
-lang: brazil
-
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Suporte - DEST'

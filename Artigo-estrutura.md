@@ -1,8 +1,18 @@
-#### [Diretoria de Infraestrutura de TIC - DIT]
-##### [Superintendência de Planejamento e Suporte de TIC - SUPS]
-###### [Departamento HHH - SIGLA]
-
----  
+---
+diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
+superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
+departamento: 'Departamento NNN - SIGLA'
+title:  'Estrutura padrão para artigos'
+date: 28 de fevereiro de 2014
+author:
+- name: Adriano dos Santos Vieira
+  affiliation: SUPS
+- name: Autor NNN
+  affiliation: NNN
+tags: [palavras, para pesquisa, separadas, por vírgula]
+abstract: | 
+ Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação "markdown/pandoc".
+...
 
 # Artigo técnico de Infraestrutura de TIC
 
