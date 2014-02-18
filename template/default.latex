@@ -2,14 +2,14 @@
 
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
-\usepackage[bottom=2cm,top=3cm,left=2cm,right=2cm]{geometry}
+% ajusta "margens" do artigo
+\usepackage[bottom=3cm,top=3cm,left=2cm,right=2cm]{geometry}
+
+% define espaçamento entre linhas (\onehalfspacing, \doublespacing ou \setstretch{1.5})
 \usepackage{setspace}
-%\onehalfspacing
-%\doublespacing
-%\setstretch{1.5}
 
+% permite incluir imagens
 \usepackage{graphicx}
-
 
 % page counting, header/footer
 \usepackage{fancyhdr}
