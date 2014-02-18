@@ -2,6 +2,7 @@
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento NNN - SIGLA'
+tipo_artigo: 'Artigo técnico de Infraestrutura de TIC'
 title:  'Estrutura padrão para artigos'
 date: 28 de fevereiro de 2014
 author:
@@ -9,17 +10,13 @@ author:
   affiliation: SUPS
 - name: Autor NNN
   affiliation: NNN
+responsibility:
+- name: Anderson Gourlart
+  affiliation: SUPS
 tags: [palavras, para pesquisa, separadas, por vírgula]
 abstract: | 
  Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação "markdown/pandoc".
 ...
-
-# Artigo técnico de Infraestrutura de TIC
-
-->**Nome do artigo**<-
-
-**Autor(es):**  <nome (s) do(s) autor(es) do artigo>  
-**Responsável:** <nome do chefe imediato>  
 
 ## Resumo
 
