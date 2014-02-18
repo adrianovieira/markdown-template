@@ -169,6 +169,11 @@ $endif$
 
 % Contéudo do rodapé das páginas
 \fancyfoot{}
+\fancyfoot[LE,LO]{\small \tiny\sc{
+$if(tipo_artigo)$
+$tipo_artigo$
+$endif$
+}}
 \fancyfoot[RO,RE]{\small \tiny\sc{Página \thepage}}
 
 $if(title)$
