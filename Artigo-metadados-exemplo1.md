@@ -1,11 +1,11 @@
 ---
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
-departamento: 'Departamento de Suporte - DEST'
+departamento: 'Departamento de Qualidade de Infraestrutura – DEQI'
 title:  'e-Ping aplicada'
-date: 15 de fevereiro de 2014
+date: 20 de fevereiro de 2014
 author:
-- name: Hudson Vieira
+- name: Hudson Vinicius Mesquita
   affiliation: MPOG/SLTI
 - name: Sergio Ribeiro
   affiliation: Dataprev/DEQI/DIED
