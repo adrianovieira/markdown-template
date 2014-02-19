@@ -1,4 +1,7 @@
 ---
+date: 28 de fevereiro de 2014
+tipo_artigo: Artigo técnico de Infraestrutura de TIC
+title: Estrutura padrão para artigos
 abstract: |
     Apresenta a estrutura padrão para artigos a serem produzidos para
     publicação interna com uso de textos com marcação “markdown/pandoc”.
@@ -7,20 +10,17 @@ author:
   name: Adriano dos Santos Vieira
 - affiliation: NNN
   name: Autor NNN
-date: 28 de fevereiro de 2014
-departamento: 'Departamento NNN - SIGLA'
-diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 responsibility:
 - affiliation: SUPS
   name: Anderson Gourlart
+diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
+departamento: 'Departamento NNN - SIGLA'
 tags:
 - palavras
 - para pesquisa
 - separadas
 - por vírgula
-tipo_artigo: Artigo técnico de Infraestrutura de TIC
-title: Estrutura padrão para artigos
 ...
 
 Resumo
@@ -53,9 +53,18 @@ Subtópicos do artigo
 
 …. desenvolvimento do texto do subtópico do artigo …
 
-### Subtópicos do artigo
+### Subtópicos do artigo ###
 
 …. desenvolvimento do texto do subtópico do artigo …
+
+#### Subtópicos do artigo ####
+
+…. desenvolvimento do texto do subtópico do artigo …
+
+##### Subtópicos do artigo #####
+
+
+Apresenta sub(sub)tópicos de estrutura padrão para artigos a serem produzidos com uso de textos com marcação “markdown/pandoc”.
 
 Conclusão
 =========
