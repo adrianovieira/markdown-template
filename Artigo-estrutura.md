@@ -2,9 +2,7 @@
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Estrutura padrão para artigos
-abstract: |
-    Apresenta a estrutura padrão para artigos a serem produzidos para
-    publicação interna com uso de textos com marcação “markdown/pandoc”.
+abstract: Resumo identificando ou destacando ponto importantes do artigo. Traz o pontencial leitor a se sentir atraído a ler o todo.
 author:
 - affiliation: SUPS
   name: Adriano dos Santos Vieira
@@ -22,11 +20,6 @@ tags:
 - separadas
 - por vírgula
 ...
-
-Resumo
-======
-
-<resumo identificando ou destacando ponto importantes do artigo. Traz o pontencial leitor a se sentir atraído a ler o todo.>
 
 Desafios
 ========
