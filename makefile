@@ -15,6 +15,8 @@ PANDOC_TEMPLATE_LATEX=template/latex.template
 # nome do arquivo com .md
 SOURCE_DOC_MD=$(SOURCE_DOC).md
 
+SHELL = bash
+
 RM=/bin/rm
  
 PANDOC=/usr/local/bin/pandoc
@@ -31,10 +33,14 @@ PANDOC_EPUB_OPTIONS=--to epub3
 default: help
  
 pdf : $(SOURCE_DOC_MD)
-	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_PDF_OPTIONS) -o $(SOURCE_DOC).pdf $(PANDOC_METADATA_COMMON) $<
+	@echo -n "Gerando $(SOURCE_DOC).pdf ... "
+	@$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_PDF_OPTIONS) -o $(SOURCE_DOC).pdf $(PANDOC_METADATA_COMMON) $<
+	@echo "[ OK ]"
 	
 odt : $(SOURCE_DOC_MD)
-	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_ODT_OPTIONS) -o $(SOURCE_DOC).odt $(PANDOC_METADATA_COMMON) $<
+	@echo -n "Gerando $(SOURCE_DOC).odt ... "
+	@$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_ODT_OPTIONS) -o $(SOURCE_DOC).odt $(PANDOC_METADATA_COMMON) $<
+	@echo "[ OK ]"
  
 # Targets and dependencies
  
@@ -47,6 +53,10 @@ clean:
 
 help:
 	@echo "  "
+	@echo "Esse makefile automatiza a conversão de arquivos com conteúdo"
+	@echo "padrão Pandoc/Markdown (.md), segundo metadados e estrutura"
+	@echo "padrão definidos em 'Artigo-estrutura.md'."
+	@echo "  "
 	@echo "Makefile sintaxe: "
 	@echo "- para mostrar esse help"
 	@echo "  $$ make "
@@ -54,7 +64,6 @@ help:
 	@echo "  $$ make help"
 	@echo "  "
 	@echo "- para converter arquivos markdown (.md)"
-	@echo "  segundo estrutura padrão em 'Artigo-estrutura.md';"
 	@echo '  o arquivo convertido será gerado na mesma pasta do arquivo .md'
 	@echo "  "
 	@echo '  $$ make pdf <artigo=Nome_do_arquivo[.md]> - converter para PDF;' 
