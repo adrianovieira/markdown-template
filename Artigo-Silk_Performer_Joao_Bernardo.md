@@ -57,7 +57,7 @@ Além dos padrões exibidos acima, o *Silk Performer* 9.5 permite também a cust
 
 # Conclusão
 
-Além dos padrões exibidos acima, o Silk Performer 9.5 permite também a customização de workloads, oferecendo deste modo aos analistas de teste a possibilidade de se configurar cenários muito mais complexos.
+Além dos padrões exibidos acima, o *Silk Performer* 9.5 permite também a customização de *workloads*, oferecendo deste modo aos analistas de teste a possibilidade de se configurar cenários muito mais complexos.
 
 # Referências
 
