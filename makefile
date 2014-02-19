@@ -53,11 +53,12 @@ help:
 	@echo "     ou"
 	@echo "  $$ make help"
 	@echo "  "
-	@echo "- para converter arquivos markdown (.md),"
-	@echo "  segundo estrutura padrão em 'Artigo-estrutura.md'"
+	@echo "- para converter arquivos markdown (.md)"
+	@echo "  segundo estrutura padrão em 'Artigo-estrutura.md';"
+	@echo '  o arquivo convertido será gerado na mesma pasta do arquivo .md'
 	@echo "  "
 	@echo '  $$ make pdf <artigo=Nome_do_arquivo[.md]> - converter para PDF;' 
-	@echo '                                             será gerado "Nome_do_arquivo.pdf"'
+	@echo '  $$ make odt <artigo=Nome_do_arquivo[.md]> - converter para ODT (TODO)' 
 	@echo "  "
 	@echo "  exemplo:"
 	@echo '  $$ make pdf artigo=Artigo-estrutura' 
