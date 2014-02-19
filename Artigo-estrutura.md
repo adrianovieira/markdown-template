@@ -1,53 +1,68 @@
 ---
-diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
-superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
-departamento: 'Departamento NNN - SIGLA'
-tipo_artigo: 'Artigo técnico de Infraestrutura de TIC'
-title:  'Estrutura padrão para artigos'
-date: 28 de fevereiro de 2014
+abstract: |
+    Apresenta a estrutura padrão para artigos a serem produzidos para
+    publicação interna com uso de textos com marcação “markdown/pandoc”.
 author:
-- name: Adriano dos Santos Vieira
-  affiliation: SUPS
-- name: Autor NNN
-  affiliation: NNN
+- affiliation: SUPS
+  name: Adriano dos Santos Vieira
+- affiliation: NNN
+  name: Autor NNN
+date: 28 de fevereiro de 2014
+departamento: 'Departamento NNN - SIGLA'
+diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 responsibility:
-- name: Anderson Gourlart
-  affiliation: SUPS
-tags: [palavras, para pesquisa, separadas, por vírgula]
-abstract: | 
- Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação "markdown/pandoc".
+- affiliation: SUPS
+  name: Anderson Gourlart
+superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
+tags:
+- palavras
+- para pesquisa
+- separadas
+- por vírgula
+tipo_artigo: Artigo técnico de Infraestrutura de TIC
+title: Estrutura padrão para artigos
 ...
 
-## Resumo
+Resumo
+======
 
 <resumo identificando ou destacando ponto importantes do artigo. Traz o pontencial leitor a se sentir atraído a ler o todo.>
 
-## Desafios
+Desafios
+========
 
-<Descreve desefios e/ou problemas que o artigo irá abordar e buscar resolver>
+<Descreve desafios e/ou problemas que o artigo irá abordar e buscar resolver>
 
-## Benefícios e/ou recomendações
+Benefícios e/ou recomendações
+=============================
 
 <descreva os principais ganhos propostos pelo artigo, como melhoria de indicadores, processo de trabalho, etc>
 
-## Desenvolvimento
+Introdução
+==========
 
-### Introdução
 <Descreve e contextualiza o leitor do problema que o artigo irá abordar e buscar resolver>
 
-### <Tópicos do artigo>
+Tópicos do artigo
+=================
 
-.... desenvolvimento do texto do artigo ... 
+…. desenvolvimento do texto do artigo …
 
-#### <Subtópicos do artigo>
+Subtópicos do artigo
+--------------------
 
-.... desenvolvimento do texto do subtópico do artigo ... 
+…. desenvolvimento do texto do subtópico do artigo …
 
-### Conclusão
+### Subtópicos do artigo
+
+…. desenvolvimento do texto do subtópico do artigo …
+
+Conclusão
+=========
 
 <apresente a conclusão do artigo>
 
+Referências
+===========
 
-## Referências
 <Lista referências bibliográficas, matérias na intranet, ferramentas internas etc>
-
