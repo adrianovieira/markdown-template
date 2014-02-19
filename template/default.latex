@@ -199,15 +199,7 @@ $endif$
 
 $for(include-before)$
 $include-before$
-
 $endfor$
-$if(toc)$
-{
-\hypersetup{linkcolor=black}
-\setcounter{tocdepth}{$toc-depth$}
-\tableofcontents
-}
-$endif$
 
 $if(abstract)$
 \begin{abstract}
@@ -221,6 +213,15 @@ Tags:
 {$for(tags)$
 $tags$  
 $endfor$}}
+$endif$
+
+$if(toc)$
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+\clearpage
+}
 $endif$
 
 \setstretch{1.5}
