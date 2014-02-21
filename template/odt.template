@@ -12,6 +12,7 @@ $endfor$
 $if(title)$
 <text:h text:style-name="Title">$title$</text:h>
 $endif$
+% Conteúdo para linha simples de autores ou múltiplos autores
 $for(author)$
 <text:p text:style-name="Author">
 $if(author.name)$
@@ -24,6 +25,20 @@ $endfor$
 $if(date)$
 <text:p text:style-name="Date">$date$</text:p>
 $endif$
+
+$if(abstract)$
+<text:p text:style-name="Abstract-title">Resumo</text:p>
+<text:p text:style-name="Abstract">$abstract$</text:p>
+$endif$
+
+$if(tags)$
+<text:p text:style-name="Tags">Tags:
+$for(tags)$
+$tags$ 
+$endfor$
+</text:p>
+$endif$
+
 $for(include-before)$
 $include-before$
 $endfor$
