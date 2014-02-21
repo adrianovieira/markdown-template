@@ -151,7 +151,7 @@ $if(lang)$
 \fancyhead[LE,LO]{
 	\includegraphics[width=0.4\textwidth]{imagens/logo-mpsdtp2.jpg}
 }
-\fancyhead[RO,RE]{\fontsize{10}{12} \textit{
+\fancyhead[RO,RE]{\fontsize{10}{12} \footnotesize{
 $if(diretoria)$
 $diretoria$ \\* 
 $endif$
@@ -165,12 +165,12 @@ $endif$
 
 % Contéudo do rodapé das páginas
 \fancyfoot{}
-\fancyfoot[LE,LO]{\small \tiny\sc{
+\fancyfoot[LE,LO]{\small \tiny{
 $if(tipo_artigo)$
 $tipo_artigo$
 $endif$
 }}
-\fancyfoot[RO,RE]{\small \tiny\sc{Página \thepage}}
+\fancyfoot[RO,RE]{\small \tiny{Página \thepage}}
 
 $if(title)$
 \title{$title$}
