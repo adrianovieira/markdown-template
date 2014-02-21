@@ -151,7 +151,7 @@ $if(lang)$
 \fancyhead[LE,LO]{
 	\includegraphics[width=0.4\textwidth]{imagens/logo-mpsdtp2.jpg}
 }
-\fancyhead[RO,RE]{\fontsize{10}{12} \footnotesize{
+\fancyhead[RO,RE]{\footnotesize{  % cabeçalho com tamanho como o de nota de rodapé
 $if(diretoria)$
 $diretoria$ \\* 
 $endif$
