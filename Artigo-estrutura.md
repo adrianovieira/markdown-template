@@ -86,6 +86,8 @@ references:
   publisher: Editor responsável
   page: páginas usadas
   type: tipo de referencia usada (book, article, article-newspaper, website, thesis etc)
+  volume: volume da referência usada
+  issue: número da edição ou tiragem
   issued:
     year: ano publicação
     month: mês de publicação
