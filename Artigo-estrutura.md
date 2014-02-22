@@ -68,3 +68,26 @@ Referências
 ===========
 
 <Lista referências bibliográficas, matérias na intranet, ferramentas internas etc>
+
+---
+remark: use quantos identificadores (ID) necessitar para listar as referências usadas no artigo
+references:
+- id: ID-Citação
+  title: "Título da referência usada"
+  author:
+  - family: Sobrenome
+    given: Nome parcial (sem o Sobrenome)
+  container-title: area de conhecimento ou assunto
+  URL: 'http://www.endereço-na-web.com'
+  accessed:
+    day: dia de acesso
+    month: mês de acesso
+    year: ano de acesso
+  publisher: Editor responsável
+  page: páginas usadas
+  type: tipo de referencia usada (book, article, article-newspaper, website, thesis etc)
+  issued:
+    year: ano publicação
+    month: mês de publicação
+
+...
