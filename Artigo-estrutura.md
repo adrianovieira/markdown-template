@@ -1,4 +1,5 @@
 ---
+remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Estrutura padrão para artigos
@@ -70,7 +71,7 @@ Referências
 <Lista referências bibliográficas, matérias na intranet, ferramentas internas etc>
 
 ---
-remark: use quantos identificadores (ID) necessitar para listar as referências usadas no artigo
+remark: metadados com alguns dados para listar referências bibliográficas. Use quantos identificadores (ID) necessitar para listar as diferentes referências usadas no artigo
 references:
 - id: ID-Citação
   title: "Título da referência usada"
