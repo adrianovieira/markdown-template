@@ -12,6 +12,7 @@ SOURCE_DOC := $(artigo:.md=)
 PANDOC_METADATA_COMMON=Artigo-metadados-comuns.md
 PANDOC_TEMPLATE_LATEX=template/latex.template
 PANDOC_TEMPLATE_ODT=template/odt.template
+PANDOC_BIBLIOGRAPHY_CSL=bibliografia/associacao-brasileira-de-normas-tecnicas-ufmg-face-full.csl
  
 # nome do arquivo com .md
 SOURCE_DOC_MD=$(SOURCE_DOC).md
@@ -25,10 +26,10 @@ PANDOC=/usr/local/bin/pandoc
 PANDOC_OPTIONS=--smart --standalone
  
 PANDOC_HTML_OPTIONS=--to html5
-PANDOC_PDF_OPTIONS=--template=$(PANDOC_TEMPLATE_LATEX)
+PANDOC_PDF_OPTIONS=--template=$(PANDOC_TEMPLATE_LATEX) --filter pandoc-citeproc --csl=$(PANDOC_BIBLIOGRAPHY_CSL)
 PANDOC_DOCX_OPTIONS=
 PANDOC_RTF_OPTIONS=
-PANDOC_ODT_OPTIONS=--template=$(PANDOC_TEMPLATE_ODT)
+PANDOC_ODT_OPTIONS=--template=$(PANDOC_TEMPLATE_ODT) --filter pandoc-citeproc --csl=$(PANDOC_BIBLIOGRAPHY_CSL)
 PANDOC_EPUB_OPTIONS=--to epub3
  
 default: help
