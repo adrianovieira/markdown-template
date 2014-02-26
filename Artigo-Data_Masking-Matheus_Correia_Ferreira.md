@@ -1,4 +1,4 @@
-﻿---
+---
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Mascaramento de dados – O Caso CNIS
@@ -56,7 +56,7 @@ O mascaramento de dados é o processo de substituição de informações sensív
 
 A importância do mascaramento de dados surge quando ocorre o provisionamento de ambientes de testes, homologação, e outros a partir de ambientes de produção. Estes ambientes são acessados por usuários internos e externos, e não é desejável ou mesmo permitido o acesso destes a informações sigilosas e sensíveis.
 
-    Figura 1: Exemplo de mascaramento de dados
+![Exemplo de mascaramento de dados](imagens/Artigo-Data_Masking-exemplo.png)
 
 ## Dados Sensíveis
 
@@ -84,7 +84,7 @@ A Oracle desenvolveu [@OraDataMaskingBestPratice] uma abordagem que envolve 4 et
 3. Segurança: Este e os próximos passos podem ser iterativos. O processo de mascaramento é executado para proteger os dados confidenciais através de tentativas de mascaramento sobre os dados sensíveis. Uma vez que o processo de mascaramento é concluído, o ambiente para teste é liberado para testes da aplicação.   
 4. Teste: A aplicação é testada com os dados mascarados, para saber se estes podem ser entregues a outros usuários que não sejam de produção. Se a rotina tiver que ser ajustada, a base de dados é restaurada ao estado pré-mascarado, os algoritmos de mascaramento são reavaliados e o processo de mascaramento é reexecutado.
 
-    Figura 2: Passos do processo de mascaramento de dados
+![Passos do processo de mascaramento de dados](imagens/Artigo-Data_Masking-passos.png)
 
 ## Oracle Enterprise Manager
 
@@ -168,7 +168,7 @@ Além de criar o relacionamento entre colunas e formatos, as definições de mas
 
 A integridade referencial é mantida de maneira automática [segundo @DTPTechReviewSTPB072013]. Ao selecionar uma coluna que seja referenciada por outras tabelas, o Oracle Data Masking automaticamente lista todas essas chaves estrangeiras e realiza a sua descaracterização em conjunto com a chave original, fazendo com que o resultado do mascaramento de determinado valor seja igual para todas as colunas interligadas.
 
-    Figura 3: Mascaramento com integridade referencial
+![Mascaramento com integridade referencial](imagens/Artigo-Data_Masking-com_integridade_referencial.png)
 
 Ocasionalmente, é possível que existam colunas em tabelas diferentes que sejam dependentes das colunas mascaradas sem que essa relação esteja declarada no banco de dados através de referências. Nesse caso, o Oracle Data Masking permite que o usuário especifique quais colunas são essas para que o processo de descaracterização também respeite essas relações.
 
@@ -176,7 +176,7 @@ Por sua vez, o mascaramento condicional é facilmente configurável através da 
 	
 Por exemplo, é possível especificar que, os salários de funcionários somente serão mascarados se ultrapassarem um valor especificado, ou que registros de pessoas que ocupam cargos de direção devem ser deletados por completo enquanto que os demais funcionários terão seus dados descaracterizados.
 
-    Figura 4: Mascaramento condicional
+![Mascaramento condicional](imagens/Artigo-Data_Masking-condicional.png)
 
 ### Geração e Execução do Script de Mascaramento
 
