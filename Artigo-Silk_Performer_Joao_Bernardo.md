@@ -1,7 +1,7 @@
 ---
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
-departamento: 'Departamento de Qualidade de Infraestrutura – DEQI'
+departamento: 'Departamento de Qualidade de Infraestrutura de TIC – DEQI'
 tipo_artigo: 'Artigo técnico de Infraestrutura de TIC'
 title:  'CONFIGURAÇÃO DE *WORKLOADS* PARA A REALIZAÇÃO DE TESTES DE DESEMPENHO VIA *SILK PERFORMER*'
 date: 28 de fevereiro de 2014
@@ -9,7 +9,7 @@ author:
 - name: João Bernardo Müller de Mesquita
   affiliation: DEQI/DIED
 responsibility: 
-- name: Eduardo Fritzen (Responsável)
+- name: Eduardo Fritzen
   affiliation: DEQI/DIED
 tags: [testes, automação]
 abstract: | 
@@ -47,11 +47,28 @@ Sob o ponto de vista prático, a configuração de um *workload* exige a defini�
 Dada a importância dos *workloads* para análise de um teste, seguem abaixo os principais modelos de carga de trabalho disponibilizados pelo *Silk Performer* 9.5: 
 
 - ***Increasing*** (Incremental): Neste modelo, a quantidade de usuários virtuais aumenta gradativamente até atingir o limite máximo definido. Esta modalidade é indicada quando o objetivo do teste consiste em determinar o nível de carga no qual a aplicação começa a apresentar problemas como interrupção de funcionamento, produção de erros, aumento do tempo de resposta acima do limiar aceitável pelo projeto e etc.
-- ***Steady State*** (Fixo): Nesta categoria, o número de usuários virtuais se mantém constante durante todo o período do teste. Os usuários virtuais executam diversas vezes as transações definidas nos scripts de teste e o tempo total de teste é pré-determinado. Este tipo de modelo é geralmente utilizado quando o teste almeja avaliar o comportamento do sistema em uma carga de trabalho específica. 
+
+![Carga de trabalho incremental](imagens/artigo_silk_performer-cargotrabalhoincremental.png)
+
+- ***Steady State*** (Fixo): Nesta categoria, o número de usuários virtuais se mantém constante durante todo o período do teste. Os usuários virtuais executam diversas vezes as transações definidas nos scripts de teste e o tempo total de teste é pré-determinado. Este tipo de modelo é geralmente utilizado quando o teste almeja avaliar o comportamento do sistema em uma carga de trabalho específica.
+
+![Carga de trabalho fixa](imagens/artigo_silk_performer-cargotrabalhofixa.png)
+
 - ***Dynamic*** (Dinâmico): Esta estratégia permite que a carga de trabalho seja alterada dinamicamente durante a realização do teste, desde que respeitando o limite máximo de usuários virtuais preestabelecido. Além disto, não existe um tempo determinado de teste, pois o analista é quem deverá interrompê-lo manualmente. Este modelo é recomendado quando se deseja analisar o desempenho do sistema em um cenário com carga diversificada e manter o controle sobre o aumento ou diminuição do número de usuários virtuais.
+
+![Carga de trabalho dinâmica](imagens/artigo_silk_performer-cargotrabalhodinamica.png)
+
 - ***All Day*** (Diário): Este tipo é indicado para cenários mais complexos que simulam um período diário de funcionamento da aplicação. Para cada tipo de usuário, a carga pode ser distribuída de maneira flexível, permitindo atribuir diferentes quantidades de usuários virtuais em momentos distintos. Este modelo de carga pode simular picos de utilização e identificar os horários em que o sistema apresenta problemas de desempenho.
+
+![Carga de trabalho diária](imagens/artigo_silk_performer-cargotrabalhodiaria.png)
+
 - ***Queuing*** (Fila): Modelo indicado para aplicações que utilizam mecanismos de enfileiramento para o processamento de requisições concorrentes. As transações são geradas  por uma taxa que é calculada randomicamente e que está baseada no tempo total de teste e no número máximo de transações, ambos definidos previamente. O teste é finalizado quando todos os usuários virtuais houverem completado suas tarefas.
+
+![Carga de trabalho enfileirada](imagens/artigo_silk_performer-cargotrabalhoenfileirada.png)
+
 - ***Verification*** (Verificação): Este modelo de carga é recomendado para a realização de testes de sanidade, cujo objetivo é verificar através de uma quantidade mínima de usuários virtuais a existência de algum erro funcional na aplicação ou de problemas no ambiente de execução do teste. O teste de sanidade geralmente é executado antes do teste de desempenho propriamente dito.
+
+![Carga de trabalho de verificação](imagens/artigo_silk_performer-cargotrabalhoverificacao.png)
 
 Além dos padrões exibidos acima, o *Silk Performer* 9.5 permite também a customização de *workloads*, oferecendo deste modo aos analistas de teste a possibilidade de se configurar cenários muito mais complexos.
 
@@ -61,6 +78,8 @@ Além dos padrões exibidos acima, o *Silk Performer* 9.5 permite também a cust
 
 # Referências
 
-- MEIER, J.D. et.al. Performance Testing Guidance for Web Applications: patterns & practices. [S.I], Microsoft Corporation, 2007. Disponível em: <http://msdn.microsoft.com/en-us/library/bb924375.aspx>. Acesso em: 30 jan. 2014.
-- DIAS, Felipe; SHIKANAI, Hamilton; GOUVEIA, Rodrigo. Silk Performer Guia básico do Silk Performer versão 1.1.1. Disponível em: <http://www-processos/ativos_processo/padrao_desenvolvimento_software/head/arquivos/testes/gui_Uso_Silk_Performer.pdf>. Acesso em: 29 jan. 2014
-- SILK PERFORMER 9.5. Adjust the workload of your load test.
+MEIER, J.D. et.al. Performance Testing Guidance for Web Applications: patterns & practices. [S.I], Microsoft Corporation, 2007. Disponível em: <http://msdn.microsoft.com/en-us/library/bb924375.aspx>. Acesso em: 30 jan. 2014.
+
+DIAS, Felipe; SHIKANAI, Hamilton; GOUVEIA, Rodrigo. Silk Performer Guia básico do Silk Performer versão 1.1.1. Disponível em: <http://www-processos/ativos_processo/padrao_desenvolvimento_software/head/arquivos/testes/gui_Uso_Silk_Performer.pdf>. Acesso em: 29 jan. 2014
+
+SILK PERFORMER 9.5. Adjust the workload of your load test.
