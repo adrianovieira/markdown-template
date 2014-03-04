@@ -7,17 +7,25 @@
 #
 # Run "make clean" to delete converted files
 
+SHELL = bash
+
 # Dados básicos
+SOURCE_DOC_PATH=$(dir $(SOURCE_DOC_MD))
+PANDOC_MAKEFILE_PATH=$(shell pwd)
+PANDOC_MAKEFILE_PATH=$(notdir $(shell pwd))
+mkfile_path = $(abspath $(lastword $(MAKEFILE_LIST)))
+PANDOC_MAKEFILE_PATH = $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
+#PANDOC_MAKEFILE_PATH ="$(MAKEFILE_LIST)"
+PANDOC_MAKEFILE_PATH=$(abspath $(lastword $(MAKEFILE_LIST)))
+
 SOURCE_DOC := $(artigo:.md=)
-PANDOC_METADATA_COMMON=Artigo-metadados-comuns.md
+PANDOC_METADATA_COMMON=$(PANDOC_MAKEFILE_PATH)/Artigo-metadados-comuns.md
 PANDOC_TEMPLATE_LATEX=template/latex.template
 PANDOC_TEMPLATE_ODT=template/odt.template
 PANDOC_BIBLIOGRAPHY_CSL=bibliografia/associacao-brasileira-de-normas-tecnicas-ufmg-face-full.csl
  
 # nome do arquivo com .md
 SOURCE_DOC_MD=$(SOURCE_DOC).md
-
-SHELL = bash
 
 RM=/bin/rm
  
@@ -26,7 +34,7 @@ PANDOC=/usr/local/bin/pandoc
 PANDOC_OPTIONS=--smart --standalone
  
 PANDOC_HTML_OPTIONS=--to html5
-PANDOC_PDF_OPTIONS=--template=$(PANDOC_TEMPLATE_LATEX) --filter pandoc-citeproc --csl=$(PANDOC_BIBLIOGRAPHY_CSL)
+PANDOC_PDF_OPTIONS=--template="$(PANDOC_TEMPLATE_LATEX)" --filter pandoc-citeproc --csl="$(PANDOC_BIBLIOGRAPHY_CSL)"
 PANDOC_DOCX_OPTIONS=
 PANDOC_RTF_OPTIONS=
 PANDOC_ODT_OPTIONS=--template=$(PANDOC_TEMPLATE_ODT) --filter pandoc-citeproc --csl=$(PANDOC_BIBLIOGRAPHY_CSL)
@@ -35,12 +43,17 @@ PANDOC_EPUB_OPTIONS=--to epub3
 default: help
  
 pdf : $(SOURCE_DOC_MD)
-	@echo -n "Gerando $(SOURCE_DOC).pdf ... "
-	@$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_PDF_OPTIONS) -o $(SOURCE_DOC).pdf $(PANDOC_METADATA_COMMON) $<
+	echo "makefile_list $(MAKEFILE_LIST)"
+	echo "makefile_path $(mkfile_path)"
+	echo "PANDOC_MAKEFILE_PATH $(PANDOC_MAKEFILE_PATH)"
+	echo "SOURCE_DOC_PATH $(SOURCE_DOC_PATH)"
+	echo -n "Gerando $(SOURCE_DOC).pdf ... "
+	cd $(SOURCE_DOC_PATH) &&  pwd
+	cd $(SOURCE_DOC_PATH) && @$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_PDF_OPTIONS) -o $(SOURCE_DOC).pdf "$(PANDOC_METADATA_COMMON)" $<
 	@echo "[ OK ]"
 	
 odt : $(SOURCE_DOC_MD)
-	@echo -n "Gerando $(SOURCE_DOC).odt ... "
+	@echo -n "Gerando $(SOURCE_DOC).odt ... [$(SOURCE_DOC_PATH)]"
 	@$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_ODT_OPTIONS) -o $(SOURCE_DOC).odt $(PANDOC_METADATA_COMMON) $<
 	@echo "[ OK ]"
  
