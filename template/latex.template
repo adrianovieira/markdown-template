@@ -1,6 +1,6 @@
 % Arquivo obtido de saída padrão para pdf no pandoc
 
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$$if(pandoc_makefile_path)$$pandoc_makefile_path$$endif$]{$documentclass$}
 
 % ajusta "margens" do artigo
 \usepackage[bottom=3cm,top=3cm,left=2cm,right=2cm]{geometry}
@@ -149,7 +149,7 @@ $if(lang)$
 % Contéudo do cabeçalho das páginas
 \fancyhead{}
 \fancyhead[LE,LO]{
-	\includegraphics[width=0.4\textwidth]{imagens/logo-mpsdtp2.jpg}
+	\includegraphics[width=0.4\textwidth]{$if(pandoc_makefile_path)$$pandoc_makefile_path$$endif$imagens/logo-mpsdtp2.jpg}
 }
 \fancyhead[RO,RE]{\footnotesize{  % cabeçalho com tamanho como o de nota de rodapé
 $if(diretoria)$
