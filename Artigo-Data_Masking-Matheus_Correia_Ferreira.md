@@ -1,7 +1,7 @@
 ---
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
-title: Mascaramento de dados – O Caso CNIS
+title: Oracle Data Masking
 abstract: 'Em vista da necessidade de se manter a confidencialidade dos dados do cliente, a provisão de um grande volume de dados reais para o desenvolvimento e teste de aplicações é um dos grandes desafios encontrados na Dataprev.  
 Testes ganham em qualidade quando realizados com informações verídicas, mas ao mesmo tempo é vital que - ao serem disponibilizados em bancos de dados com controle de acesso menos restrito - estas sejam protegidas de visualização e identificação por parte dos desenvolvedores.  
 O Oracle Data Masking endereça este problema através de funcionalidades que propõem trazer flexibilidade e usabilidade ao processo de definição e execução da descaracterização de dados; buscando proteger informações reais enquanto estas estejam disponíveis para realização do desenvolvimento e teste dos sistemas.'
