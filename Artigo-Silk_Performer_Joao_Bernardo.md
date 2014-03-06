@@ -11,9 +11,8 @@ author:
 responsibility: 
 - name: Eduardo Fritzen
   affiliation: DEQI/DIED
-tags: [testes, automação]
-abstract: | 
- O presente artigo tem como objetivo principal analisar os modelos de *workloads* existentes no *Silk Performer* 9.5 destacando a importância da definição de tais modelos para a engenharia de desempenho.
+tags: [testes, automação, workloads, desempenho, infraestrutura]
+abstract: O presente artigo tem como objetivo principal analisar os modelos de *workloads* existentes no *Silk Performer* 9.5 destacando a importância da definição de tais modelos para a engenharia de desempenho.
 ...
 
 # Desafios
