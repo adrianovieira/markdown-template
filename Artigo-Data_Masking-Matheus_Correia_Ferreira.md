@@ -6,7 +6,7 @@ abstract: 'Em vista da necessidade de se manter a confidencialidade dos dados do
 Testes ganham em qualidade quando realizados com informações verídicas, mas ao mesmo tempo é vital que - ao serem disponibilizados em bancos de dados com controle de acesso menos restrito - estas sejam protegidas de visualização e identificação por parte dos desenvolvedores.  
 O Oracle Data Masking endereça este problema através de funcionalidades que propõem trazer flexibilidade e usabilidade ao processo de definição e execução da descaracterização de dados; buscando proteger informações reais enquanto estas estejam disponíveis para realização do desenvolvimento e teste dos sistemas.'
 author:
-- affiliation: SUPS
+- affiliation: DEAT/DIPT
   name: Matheus Correia Ferreira
 responsibility:
 - affiliation: DIPT
@@ -19,6 +19,7 @@ tags:
 - Mascaramento
 - Sigilo
 - Informações
+- Confidencialidade
 ...
 
 # Desafios
