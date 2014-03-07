@@ -3,7 +3,8 @@ remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Verificação de Conformidades de Código e Arquitetura
-abstract: A verificação de conformidade do código fonte e da arquitetura é uma das maneiras de garantir que a implementação da aplicação está seguindo as regras sugeridas pelas melhores práticas de *design* e arquitetura planejada. Este artigo apresenta o processo de verificação de conformidade de código e arquitetura na Dataprev; como é calculado o indicador da área de arquitetura utilizado na composição do Selo de Qualidade dos projetos em desenvolvimento; e as ferramentas corporativas envolvidas nesse processo.
+abstract: |
+ A verificação de conformidade do código fonte e da arquitetura é uma das maneiras de garantir que a implementação da aplicação está seguindo as regras sugeridas pelas melhores práticas de *design* e arquitetura planejada. Este artigo apresenta o processo de verificação de conformidade de código e arquitetura na Dataprev; como é calculado o indicador da área de arquitetura utilizado na composição do Selo de Qualidade dos projetos em desenvolvimento; e as ferramentas corporativas envolvidas nesse processo.
 author:
 - affiliation: DEAT/DIAS
   name: Jônatas Carvalho Barroso
@@ -58,27 +59,35 @@ Algumas ferramentas são utilizadas na Dataprev para contribuir com o processo d
 
 ### Mantis Bug Tracker
 
-![Mantis](http://URL-FIGURA-MANTIS)
+O **MantisBT** é uma ferramenta *open source* utilizada para registrar *bugs* ou problemas encontrados nos produtos ou nos projetos. 
 
-O **MantisBT** é uma ferramenta *open source* utilizada para registrar *bugs* ou problemas encontrados nos produtos ou nos projetos. As ocorrências de um produto são registradas no **Mantis Testes** ([http://www-testes](http://www-testes "Mantis Testes")), enquanto as ocorrências relatadas pelas áreas de apoio aos projetos são registradas no **Mantis Qualidade** ([http://www-qualidade](http://www-qualidade "Mantis Qualidade")). 
+![Mantis](imagens/Artigo-Conformidade_Arquitetural-mantis.png)
+
+As ocorrências de um produto são registradas no **Mantis Testes**^[Mantis Testes <http://www-testes>], enquanto as ocorrências relatadas pelas áreas de apoio aos projetos são registradas no **Mantis Qualidade**^[Mantis Qualidade <http://www-qualidade>]. 
 
 ### Sonar
 
-![Sonar](http://URL-FIGURA-SONAR)
+O **Sonar**^[Sonar <http://www-sonar>] é uma ferramenta que realiza a inspeção contínua do código fonte dos projetos em desenvolvimento. 
 
-O **Sonar** ([http://www-sonar](http://www-sonar "Sonar")) é uma ferramenta que realiza a inspeção contínua do código fonte dos projetos em desenvolvimento. Após a realização automática do *build* de cada projeto pelo **Hudson**^[Hudson (http://www-hudson)], uma ferramenta de integração contínua, o código fonte é analisado em busca de violações de diversas gravidades. O Sonar realiza um cálculo, levando em consideração a quantidade de linhas de código da aplicação e as gravidades das violações encontradas, e atribui um índice de conformidade (**Rules Compliance**) ao projeto. 
+![Sonar](imagens/Artigo-Conformidade_Arquitetural-sonar.png)
+
+Após a realização automática do *build* de cada projeto pelo **Hudson**^[Hudson <http://www-hudson>], uma ferramenta de integração contínua, o código fonte é analisado em busca de violações de diversas gravidades. O Sonar realiza um cálculo, levando em consideração a quantidade de linhas de código da aplicação e as gravidades das violações encontradas, e atribui um índice de conformidade (**Rules Compliance**) ao projeto. 
 
 ### Sistema Verificador de Conformidades (SVC)
 
-![SVC](http://URL-FIGURA-SVC)
+O **SVC**^[SVC <http://www-svc>] é uma aplicação para registro e acompanhamento de não-conformidades dos projetos em desenvolvimento na Dataprev. Seu objetivo é centralizar os diversos *checklists* da Dataprev em uma única aplicação possibilitando conhecer a situação dos projetos, gerar relatórios para tomada de decisões e saber quais áreas de conhecimento necessitam de maior atenção.
 
-O **SVC** ([http://www-svc](http://www-svc "Sistema Verificador de Conformidades")] é uma aplicação para registro e acompanhamento de não-conformidades dos projetos em desenvolvimento na Dataprev. Seu objetivo é centralizar os diversos *checklists* da Dataprev em uma única aplicação possibilitando conhecer a situação dos projetos, gerar relatórios para tomada de decisões e saber quais áreas de conhecimento necessitam de maior atenção.
+![SVC](imagens/Artigo-Conformidade_Arquitetural-svc.png)
 
 O SVC se integra com o Mantis para registrar as não-conformidades das Avaliações de Arquitetura (Mantis Qualidade) e Revisões de Arquitetura (Mantis Testes); e também com o Sonar, para obter as violações às regras cadastradas para a analise estática do código fonte.
 
+
 ## Selo de Qualidade de Software
 
-![Selo de Qualidade](http://URL-FIGURA-SELO)
+"Objetos de concessão do Selo de Qualidade de Software são produtos de software gerados por meio de projetos e/ou manutenção evolutiva - excluindo-se projetos de internalizações e legados com tecnologias em desuso [...]    
+É proposta a abordagem incremental partindo de um conjunto de práticas e critérios para os quais são construídos indicadores de software que constituem subsídios para a atribuição de um selo de qualidade aos produtos de software desenvolvidos". - Segundo o relatório consolidado do projeto.
+
+![Selo de Qualidade](imagens/Artigo-Conformidade_Arquitetural-selo.jpg)
 
 
 ### Indicador de Conformidade de Código e Arquitetura (CCA)
@@ -141,6 +150,8 @@ DATAPREV - Empresa de Tecnologia e Informações da Previdência Social. Datapre
 DATAPREV - Empresa de Tecnologia e Informações da Previdência Social. Processo de Desenvolvimento e Manutenção de Software (PD-Dataprev). Disponível em: [http://www-processos/visualizar_artigo.php?idartigo=114&idprocesso=1&idprocesso=1](http://www-processos/visualizar_artigo.php?idartigo=114&idprocesso=1&idprocesso=1 "PD-Dataprev"). Acesso em 06 de março de 2014.
 
 REIAL, Nubia. Selo de qualidade de software DATAPREV: andamento dos trabalhos. Apresentação realizada em Fortaleza, 2013.
+
+DATAPREV - Empresa de Tecnologia e Informações da Previdência Social. Selo de Qualidade: Relatório consolidado. v 4.0. 2003. Disponível em: <http://www-dtpnet/sites/default/files/Selo%20de%20qualidade%20-%20Relat%C3%B3rio%20consolidado%20fase%201(1).pdf>
 
 VILLELA, Ricardo. Conformação arquitetural utilizando restrições de dependência entre módulos. 2009. Dissertação (Mestrado em Ciência da Computação) - Instituto de Informática, Pontifícia Universidade Católica, Minas Gerais.
 
