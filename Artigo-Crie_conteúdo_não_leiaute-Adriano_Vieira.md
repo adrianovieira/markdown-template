@@ -45,6 +45,70 @@ Apresenta tópicos com uso de textos com marcação “*markdown* estendido e *P
 Formatações Básicas
 -------------------
 
+### Estilos de tópicos
+
+Os estilos de tópicos são como os usados nesse artigo com em:
+
+~~~ {.markdown}
+Introdução
+==========
+~~~
+Resultado: Título de nível "0".
+
+~~~ {.markdown}
+Formatações Básicas
+-------------------
+~~~
+Resultado: Título de nível "1".
+
+~~~ {.markdown}
+### Estilos de tópicos
+~~~
+Resultado: Título de nível "2".
+
+Observação: Níveis acima de "2" são desaconcelhados para conversões para PDF devido a limitações do LaTeX^[LaTeX – A document preparation system (<http://www.latex-project.org>)]
+
+### Listas com marcadores ou numeração
+
+Lista com marcadores
+
+~~~ {.markdown}
+- Item 1
+    - Item 1.1
+        - Item 1.1.1
+        - Item 1.1.2
+            - Item 1.1.2.1
+- Item 2
+- Item 3
+~~~
+Resultado:  
+
+- Item 1
+    - Item 1.1
+        - Item 1.1.1
+        - Item 1.1.2
+            - Item 1.1.2.1
+- Item 2
+- Item 3
+
+Exemplo para criar lista numerada:
+
+~~~ {.markdown}
+1. Item 1
+    - item não numerado
+        - item não numerado
+2. Item 2
+3. Item 3
+~~~
+Resultado:
+
+1. Item 1
+    - item não numerado
+        - item não numerado
+2. Item 2
+3. Item 3
+
+
 ### Formatação de fonte
 
 - Negrito: uso do símbolo "**"  no início e fim do texto
@@ -91,7 +155,6 @@ Resultado: *L*orem **I**psum dolor sit a***me***t
 ~~~
 Resultado inesperado: Lorem ***ipsum ~~dolor*** sit~~ amet
 
-
 ### Notas de rodapé
 
 Notas de rodapé são numeradas automáticamente e também poderão conter referências a sites/páginas de internet. 
@@ -113,11 +176,11 @@ Resultado: Lorem ipsum^[Filler text (<http://en.wikipedia.org/wiki/Lorem_ipsum>)
 Inserir e destacar código fonte
 -------------------------------
 
-Para inserir código ou bloco pré formatado usar ```~~~```, como a seguir:
+Para inserir código ou bloco pré formatado usar o delimitador ```~~~```, como a seguir:
 
 ~~~ {.markdown}
    ~~~ 
-   Bloco inserido sem formatação usando `~~~`
+   Bloco inserido sem formatação usando o delimitador `~~~`
    ~~~
 ~~~
 
@@ -153,6 +216,15 @@ print (number)
 Fórmulas matemáticas
 --------------------
 Recurso que poderá ser obtido usando LaTeX^[LaTeX – A document preparation system (<http://www.latex-project.org>)]
+
+Fórmulas na mesma linha do texto:
+
+~~~ {.markdown}
+ a equação deverá estar entre "$" como em $\omega = d\phi / dt$.
+~~~
+Resultado: a equação deverá estar entre "\$" como em $\omega = d\phi / dt$.
+
+Fórmulas em sua própria linha, a equação deverá estar entre dois "\$":
 
 ~~~ {.markdown}
 $$CCA = \frac{((PRA * ICRA) + (PAA * ICAA) + (PS * ICS))}{PRA + PAA + PS}$$
@@ -264,6 +336,7 @@ Recursos para que se faça citações como notas de rodapé e listas de referên
 
 ~~~
 
+[^3]: [@QuickMarkdownExample2013]
 
 
 
@@ -276,7 +349,7 @@ Referências
 ===========
 
 [^1]: (texto aparece na nota de rodapé, mas sem efeitro final) [@Herrero2013]
-[^2]: [@daringfireballMDBasics]
+[^2]: [@QuickMarkdownExample2013]
 
 ---
 references:
@@ -328,24 +401,6 @@ references:
   type: entry-encyclopedia
   issued:
     year: 1960
-
-- id: Herrero2013
-  title: "Instant Markdown"
-  author:
-  - family: Herrero
-    given: Arturo
-  container-title: Text formatting
-  volume: 1
-  URL: 'http://johnmacfarlane.net/pandoc/getting-started.html'
-  publisher: Packt Publishing
-  page: 16, 26
-  translator:
-  - family: Knows (?)
-    given: Who
-  type: book
-  issued:
-    year: 2013
-    month: 8
 
 - id: daringfireballMDBasics
   title: "Getting the gist of Markdown's formatting syntax"
