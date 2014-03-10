@@ -2,7 +2,7 @@
 date: 10 de março de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Crie Conteúdo; não leiaute
-abstract: Esse artigo busca mostrar um método prático para que autor atente-se basicamente ao conteúdo (texto) de sua obra, usando padrões sintáticos de formatação em ***markdown* estendido** para escreve-lo e deixando as tarefas de criar apresentação ou formatação de leiaute e conversão para PDF ou ODT por exemplo automatizadas com ferramentas especialistas como a ***pandoc*** descrita aqui.
+abstract: Esse artigo busca mostrar um método prático para que autores atentem-se basicamente ao desenvolvimento do conteúdo (texto) de sua obra. Para tanto, usaria padrões sintáticos de formatação em ***markdown* estendido** para escreve-lo e deixaria tarefas de criar apresentação final ou formatação de leiaute e conversão, para PDF ou ODT por exemplo, automatizadas com ferramentas especialistas como a ***pandoc*** descrita aqui.
 author:
 - affiliation: SUPS
   name: Adriano dos Santos Vieira
@@ -23,19 +23,20 @@ tags:
 Desafios
 ========
 
-Descrever as básicas dentre as diversificadas formatações sintáticas de textos em ***markdown* estendido** [@wikipediaMarkdown] e converter o conteúdo para diversos formatos como por exemplo PDF, ODT e HTML usando a ferramenta especialista ***Pandoc*** [@pandocDocConv2014].
+Descrever as básicas dentre as diversificadas formatações sintáticas de textos em ***markdown* estendido** [@wikipediaMarkdown] e converter o conteúdo de artigos para  formatos como por exemplo PDF e ODT usando a ferramenta especialista ***Pandoc*** [@pandocDocConv2014].
 
 Benefícios e/ou recomendações
 =============================
 
-Esse poderá ser considerado como uma refeência rápida aos alguns recursos que a ferramenta de conversão *Pandoc* possui para se escrever conteúdos de textos como relatórios, artigos ou apresentações (*slides*).
+Esse poderá ser considerado como uma referência rápida aos alguns recursos que a ferramenta de conversão *Pandoc* possui para se escrever conteúdos de textos como relatórios, artigos ou apresentações (*slides*).
 
-A *Pandoc* possui sintaxe específica para algumas formatações, sendo necessário possuir instalada essa ferramenta para realizar a conversão para os diversos formatos pretendidos.
+A *Pandoc* possui sintaxe específica para algumas formatações, sendo necessário possuir instalada essa ferramenta para realizar a conversão, a partir de ***markdown* estendido**, para os diversos formatos pretendidos.
 
 Introdução
 ==========
 
 Existem hoje em dia diversas soluções que o mercado nomeia como ferramentas de produtividade de escritório em que o usuário (autor) precisará, na maioria das vezes, preocupar-se com a apresentação final de seu relatório, memorando, ofício, artigo, livro etc.
+
 
 Formatações Sintáticas de Textos
 ================================
@@ -173,15 +174,62 @@ Outro exemplo:
 ~~~
 Resultado: Lorem ipsum^[Filler text (<http://en.wikipedia.org/wiki/Lorem_ipsum>)]
 
+Inserir tabelas
+---------------
+
+Forma para inserir tabelas com múltiplas linhas numa mesma célula
+
+~~~ {.markdown}
++----------------+--------------------------------+---------------------------+
+|**Cab 1**       |**Cab 2**                       |**Cab N**                  |
++================+================================+===========================+
+|Conetúdo celula |Conetúdo celula                 |Conetúdo celula            |
++----------------+--------------------------------+---------------------------+
+|Lorem ipsum     |Lorem ipsum dolor sit amet,     |Conetúdo celula            |
+|                |consectetur adipisicing elit,   |                           |
+|                |sed do eiusmod tempor incididunt|                           |
+|                |ut labore et dolore magna       |                           |
+|                |aliqua.                         |                           |
++----------------+--------------------------------+---------------------------+
+~~~
+
++----------------+--------------------------------+---------------------------+
+|**Cab 1**       |**Cab 2**                       |**Cab N **                 |
++================+================================+===========================+
+|Conetúdo celula |Conetúdo celula                 |Conetúdo celula            |
++----------------+--------------------------------+---------------------------+
+|Lorem ipsum     |Lorem ipsum dolor sit amet,     |Conetúdo celula            |
+|                |consectetur adipisicing elit,   |                           |
+|                |sed do eiusmod tempor incididunt|                           |
+|                |ut labore et dolore magna       |                           |
+|                |aliqua.                         |                           |
++----------------+--------------------------------+---------------------------+
+
+Inserir imagens
+---------------
+
+A inserção de imagem segue a seguinte sintaxe:
+
+~~~ {.markdown}
+![Legenda da imagem](path/para/imagem.jpg|png)
+~~~
+
+Exemplo:
+
+~~~ {.markdown}
+![Revista Dataprev Resultados nº9, ano 5](imagens/revista_resultados_ano5_n9.jpg)
+~~~
+Resultado:
+
+![Revista Dataprev Resultados nº9, ano 5](imagens/revista_resultados_ano5_n9.jpg)
+
 Inserir e destacar código fonte
 -------------------------------
 
-Para inserir código ou bloco pré formatado usar o delimitador ```~~~```, como a seguir:
+Para inserir código ou bloco pré formatado usar o delimitador ```~~~``` ou \```, como a seguir:
 
 ~~~ {.markdown}
-   ~~~ 
-   Bloco inserido sem formatação usando o delimitador `~~~`
-   ~~~
+   Usando o delimitador ~~~ como nesse bloco
 ~~~
 
 e em conjunto com esse inserção, para destacar o código fonte ou blocos deve-se especificar o tipo do texto a ser destacado.
@@ -194,7 +242,6 @@ Por exemplo, para destacar código python, com linhas numeradas:
    number = random.randint(1, 20)
    def greet(name):
        print 'Hello,', name, '!'
-
    print greet('World')
    print (number)
    ~~~
@@ -207,10 +254,38 @@ import random
 number = random.randint(1, 20)
 def greet(name):
     print 'Hello,', name, '!'
-
 print greet('World')
 print (number)
 ~~~
+
+ou 
+
+```markdown
+   Usando o delimitador ``` como nesse bloco
+```
+
+~~~ {.markdown}
+   ```python
+   import random   
+   number = random.randint(1, 20)
+   def greet(name):
+       print 'Hello,', name, '!'
+   print greet('World')
+   print (number)
+   ```
+~~~
+
+Resultado:
+
+```python
+import random   
+number = random.randint(1, 20)
+def greet(name):
+    print 'Hello,', name, '!'
+print greet('World')
+print (number)
+```
+
 
 
 Fórmulas matemáticas
@@ -331,7 +406,7 @@ Recursos para que se faça citações como notas de rodapé e listas de referên
 	Referências
 	===========
 
-	[^1]: (texto aparece na nota de rodapé, mas sem efeitro final) [@Herrero2013]
+	[^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@Herrero2013]
 	[^2]: [@daringfireballMDBasics]
 
 ~~~
@@ -348,7 +423,7 @@ Apresenta a conclusão do artigo.
 Referências
 ===========
 
-[^1]: (texto aparece na nota de rodapé, mas sem efeitro final) [@Herrero2013]
+[^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@Herrero2013]
 [^2]: [@QuickMarkdownExample2013]
 
 ---
