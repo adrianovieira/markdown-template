@@ -22,26 +22,20 @@ tags:
 
 Desafios
 ========
-
 Descrever as básicas dentre as diversificadas formatações sintáticas de textos em ***markdown* estendido** [@wikipediaMarkdown] e converter o conteúdo de artigos para  formatos como por exemplo PDF^[Portable Document Format (<http://en.wikipedia.org/wiki/Portable_Document_Format>)] e ODF^[OpenDocument (<http://en.wikipedia.org/wiki/Odf>)] usando a ferramenta especialista ***Pandoc*** [@pandocDocConv2014].
 
 Benefícios e/ou recomendações
 =============================
-
 Esse artigo poderá ser considerado como uma referência rápida a alguns dos recursos que a ferramenta de conversão *Pandoc* implementa, podendo ser chamado de ***markdown* estendido**, e possibilita a conversão do conteúdo em relatórios, artigos ou apresentações (*slides*).
 
 A *Pandoc* possui sintaxe específica para algumas formatações, sendo necessário possuir instalada essa ferramenta para realizar a conversão, a partir de ***markdown* estendido**, para os diversos formatos pretendidos.
 
 Introdução
 ==========
-
 Existem hoje em dia diversas soluções que o mercado nomeia como ferramentas de produtividade de escritório em que o usuário (autor) precisará, na maioria das vezes, preocupar-se com a apresentação final de seu relatório, memorando, ofício, artigo, livro etc.
-
-
 
 Formatações Sintáticas de Textos
 ================================
-
 Apresenta tópicos com uso de textos com marcação “*markdown* estendido e *Pandoc*”.
 
 Formatações Básicas
@@ -439,12 +433,10 @@ Resultado:
 Recursos para que se faça citações como notas de rodapé e listas de referências (ver [Referências](#referências))
 
 ~~~ {.markdown}
-	Referências
-	===========
-
-	[^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@pandocDocConv2014]
-	[^2]: [@daringfireballMDBasics]
-
+Referências
+===========
+[^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@pandocDocConv2014]
+[^2]: [@daringfireballMDBasics]
 ~~~
 
 [^3]: [@QuickMarkdownExample2013]
@@ -458,7 +450,6 @@ Apresenta a conclusão do artigo.
 
 Referências
 ===========
-
 [^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@pandocDocConv2014]
 [^2]: [@QuickMarkdownExample2013]
 
