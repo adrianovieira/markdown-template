@@ -26,13 +26,24 @@ Descrever as básicas dentre as diversificadas formatações sintáticas de text
 
 Benefícios e/ou recomendações
 =============================
-Esse artigo poderá ser considerado como uma referência rápida a alguns dos recursos que a ferramenta de conversão *Pandoc* implementa, podendo ser chamado de ***markdown* estendido**, e possibilita a conversão do conteúdo em relatórios, artigos ou apresentações (*slides*).
+Esse artigo poderá ser considerado como uma referência rápida a alguns dos recursos que a ferramenta de conversão multidirecional *Pandoc* implementa, para o que podemos chamar de ***markdown* estendido**, e possibilita a conversão do conteúdo em relatórios, artigos ou apresentações (*slides*).
 
-A *Pandoc* possui sintaxe específica para algumas formatações, sendo necessário possuir instalada essa ferramenta para realizar a conversão, a partir de ***markdown* estendido**, para os diversos formatos pretendidos.
+A *Pandoc* possui sintaxe específica para algumas formatações, sendo necessário possuir instalada essa ferramenta para realizar a conversão, a partir de ***markdown* estendido**, para os diversos formatos pretendidos e suportados.
 
 Introdução
 ==========
 Existem hoje em dia diversas soluções que o mercado nomeia como ferramentas de produtividade de escritório em que o usuário (autor) precisará, na maioria das vezes, preocupar-se com a apresentação final de seu relatório, memorando, ofício, artigo, livro etc.
+
+Boa parte destas ferramentas implementam um modo visual de escrever e ver o resultado imediatamente. Entretanto, é necessário que o autor (ou redator) preocupe-se com regras de formatação de parágrafos, títulos, leiaute, posicionamento de images e vários outros detalhes do tipo. Esse tipo de situação muitas vezes faz com que se perca muito tempo acertando estes detalhes e prejudicando o desenvolvimento do conteúdo.
+
+Com vistas a facilitar o autor a se preocupar basicamente com o conteúdo no desenvolvimento de documentos técnicos com uso sintaxe básica de formatações e simples de ser usada foi criada a especificação *Markdown*^[@daringfireballMDBasics]. Por ser uma especificação simplificada e devido a necessidades de recursos de formatações mais avançadas foram surgindo outras nomeadas como "*markdown* estendido"^[@wikipediaMarkdown] e implementadas por diversos fornecedores/implementadores, sendo os mais conhecidos GFM^[GitHub Flavored Markdown (<https://help.github.com/articles/github-flavored-markdown>)], MultiMarkdown^[MultiMarkdown (<http://en.wikipedia.org/wiki/MultiMarkdown>)], Pandoc’s markdown^[Pandoc’s markdown (<http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown>)]. Esse último (*Pandoc*) denomina-se como:
+
+>*"uma biblioteca *Haskell*^[Haskell (<http://www.haskell.org>)] para conversão de uma formatação de marcação para outra, bem como uma ferramenta que usa essa bibliblioteca"*.
+- @pandocDocConv2014
+  
+É a *Pandoc* que esse artigo irá tratar e apresentar alguns de seus recursos para construção e formatação sintática textos, facilitando gerar o documento e sua arte ou apresentação final considerando também padrões reconhecidos de mercado como a norma ABNT NBR 6023:2002^[@NBR-6023_2002].
+
+Esse documento foi totalmente escrito e formatado usando  marcação *markdown* estendido e *Pandoc*.
 
 Formatações Sintáticas de Textos
 ================================
@@ -476,7 +487,7 @@ references:
   - family: MacFarlane
     given: John
   container-title: Text converter
-  URL: 'http://johnmacfarlane.net/pandoc/getting-started.html'
+  URL: 'http://johnmacfarlane.net/pandoc/index.html'
   accessed:
     day: 22
     month: 2
