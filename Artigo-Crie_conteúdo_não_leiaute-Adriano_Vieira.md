@@ -23,7 +23,7 @@ tags:
 Desafios
 ========
 
-Descrever as básicas mas diversificadas formatações sintáticas de textos em ***markdown* estendido** [@wikipediaMarkdown] e converter o conteúdo para diversos formatos como por exemplo PDF, ODT e HTML usando a ferramenta especialista ***Pandoc*** [@pandocDocConv2014].
+Descrever as básicas dentre as diversificadas formatações sintáticas de textos em ***markdown* estendido** [@wikipediaMarkdown] e converter o conteúdo para diversos formatos como por exemplo PDF, ODT e HTML usando a ferramenta especialista ***Pandoc*** [@pandocDocConv2014].
 
 Benefícios e/ou recomendações
 =============================
