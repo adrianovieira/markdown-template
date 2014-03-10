@@ -23,12 +23,12 @@ tags:
 Desafios
 ========
 
-Descrever as básicas dentre as diversificadas formatações sintáticas de textos em ***markdown* estendido** [@wikipediaMarkdown] e converter o conteúdo de artigos para  formatos como por exemplo PDF e ODT usando a ferramenta especialista ***Pandoc*** [@pandocDocConv2014].
+Descrever as básicas dentre as diversificadas formatações sintáticas de textos em ***markdown* estendido** [@wikipediaMarkdown] e converter o conteúdo de artigos para  formatos como por exemplo PDF^[Portable Document Format (<http://en.wikipedia.org/wiki/Portable_Document_Format>)] e ODF^[OpenDocument (<http://en.wikipedia.org/wiki/Odf>)] usando a ferramenta especialista ***Pandoc*** [@pandocDocConv2014].
 
 Benefícios e/ou recomendações
 =============================
 
-Esse poderá ser considerado como uma referência rápida aos alguns recursos que a ferramenta de conversão *Pandoc* possui para se escrever conteúdos de textos como relatórios, artigos ou apresentações (*slides*).
+Esse artigo poderá ser considerado como uma referência rápida a alguns dos recursos que a ferramenta de conversão *Pandoc* implementa, podendo ser chamado de ***markdown* estendido**, e possibilita a conversão do conteúdo em relatórios, artigos ou apresentações (*slides*).
 
 A *Pandoc* possui sintaxe específica para algumas formatações, sendo necessário possuir instalada essa ferramenta para realizar a conversão, a partir de ***markdown* estendido**, para os diversos formatos pretendidos.
 
@@ -36,6 +36,7 @@ Introdução
 ==========
 
 Existem hoje em dia diversas soluções que o mercado nomeia como ferramentas de produtividade de escritório em que o usuário (autor) precisará, na maioria das vezes, preocupar-se com a apresentação final de seu relatório, memorando, ofício, artigo, livro etc.
+
 
 
 Formatações Sintáticas de Textos
@@ -167,7 +168,7 @@ Exemplo:
 ~~~
 Resultado: Lorem ipsum^[Filler text]
 
-Outro exemplo:
+Exemplo com link para web:
 
 ~~~ {.markdown}
 	Lorem ipsum^[Filler text (<http://en.wikipedia.org/wiki/Lorem_ipsum>)]
@@ -176,6 +177,23 @@ Resultado: Lorem ipsum^[Filler text (<http://en.wikipedia.org/wiki/Lorem_ipsum>)
 
 Inserir tabelas
 ---------------
+
+Tabelas simples com linhas únicas
+
+~~~ {.markdown}
+ID  material            Cab N
+--- ------------------- ------------
+1   Lorem ipsum         Filler text
+2   Duis aute           Filler text
+3   Conteúdo da Célula  Outro conteúdo
+~~~
+Resultado:
+
+ID  material            Cab N
+--- ------------------- ------------
+1   Lorem ipsum         Filler text
+2   Duis aute           Filler text
+3   Conteúdo da Célula  Outro conteúdo
 
 Forma para inserir tabelas com múltiplas linhas numa mesma célula
 
@@ -222,6 +240,24 @@ Exemplo:
 Resultado:
 
 ![Revista Dataprev Resultados nº9, ano 5](imagens/revista_resultados_ano5_n9.jpg)
+
+Inserir endereços internet
+--------------------------
+
+A inserção de endereços internet segue a seguinte sintaxe:
+
+~~~ {.markdown}
+[Nome do site](http://www.enderecodosite.br)
+~~~
+
+Exemplo para link web:
+
+~~~ {.markdown}
+[ProjectLibre community](http://www.projectlibre.org)
+~~~
+Resultado:
+
+[ProjectLibre community](http://www.projectlibre.org)
 
 Inserir e destacar código fonte
 -------------------------------
@@ -406,7 +442,7 @@ Recursos para que se faça citações como notas de rodapé e listas de referên
 	Referências
 	===========
 
-	[^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@Herrero2013]
+	[^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@pandocDocConv2014]
 	[^2]: [@daringfireballMDBasics]
 
 ~~~
@@ -423,7 +459,7 @@ Apresenta a conclusão do artigo.
 Referências
 ===========
 
-[^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@Herrero2013]
+[^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@pandocDocConv2014]
 [^2]: [@QuickMarkdownExample2013]
 
 ---
