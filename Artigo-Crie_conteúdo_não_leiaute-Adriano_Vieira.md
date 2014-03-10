@@ -106,11 +106,20 @@ Resultado: Lorem ipsum^[Filler text]
 ~~~
 Resultado: Lorem ipsum^[Filler text (<http://en.wikipedia.org/wiki/Lorem_ipsum>)]
 
+Fórmulas matemáticas
+--------------------
+Recurso que poderá ser obtido usando LaTeX^[LaTeX – A document preparation system <http://www.latex-project.org>]
+
+~~~
+$$CCA = \frac{((PRA * ICRA) + (PAA * ICAA) + (PS * ICS))}{PRA + PAA + PS}$$
+~~~
+Resultado:
+$$CCA = \frac{((PRA * ICRA) + (PAA * ICAA) + (PS * ICS))}{PRA + PAA + PS}$$
 
 Referências a tópicos
 ---------------------
 
-São permitidas referências a tópicos (ou subtópicos) do próprio texto
+São permitidas referências a tópicos (ou subtópicos) do próprio texto.
 
 ~~~
 	vá para [Duis aute irure](#duis-aute-irure)
