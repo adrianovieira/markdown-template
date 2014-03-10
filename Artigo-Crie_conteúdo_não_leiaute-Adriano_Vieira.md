@@ -1,8 +1,8 @@
 ---
 date: 10 de março de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
-title: Crie Conteúdo; não leiaute
-abstract: Esse artigo busca mostrar um método prático para que autores atentem-se basicamente ao desenvolvimento do conteúdo (texto) de sua obra. Para tanto, usaria padrões sintáticos de formatação em ***markdown* estendido** para escreve-lo e deixaria tarefas de criar apresentação final ou formatação de leiaute e conversão, para PDF ou ODT por exemplo, automatizadas com ferramentas especialistas como a ***pandoc*** descrita aqui.
+title: Crie Conteúdo, não leiaute; padrões sintáticos de formatação *markdown* estendido & *Pandoc*
+abstract: Esse artigo busca mostrar um método prático para que autores atentem-se basicamente ao desenvolvimento do conteúdo (texto) de sua obra. Para tanto, usaria padrões sintáticos de formatação em ***markdown* estendido** para escreve-lo e deixaria tarefas de criar apresentação final ou formatação de leiaute e conversão, para PDF ou ODT por exemplo, automatizadas com ferramentas especialistas como a ***Pandoc*** descrita aqui.
 author:
 - affiliation: SUPS
   name: Adriano dos Santos Vieira
