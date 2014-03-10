@@ -49,21 +49,21 @@ Formatações Básicas
 
 - Negrito: uso do símbolo "**"  no início e fim do texto
 
-~~~
+~~~ {.markdown}
 	Lorem **ipsum dolor** sit amet
 ~~~
 Resultado: Lorem **ipsum dolor** sit amet
 
 - Itálico: uso do símbolo "*"  no início e fim do texto
 
-~~~
+~~~ {.markdown}
 	Lorem *ipsum dolor* sit amet
 ~~~
 Resultado: Lorem *ipsum dolor* sit amet
 
 - tachado: uso do símbolo "~~" no início e fim do texto
 
-~~~
+~~~ {.markdown}
 	Lorem ipsum ~~dolor~~ sit amet
 ~~~
 Resultado: Lorem ipsum ~~dolor~~ sit amet
@@ -71,14 +71,14 @@ Resultado: Lorem ipsum ~~dolor~~ sit amet
 
 - Combinados: os símbolos podem ser combinados de diferentes maneiras
 
-~~~
+~~~ {.markdown}
 	Lorem ***ipsum ~~dolor~~*** sit amet
 ~~~
 Resultado: Lorem ***ipsum ~~dolor~~*** sit amet
 
 Outro exemplo:
 
-~~~
+~~~ {.markdown}
 	*L*orem **I**psum dolor sit a***me***t
 ~~~
 
@@ -86,7 +86,7 @@ Resultado: *L*orem **I**psum dolor sit a***me***t
 
 - Formatação incorreta
 
-~~~
+~~~ {.markdown}
 	Lorem ***ipsum ~~dolor*** sit~~ amet
 ~~~
 Resultado inesperado: Lorem ***ipsum ~~dolor*** sit~~ amet
@@ -96,21 +96,65 @@ Resultado inesperado: Lorem ***ipsum ~~dolor*** sit~~ amet
 
 Notas de rodapé são numeradas automáticamente e também poderão conter referências a sites/páginas de internet. 
 
-~~~
+Exemplo:
+
+~~~ {.markdown}
 	Lorem ipsum^[Filler text]
 ~~~
 Resultado: Lorem ipsum^[Filler text]
 
-~~~
+Outro exemplo:
+
+~~~ {.markdown}
 	Lorem ipsum^[Filler text (<http://en.wikipedia.org/wiki/Lorem_ipsum>)]
 ~~~
 Resultado: Lorem ipsum^[Filler text (<http://en.wikipedia.org/wiki/Lorem_ipsum>)]
 
+Inserir e destacar código fonte
+-------------------------------
+
+Para inserir código ou bloco pré formatado usar ```~~~```, como a seguir:
+
+~~~ {.markdown}
+   ~~~ 
+   Bloco inserido sem formatação usando `~~~`
+   ~~~
+~~~
+
+e em conjunto com esse inserção, para destacar o código fonte ou blocos deve-se especificar o tipo do texto a ser destacado.
+
+Por exemplo, para destacar código python, com linhas numeradas:
+
+~~~ {.markdown}
+   ~~~ {.python .numberLines}
+   import random   
+   number = random.randint(1, 20)
+   def greet(name):
+       print 'Hello,', name, '!'
+
+   print greet('World')
+   print (number)
+   ~~~
+~~~
+
+Resultado:
+
+~~~ {.python .numberLines}
+import random   
+number = random.randint(1, 20)
+def greet(name):
+    print 'Hello,', name, '!'
+
+print greet('World')
+print (number)
+~~~
+
+
 Fórmulas matemáticas
 --------------------
-Recurso que poderá ser obtido usando LaTeX^[LaTeX – A document preparation system <http://www.latex-project.org>]
+Recurso que poderá ser obtido usando LaTeX^[LaTeX – A document preparation system (<http://www.latex-project.org>)]
 
-~~~
+~~~ {.markdown}
 $$CCA = \frac{((PRA * ICRA) + (PAA * ICAA) + (PS * ICS))}{PRA + PAA + PS}$$
 ~~~
 Resultado:
@@ -121,7 +165,7 @@ Referências a tópicos
 
 São permitidas referências a tópicos (ou subtópicos) do próprio texto.
 
-~~~
+~~~ {.markdown}
 	vá para [Duis aute irure](#duis-aute-irure)
 ~~~
 
@@ -135,7 +179,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
-~~~
+~~~ {.markdown}
 	volte para [Lorem ipsum](#lorem-ipsum)
 ~~~
 Resultado: volte para [Lorem ipsum](#lorem-ipsum)
@@ -146,11 +190,9 @@ Citações
 
 ### Citações de textos de outros autores
 
-Para realizar citações uso o símbolo ">", repetindo-o ">>" para fique mais "compatado" no parágrafo 
+Para realizar citações uso o símbolo ">", repetindo-o ">>" para fique mais "compatado" no parágrafo.
 
----
-
-~~~
+~~~ {.markdown}
 >*"Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
@@ -162,7 +204,7 @@ Para realizar citações uso o símbolo ">", repetindo-o ">>" para fique mais "c
  culpa qui officia deserunt mollit anim id est laborum".* 
 ~~~
 
----
+Resultado:
 
 >*"Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -173,8 +215,6 @@ Para realizar citações uso o símbolo ">", repetindo-o ">>" para fique mais "c
  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
  culpa qui officia deserunt mollit anim id est laborum".* 
-
----
 
 ### Citações de autores/referências bibliográficas
 
@@ -182,7 +222,7 @@ Para realizar citações uso o símbolo ">", repetindo-o ">>" para fique mais "c
 
 As citações poderão ser realizadas de diferentes formas:
 
-~~~
+~~~ {.markdown}
 -   [@inexistente] incorre em resultado com "(???)"
 -   @inexistente também incorre em resultado com "(???)"
 -   Em uma nota de rodapé.[^1]
@@ -215,7 +255,7 @@ Resultado:
 
 Recursos para que se faça citações como notas de rodapé e listas de referências (ver [Referências](#referências))
 
-~~~
+~~~ {.markdown}
 	Referências
 	===========
 
