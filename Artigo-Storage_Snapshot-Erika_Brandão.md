@@ -2,7 +2,7 @@
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Funcionamento do Snapshot nos storages VSP
-abstract: Este documento fornece instruções para a realização de operações de *Copy-on-Write* de *snapshot* nos sistemas de armazenamento da *Hitachi Virtual Storage Platform* (HVSP).
+abstract: Este documento fornece informações e recomendações sobre operações de *Copy-on-Write* (*snapshot*) nos sistemas de armazenamento da *Hitachi Virtual Storage Platform* (HVSP).
 author:
 - affiliation: DEST/DSPD
   name: Erika Joana Corrêa Brandão
