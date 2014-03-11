@@ -327,8 +327,6 @@ print greet('World')
 print (number)
 ```
 
-
-
 Fórmulas matemáticas
 --------------------
 Recurso que poderá ser obtido usando LaTeX^[LaTeX – A document preparation system (<http://www.latex-project.org>)]
@@ -371,7 +369,6 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 	volte para [Lorem ipsum](#lorem-ipsum)
 ~~~
 Resultado: volte para [Lorem ipsum](#lorem-ipsum)
-
 
 Citações
 --------
@@ -438,7 +435,6 @@ Resultado:
 
 ---
 
-
 ### Citações realizadas no tópico "Referências"
 
 Recursos para que se faça citações como notas de rodapé e listas de referências (ver [Referências](#referências))
@@ -452,12 +448,10 @@ Referências
 
 [^3]: [@QuickMarkdownExample2013]
 
-
-
 Conclusão
 =========
 
-Apresenta a conclusão do artigo.
+Espera-se que a criação de artigos ou relatórios técnicos sejam facilitados dada a simples forma de se escreve-los e da construção de sua apresentação final poder ser automatizada.
 
 Referências
 ===========
