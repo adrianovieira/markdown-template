@@ -1,6 +1,6 @@
 ---
 remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
-date: 28 de fevereiro de 2014
+date: 31 de março de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Implantação do MPLS no *backbone* Dataprev
 abstract: Este artigo descreve de forma macro as ações necessárias para a implantação da tecnologia MPLS (*Multiprotocol Label Switching*) no *backbone* WAN da Dataprev e criação de VPN L3 MPLS.
@@ -35,7 +35,7 @@ Benefícios
 
 Abaixo, estão relacionados os possíveis benefícios da implementação do MPLS:
 
-- Integração entre regiões do MR-LAN (Modelo de Referência da LAN da Dataprev) dos Centros de Processamento (CP) da Dataprev, ou seja, regiões internas dos 3 CP interligadas sem necessidade de passar por *firewalls*;
+- Integração entre regiões do MR-LAN (Modelo de Referência da LAN) dos Centros de Processamento (CP) da Dataprev, ou seja, regiões internas dos 3 CP interligadas sem necessidade de passar por *firewalls*;
 - Segregação completa da *Wide Area Network* (WAN);
 - Extensão L2 na WAN;
 - Contingenciamento de internet entre CP;
@@ -123,3 +123,5 @@ CISCO. MPLS: Layer 3 VPNs Configuration Guide, Cisco IOS Release 15M&T, xxxx. Di
 CISCO. Configuring a Basic MPLS VPN, 2007. Disponível em: <http://www.cisco.com/c/en/us/support/docs/multiprotocol-label-switching-mpls/mpls/13733-mpls-vpn-basic.pdf>. Acesso em: 20 mar. 2014
 
 Sangli, S.; Tappan, D.; Rekhter, Y. Callon R. RFC 4360: BGP Extended Communities Attribute, IETF, 2006
+
+Dataprev. Modelo de Referência das Redes Locais dos Centros de Processamento - MR-LAN, 2011. DisponÌvel em: <http://www-dtpnet/content/modelo-de-referencia-0>. Acesso em: 25 mar. 2014
