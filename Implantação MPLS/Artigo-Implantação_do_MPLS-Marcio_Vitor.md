@@ -17,8 +17,8 @@ superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Suporte de TIC - DEST'
 tags:
 - MPLS
-- Backbone
-- Label
+- '*Backbone*'
+- '*Label*'
 - VPN
 - VRF
 ...
@@ -54,6 +54,7 @@ Assim, quando um pacote entra na nuvem MPLS é inserido pelo PE um *label* entre
 
 ![Encaminhamento de pacote via MPLS](imagens/mpls-encaminhamentodepacote.png)
 
+\pagebreak
 
 A nuvem MPLS VPN e o MP-BGP
 ---------------------------
@@ -82,6 +83,8 @@ A topologia mostrada na figura 3 apresenta uma visão do *backbone* com MPLS imp
 - Habilitar o protocolo MP-BGP entre os roteadores envolvidos de forma com que as rotas VPNv4 e *labels* de VPN (RT) sejam transportados entre os PE. Neste contexto, todos os roteadores da nuvem MPLS no *backbone* Dataprev são do tipo PE. Os 6500 atuarão como PE do *datacenter* e os 7200 atuarão como PE de acesso. As vizinhanças MP-BGP entre os 6500 de *backbone* serão estabelecidas pelas interfaces *loopbacks* desses roteadores.
 
 ![Backbone MPLS](imagens/mpls-backbone.png)
+
+\pagebreak
 
 Configurando as VPNs dos clientes
 ---------------------------------
