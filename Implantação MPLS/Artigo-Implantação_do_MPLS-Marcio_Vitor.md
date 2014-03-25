@@ -3,7 +3,7 @@ remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Implantação do MPLS no *backbone* Dataprev
-abstract: Este artigo descreve de forma macro as ações necessárias para a implantação da tecnologia MPLS (*Multiprotocol Label Switching*) no *backbone* WAN da Dataprev e criação de VPNs L3 MPLS.
+abstract: Este artigo descreve de forma macro as ações necessárias para a implantação da tecnologia MPLS (*Multiprotocol Label Switching*) no *backbone* WAN da Dataprev e criação de VPN L3 MPLS.
 author:
 - affiliation: DEST/DSIG
   name: Márcio Vítor Machado Barbosa
@@ -21,20 +21,22 @@ tags:
 - '*Label*'
 - VPN
 - VRF
+- '*Network*'
+- Rede
 ...
 
 Desafios
 ========
 
-Os principais desafios da implementação do MPLS no *backbone* da Dataprev serão o aprendizado da nova tecnologia, a avaliação das mudanças físicas e lógicas necessárias ao *backbone* e o planejamento desta implantação com o mínimo de impacto possível na rede.
+Os principais desafios da implementação do *Multiprotocol Label Switching* (MPLS) no *backbone* da Dataprev serão o aprendizado da nova tecnologia, a avaliação das mudanças físicas e lógicas necessárias ao *backbone* e o planejamento desta implantação com o mínimo de impacto possível na rede.
 
 Benefícios
 ==========
 
 Abaixo, estão relacionados os possíveis benefícios da implementação do MPLS:
 
-- Integração as regiões do MR-LAN dos CP, ou seja, regiões internas dos 3 CP interligadas sem necessidade de passar por *firewalls*;
-- Segregação completa da WAN;
+- Integração entre regiões do MR-LAN (Modelo de Referência da LAN da Dataprev) dos Centros de Processamento (CP) da Dataprev, ou seja, regiões internas dos 3 CP interligadas sem necessidade de passar por *firewalls*;
+- Segregação completa da *Wide Area Network* (WAN);
 - Extensão L2 na WAN;
 - Contingenciamento de internet entre CP;
 - Contingenciamento de entidades externas entre CP.
@@ -42,13 +44,13 @@ Abaixo, estão relacionados os possíveis benefícios da implementação do MPLS
 Introdução
 ==========
 
-O MPLS é uma tecnologia de encaminhamento de pacotes de alta performance desenvolvida pelo IETF que se dá através da atribuição de *labels* que determinam como e para onde esses pacotes serão encaminhados na rede. Uma vez atribuído um *label* ao pacote, elimina-se a necessidade de se examinar o cabeçalho da camada de nível 3 a cada salto subsequente na rede MPLS.
+O MPLS é uma tecnologia de encaminhamento de pacotes de alta performance desenvolvida pelo IETF^[The Internet Engineering Task Force (IETF) <http://www.ietf.org>] que se dá através da atribuição de *labels* que determinam como e para onde esses pacotes serão encaminhados na rede. Uma vez atribuído um *label* ao pacote, elimina-se a necessidade de se examinar o cabeçalho da camada de nível 3 a cada salto subsequente na rede MPLS.
 
 
 Uma breve explicação do funcionamento do MPLS
 =============================================
 
-No MPLS, é feita a atribuição de *labels* para cada rota conhecida na tabela de rotas do roteador. Uma vez que os *labels* são atribuídos é criada uma tabela de encaminhamento de *labels*, que associa o *label* à interface por onde foi aprendida a rota referenciada pelo mesmo *label*. Essas informações são trocadas entre os diferentes roteadores da rede – nós da rede MPLS, chamados de *Label Switch Router* (LSR) que podem ser do tipo P (*Provider*, quando o roteador faz apenas o encaminhamento de pacotes consultando a tabela de *labels*, sem conectividade IP direta com o cliente) ou PE (*Provider Edge*, quando existe conectividade IP com o cliente) – através de um protocolo de troca de *labels*, comumente o *Label Distribution Protocol* (LDP). É importante lembrar que para a distribuição dos *labels* é obrigatório que os LSR tenham conectividade entre si através de um protocolo IGP. No caso da Dataprev, o protocolo IGP utilizado é o OSPF.
+No MPLS é feita a atribuição de *labels* para cada rota conhecida na tabela de rotas do roteador. Uma vez que os *labels* são atribuídos é criada uma tabela de encaminhamento de *labels*, que associa o *label* à interface por onde foi aprendida a rota referenciada pelo mesmo *label*. Essas informações são trocadas entre os diferentes roteadores da rede – nós da rede MPLS, chamados de *Label Switch Router* (LSR) que podem ser do tipo P (*Provider*, quando o roteador faz apenas o encaminhamento de pacotes consultando a tabela de *labels*, sem conectividade IP direta com o cliente) ou PE (*Provider Edge*, quando existe conectividade IP com o cliente) – através de um protocolo de troca de *labels*, comumente o *Label Distribution Protocol* (LDP). É importante lembrar que para a distribuição dos *labels* é obrigatório que os LSR tenham conectividade entre si através de um protocolo IGP. No caso da Dataprev, o protocolo IGP utilizado é o OSPF.
 
 Assim, quando um pacote entra na nuvem MPLS é inserido pelo PE um *label* entre os cabeçalhos das camadas 2 e 3. O PE faz uma consulta em sua tabela de encaminhamento para decidir para qual porta encaminhará o pacote e faz a troca do *label* de acordo com a informação que fora passada pelo próximo LSR (P ou PE) para se chegar ao destino. O processo se repete até o último salto, quando o *label* é retirado e o pacote é entregue em formato IP para o cliente. A figura 1 mostra esse processo.
 
@@ -59,7 +61,7 @@ Assim, quando um pacote entra na nuvem MPLS é inserido pelo PE um *label* entre
 A nuvem MPLS VPN e o MP-BGP
 ---------------------------
 
-Uma nuvem MPLS VPN consiste em uma série de elementos componentes de uma infraestrutura de rede MPLS que são utilizados para prover serviço de VPN para diferentes clientes. A figura 2 exibe um exemplo.
+Uma nuvem MPLS VPN consiste em uma série de elementos componentes de uma infraestrutura de rede MPLS que são utilizados para prover serviço de VPN (*Virtual Private Network*) para diferentes clientes. A figura 2 exibe um exemplo.
 
 ![MPLS VPN](imagens/mpls-vpn.png)
 
