@@ -1,6 +1,6 @@
 ---
 remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
-date: 31 de março de 2014
+date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Implantação do MPLS no *backbone* Dataprev
 abstract: Este artigo descreve de forma macro as ações necessárias para a implantação da tecnologia MPLS (*Multiprotocol Label Switching*) no *backbone* WAN da Dataprev e criação de VPNs L3 MPLS.
@@ -8,7 +8,7 @@ author:
 - affiliation: DEST/DSIG
   name: Márcio Vítor Machado Barbosa
 - affiliation: DEST/DSIG
-  name: Autor Pedro Rozas Moreira
+  name: Pedro Rozas Moreira
 responsibility:
 - affiliation: DEST/DSIG
   name: Rodrigo Morgado da Silva
@@ -17,8 +17,8 @@ superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Suporte de TIC - DEST'
 tags:
 - MPLS
-- *Backbone*
-- *Label*
+- Backbone
+- Label
 - VPN
 - VRF
 ...
@@ -64,7 +64,7 @@ Uma nuvem MPLS VPN consiste em uma série de elementos componentes de uma infrae
 
 Cada CE (*Customer Edge*) é interligado em L3 a um PE, onde é feita a troca de informações de roteamento (rotas IPv4) entre cliente e provedor. Esta troca usualmente se dá utilizando-se o protocolo BGP. O PE, que pode se conectar com mais de um CE, segrega cada um dos clientes por meio de VRF. Uma VRF (*Virtual Routing and Forwarding*) é definida como sendo uma tecnologia IP que permite que um roteador contenha simultaneamente múltiplas instâncias de roteamento (tabelas de roteamento) independentes e em geral sendo uma para cada cliente. Devido a independência entre as instâncias de roteamento é possivel que diferentes clientes utilizem o mesmo endereçamento IP sem que haja conflito, desde que algumas particularidades desta tecnologia, que não são escopo deste artigo, sejam obedecidas.  A VRF de um cliente é caracterizada por um parâmetro conhecido por *Route Distinguisher*, ou mais comumente abreviado para RD. Na VRF também deverão ser definidos os *route targets* (RT) que serão importados e exportados na VPN. O papel do RT será discutido posteriormente neste artigo. 
 
-De posse das informações de roteamento IPv4 aprendidas do CE, o PE as traduz em rotas VPNv41 que serão distribuídas pela nuvem MPLS VPN, cada uma associada ao respectivo RT exportado pela VRF do cliente. A distribuição de rotas VPNv4 dentro da nuvem MPLS se dá através do  MP-BGP (*Multiprotocol* BGP). O MP-BGP nada mais é do que a técnica de se utilizar as comunidades estendidas (*extended community*) do protocolo BGP para a distribuição de rotas VPNv4 contendo o parâmetro RT exportado pela VRF.
+De posse das informações de roteamento IPv4 aprendidas do CE, o PE as traduz em rotas VPNv4^[A rota VPNv4 consiste na composição do RD (route distinguisher) e o prefixo IPv4. Desta forma, um prefixo IPv4 com o RD torna a rota VPNv4 única na tabela de roteamento, podendo, por exemplo, VPNs diferentes possuírem endereçamento coincidente.] que serão distribuídas pela nuvem MPLS VPN, cada uma associada ao respectivo RT exportado pela VRF do cliente. A distribuição de rotas VPNv4 dentro da nuvem MPLS se dá através do  MP-BGP (*Multiprotocol* BGP). O MP-BGP nada mais é do que a técnica de se utilizar as comunidades estendidas (*extended community*) do protocolo BGP para a distribuição de rotas VPNv4 contendo o parâmetro RT exportado pela VRF.
 
 Dessa forma, para a implementação da nuvem MPLS VPN no *core* da rede, é importante que todos os PE da rede MPLS possuam vizinhança MP-BGP entre si. Entretanto, isto torna-se inviável para o caso de uma rede com muitos nós devido a escala e complexidade. Para eliminar este problema, são escolhidos alguns nós para fazerem o papel de refletores de rotas da rede MPLS. Os refletores de rotas, ou mais comumente conhecidos por *route reflectors*, são os elementos de rede que conhecerão todas as rotas VPNv4 da nuvem MPLS VPN. Assim, as vizinhanças MP-BGP poderão ser estabelecidas apenas entre os nós da rede MPLS e os *route reflectors*, o que simplifica muito a operação da rede.
 
