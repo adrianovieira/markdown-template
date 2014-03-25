@@ -124,4 +124,4 @@ CISCO. Configuring a Basic MPLS VPN, 2007. Disponível em: <http://www.cisco.com
 
 Sangli, S.; Tappan, D.; Rekhter, Y. Callon R. RFC 4360: BGP Extended Communities Attribute, IETF, 2006
 
-Dataprev. Modelo de Referência das Redes Locais dos Centros de Processamento - MR-LAN, 2011. DisponÌvel em: <http://www-dtpnet/content/modelo-de-referencia-0>. Acesso em: 25 mar. 2014
+Dataprev. Modelo de Referência das Redes Locais dos Centros de Processamento - MR-LAN, 2011. Disponível em: <http://www-dtpnet/content/modelo-de-referencia-0>. Acesso em: 25 mar. 2014
