@@ -149,7 +149,7 @@ $if(lang)$
 % Contéudo do cabeçalho das páginas
 \fancyhead{}
 \fancyhead[LE,LO]{
-	\includegraphics[width=0.4\textwidth]{$if(pandoc_makefile_path)$$pandoc_makefile_path$$endif$imagens/logo-mpsdtp2.jpg}
+	\includegraphics[width=0.18\textwidth]{$if(pandoc_makefile_path)$$pandoc_makefile_path$$endif$imagens/MarcaDATAPREV2014.jpg}
 }
 \fancyhead[RO,RE]{\footnotesize{  % cabeçalho com tamanho como o de nota de rodapé
 $if(diretoria)$
