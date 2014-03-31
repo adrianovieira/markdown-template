@@ -46,7 +46,6 @@ Introdução
 
 O MPLS é uma tecnologia de encaminhamento de pacotes de alta performance desenvolvida pelo IETF^[The Internet Engineering Task Force (IETF) <http://www.ietf.org>] que se dá através da atribuição de *labels* que determinam como e para onde esses pacotes serão encaminhados na rede. Uma vez atribuído um *label* ao pacote, elimina-se a necessidade de se examinar o cabeçalho da camada de nível 3 a cada salto subsequente na rede MPLS.
 
-
 Uma breve explicação do funcionamento do MPLS
 =============================================
 
@@ -59,7 +58,7 @@ Assim, quando um pacote entra na nuvem MPLS é inserido pelo PE um *label* entre
 \pagebreak
 
 A nuvem MPLS VPN e o MP-BGP
----------------------------
+===========================
 
 Uma nuvem MPLS VPN consiste em uma série de elementos componentes de uma infraestrutura de rede MPLS que são utilizados para prover serviço de VPN (*Virtual Private Network*) para diferentes clientes. A figura 2 exibe um exemplo.
 
@@ -74,7 +73,7 @@ Dessa forma, para a implementação da nuvem MPLS VPN no *core* da rede, é impo
 Uma vez que as rotas VPNv4 são distribuídas pela nuvem MPLS VPN, é necessário que os PE sejam capazes de determinar em quais VRF essas rotas serão inseridas. É neste momento que o *route target* citado anteriormente faz-se necessário. Conforme dito anteriormente, as VRF exportam e importam um (ou mais) *route targets*. Cada rota VPNv4 terá associada como *extended community* o RT exportado pela sua VRF. Logo, os PE incluirão apenas as rotas VPNv4 nas VRF que estiverem importando o RT discriminado na *extended community* dessas rotas.
 	
 Ativando o MPLS no *backbone*
------------------------------
+=============================
 
 A topologia mostrada na figura 3 apresenta uma visão do *backbone* com MPLS implantado, onde dentro da nuvem MPLS haverá tráfego por encaminhamento de pacotes e por fora da nuvem, tráfego puramente IP. A lógica básica de funcionamento consiste nas seguintes premissas:
 
@@ -89,7 +88,7 @@ A topologia mostrada na figura 3 apresenta uma visão do *backbone* com MPLS imp
 \pagebreak
 
 Configurando as VPNs dos clientes
----------------------------------
+=================================
 
 Para cada cliente da nuvem MPLS, deverá ser configurada uma VRF correspondente em cada um dos PE que participarão da VPN do cliente. Na VRF, os seguintes parâmetros deverão ser determinados:
 
