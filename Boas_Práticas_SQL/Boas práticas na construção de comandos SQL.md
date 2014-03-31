@@ -1,21 +1,26 @@
-#### [Diretoria de Infraestrutura de TIC - DIT]
-##### [Superintendência de Planejamento e Suporte de TIC - SUPS]
-
-# Artigo técnico de Infraestrutura de TIC
-
-**Boas práticas na construção de comandos SQL.**
-
-**Autor(es):**  Flávio Vieira
-
-**Responsável:** Diogo Costa Martins Pizaneschi
-
-## Sumário
-
-Neste artigo, serão destacadas um grupo de boas práticas na escrita de comandos SQL em SGBDs Oracle.
+---
+date: 10 de março de 2014
+tipo_artigo: Artigo técnico de Infraestrutura de TIC
+title: Boas práticas na construção de comandos SQL
+abstract: Neste artigo, serão destacadas um grupo de boas práticas na escrita de comandos SQL em SGBD Oracle&trade;.
+author:
+- affiliation: DEST/DSBD
+  name: Flávio Vieira
+responsibility:
+- affiliation: DEST
+  name: Diogo Costa Martins Pizaneschi
+diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
+superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
+departamento: 'Departamento de Suporte de TIC - DEST'
+tags:
+- SQL
+- 'SGBD *Oracle*'
+- Desempenho
+...
 
 ## Desafios
 
-Uma das possíveis causas de lentidão no acesso aos bancos Oracle é a má utilização dos comandos SQL, principalmente em sua escrita.
+Uma das possíveis causas de lentidão no acesso aos bancos Oracle&trade; é a má utilização dos comandos SQL, principalmente em sua escrita.
 
 ## Benefícios e/ou recomendações
 
