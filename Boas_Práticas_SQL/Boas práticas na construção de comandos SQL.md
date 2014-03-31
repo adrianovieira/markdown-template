@@ -18,18 +18,20 @@ tags:
 - Desempenho
 ...
 
-## Desafios
+Desafios
+========
 
 Uma das possíveis causas de lentidão no acesso aos bancos Oracle&trade; é a má utilização dos comandos SQL, principalmente em sua escrita.
 
-## Benefícios e/ou recomendações
+Benefícios e/ou recomendações
+=============================
 
 Este artigo visa mostrar alguns cuidados que podem ser tomados para evitar a construção de SQLs que possam vir a se tornar problemas em ambientes de SGBD Oracle.
 
 
-## Desenvolvimento
+Introdução
+==========
 
-### Introdução
 Podemos dividir a execução de um comando SQL no SGBD Oracle basicamente em quatro fases:
 
 * **Parse**: Durante esta fase o Oracle verifica a se o comando está escrito corretamente seguindo as regras de semântica do SQL e se os objetos envolvidos no comando existem e estão disponíveis. No final desta fase, o Oracle verifica se esta consulta já possui um plano de execução criado, caso não possua o plano é criado e armazenado na memória do Oracle visando futuro reaproveitamento.
@@ -39,8 +41,8 @@ Podemos dividir a execução de um comando SQL no SGBD Oracle basicamente em qua
  
 O texto do SQL pode influenciar positivamente ou negativamente as fases  todas estas quatro fases.
 
-### Práticas que afetam a fase de Parse.
-
+Práticas que afetam a fase de Parse
+===================================
 
 Conforme dito anteriormente, durante a fase de "Parse" o SGBD Oracle cria o plano de execução dos SQLs. Como esta tarefa é muito complexa, pode se tornar muito lenta e o SGBD tenta reaproveitar planos já existentes, visando agilizar a execução das consultas. Os planos de execução já executados são guardados em memória e a identificação dos planos que podem ser reaproveitados é realizada por comparação do texto do SQL a ser executado.
 
@@ -48,7 +50,8 @@ Na primeira vez que um SQL é submetido ao banco é atribuído um valor HASH cri
 
 A partir daí cada novo SQL submetido ao banco tem seu código HASH calculado e comparado com os valores armazenados em memória. Caso esta busca retorne algum plano este é reaproveitado evitando a criação de um novo.
 
-####Utilização de variáveis bind (comandos idênticos)
+Utilização de variáveis bind (comandos idênticos)
+-------------------------------------------------
 
 Para que o banco possa aumentar o reaproveitamento de planos de execução a utilização de variáveis de ligação (bind) no texto dos SQLs é imprescindível. 
 
@@ -69,15 +72,18 @@ Este último comando, uma vez executado teria seu plano reaproveitado a cada nov
 
 Além das vantagens da fase de Parse, variáveis de ligação facilitam a validação de tipo de dados dos valores de entrada fornecidos dinamicamente e evitam os riscos de vulnerabilidade de segurança e integridade existentes quando se constrói uma instrução SQL por concatenação de strings (Select Dinâmico).
 
-### Práticas que afetam a fase de Execute.
+Práticas que afetam a fase de Execute
+=====================================
 
 O tempo da fase de "execute" pode ser influenciado principalmente pos SQLs que forcem o Oracle a tomar decisões erradas durante a fase anterior, quando ele escolhe o plano de execução da consulta.
 
-#### Evite a utilização da tática "Balão" na codificação de SQL.
+Evite a utilização da tática "Balão" na codificação de SQL
+----------------------------------------------------------
 
 A tática balão ocorre quando o desenvolvedor escolhe escrever um único SQL complexo que contem toda ou a maior parte da regra de negócio em seu texto, no lugar de quebrar a consulta em consultas menores. Além do texto complexo dificultar o processo de otimização, a regra de negócio  deve ser tratado na camada de aplicação. 
 
-####Operadores 
+Operadores
+----------
 
 
 Alguns operadores são mais performáticos do que outros. Segue uma pequena listagem por ordem crescente de performance de alguns operadores:
@@ -90,8 +96,8 @@ Alguns operadores são mais performáticos do que outros. Segue uma pequena list
 
 Ou seja, utilizar o operador “ = “ é mais performático do que usar o operador “ <> “.
 
-####Evite Utilizar o Operador NOT
-
+Evite Utilizar o Operador NOT
+-----------------------------
 
 Em vez de utilizarmos a querie:
 
@@ -105,7 +111,8 @@ Ambas produzirão o mesmo resultado, mas o segundo exemplo produzirá um resulta
 
 
 
-####Uso de LIKE
+Uso de LIKE
+-----------
 
 O operador LIKE é utilizado normalmente em  SQLs para realizar buscas em campos alfanuméricos procurando por trechos de caracteres.
 
@@ -119,7 +126,8 @@ Nos exemplos acima `2` tem probabilidade maior de executar mais rápido, pois se
 
 
 
-####Uso de funções na cláusula WHERE de uma consulta.
+Uso de funções na cláusula WHERE de uma consulta
+------------------------------------------------
 
 No momento em que decidir como resolver uma consulta, o otimizador do Oracle tenta utilizar índices já existentes nas tabelas envolvidas desde que certas condições sejam seguidas. Uma delas é a não utilização de funções sobre os campos da tabela na cláusula WHERE de um comando SQL. 
 
@@ -136,13 +144,15 @@ Podemos reescrever a consulta para:
 >"Ou seja, tente sempre utilizar a conversão no valor de teste e não na coluna com a qual ele será comparado."
 
 
-####COUNT x EXISTS
+COUNT x EXISTS
+--------------
 
 Para testes de existência é sempre mais eficiente utilizar EXISTS do que COUNT. Quando se utiliza o COUNT o banco de dados não sabe que se está fazendo um teste de existência e continua pesquisando todas as linhas qualificadas. Já utilizando EXISTS, o banco de dados sabe que é um teste de existência e interrompe a pesquisa quando encontra a primeira linha qualificada.
 
 Este mesmo raciocínio é válido quando se utiliza COUNT no lugar de IN ou ANY.
 
-####OR x UNION
+OR x UNION
+----------
 
 Em alguns casos, o banco de dados não consegue otimizar cláusulas de join ligadas por OR. Neste caso é mais eficiente ligar os
 conjuntos de resultados por UNION.
@@ -160,7 +170,8 @@ pode ser reescrito como :
 A diferença é que na segunda forma, são eliminadas as linhas duplicadas, o que pode ser contornado com
 UNION ALL.
 
-####MAX e MIN Agregados
+MAX e MIN Agregados
+-------------------
 
 O banco de dados utiliza uma otimização especial para MAX e MIN quando há um índice na coluna agregada.
 Para o MIN a pesquisa é interrompida quando encontra a primeira linha qualificada.
@@ -196,7 +207,8 @@ otimização especial do MIN.
     from tab
     where coluna2 = <valor encontrado só no final do índice da coluna1>
 
-####Joins e Datatypes
+Joins e Datatypes
+-----------------
 
 Se a cláusula join utiliza datatypes diferentes, um deles será convertido para o outro. O datatype convertido é o
 hierarquicamente inferior. O otimizador não consegue escolher um índice na coluna que é convertida.
@@ -213,7 +225,8 @@ Por exemplo :
 
 
 
-####Utilização de BETWEEN na cláusula WHERE de uma consulta.
+Utilização de BETWEEN na cláusula WHERE de uma consulta
+-------------------------------------------------------
 
 Na comparação de intervalo entre datas temos o SQL abaixo:
 
@@ -223,7 +236,8 @@ Normalmente a consulta abaixo terá um plano de execução melhor, resultando em
 
     Select ID,NOME from A where NASC BETWEEN DATA1 and DATA2;
 
-####Evite a utilização de IN na cláusula WHERE de uma consulta.
+Evite a utilização de IN na cláusula WHERE de uma consulta
+----------------------------------------------------------
 
 Evite a utilização de IN na cláusula WHERE de um comando SQL. Esta construção tende a ser execução custosa para o Oracle. Abaixo seguem exemplos:
 
@@ -244,18 +258,21 @@ Neste caso a consulta pode ser rescrita da forma abaixo que na maior parte dos c
     Select ID,NOME from A where STATUS=4;
 
 
-####Use o WHERE ao invés de HAVING para filtrar linhas
+Use o WHERE ao invés de HAVING para filtrar linhas
+--------------------------------------------------
 
 Evite o uso da clausula HAVING junto com GROUP BY em uma coluna indexada. Neste caso o índice não é
 utilizado. Além disso, exclua as linhas indesejadas na sua consulta utilizando a clausula WHERE ao invés do HAVING. Se
 a tabela possuir um índice na coluna.
 
-####Evite o operador DISTINCT
+Evite o operador DISTINCT
+-------------------------
 
 Evite incluir desnecessariamente a cláusula DISTINCT dentro de uma declaração SELECT. Distinct gera o método de acesso “SORT”.
 
 
-####Subqueries com cláusula de outer-join restritiva
+Subqueries com cláusula de outer-join restritiva
+------------------------------------------------
 
     select w from outer where y = 1 and x = (select sum(a) from inner where
     inner.b = outer.z )
@@ -282,7 +299,8 @@ O banco de dados copia a cláusula search ( y = 1 ) para a subquery, mas não co
     where tab_x.d = tabela_interna.e
     and tab_x.coluna_valor_unico = tab_y.a)
 
-####Operador AND
+Operador AND
+------------
 
 
 	Se você deseja aumentar a performance de uma consulta que inclui o operador AND em uma cláusula WHERE, você deve considerar o seguinte:
@@ -294,8 +312,8 @@ O banco de dados copia a cláusula search ( y = 1 ) para a subquery, mas não co
 
 
 
-#### Operador OR
-
+Operador OR
+-----------
 
 Haverá sempre uma busca completa na tabela (full table scan) se uma cláusula where de uma consulta conter um operador OR que referencie colunas que não tenham índices utilizáveis, ou seja, se você utiliza muitas consultas com a cláusula OR, você precisa ter certeza que cada uma das colunas referenciadas na cláusula where possui índices utilizáveis.
 
@@ -308,18 +326,17 @@ Evite as construções do tipo abaixo pois evitam que o banco utilize os índice
     2 SELECT ID, NOME, ENDERECO FROM PESSOAS WHERE (ID IS NULL OR NOME=:1);
 
 
-### Práticas que afetam a fase de Fetch.
-####Uso do Select *
+Práticas que afetam a fase de Fetch
+===================================
+
+Uso do Select *
+---------------
 
 Evite o envio de mais dados que o necessário para camada cliente. A utlização constante da cláusula SELECT * pode onerar a transmissão da resposta do SQL devido ao envio de dados desnecessários para o solicitante.  Sempre que possível é recomendável discriminar o que será retornado para evitar este tipo de situação.
 
 
-
-
-
-
-
-### Conclusão
+Conclusão
+=========
 
 A escrita de SQLs pode impactar positivamente ou negativamente o tempo de resposta da uma aplicação. As dicas aqui publicadas auxiliam e evitar grande parte dos problemas de lentidão dos SQLs. Contudo, sempre podem existir exceções a regra.
 
