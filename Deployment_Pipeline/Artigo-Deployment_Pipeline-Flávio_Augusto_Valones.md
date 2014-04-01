@@ -37,7 +37,7 @@ Este trabalho visa definir os pilares base para evolução do atual ambiente de 
 Introdução
 ==========
  
-Integração Contínua é a prática de integrar e testar o novo código produzido em cada mudança em relação a base de código existente. Consiste em um conjunto de boas práticas  como automação de compilação, teste contínuo e análise de qualidade de código. Entrega Contínua vai mais além e automatiza a implantação de software em QA, ambientes de pré-produção e produção. Entrega Contínua permite que as organizações possam implantar produtos a qualquer momento, automatizando o processo através de um Deployment Pipeline, reduzindo os riscos envolvidos, a necessidade de esforço manual e o tempo total dos ciclos lançamento.
+Integração Contínua @ThoughtWorksCI é a prática de integrar e testar o novo código produzido em cada mudança em relação a base de código existente. Consiste em um conjunto de boas práticas  como automação de compilação, teste contínuo e análise de qualidade de código. Entrega Contínua (@ThoughtWorksCD e @XebiaCDE) vai mais além e automatiza a implantação de software em QA, ambientes de pré-produção e produção. Entrega Contínua permite que as organizações possam implantar produtos a qualquer momento, automatizando o processo através de um Deployment Pipeline, reduzindo os riscos envolvidos, a necessidade de esforço manual e o tempo total dos ciclos lançamento.
 
 O Deployment Pipeline, por sua vez, necessita que algumas premissas básicas sejam atendidas:
 
@@ -74,7 +74,7 @@ Este estágio é subdividido nas seguintes tarefas:
 Acceptance Stage
 ----------------
 
-O segundo estágio do pipeline é composto pelos testes de aceitação automatizados de execução mais prolongada. O servidor de IC efetua a implantação da aplicação em um ambiente de testes e então invoca a execução da suíte de testes de aceitação através de uma ferramenta de gerenciamento dedicada a este propósito. Esta etapa será acionado automaticamente com a conclusão bem sucedida da primeira fase do pipeline. Inicialmente será utilizado um ambiente pré-alocado, posteriormente este ambiente deverá ser provisionado automaticamente através da ferramenta Puppet. 
+O segundo estágio do pipeline é composto pelos testes de aceitação automatizados de execução mais prolongada. O servidor de IC efetua a implantação da aplicação em um ambiente de testes e então invoca a execução da suíte de testes de aceitação através de uma ferramenta de gerenciamento dedicada a este propósito. Esta etapa será acionado automaticamente com a conclusão bem sucedida da primeira fase do pipeline. Inicialmente será utilizado um ambiente pré-alocado, posteriormente este ambiente deverá ser provisionado automaticamente através da ferramenta Puppet[^1]. 
 
 Este estágio executa as seguintes tarefas:
 
@@ -103,9 +103,46 @@ Como se pode perceber neste artigo, o Deployment Pipeline disponibiliza os recur
  
 Referências
 ===========
+
+[^1]: [@PuppetLabseBook] 
  
-<http://www.thoughtworks.com/pt/continuous-integration>  
-<http://www.thoughtworks.com/pt/continuous-delivery>  
-<https://puppetlabs.com/sites/default/files/CDebook.pdf>  
-<http://continuousdelivery.xebia.com/sites/default/bestanden/nl/Whitepaper%20Xebia%20Continuous%20Delivery.pdf>  
- 
+---
+remark: metadados com alguns dados para listar referências bibliográficas. Use quantos identificadores (ID) necessitar para listar as diferentes referências usadas no artigo
+references:
+- id: PuppetLabseBook
+  title: "Continous Delivery: What It Is and How to Get Started"
+  URL: 'https://puppetlabs.com/sites/default/files/CDebook.pdf'
+  accessed:
+    month: 3
+    year: 2014
+  publisher: Puppet Labs
+  type: book
+
+- id: ThoughtWorksCI
+  title: "Continuous Integration"
+  URL: 'http://www.thoughtworks.com/pt/continuous-integration'
+  type: webpage
+  publisher: ThoughtWorks, Inc.
+  accessed:
+    year: 2013
+    month: 03
+    
+- id: ThoughtWorksCD
+  title: "Continuous Delivery"
+  URL: 'http://www.thoughtworks.com/pt/continuous-delivery'
+  type: webpage
+  publisher: ThoughtWorks, Inc.
+  accessed:
+    year: 2013
+    month: 03
+    
+- id: XebiaCDE
+  title: "Introducing Continous Delivery in the Enterprise"
+  URL: 'http://continuousdelivery.xebia.com/sites/default/bestanden/nl/Whitepaper%20Xebia%20Continuous%20Delivery.pdf'
+  type: article
+  publisher: Xebia Nederland b.v.
+  accessed:
+    year: 2013
+    month: 03
+
+...
