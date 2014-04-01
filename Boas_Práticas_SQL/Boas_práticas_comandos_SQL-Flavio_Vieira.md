@@ -1,5 +1,5 @@
 ---
-date: 10 de março de 2014
+date: 31 de março de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Boas práticas na construção de comandos SQL
 abstract: Neste artigo, serão destacadas um grupo de boas práticas na escrita de comandos SQL em SGBD Oracle&trade;.
@@ -59,14 +59,17 @@ Abaixo segue um exemplo.
 
 Os comandos abaixo são diferentes, gerando planos com  IDs diferentes:
 
-    SELECT ID FROM TABELA WHERE ID = 1;
-. 
+```sql
+ SELECT ID FROM TABELA WHERE ID = 1;
 
-    SELECT ID FROM TABELA WHERE ID = 2;
+ SELECT ID FROM TABELA WHERE ID = 2;
+```
 
 Eles poderiam ser reconstruidos da forma abaixo:
 
-    SELECT ID FROM TABELA WHERE ID = ?; 
+```sql
+ SELECT ID FROM TABELA WHERE ID = ?; 
+```
 
 Este último comando, uma vez executado teria seu plano reaproveitado a cada nova execução, mesmo com o conteúdo da variável ? diferente.
 
@@ -87,12 +90,12 @@ Operadores
 
 
 Alguns operadores são mais performáticos do que outros. Segue uma pequena listagem por ordem crescente de performance de alguns operadores:
-
+```sql
     =
     >, >=, <, <=
     LIKE
     <>
-
+```
 
 Ou seja, utilizar o operador “ = “ é mais performático do que usar o operador “ <> “.
 
@@ -100,13 +103,13 @@ Evite Utilizar o Operador NOT
 -----------------------------
 
 Em vez de utilizarmos a querie:
-
+```sql
     WHERE NOT column_name > 5
-
+```
 Podemos reescrever a mesma da seguinte forma::
-
+```sql
     WHERE column_name <= 5
-
+```
 Ambas produzirão o mesmo resultado, mas o segundo exemplo produzirá um resultado bem mais performático.
 
 
@@ -115,16 +118,14 @@ Uso de LIKE
 -----------
 
 O operador LIKE é utilizado normalmente em  SQLs para realizar buscas em campos alfanuméricos procurando por trechos de caracteres.
-
+```sql
     1: SELECT ID FROM PESSOAS WHERE NOME LIKE '%JOAO DA SILVA%';
-
+```
 Este tipo de operador deve ser evitado, mas quando for necessário deve-se dar preferência a utilização do % somente no meio ou no final da string de comparação:
-
+```sql
     2: SELECT ID FROM PESSOAS WHERE NOME LIKE 'JOAO DA SILVA%';
-
+```
 Nos exemplos acima `2` tem probabilidade maior de executar mais rápido, pois se o campo NOME possuir índice, provavelmente este será utilizado pelo banco para executar o comando. No caso de `1` o SGBD não consegue utilizar nenhum índice criado em NOME para executar a consulta.
-
-
 
 Uso de funções na cláusula WHERE de uma consulta
 ------------------------------------------------
@@ -134,13 +135,13 @@ No momento em que decidir como resolver uma consulta, o otimizador do Oracle ten
 Por exemplo:
 
 Dado a tabela A que possui os campos ID NUMBER(5), NOME VARCHAR2(30), STATUS NUMBER(1), NASC DATE e que possui um índice no campo STATUS. Se realizarmos a consulta abaixo provavelmente este índice não será utilizado provocando varredura total na tabela e tempo de resposta alto.
-
+```sql
     Select ID,NOME from A where to_char(STATUS) = '1';
-
+```
 Podemos reescrever a consulta para:
-
+```sql
     Select ID,NOME from A where STATUS = TO_NUMBER('1');
-
+```
 >"Ou seja, tente sempre utilizar a conversão no valor de teste e não na coluna com a qual ele será comparado."
 
 
@@ -158,15 +159,15 @@ Em alguns casos, o banco de dados não consegue otimizar cláusulas de join liga
 conjuntos de resultados por UNION.
 
 Por exemplo :
-
+```sql
     select a from tab1, tab2 where tab1.a = tab2.a OR tab1.x = tab2.x
-
+```
 pode ser reescrito como :
-
+```sql
     select a from tab1, tab2 where tab1.a = tab2.a
     UNION
     select a from tab1, tab2 where tab1.x = tab2.x
-
+```
 A diferença é que na segunda forma, são eliminadas as linhas duplicadas, o que pode ser contornado com
 UNION ALL.
 
@@ -193,19 +194,20 @@ A solução é convencer o otimizador a não utilizar a otimização especial do
 agregações na query.
 
 Por exemplo :
-
+```sql
     select MIN(coluna1)
     from tab
     where coluna2 = <valor encontrado só no final do índice da coluna1>
-
+```
 O banco de dados utilizará aqui a otimização especial do MIN, e fará um scan em quase todo o índice, pois a
 qualificação na cláusula WHERE força esta situação. Se colocarmos mais um aggregate, convenceremos o otimizador a
 utilizar o processo normal, criando um plano de acesso pelo índice da coluna2, neste caso, mais eficiente que a
 otimização especial do MIN.
-
+```sql
     select MIN(coluna1), MAX[coluna2)
     from tab
     where coluna2 = <valor encontrado só no final do índice da coluna1>
+```
 
 Joins e Datatypes
 -----------------
@@ -217,46 +219,51 @@ tem o menor custo de não utilização do índice.
 
 Por exemplo :
 
+```sql
     select c1, c2
     from tab1, tab2
     where tab1.col_char_75 = to_char(tab2.col_integer_75)
-
-
-
-
+```
 
 Utilização de BETWEEN na cláusula WHERE de uma consulta
 -------------------------------------------------------
 
 Na comparação de intervalo entre datas temos o SQL abaixo:
-
+```sql
     Select ID,NOME from A where NASC > DATA1 and NASC < DATA2;
-
+```
 Normalmente a consulta abaixo terá um plano de execução melhor, resultando em tempo de resposta mais rápido.
 
+```sql
     Select ID,NOME from A where NASC BETWEEN DATA1 and DATA2;
+```
 
 Evite a utilização de IN na cláusula WHERE de uma consulta
 ----------------------------------------------------------
 
 Evite a utilização de IN na cláusula WHERE de um comando SQL. Esta construção tende a ser execução custosa para o Oracle. Abaixo seguem exemplos:
 
-
+```sql
     1) Select ID,NOME from A where STATUS IN (1,2,3,4);
+```
 
 A consulta pode ser rescrita da forma abaixo que terá uma performance bem melhor..
 
+```sql
     Select ID,NOME from A where STATUS BETWEEN 1 AND 4;
-.
+```
 
+```sql
     2) Select ID,NOME from A where STATUS IN (1,2,4);
+```
 
 Neste caso a consulta pode ser rescrita da forma abaixo que na maior parte dos casos terá uma performance bem melhor..
 
+```sql
     Select ID,NOME from A where STATUS BETWEEN 1 AND 2
     UNION ALL
     Select ID,NOME from A where STATUS=4;
-
+```
 
 Use o WHERE ao invés de HAVING para filtrar linhas
 --------------------------------------------------
@@ -274,11 +281,14 @@ Evite incluir desnecessariamente a cláusula DISTINCT dentro de uma declaração
 Subqueries com cláusula de outer-join restritiva
 ------------------------------------------------
 
+```sql
     select w from outer where y = 1 and x = (select sum(a) from inner where
     inner.b = outer.z )
+```
 
 Será quebrada pelo banco de dados nos seguintes passos
 
+```sql
     select outer.z, summ = sum(inner.a)
     into #work from outer, inner
     where inner.b = outer.z and outer.y = 1
@@ -287,9 +297,11 @@ Será quebrada pelo banco de dados nos seguintes passos
     select outer.w
     from outer, #work
     where outer.z = #work.z and outer.y = 1 and outer.x = #work.summ
+```
 
 O banco de dados copia a cláusula search ( y = 1 ) para a subquery, mas não copia cláusula join. Isto porque copiando a cláusula search, sempre tornará a query mais eficiente, mas copiando a cláusula join pode em muitos casos tornar a query mais lenta. A cópia da cláusula join só é eficiente quando ela é extremamente restritiva, mas o banco de dados faz a quebra antes do otimizador atuar. Então, para tornar a query mais eficiente, conhecendo previamente a alta restritividade da cláusula join, pode-se copiar a cláusula join para a subquery como no exemplo abaixo :
 
+```sql
     tab_x -> tabela grande
     tab_y -> tabela pequena
     select a
@@ -298,12 +310,13 @@ O banco de dados copia a cláusula search ( y = 1 ) para a subquery, mas não co
     where from tabela_interna
     where tab_x.d = tabela_interna.e
     and tab_x.coluna_valor_unico = tab_y.a)
+```
 
 Operador AND
 ------------
 
 
-	Se você deseja aumentar a performance de uma consulta que inclui o operador AND em uma cláusula WHERE, você deve considerar o seguinte:
+Se você deseja aumentar a performance de uma consulta que inclui o operador AND em uma cláusula WHERE, você deve considerar o seguinte:
 
 
 1) No critério de consulta da cláusula where, pelo menos um dos critérios têm que estar baseado em uma coluna altamente seletiva e que contenha um índice.
@@ -321,16 +334,17 @@ Mesmo que existam índices para a coluna utilizada, existem casos em que o banco
 
 Evite as construções do tipo abaixo pois evitam que o banco utilize os índices das colunas:
 
+~~~sql
+
     1 SELECT ID, NOME, ENDERECO FROM PESSOAS WHERE (:1 = 1 OR NOME=:1);
 
     2 SELECT ID, NOME, ENDERECO FROM PESSOAS WHERE (ID IS NULL OR NOME=:1);
-
+~~~
 
 Práticas que afetam a fase de Fetch
 ===================================
 
-Uso do Select *
----------------
+## Uso do Select *
 
 Evite o envio de mais dados que o necessário para camada cliente. A utlização constante da cláusula SELECT * pode onerar a transmissão da resposta do SQL devido ao envio de dados desnecessários para o solicitante.  Sempre que possível é recomendável discriminar o que será retornado para evitar este tipo de situação.
 
