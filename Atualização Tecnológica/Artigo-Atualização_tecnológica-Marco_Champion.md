@@ -35,7 +35,7 @@ O processo de atualização tecnológica visa contornar alguns dos problemas ide
 Benefícios
 ==========
 
-É objetivo do trabalho exposto atingir uma maior eficiência na utilização de recursos tecnológicos, aumento na produtividade através da atualização e/ou criação de processos, produtos e serviços e a consequente diminuição dos riscos inerentes à infraestrutura proporcionado pela atualização dos IC, conforme proposto pelas diretrizes da empresa.
+Comparativamente a @Coelho2013, é objetivo do trabalho exposto atingir uma maior eficiência na utilização de recursos tecnológicos, aumento na produtividade através da atualização e/ou criação de processos, produtos e serviços e a consequente diminuição dos riscos inerentes à infraestrutura proporcionado pela atualização dos IC, conforme proposto pelas diretrizes da empresa.
 
 Dentre os benefícios gerados, destacam-se:
 
@@ -49,12 +49,12 @@ Dentre os benefícios gerados, destacam-se:
 Introdução
 ==========
 
-O processo contínuo de atualização tecnológica da infraestrutura de TIC, consiste na atualização dos IC existentes na infraestrutura da Dataprev, assumindo um papel fundamental e de importância crescente para a introdução de novas tecnologias e soluções que, inseridas no contexto estratégico da Dataprev, contribuem para minimizar os ricos existentes, além de aumentar a eficiência organizacional, buscando novas oportunidades de crescimento e a criação de vantagens competitivas. 
+O processo contínuo de atualização tecnológica da infraestrutura de TIC, consiste na atualização dos IC existentes na infraestrutura da Dataprev, assumindo um papel fundamental e de importância crescente para a introdução de novas tecnologias e soluções que, inseridas no contexto estratégico da Dataprev, contribuem para minimizar os ricos existentes, além de aumentar a eficiência organizacional (@DeiroCardosoZotes), buscando novas oportunidades de crescimento e a criação de vantagens competitivas. 
 
 O Processo Contínuo de Atualização Tecnológica da Infraestrutura de TIC
 =======================================================================
 
-Item constante do Plano de Ação, o processo tem como sua principal saída, o Plano de Conformidade Anual^[<http://www-dtpnet/sites/default/files/Plano%20de%20Conformidade%202014.zip>], que por sua vez tem como resultado final a adequação da conformidade em relação aos padrões adotados pela Dataprev, e envolve as seguintes etapas:
+Item constante do Plano de Ação, o processo tem como sua principal saída, o Plano de Conformidade Anual[^1], que por sua vez tem como resultado final a adequação da conformidade em relação aos padrões adotados pela Dataprev, e envolve as seguintes etapas:
 
 1. definição do escopo; 
 2. levantamento de informações da infraestrutura;
@@ -62,7 +62,7 @@ Item constante do Plano de Ação, o processo tem como sua principal saída, o P
 4. análise da conformidade;
 5. adequação das não conformidades.
 
-De acordo com o Plano de Conformidade 20141, “O escopo definido segue critérios como descontinuidade de sistemas, obsolescência tecnológica, não conformidade com os padrões tecnológicos adotados pela Dataprev, roadmap de plataformas entre outros.
+De acordo com o Plano de Conformidade 2014, “O escopo definido segue critérios como descontinuidade de sistemas, obsolescência tecnológica, não conformidade com os padrões tecnológicos adotados pela Dataprev, roadmap de plataformas entre outros.
 Dentro do escopo do Plano de Conformidade 2014, temos 140 IC distribuídos de acordo com o serviço prestado:
 
 - Aplicação: 66;
@@ -108,8 +108,45 @@ Fica claro a necessidade da colaboração de diversas equipes da empresa, tanto 
 Referências
 ===========
 
-<http://www.unifenas.br/antigo/extensao/administracao/iiicongresso/trab03.htm>
+[^1]: [@PlanoConformidade2014]
 
-<http://www-dtpnet/sites/default/files/Plano%20de%20Conformidade%202014.zip>
+---
+remark: metadados com alguns dados para listar referências bibliográficas. Use quantos identificadores (ID) necessitar para listar as diferentes referências usadas no artigo
+references:
+- id: DeiroCardosoZotes
+  title: "Atualização Tecnológica como Estratégia de Melhoria da Eficiência Organizacional"
+  URL: 'http://www.unifenas.br/antigo/extensao/administracao/iiicongresso/trab03.htm'
+  author:
+  - family: Deiró
+    given: Ricardo de Miranda
+  - family: Cardoso
+    given: João Antonio da Silva
+  - family: Zotes
+    given: Luiz Perez
+  accessed:
+    month: 3
+    year: 2014
+  publisher: Unifenas
+  type: thesis
 
-<http://www.it4cio.com/resources/images/materias/pdfs/249.pdf>
+- id: Coelho2013
+  title: "Infraestrutura de TI da TEKSID passa por atualização completa, obtendo redução de gastos e melhorias no ambiente"
+  author:
+  - family: Coelho
+    given: Wellington Eustáquio 
+  URL: 'http://www.it4cio.com/resources/images/materias/pdfs/249.pdf'
+  type: article
+  issued:
+    year: 2013
+    month: 01
+    
+- id: PlanoConformidade2014
+  title: "Plano de Conformidade 2014"
+  URL: 'http://www-dtpnet/sites/default/files/Plano%20de%20Conformidade%202014.zip'
+  accessed:
+    month: 3
+    year: 2014
+  publisher: Dataprev
+  type: report
+
+...
