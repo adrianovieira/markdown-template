@@ -43,7 +43,7 @@ Antes de responder a essa pergunta, vamos a um breve histórico a respeito da qu
 
 Desde que as empresas perceberam que a qualidade havia se tornado um diferencial de vital importância no mercado, passaram a investir neste quesito e a buscar certificações que garantissem aos clientes que estavam seguindo consistentemente as boas práticas da área.
 
-Essa percepção não tem a ver com um sentimento apenas, mas sim com a constatação de que seus produtos e serviços, dentro de um mercado muito competitivo, não tinham diferencial substancial para conquistar o cliente, pois todas empresas já dominavam as mais avançadas técnicas de produção e prestação de serviços. Portanto, produtos e serviços tornaram-se como commodities, ou seja, muito parecidas, fáceis de encontrar e com preço semelhantes.
+Essa percepção não tem a ver com um sentimento apenas, mas sim com a constatação de que seus produtos e serviços, dentro de um mercado muito competitivo, não tinham diferencial substancial para conquistar o cliente, pois todas empresas já dominavam as mais avançadas técnicas de produção e prestação de serviços. Portanto, produtos e serviços tornaram-se como *commodities*, ou seja, muito parecidas, fáceis de encontrar e com preços semelhantes.
 
 A Garantia da Qualidade tornava-se então um quesito diferenciador nas empresas. Aquelas que possuíssem certificações na área, tinham um importante diferencial competitivo. Mas, passados os anos, a certificação de qualidade deixou de ser um diferenciador para tornar-se um requisito obrigatório, fazendo com que empresas que não possuíssem certificação, passassem a ter uma desvantagem competitiva.
 
@@ -97,25 +97,25 @@ Apesar de questões mercadológicas não influenciarem tanto na governança corp
 
 Alguns marcos importantes como a criação do CACIC (Configurador Automático e Coletor de Informações Computacionais), desenvolvido pela empresa em 1999 e atualmente utilizado em mais de 10 países, para gerenciamento do parque computacional instalado nos clientes remetem a preocupação da empresa com a qualidade.
 
-Após um grande avanço da Dataprev na qualidade do desenvolvimento de software, com a criação do CGQD (Coordenação Geral de Qualidade de Desenvolvimento), subordinado à Diretoria de Relacionamento, Desenvolvimento e Informações (DRD), do PD-Dataprev (Processo de Desenvolvimento da Dataprev) e da implantação do “Selo de Qualidade de Software”, observou-se que a infraestrutura de TIC da empresa também necessitava de uma governança preocupada com a qualidade na área. Foi então que em abril de 2013 foi criado, na Diretoria de Infraestrutura de TIC (DIT), o Departamento da Qualidade de Infraestrutura de TIC (DEQI), com o objetivo de balizar, orientar, documentar e certificar as ferramentas, equipamentos, sistemas, metodologias e demais produtos da infraestrutura de TIC.
+Após um grande avanço da Dataprev na qualidade do desenvolvimento de *software*, com a criação do CGQD (Coordenação Geral de Qualidade de Desenvolvimento), subordinado à Diretoria de Relacionamento, Desenvolvimento e Informações (DRD), do PD-Dataprev (Processo de Desenvolvimento da Dataprev) e da implantação do “Selo de Qualidade de Software”, observou-se que a infraestrutura de TIC da empresa também necessitava de uma governança preocupada com a qualidade na área. Foi então que em abril de 2013 foi criado, na Diretoria de Infraestrutura de TIC (DIT), o Departamento da Qualidade de Infraestrutura de TIC (DEQI), com o objetivo de balizar, orientar, documentar e certificar as ferramentas, equipamentos, sistemas, metodologias e demais produtos da infraestrutura de TIC.
 
-Como iniciativas, em parceria com o DEGT, DEST, DRD e CPs, o DEQI já proporcionou diversas avanços nos processos da infraestrutura, como a otimização dos ambientes de base de dados com propostas de downsize, com redução da plataforma de hardware, quantidade de CPUs, memória cache e licenças. Já sofreram processo de conformidade o total de 61 servidores, nos quesitos aplicação, banco de dados, infraestrutura e segurança, estando agendado para o Plano de Conformidade de 2014, a execução do processo de conformidade nos mesmos quesitos em outros 72 servidores. Portanto, o DEQI vem atuando fortemente no processo que visa atestar a conformidade dos componentes da infraestrutura, com o trabalho de execução do plano de conformidade tecnológica, consistindo na atualização do parque de servidores.
+Como iniciativas, em parceria com o DEGT, DEST, DRD e CPs, o DEQI já proporcionou diversas avanços nos processos da infraestrutura, como a otimização dos ambientes de base de dados com propostas de *downsize*, com redução da plataforma de *hardware*, quantidade de CPUs, memória cache e licenças. Já sofreram processo de conformidade o total de 61 servidores, nos quesitos aplicação, banco de dados, infraestrutura e segurança, estando agendado para o Plano de Conformidade de 2014, a execução do processo de conformidade nos mesmos quesitos em outros 72 servidores. Portanto, o DEQI vem atuando fortemente no processo que visa atestar a conformidade dos componentes da infraestrutura, com o trabalho de execução do plano de conformidade tecnológica, consistindo na atualização do parque de servidores.
 
-Também como iniciativa do DEQI, foi realizado o levantamento de métricas e criação de indicadores (permutabilidade de dados, homogeneidade e conformidade do ambiente, resolução de falhas, remoção de falhas, tempo médio entre falhas, média de tempo de inatividade, tempo médio de reparo, tempo médio de recuperação de serviço, uptime do sistema, disponibilidade, uso de processador, máxima utilização de memória, tempo de resposta e throughtput médio), para auxílio na tomada de decisão de ampliação e/ou adequação de sistemas.
+Também como iniciativa do DEQI, foi realizado o levantamento de métricas e criação de indicadores (permutabilidade de dados, homogeneidade e conformidade do ambiente, resolução de falhas, remoção de falhas, tempo médio entre falhas, média de tempo de inatividade, tempo médio de reparo, tempo médio de recuperação de serviço, *uptime* do sistema, disponibilidade, uso de processador, máxima utilização de memória, tempo de resposta e *throughtput* médio), para auxílio na tomada de decisão de ampliação e/ou adequação de sistemas.
 
 O DEQI é também responsável pelos testes não funcionais de desempenho dos novos produtos e versões agendadas, com uma média mensal de 11 testes, totalizando aproximadamente 100 testes de desempenho realizados no último ano.
 
-Pelo DEQI foram abertos quatro registros de erros de aplicações para tomada de providências pelo desenvolvedor (Mantis) e lançados seis Relatórios de Oportunidade de Melhoria, propondo alteração de processos e sistemas, objetivando a melhoria de sua funcionalidade.
+Pelo DEQI foram abertos quatro registros de erros de aplicações para tomada de providências pelo desenvolvedor (Mantis) e lançados seis "Relatórios de Oportunidade de Melhoria", propondo alteração de processos e sistemas, objetivando a melhoria de sua funcionalidade.
 
 Atualmente, como parte do Plano de Ação 2014, o DEQI está desenvolvendo um plano para implantação de um eficiente ambiente de Integração Contínua, com o mapeamento completo de cada processo, fases, ferramentas e responsabilidades.
 
-A definição de uma arquitetura de solução técnica para implantação do processo de Integração Contínua, será de vital importância para melhorar consistentemente os processos de produção, testes e implantação dos produtos da empresa, resultando na elevação do grau de aceitação, diminuição de ocorrências de quebra de ANS e melhoria da manutenção dos softwares desenvolvidos pela empresa.
+A definição de uma arquitetura de solução técnica para implantação do processo de Integração Contínua, será de vital importância para melhorar consistentemente os processos de produção, testes e implantação dos produtos da empresa, resultando na elevação do grau de aceitação, diminuição de ocorrências de quebra de ANS e melhoria da manutenção dos *softwares* desenvolvidos pela empresa.
 
-A Integração Contínua consiste em integrar o código alterado e/ou desenvolvido ao projeto principal na mesma frequência com que as funcionalidades são desenvolvidas, sendo, esta integração, feita várias vezes, ou pelo menos uma vez ao dia. O objetivo principal de utilizar a Integração Contínua é verificar se as alterações, ou novas funcionalidades, não criaram novos defeitos no projeto já existente. 
+A Integração Contínua consiste em integrar o código alterado e/ou desenvolvido ao projeto principal na mesma frequência com que as funcionalidades são desenvolvidas, sendo, esta integração, feitas várias vezes, ou, pelo menos, uma vez ao dia. O objetivo principal de utilizar a Integração Contínua é verificar se as alterações, ou novas funcionalidades, não criaram novos defeitos no projeto já existente. 
 
-Desta forma, cada integração é verificada por meio de uma construção automatizada (incluindo testes), para detectar erros de integração, tão rapidamente quanto possível. Essa abordagem levará a uma redução significativa de problemas de integração e permitirá que se desenvolvam softwares mais coesos.
+Desta forma, cada integração é verificada por meio de uma construção automatizada (incluindo testes), para detectar erros de integração, tão rapidamente quanto possível. Essa abordagem levará a uma redução significativa de problemas de integração e permitirá que se desenvolvam *softwares* mais coesos.
 
-Também como resultado do Plano de Ação, está a unificação das bases de conhecimento da Dataprev, para a solução de problemas de infraestrutura e aplicações. Gestão do Conhecimento é o processo através do qual TI gera valor a partir da informação e da experiência acumuladas na resolução de incidentes e problemas. Visa melhorar a criação de conhecimento e compartilhamento de processos em uma empresa. Quando organizada, permitirá às Equipes de Atendimento, Sustentação e Suporte responderem de forma rápida e padronizada.
+Também como resultado do Plano de Ação, está a unificação das bases de conhecimento da Dataprev, para a solução de problemas de infraestrutura e aplicações. Gestão do Conhecimento é o processo através do qual TI gera valor a partir da informação e das experiências acumuladas na resolução de incidentes e problemas. Visa melhorar a criação de conhecimento e compartilhamento de processos em uma empresa. Quando organizada, permitirá às Equipes de Atendimento, Sustentação e Suporte responderem de forma rápida e padronizada.
 
 Vantagens na unificação das bases de conhecimento: 
 
@@ -131,25 +131,25 @@ Espera-se que esse levantamento nos dê subsídios para desenvolvermos um trabal
 
 A produção da empresa é formada por diversos elementos, responsáveis por manter todo os sistemas acessíveis aos seus respectivos clientes. Esses elementos são:
 
-- Softwares
- - Aplicações desenvolvidas pela empresa
- - Sistemas Operacionais
- - Aplicativos/Ferramentas de terceiros
- - Bases de Dados
+- *Softwares*
+    - Aplicações desenvolvidas pela empresa
+    - Sistemas Operacionais
+    - Aplicativos/Ferramentas de terceiros
+    - Bases de Dados
 - Infraestrutura
- - Servidores (físicos e virtuais)
- - Elementos de rede (switches, roteadores, modems) 
- - Comunicação (cabeamento, link remoto)
+    - Servidores (físicos e virtuais)
+    - Elementos de rede (*switches*, roteadores, modems) 
+    - Comunicação (cabeamento, link remoto)
 
 O processo de Gestão de Qualidade deve ser implementado com o objetivo de garantir a qualidade da produção, de forma que os sistemas da Dataprev tenham um mínimo de interrupções e quebras de ANS. Para tal, a Gestão de Qualidade deve se preocupar com cada um dos elementos acima que formam a produção.
 
-Por outro lado, a DIT e a DRD articulam-se em ações voltadas ao controle de qualidade dos sistemas e à modernização dos centros de processamento, incluindo sistemas de monitoramento mais abrangentes e precisos. Além disso, ambas as diretorias dedicam-se a buscar ferramentas e tecnologias para ampliar o portfólio de serviços da empresa, com base em novos paradigmas de mercado, como computação em nuvem, business intelligence, analytics (tratamento de dados) e big data (tratamento de dados não estruturados). 
+Por outro lado, a DIT e a DRD articulam-se em ações voltadas ao controle de qualidade dos sistemas e à modernização dos centros de processamento, incluindo sistemas de monitoramento mais abrangentes e precisos. Além disso, ambas as diretorias dedicam-se a buscar ferramentas e tecnologias para ampliar o portfólio de serviços da empresa, com base em novos paradigmas de mercado, como computação em nuvem, *business intelligence*, *analytics* (tratamento de dados) e *big data* (tratamento de dados não estruturados). 
 
-A recente modernização e expansão do CPSP envolveu mais de 200 funcionários da empresa e dois movings, em um trabalho que foi um marco para a DIT e para toda a empresa. Esse trabalho faz parte do objetivo de tornar os três centros de processamento da Dataprev projetados para estarem de acordo com a categoria Tier 3 de classificação de data centers. Tal categoria enquadra os datacenters que jamais interrompem suas operações, mesmo em manutenções prediais.
+A recente modernização e expansão do CPSP envolveu mais de 200 funcionários da empresa e dois *movings*, em um trabalho que foi um marco para a DIT e para toda a empresa. Esse trabalho faz parte do objetivo de tornar os três centros de processamento da Dataprev projetados para estarem de acordo com a categoria Tier 3 de classificação de *data centers*. Tal categoria enquadra os *data centers* que jamais interrompem suas operações, mesmo em manutenções prediais.
 
 A atualização do parque de servidores de banco de dados, com a quase triplicação  de sua capacidade, em um total de 11 máquinas, sem que a migração tenha impactado nenhum dos clientes, também foi um marco recente importante da DIT. 
 
-Também como iniciativas da DIT, na sua busca da evolução da infraestrutura na Dataprev, estão estudos para a expansão da capacidade da rede de comunicação interna dos datacenters, importante para o processo de virtualização, a automação de processos e a estabilidade operacional. 
+Também como iniciativas da DIT, na sua busca da evolução da infraestrutura na Dataprev, estão estudos para a expansão da capacidade da rede de comunicação interna dos *data centers*, importante para o processo de virtualização, a automação de processos e a estabilidade operacional. 
 
 Conclusão
 =========
