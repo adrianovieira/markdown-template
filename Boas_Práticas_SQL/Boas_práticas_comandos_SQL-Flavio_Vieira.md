@@ -26,8 +26,7 @@ Uma das possíveis causas de lentidão no acesso aos bancos Oracle&trade; é a m
 Benefícios e/ou recomendações
 =============================
 
-Este artigo visa mostrar alguns cuidados que podem ser tomados para evitar a construção de SQLs que possam vir a se tornar problemas em ambientes de SGBD Oracle.
-
+Este artigo visa mostrar alguns cuidados que podem ser tomados para evitar a construção de SQLs que possam vir a se tornar problemas em ambientes de SGBD Oracle, conforme @Oracle8iDTP e @Oracle11gPTG.
 
 Introdução
 ==========
@@ -355,3 +354,41 @@ Conclusão
 A escrita de SQLs pode impactar positivamente ou negativamente o tempo de resposta da uma aplicação. As dicas aqui publicadas auxiliam e evitar grande parte dos problemas de lentidão dos SQLs. Contudo, sempre podem existir exceções a regra.
 
 Nestes casos, a correta homologação dos comandos SQL por meio de simulação em ambiente de testes, incluindo a verificação do plano de execução é uma boa prática que pode nos auxiliar a reduzir a probabilidade de um comando não se comportar adequadamente em ambiente de Produção.
+
+Referências
+===========
+
+---
+references:
+- id: Oracle8iDTP
+  title: "Oracle8i Designing and Tuning for Performance"
+  URL: 'http://docs.oracle.com/cd/A87860_01/doc/server.817/a76992/sql.htm'
+  author:
+  - family: Cyran
+    given: Michele
+  accessed:
+    month: 3
+    year: 2014
+  publisher: Oracle
+  type: webpage
+  issued:
+    year: 1999
+    month: 12
+
+- id: Oracle11gPTG
+  title: "Oracle11g Performance Tuning Guide"
+  URL: 'http://docs.oracle.com/cd/E11882_01/server.112/e41573.pdf'
+  author:
+  - family: Chan
+    given: Immanuel
+  - family: Ashdown
+    given: Lance
+  accessed:
+    month: 3
+    year: 2014
+  publisher: Oracle
+  type: book
+  issued:
+    year: 2013
+
+...
