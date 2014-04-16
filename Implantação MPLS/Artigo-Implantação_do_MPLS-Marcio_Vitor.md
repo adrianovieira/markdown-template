@@ -1,6 +1,6 @@
 ---
 remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
-date: 31 de março de 2014
+date: 16 de abril de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Implantação do MPLS no *backbone* Dataprev
 abstract: Este artigo descreve de forma macro as ações necessárias para a implantação da tecnologia MPLS (*Multiprotocol Label Switching*) no *backbone* WAN da Dataprev e criação de VPN L3 MPLS.
@@ -108,7 +108,7 @@ Em virtude da grande flexibilidade do MPLS, que permite ofertar uma série de se
 Referências
 ===========
 	
-CISCO. Cisco IOS Switching Services Configuration Guide - Multiprotocol Label Switching Overview, xxxx. Disponível em: <http://www.cisco.com/c/en/us/td/docs/ios/12_2/switch/configuration/guide/fswtch_c/xcftagov.pdf>. Acesso em: 18 mar. 2014
+CISCO. Cisco IOS Switching Services Configuration Guide - Multiprotocol Label Switching Overview, 2001. Disponível em: <http://www.cisco.com/c/en/us/td/docs/ios/12_2/switch/configuration/guide/fswtch_c/xcftagov.pdf>. Acesso em: 18 mar. 2014
 
 Rosen, E.; Viswanathan, A.; Callon R. RFC 3031: Multiprotocol Label Switching Architecture, IETF, 2001
 
@@ -116,7 +116,7 @@ CISCO. Cisco Active Network Abstraction Reference Guide, 3.7, 2010. Disponível 
 
 KUROSE, J. F.; ROSS, K. W. Redes de Computadores e a Internet: uma abordagem top-down. Tradução de Arlete Simille Marques; revisão técnica Wagner Luiz Zucchi. 3ª ed., São Paulo: Pearson Addison Wesley, 2006.
 
-CISCO. MPLS: Layer 3 VPNs Configuration Guide, Cisco IOS Release 15M&T, xxxx. Disponível em: <http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/mp_l3_vpns/configuration/15-mt/mp-l3-vpns-15-mt-book/mp-bgp-mpls-vpn.pdf>.
+CISCO. MPLS: Layer 3 VPNs Configuration Guide, Cisco IOS Release 15M&T, 2012. Disponível em: <http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/mp_l3_vpns/configuration/15-mt/mp-l3-vpns-15-mt-book/mp-bgp-mpls-vpn.pdf>.
  Acesso em: 24 mar. 2014
 
 CISCO. Configuring a Basic MPLS VPN, 2007. Disponível em: <http://www.cisco.com/c/en/us/support/docs/multiprotocol-label-switching-mpls/mpls/13733-mpls-vpn-basic.pdf>. Acesso em: 20 mar. 2014
