@@ -1,5 +1,5 @@
 ---
-date: 02 de abril de 2014
+date: 10 de abril de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: 'A Gestão da Qualidade na Infraestrutura: Um Breve Histórico e sua Aplicação na Dataprev'
 abstract: A Gestão da Qualidade tornou-se ao longo da história da indústria mundial fator fundamental para o sucesso das empresas, melhorando o seu ciclo produtivo. Esse artigo busca apresentar esse tema, com relatos históricos e da experiência da Dataprev neste quesito, principalmente na área da infraestrutura de TIC.
@@ -56,6 +56,8 @@ Com a disseminação da produção em série pela revolução industrial, houve 
 
 Então, por volta de 1920, Walter Andrew Shewhart criou as “técnicas estatísticas de controle de qualidade”, para a empresa em que trabalhava, a Western Eletric. Essas técnicas tiveram seu uso incentivado pelo governo norte-americano nas suas fornecedoras durante a segunda grande guerra. Esse incentivo alavancou o uso de novos métodos de controle de qualidade mundo afora.
 
+A ideia de Shewhart para o Controle de Estatístico da Qualidade era incorporar o uso de variáveis aleatórias independentes e identicamente distribuídas. O princípio geral por trás da ideia é que quando um processo está em estado de controle e seguindo uma distribuição particular com certos parâmetros o propósito é determinar quando o processo se afasta deste estado e as ações corretivas que devem ser tomadas (Wikipedia - Shewhart).
+
 Depois da segunda grande guerra foi a vez dos japoneses se sobressaírem com o desenvolvimento de mais modernas e revolucionárias técnicas estatísticas de controle de qualidade, pois, após a segunda guerra, dependiam das exportações para conseguir comprar praticamente tudo de que necessitavam e ainda pagar sua enorme dívida de guerra. Então se viram diante do desafio de vender a outros mercados com preços menores, produtos de qualidade igual ou superior, e descobriram que só conseguiriam isso se melhorassem substancialmente a qualidade dos seus processos produtivos.
 
 Assim, os japoneses desenvolveram um método de controle de qualidade que em vez de encontrar e eliminar as peças defeituosas, buscava evitar que os defeitos ocorressem. Os responsáveis pela revolução japonesa da qualidade foram a JUSE (Union of Japanese Scientists and Engineers) e os estatísticos W. E. Deming, Shewhart, Kaoru Ishikawa e Joseph M. Juran. 
@@ -77,10 +79,7 @@ Mas sua definição sob a moderna ótica produtiva é muito mais abrangente, tor
 
 Em resumo, observamos que o objetivo básico da Garantia da Qualidade é conquistar e fidelizar os usuários. 
 
-Agora, voltando ao questionamento no início desse artigo: O que falar da Garantia da 
-
-Qualidade em uma empresa pública como a Dataprev?
-=================================================
+Agora, voltando ao questionamento no início desse artigo: O que falar da Garantia da Qualidade em uma empresa pública como a Dataprev?
 
 Já é consenso no mundo empresarial que uma grande empresa não sobrevive nesse mercado globalizado se não estiver comprometida com a qualidade. E esse comprometimento é atestado através das certificações de qualidade baseadas nas boas práticas difundidas mundialmente e tendo como suas orientadoras básicas as normas da família ISO 9000.
 
@@ -91,11 +90,11 @@ A constatação da necessidade de se dar atenção à qualidade é fácil. Procu
 Isso nos remete a um questionamento óbvio e drástico: Teria hoje a Dataprev condições de sobreviver em seu mercado de atuação, em ambiente competitivo?
 
 Mas também isso nos faz questionar se a Dataprev deve buscar a Garantia da Qualidade de seus produtos para se tornar competitiva, já que ela atua com exclusividade no seu mercado, ou seja, não precisa competir para conquistar ou fidelizar usuários.
+
 A Gestão da Qualidade na Infraestrutura da Dataprev
+===================================================
 
 Apesar de questões mercadológicas não influenciarem tanto na governança corporativa da Dataprev, a preocupação da empresa com qualidade não é recente. Já na sua fundação, em 1974, a nova empresa tinha como um de seus objetivos a execução e o aprimoramento das políticas sociais do Estado Brasileiro.
-
-Alguns marcos importantes como a criação do CACIC (Configurador Automático e Coletor de Informações Computacionais), desenvolvido pela empresa em 1999 e atualmente utilizado em mais de 10 países, para gerenciamento do parque computacional instalado nos clientes remetem a preocupação da empresa com a qualidade.
 
 Após um grande avanço da Dataprev na qualidade do desenvolvimento de *software*, com a criação do CGQD (Coordenação Geral de Qualidade de Desenvolvimento), subordinado à Diretoria de Relacionamento, Desenvolvimento e Informações (DRD), do PD-Dataprev (Processo de Desenvolvimento da Dataprev) e da implantação do “Selo de Qualidade de Software”, observou-se que a infraestrutura de TIC da empresa também necessitava de uma governança preocupada com a qualidade na área. Foi então que em abril de 2013 foi criado, na Diretoria de Infraestrutura de TIC (DIT), o Departamento da Qualidade de Infraestrutura de TIC (DEQI), com o objetivo de balizar, orientar, documentar e certificar as ferramentas, equipamentos, sistemas, metodologias e demais produtos da infraestrutura de TIC.
 
@@ -105,17 +104,17 @@ Também como iniciativa do DEQI, foi realizado o levantamento de métricas e cri
 
 O DEQI é também responsável pelos testes não funcionais de desempenho dos novos produtos e versões agendadas, com uma média mensal de 11 testes, totalizando aproximadamente 100 testes de desempenho realizados no último ano.
 
-Pelo DEQI foram abertos quatro registros de erros de aplicações para tomada de providências pelo desenvolvedor (Mantis) e lançados seis "Relatórios de Oportunidade de Melhoria", propondo alteração de processos e sistemas, objetivando a melhoria de sua funcionalidade.
+Pelo DEQI foram abertos quatro registros de erros de aplicações para tomada de providências pelo desenvolvedor (Mantis, na intranet www-qualidade) e lançados seis "Relatórios de Oportunidade de Melhoria", propondo alteração de processos e sistemas, objetivando a melhoria de sua funcionalidade.
 
 Atualmente, como parte do Plano de Ação 2014, o DEQI está desenvolvendo um plano para implantação de um eficiente ambiente de Integração Contínua, com o mapeamento completo de cada processo, fases, ferramentas e responsabilidades.
 
 A definição de uma arquitetura de solução técnica para implantação do processo de Integração Contínua, será de vital importância para melhorar consistentemente os processos de produção, testes e implantação dos produtos da empresa, resultando na elevação do grau de aceitação, diminuição de ocorrências de quebra de ANS e melhoria da manutenção dos *softwares* desenvolvidos pela empresa.
 
-A Integração Contínua consiste em integrar o código alterado e/ou desenvolvido ao projeto principal na mesma frequência com que as funcionalidades são desenvolvidas, sendo, esta integração, feitas várias vezes, ou, pelo menos, uma vez ao dia. O objetivo principal de utilizar a Integração Contínua é verificar se as alterações, ou novas funcionalidades, não criaram novos defeitos no projeto já existente. 
+A Integração Contínua consiste em integrar o código alterado e/ou desenvolvido ao projeto principal na mesma frequência com que as funcionalidades são desenvolvidas, sendo esta integração feita várias vezes ou, pelo menos, uma vez ao dia. O objetivo principal de utilizar a Integração Contínua é verificar se as alterações, ou novas funcionalidades, não criaram novos defeitos no projeto já existente. 
 
 Desta forma, cada integração é verificada por meio de uma construção automatizada (incluindo testes), para detectar erros de integração, tão rapidamente quanto possível. Essa abordagem levará a uma redução significativa de problemas de integração e permitirá que se desenvolvam *softwares* mais coesos.
 
-Também como resultado do Plano de Ação, está a unificação das bases de conhecimento da Dataprev, para a solução de problemas de infraestrutura e aplicações. Gestão do Conhecimento é o processo através do qual TI gera valor a partir da informação e das experiências acumuladas na resolução de incidentes e problemas. Visa melhorar a criação de conhecimento e compartilhamento de processos em uma empresa. Quando organizada, permitirá às Equipes de Atendimento, Sustentação e Suporte responderem de forma rápida e padronizada.
+Também como resultado do Plano de Ação está a unificação das bases de conhecimento da Dataprev, para a solução de problemas de infraestrutura e aplicações. Gestão do Conhecimento é o processo através do qual TI gera valor a partir da informação e das experiências acumuladas na resolução de incidentes e problemas. Visa melhorar a criação de conhecimento e compartilhamento de processos em uma empresa. Quando organizada, permitirá às Equipes de Atendimento, Sustentação e Suporte responderem de forma rápida e padronizada.
 
 Vantagens na unificação das bases de conhecimento: 
 
@@ -125,7 +124,7 @@ Vantagens na unificação das bases de conhecimento:
 - Reduzir o tempo de atendimento a incidentes, minimizando riscos de quebra de Acordo de Nível de Serviço - ANS;
 - Reduzir o tempo de adaptação de novos funcionários à área de atendimento.
 
-Também para o plano de ação, o mapeamento dos processos do Ciclo Produtivo da empresa, no âmbito da produção, com o objetivo de implementar um sistema de qualidade, que torne esse ambiente mais eficiente e menos sujeito a problemas.
+Também para o plano de ação, o mapeamento dos processos do Ciclo Produtivo da empresa (“Modelagem do Ciclo Produtivo da Dataprev” em ref.), no âmbito da produção, com o objetivo de implementar um sistema de qualidade, que torne esse ambiente mais eficiente e menos sujeito a problemas.
 
 Espera-se que esse levantamento nos dê subsídios para desenvolvermos um trabalho consistente de implantação de controle de qualidade na produção da Dataprev. Conhecer como estão mapeados os processos e como está o controle de sua aplicação é fundamental para que possamos entender o que deve ser feito, como deve ser feito e que caminho trilhar para que obtenhamos um resultado que venha a agregar valor aos produtos da empresa.
 
@@ -143,9 +142,11 @@ A produção da empresa é formada por diversos elementos, responsáveis por man
 
 O processo de Gestão de Qualidade deve ser implementado com o objetivo de garantir a qualidade da produção, de forma que os sistemas da Dataprev tenham um mínimo de interrupções e quebras de ANS. Para tal, a Gestão de Qualidade deve se preocupar com cada um dos elementos acima que formam a produção.
 
+Um documento orientador importante para o processo de Gestão de Qualidade, que está sendo produzido pelo DEQI, é o Manual de Qualidade da Infraestrutura da Dataprev. Este manual representa um guia único e geral, que centraliza todas as ações para melhoria da qualidade na DIT. 
+
 Por outro lado, a DIT e a DRD articulam-se em ações voltadas ao controle de qualidade dos sistemas e à modernização dos centros de processamento, incluindo sistemas de monitoramento mais abrangentes e precisos. Além disso, ambas as diretorias dedicam-se a buscar ferramentas e tecnologias para ampliar o portfólio de serviços da empresa, com base em novos paradigmas de mercado, como computação em nuvem, *business intelligence*, *analytics* (tratamento de dados) e *big data* (tratamento de dados não estruturados). 
 
-A recente modernização e expansão do CPSP envolveu mais de 200 funcionários da empresa e dois *movings*, em um trabalho que foi um marco para a DIT e para toda a empresa. Esse trabalho faz parte do objetivo de tornar os três centros de processamento da Dataprev projetados para estarem de acordo com a categoria Tier 3 de classificação de *data centers*. Tal categoria enquadra os *data centers* que jamais interrompem suas operações, mesmo em manutenções prediais.
+A recente modernização e expansão do CPSP envolveu mais de 200 funcionários da empresa e dois *movings*, em um trabalho que foi um marco para a DIT e para toda a empresa. Esse trabalho faz parte do objetivo de tornar os três centros de processamento da Dataprev projetados para estarem de acordo com a categoria Tier 3 de classificação de *data centers*. Tal categoria enquadra os *data centers* que muito dificilmente interrompem suas operações, mesmo em manutenções prediais - Tier 3: Infraestrutura local paralelamente sustentável, garantindo a disponibilidade de 99,982% (Padrão TIER).
 
 A atualização do parque de servidores de banco de dados, com a quase triplicação  de sua capacidade, em um total de 11 máquinas, sem que a migração tenha impactado nenhum dos clientes, também foi um marco recente importante da DIT. 
 
@@ -174,3 +175,9 @@ PINTO, Wesley. UNIGRANRIO, TCC – Implantação do Processo de Desenvolvimento 
 FOWLER, Martin. Continuous Integration. Disponível em: <http://martinfowler.com/articles/continuousIntegration.html>. Acesso em: 02 abr. 2014.
 
 Qualidade de TIC. Dataprev. Disponível em: <http://www-dtpnet/content/qualidade-de-tic>. Acesso em: 02 de abr. 2014. 
+
+Modelagem do Ciclo Produtivo da Dataprev - Versão 1.0 – 23/09/2011 – DTPNet. Processo de Desenvolvimento e Manutenção de Software (PD-Dataprev). Qualidade de Produto ISO 9126.
+
+Padrão TIER. Disponível em <http://pt.wikipedia.org/wiki/Padr%C3%A3o_TIER>. Acesso em 08 abr. 2014.
+
+Wikipedia - Shewhart, Walter Andrew. Disponível em <http://pt.wikipedia.org/wiki/Walter_A._Shewhart>. Acesso em 10 abr. 2014
