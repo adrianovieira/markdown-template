@@ -1,19 +1,22 @@
-#### [Diretoria de Infraestrutura de TIC - DIT]
-##### [Superintendência de Planejamento e Suporte de TIC - SUPS]
-###### [Departamento de Arquitetura Técnica - DEAT]
-
----  
-
-# Artigo Técnico de Infraestrutura de TIC
-
-->**Bancos de Dados NoSQL - Aplicações com Persistência Poliglota**<-
-
-**Autor(es):**  José Guilherme Macedo Vieira  
-**Responsável:** Cícero Vieira  
-
-## Sumário
-
-Os banco de dados relacionais tem sido usado intensivamente como forma de armazenamento de dados de uma grande quantidade de sistemas de informação. Entretanto, algumas empresas começaram a ter dificuldades em gerenciar uma grande quantidade de dados, uma vez que o modelo de armazenamento em tabelas tem certas limitações, como por exemplo a escalabilidade horizontal, a qual é menos custosa que a escalabilidade vertical. Com o intuito de sanar as limitações impostas pelo modelo relacional, uma nova geração de banco de dados - conhecidos como NoSQL - foram desenvolvidos e têm sido bastante adotados por empresas conhecidas, tais quais Facebook, Twitter, Google e Amazon. Dessa forma, esse artigo apresenta uma visão geral acerca dos bancos de dados NoSQL, os conceitos do desenvolvimento de aplicações com persistência poliglota e como podemos aplicar o conhecimento obtido para ajudar a solucionar desafios atualmente enfrentados no contexto de grandes organizações como a DATAPREV.
+---
+date: 10 de março de 2014
+tipo_artigo: Artigo técnico de Infraestrutura de TIC
+title: Bancos de Dados NoSQL - Aplicações com Persistência Poliglota
+abstract: Os banco de dados relacionais tem sido usado intensivamente como forma de armazenamento de dados de uma grande quantidade de sistemas de informação. Entretanto, algumas empresas começaram a ter dificuldades em gerenciar uma grande quantidade de dados, uma vez que o modelo de armazenamento em tabelas tem certas limitações, como por exemplo a escalabilidade horizontal, a qual é menos custosa que a escalabilidade vertical. Com o intuito de sanar as limitações impostas pelo modelo relacional, uma nova geração de banco de dados - conhecidos como NoSQL - foram desenvolvidos e têm sido bastante adotados por empresas conhecidas, tais quais Facebook, Twitter, Google e Amazon. Dessa forma, esse artigo apresenta uma visão geral acerca dos bancos de dados NoSQL, os conceitos do desenvolvimento de aplicações com persistência poliglota e como podemos aplicar o conhecimento obtido para ajudar a solucionar desafios atualmente enfrentados no contexto de grandes organizações como a DATAPREV.
+author:
+- affiliation: DIAS
+  name: José Guilherme Macedo Vieira
+responsibility:
+- affiliation: DIAS
+  name: Cícero Vieira
+diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
+superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
+departamento: 'Departamento de Arquitetura Técnica - DEAT'
+tags:
+- NoSQL
+- Banco de Dados
+- Escalabilidade
+...
 
 ## Desafios
 
@@ -481,7 +484,7 @@ No contexto do e-commerce mostrado anteriormente, uma estrutura de armazenamento
 
 A utilização de um banco de dados chave-valor faz com que a carga no banco de dados relacional seja aliviada, conforme arquitetura disposta na figura abaixo:
 
-![Com Riak](https://dl.dropboxusercontent.com/u/33955026/e-commerce1.jpg)
+![Com Riak](imagens/e-commerce1.jpg)
 
 A diminuição da carga no banco de dados culminará em um melhor desempenho na aplicação como um todo. O desempenho será aumentado não só pela diminuição da carga, como também pela facilidade com que os bancos chave-valor têm de lidar com as estruturas armazenadas neles. Bancos relacionais não são tão performático quanto bancos chave-valor para lidar com estruturas em hash/mapa.
 
@@ -585,5 +588,3 @@ Ganesh Krishnan, Sarang Kulkarni, Dharmesh Kirit Dadbhawala. "Method and system 
 Sugam Sharma. "A Brief Review on Modern NoSQL Data Models, Handling Big Data".
 
 
-n/
-</markdown></p>
