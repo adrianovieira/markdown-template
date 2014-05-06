@@ -1,4 +1,3 @@
-![Logomarca da DATAPREV](http://www-dtpnet/sites/default/files/images/logomarca-para-assinatura-de-email.gif)
 #### [Diretoria de Infraestrutura de TIC - DIT]
 ##### [Superintendência de Planejamento e Suporte de TIC - SUPS]
 ###### [Departamento de Arquitetura Técnica - DEAT]
@@ -20,42 +19,41 @@ Os banco de dados relacionais tem sido usado intensivamente como forma de armaze
 
 O principal desafio desse artigo é apresentar formas de se projetar aplicações altamente escaláveis, ótima performance e com um custo extremamente baixo, considerando os custos que se teria hoje para fornecer a mesma capacidade planejada. Esse artigo foi motivado pela necessidade de melhorar o desempenho das aplicações utilizadas na DATAPREV que fazem uso massivo de dados, como por exemplo, ferramentas de Bussines Intelligence (BI), Big Data, entre outras ferramentas que encontram o maior gargalo de performance os bancos de dados relacionais.
 
-
 ## Benefícios e/ou recomendações
 
-<descreva os principais ganhos propostos pelo artigo, como melhoria de indicadores, processo de trabalho, etc>
+Esse artigo traz uma série de benefícios para a DATAPREV, uma vez que explica conceitos de projeto de aplicações voltadas para funcionar em ambientes clusterizados nativamente, fazendo uso das tecnologias mais modernas disponíveis no mercado. Ao demonstrar as dificuldades do desenvolvimento de aplicações clusterizadas fazendo uso apenas de bancos de dados relacionais, fazendo uso de situações reais, o autor induz a busca de alternativas de armazenamento de dados. Analisando diversas situações, o autor demonstra melhores abordagens de design de software, utilizando um arquitetura de armazenamento de dados heterogênea, buscando sempre maximizar a performance da aplicação. Como benefício principal, o artigo busca fomentar a utilização de armazenamento de dados heterogêneos nas aplicações da DATAPREV, seguindo as recomendações propostas ao longo de seu conteúdo. Ao seguir as recomendações, a DATAPREV poderá maximizar o desempenho de aplicações já existentes, como projetar melhor as futuras aplicações, agregando mais valor ao negócio dos seus clientes.
 
 ### 1. Introdução
 
-No desenvolvimento de aplicações, os arquitetos de software ao projetar a estrutura da aplicação precisam se preocupar com o armazenamento de dados de forma que contemplem os requisitos nâo funcionais. No entanto, é fácil perceber que a escolha padrão tem sido a utilização de bancos de dados relacionais. Isso se deve, entre outros motivos, à facilidade de se desenvolver aplicações utilizando bancos de dados relacionais (principalmente com o surgimento de frameworks ORM) e à segurança de um sistema de armazenamento que fornece atomicidade, consistência, isolamento e durabilidade (<a href="http://en.wikipedia.org/wiki/ACID"><b>ACID</b></a>). Como se não bastasse, utilizar bancos relacionais provê outros benefícios, como por exemplo: suporte à concorrência (utilizando transações) e o modelo relacional padrão (possibilidade de adotar o mesmo modelo em vários bancos de dados diferentes, através da linguagem <a href="http://en.wikipedia.org/wiki/SQL"><b>SQL</b></a>).
+No desenvolvimento de aplicações, os arquitetos de software ao projetar a estrutura da aplicação precisam se preocupar com o armazenamento de dados de forma que contemplem os requisitos nâo funcionais. No entanto, é fácil perceber que a escolha padrão tem sido a utilização de bancos de dados relacionais. Isso se deve, entre outros motivos, à facilidade de se desenvolver aplicações utilizando bancos de dados relacionais (principalmente com o surgimento de frameworks ORM) e à segurança de um sistema de armazenamento que fornece atomicidade, consistência, isolamento e durabilidade (<b>ACID</b>). Como se não bastasse, utilizar bancos relacionais provê outros benefícios, como por exemplo: suporte à concorrência (utilizando transações) e o modelo relacional padrão (possibilidade de adotar o mesmo modelo em vários bancos de dados diferentes, através da linguagem <b>SQL</b>).
 
 Os bancos de dados relacionais, ficaram famosos e viraram padrão na indústria de desenvolvimento de software por todas as facilidades já mencionadas, principalmente levando em considerações o rico ecossistema onde temos vários aplicativos, construídos por equipes diferentes. Em um ambiente como esse, aplicativos muitas vezes precisam utilizar os mesmos dados, de forma compartilhada, permitindo a utilização de um mesmo banco de dados por vários aplicativos, de tal forma que uma atualização realizada por um seja acessível a todos os outros, para manter a consistência de dados entre os aplicativos.
 
 ### 1.1 Dificuldade no Desenvolvimento
 
-Entretanto, apesar de proverem grandes benefícios, os bancos de dados relacionais possuem suas limitações. Na visão de desenvolvedores de software, o maior problema na utilização de bancos de dados relacionais é a falta de casamento entre a forma que os dados são representados em memória pela linguagem de programação e a forma em que esses dados estão armazenados em bancos de dados relacionais, necessitando assim, de uma conversão entre os dois modelos, para que o software funcione . A literatura chama essa diferença de modelos de <b><a href="http://en.wikipedia.org/wiki/Object-relational_impedance_mismatch">incompatibilidade de impendância</a></b> ou <b><a href="http://en.wikipedia.org/wiki/Object-relational_impedance_mismatch">diferença de impendância</a></b>. Para exemplificar, os bancos de dados relacionais armazenam os dados na forma de tabelas, onde cada tabela possui linhas e colunas. Cada linha numa tabela é um registro e as colunas são os diversos dados que se pode haver nesse registro. Ocorre que alguns dados são muito complexos para serem armazenados nesse formato de grade bidimensional, culminando na necessidade de criar outras tabelas para armazenar as informações relacionadas àqueles registros. Nesse caso, cada registro na tabela conterá alguns, mas nâo todos os dados para uma grande quantidade de registros.
+Entretanto, apesar de proverem grandes benefícios, os bancos de dados relacionais possuem suas limitações. Na visão de desenvolvedores de software, o maior problema na utilização de bancos de dados relacionais é a falta de casamento entre a forma que os dados são representados em memória pela linguagem de programação e a forma em que esses dados estão armazenados em bancos de dados relacionais, necessitando assim, de uma conversão entre os dois modelos, para que o software funcione . A literatura chama essa diferença de modelos de <b>incompatibilidade de impedância</b> ou <b>diferença de impedância</b>. Para exemplificar, os bancos de dados relacionais armazenam os dados na forma de tabelas, onde cada tabela possui linhas e colunas. Cada linha numa tabela é um registro e as colunas são os diversos dados que se pode haver nesse registro. Ocorre que alguns dados são muito complexos para serem armazenados nesse formato de grade bidimensional, culminando na necessidade de criar outras tabelas para armazenar as informações relacionadas àqueles registros. Nesse caso, cada registro na tabela conterá alguns, mas não todos os dados para uma grande quantidade de registros.
 
-Dito isso, pode-se observar que os modelos relacionais sâo fáceis de serem compreendidos e de certa forma elegantes, uma vez que solucionam um problema complexo na forma de simples grades bidimensionais. No entanto, o modelo relacional tem seus problemas, principalmente quando se observa que os dados armazenados em um registro/linha/tupla precisam ser idealmente simples, uma vez que nâo podem conter nenhum conteúdo mais complexo, como um registro aninhado ou uma lista, senâo por meio de relações. Para o programador, isso é frustrante, pois a estrutura de dados em memória permite esse tipo de estrutura rica, com aninhamento de registros e listas, forçando ao programador a traduzir as representações no momento de armazenar ou obter dados de um banco relacional. Por conta disso, houve uma descrença muito grande nos anos 90 nos bancos relacionais, quando muitas pessoas acreditavam eles seriam substituídos por bancos de dados com estrutura similar às estruturas de memória. 
+Dito isso, pode-se observar que os modelos relacionais são fáceis de serem compreendidos e de certa forma elegantes, uma vez que solucionam um problema complexo na forma de simples grades bidimensionais. No entanto, o modelo relacional tem seus problemas, principalmente quando se observa que os dados armazenados em um registro/linha/tupla precisam ser idealmente simples, uma vez que não podem conter nenhum conteúdo mais complexo, como um registro aninhado ou uma lista, senão por meio de relações. Para o programador, isso é frustrante, pois a estrutura de dados em memória permite esse tipo de estrutura rica, com aninhamento de registros e listas, forçando ao programador a traduzir as representações no momento de armazenar ou obter dados de um banco relacional. Por conta disso, houve uma descrença muito grande nos anos 90 nos bancos relacionais, quando muitas pessoas acreditavam eles seriam substituídos por bancos de dados com estrutura similar às estruturas de memória. 
 
 Ao mesmo tempo em que havia uma grande descrença no modelo relacional, havia o crescimento das linguagens orientadas a objetos e por tabela, o surgimento de bancos orientados a objetos. A ideia era substituir o desenvolvimento de linguagem estruturada e bancos de dados relacionais por linguagens orientadas a objetos e bancos de dados orientados a objetos. Apesar disso, o sucesso foi parcial. As linguagens orientadas a objetos vingaram e se tornaram o padrão da indústria de desenvolvimento de software, enquanto os bancos orientados a objetos foram relegados, nâo tiveram mais tanta atenção e os bancos relacionais triunfaram.
 
-Com o triunfo dos bancos relacionais e a frequente reclamação dos desenvolvedores de software acerca da incompatibilidade de impendância, surgiram frameworks de mapeamento objeto-relacional, como o Hibernate, iBATIS, NHibernate, que diminuíram a frustação dos desenvolvedores, ainda que seja uma solução controversa. Enquanto esses frameworks facilitam o desenvolvimento, podem tornar os desenvolvedores alheios às questões de banco de dados, comprometendo o desempenho das consultas realizadas.
+Com o triunfo dos bancos relacionais e a frequente reclamação dos desenvolvedores de software acerca da incompatibilidade de impedância, surgiram frameworks de mapeamento objeto-relacional, como o Hibernate, iBATIS, NHibernate, que diminuíram a frustação dos desenvolvedores, ainda que seja uma solução controversa. Enquanto esses frameworks facilitam o desenvolvimento, podem tornar os desenvolvedores alheios às questões de banco de dados, comprometendo o desempenho das consultas realizadas.
 
 ### 1.2 Surgimento da Arquitetura Orientada a Serviços
 
-Durante muito tempo, os bancos de dados relacionais dominaram como escolha de armazenamento de dados. Entretanto, com o passar do tempo e o aumento na quantidade de dados que precisavam ser manipulados, esses bancos terminaram por nâo conseguir operar de forma satisfatória. Em vista disso, outras tecnologias começaram a ser experimentadas para sanar os problemas encontrados com a utilização de bancos relacionais nessas ocasiões. Um dos principais problemas que ocorriam é que vários aplicativos compartilhavam o mesmo banco de dados, uma vez que precisavam acessar os mesmos dados. Entretanto, como cada aplicativo tem suas necessidades específicas, principalmente no que diz respeito a desempenho, pode ocasionar alterações no modelo de dados ou na criação de índices, acabando por prejudicar o desempenho de outros aplicativos.
+Durante muito tempo, os bancos de dados relacionais dominaram como escolha de armazenamento de dados. Entretanto, com o passar do tempo e o aumento na quantidade de dados que precisavam ser manipulados, esses bancos terminaram por não conseguir operar de forma satisfatória. Em vista disso, outras tecnologias começaram a ser experimentadas para sanar os problemas encontrados com a utilização de bancos relacionais nessas ocasiões. Um dos principais problemas que ocorriam é que vários aplicativos compartilhavam o mesmo banco de dados, uma vez que precisavam acessar os mesmos dados. Entretanto, como cada aplicativo tem suas necessidades específicas, principalmente no que diz respeito a desempenho, pode ocasionar alterações no modelo de dados ou na criação de índices, acabando por prejudicar o desempenho de outros aplicativos.
 
 Percebendo esses problemas, surgiram formas diferentes de resolvê-los, entre elas a utilização de uma arquitetura orientada a serviços (SOA - Service Oriented Architecture), na qual cada aplicativo tem a função de fornecer um serviço específico, utilizando um banco de dados não compartilhado. Dessa forma, aplicativos comunicavam-se com os outros através de interfaces web bem definidas, fazendo uso do protocolo HTTP. Dessa forma, a integração de dados passou do domínio de banco de dados para a web, facilitando a comunicação, uma vez que poderiam ser utilizadas várias estruturas de dados mais ricas que o SQL permitia, como por exemplo, listas, matrizes, filas, entre outras. Essas estruturas de dados poderiam ser colocadas no formato JSON ou em documento XML, em um simples arquivo.
 
 ### 1.3 Utilização de Infraestrutura em Cluster
 
-Nos anos 90, houve uma bolha especulativa de empresas de Internet, com forte aumento das ações dessas empresas nas bolsas de valores. Essa bolha ficou conhecida como <a href="http://pt.wikipedia.org/wiki/Bolha_da_Internet"><b>Bolha da Internet</b></a> ou bolha das empresas .com. Essas empresas tiveram grande acesso a capital de risco e cresceram a formar grandes empresas web. Com o crescimento dessas empresas na Internet, veio o aumento do volume de dados armazenados em suas sistemas de informação, com a coleta de grandes conjuntos de dados, como links, redes sociais, logs de aplicação, mapeamento. Esse aumento absurdo no volume de dados foi oriundo da grande quantidade de usuários desses sistemas.
+Nos anos 90, houve uma bolha especulativa de empresas de Internet, com forte aumento das ações dessas empresas nas bolsas de valores. Essa bolha ficou conhecida como <b>Bolha da Internet</b> ou bolha das empresas .com. Essas empresas tiveram grande acesso a capital de risco e cresceram a formar grandes empresas web. Com o crescimento dessas empresas na Internet, veio o aumento do volume de dados armazenados em suas sistemas de informação, com a coleta de grandes conjuntos de dados, como links, redes sociais, logs de aplicação, mapeamento. Esse aumento absurdo no volume de dados foi oriundo da grande quantidade de usuários desses sistemas.
 
-Nesse momento, com a forte ascensão no volume de dados, essas empresas começaram a ter problemas no armazenamento e na manipulação desse volume. Obviamente, lidar com tantos dados e tráfegos de usuários requer mais poder computacional e a tendência, com o crescimento rápido das empresas era aumentar cada vez mais. Dito isso, havia duas abordagens possíveis para suportar essa demanda: escalar verticalmente ou horizontalmente. Escalar verticalmente, significa adquirir máquinas mais poderosas e maiores, com mais processadores, memória e capacidade de armazenamento numa única máquina. Entretanto, máquinas maiores são mais caras à medida que vai aumentando de tamanho. Para piorar, havia a questão de limite de espaço físico nas instalação das empresas, que não teria como comportar máquinas tão grandes. A outra abordagem seria comprar máquinas comuns, as quais são conhecidamente muito mais baratas, interligá-las em rede e fazê-las funcionar como se fosse uma única máquina. Essa interligação e funcionamento como uma única máquina é chamada de <a href="http://pt.wikipedia.org/wiki/Cluster"><b>cluster</b></a>. Essa estratégia em cluster terminou sendo a mais adotada, muito por conta do custo mais acessível, como também pelo fato de ser mais resiliente, uma vez que ainda que algumas máquinas do cluster falhem, o cluster como um todo continua a funcionar.<br/><br/>
+Nesse momento, com a forte ascensão no volume de dados, essas empresas começaram a ter problemas no armazenamento e na manipulação desse volume. Obviamente, lidar com tantos dados e tráfegos de usuários requer mais poder computacional e a tendência, com o crescimento rápido das empresas era aumentar cada vez mais. Dito isso, havia duas abordagens possíveis para suportar essa demanda: escalar verticalmente ou horizontalmente. Escalar verticalmente, significa adquirir máquinas mais poderosas e maiores, com mais processadores, memória e capacidade de armazenamento numa única máquina. Entretanto, máquinas maiores são mais caras à medida que vai aumentando de tamanho. Para piorar, havia a questão de limite de espaço físico nas instalação das empresas, que não teria como comportar máquinas tão grandes. A outra abordagem seria comprar máquinas comuns, as quais são conhecidamente muito mais baratas, interligá-las em rede e fazê-las funcionar como se fosse uma única máquina. Essa interligação e funcionamento como uma única máquina é chamada de <b>cluster</b>. Essa estratégia em cluster terminou sendo a mais adotada, muito por conta do custo mais acessível, como também pelo fato de ser mais resiliente, uma vez que ainda que algumas máquinas do cluster falhem, o cluster como um todo continua a funcionar.<br/><br/>
 
 
 <center>
-![Escalabilidade Horizontal vs Vertical](http://3.bp.blogspot.com/-ydOvsdaSJ_M/UYndNnzibAI/AAAAAAAAAbI/gnZLGtE0ny0/s1600/Untitled.png)</center>
+![Escalabilidade Horizontal vs Vertical](imagens/Untitled.png)</center>
 
 <br/>
 Com a utilização cada vez mais frequente de clusters de máquinas, novos problemas apareceram. Os bancos de dados relacionais não foram projetados para serem executados em clusters. Alguns bancos relacionais ofereciam algum suporte à utilização em cluster, fazendo uso de subsistemas de discos ou fragmentando o banco de dados. Entretanto, nenhuma das abordagens parece satisfatória, uma vez que a primeira ainda possui o subsistema como SPOF (Single Point of Failure ou Único Ponto de Falha) e a segunda faz com que a aplicação tenha que lidar com a complexidade de fragmentação do banco.
@@ -74,8 +72,6 @@ NoSQL não é um nome ou padrão imposto por alguma empresa ou autoridade da ár
 
 Dessa forma, o significado do NoSQL hoje é extremamente confuso, no sentido de que não há uma definição formal e por isso uma miríade de bancos de dados com as mais diversas características são chamados dessa forma. Assim, o mais importante é compreender de forma geral, abstraindo uma série de fatores. É interessante entender o termo NoSQL como um movimento para prover armazenamento altamente escalável horizontalmente, a fim de solucionar os desafios enfrentados por aplicações que fazem uso de um grande volume de dados.
 
-[colocar foto aqui]
-
 ### 2.1 Modelo de Dados baseado em Agregados
 
 Um modelo de dados é uma representação de como percebemos os nossos dados e como os utilizamos para atingir objetivos do mundo real. Esse modelo nos ajuda a entender como o sistema deve armazenar as informações, através da descrição dos dados e suas relações no formato de objetos. Esses objetos são geralmente abstrações de algo do mundo real, como por exemplo, produtos, professores, alunos, entre outros.
@@ -91,15 +87,15 @@ A organização de banco de dados NoSQL no geral, se encaixa muito bem com a no�
 
 Para entender melhor a noção de agregados na prática, suponha que seja necessário criar um site de comércio eletrônico e que nesse site ites serão vendidos diretamente aos que clientes. É factível que teremos que armazenar informações sobre usuários, produtos, pedidos, envios, endereço de cobrança, os dados para pagamento, entre outros. Esse contexto poderia ser modelado para um sistema de banco de dados relacional da seguinte forma:
 <br/><br/>
-<center>![Modelo de Dados Relacional](https://dl.dropboxusercontent.com/u/33955026/ImagensArtigo/diagrama1.jpg)</center>
+<center>![Modelo de Dados Relacional](imagens/diagrama1.jpg)</center>
 <br/><br/>
 No banco de dados os dados ficariam da seguinte forma:
 <br/><br/>
-<center>![Exemplo de Dados Relacionais](https://dl.dropboxusercontent.com/u/33955026/ImagensArtigo/1exemplodadosrelacionaisartigo1.png)</center>
+<center>![Exemplo de Dados Relacionais](imagens/1exemplodadosrelacionaisartigo1.png)</center>
 <br/><br/>
 Ao transformamos esse modelo seguindo a orientação agregada, o modelo poderia ficar da seguinte maneira:
 <br/><br/>
-<center>![Modelo de Dados Agregados](https://dl.dropboxusercontent.com/u/33955026/ImagensArtigo/diagramaagregado1.jpg)</center>
+<center>![Modelo de Dados Agregados](imagens/diagramaagregado1.jpg)</center>
 <br/><br/>
 Podemos observar que ficou um pouco diferente no modelo de dados agregados, uma vez que devemos valorizar a unidade (agregado) que queremos manipular na nossa aplicação. É fácil perceber que nesse modelo, existem dois agregados principais, os quais são cliente e pedido. O cliente possui uma lista de endereços para cobrança, enquanto o pedido possui uma lista de itens solicitados, uma lista de endereços para envio e pagamentos. Se observarmos bem, o agregado pagamento também possui um endereço para cobrança. Agora observemos como ficariam os dados representados em JSON:
 
@@ -209,7 +205,7 @@ No geral, existem basicamente dois modelos de distribuição de dados: a replica
 
 Com muita frequência as pessoas acessam partes diferentes de um mesmo conjunto de dados, fazendo com que o banco de dados fique extremamente ocupado. Em tais situações, faz sentido colocar partes dos dados em servidores diferentes, o que é comumente chamado de <b>fragmentação</b> (sharding). <br/><br/>
 
-<center>![Sharding](http://www.cubrid.org/manual/91/en/_images/image39.png)</center>
+<center>![Sharding](imagens/image39.png)</center>
 
 <br/><br/>
 No mundo ideal, usuários diferentes conversariam com servidores diferentes obtendo respostas rápidas. Esse cenário é praticamente impossível de ser atingido, tendo em vista que as aplicações só fazem sentido quando utilizadas por mais de um usuário. Entretanto, é possível direcionar os esforços para que a carga esteja bem balanceada entre os servidores no contexto da fragamentação. Para atingir tal objetivo, é preciso aglomerar em cada fragmento, em um servidor, dados que são acessados ao mesmo tempo.
@@ -218,15 +214,15 @@ No mundo ideal, usuários diferentes conversariam com servidores diferentes obte
 
 Todavia, para organizar os dados em diversos nós, é preciso olhar para o contexto geral e analisar uma série de fatores que podem auxiliar a projetar essa distribuição para um melhor desempenho. Um exemplo simples, é colocar os agregados em um servidor localizado fisicamente perto de onde os usuários fazem acesso. É preciso analisar o contexto que a aplicação vai funcionar e determinar quais os possíveis impactos no desempenho que poderiam ser minimizados, adequando a distribuição dos dados a esse contexto.
 
-A fragmentação dos dados é muito importante para a performance dos aplicativos, uma vez que pode melhorar consideravelmente o desempenho de leitura e gravação. Fragmentar os dados é uma ótima maneira de escalar horizontalmente as gravações dos dados. Entretanto, utilizada sozinha a fragamentação não ajuda às aplicações a tornarem-se mais resilientes, ou seja, tolerante a falhas. Se um nó falhar, todos os dados do fragmento daquele nós ficam inacessíveis, apesar de apenas os usuários que acessam daquele fragmento específico que sofrerão, o que na prática, não nos deixa confortáveis. Na prática, utilizada sozinha, a fragmentação será um problema pois introduzirá pontos únicos de falha, diminuindo a resiliência da aplicação.
+A fragmentação dos dados é muito importante para a performance dos aplicativos, uma vez que pode melhorar consideravelmente o desempenho de leitura e gravação. Fragmentar os dados é uma ótima maneira de escalar horizontalmente as gravações dos dados. Entretanto, utilizada sozinha a fragmentação não ajuda às aplicações a tornarem-se mais resilientes, ou seja, tolerante a falhas. Se um nó falhar, todos os dados do fragmento daquele nós ficam inacessíveis, apesar de apenas os usuários que acessam daquele fragmento específico que sofrerão, o que na prática, não nos deixa confortáveis. Na prática, utilizada sozinha, a fragmentação será um problema pois introduzirá pontos únicos de falha, diminuindo a resiliência da aplicação.
 
-Apesar de todos os benefícios, utilizar a fragmentação pode ser muito caro se utilizada tardiamente. A experiência nos diz que é sábio utilizar a fragmentação dos dados desde o início do desenvolvimento da aplicação se quisermos tirar proveito de seus benefícios sem grandes problemas no ambiente de produção. Em um projeto que trabalhei há alguns anos atrás, decidimos fragmentar os dados depois que a aplicação estava em produção e as consultas ao banco de dados estavam muito lentas. Ocorre que a essa altura, não era mais possível modelar os dados com o conceito de agregação fragmentá-los, uma vez que já haviam grandes tabelas modeladas seguindo a orientação relacional. Dessa forma, a fragmentação não foi realizada da forma desejada, ocasionando grandes problemas de refatoração de código. No fim das contas, o problema foi parcialmente resolvido através do uso da próxima técnica que descreverei aqui: replicação mestre-escravo.
+Apesar de todos os benefícios, utilizar a fragmentação pode ser muito caro se utilizada tardiamente. A experiência nos diz que é sábio utilizar a fragmentação dos dados desde o início do desenvolvimento da aplicação se quisermos tirar proveito de seus benefícios sem grandes problemas no ambiente de produção. Em consultas a projetos em relação às dificuldades de armazenamento e desempenho em ambiente clusterizados, foi percebido que muitos decidem por fragmentar os dados depois que a aplicação estava em produção, uma vez que as consultas ao banco de dados estavam muito lentas. Ocorre que uma vez a aplicação em produção, não é mais possível modelar os dados com o conceito de agregação e só depois fragmentá-los, uma vez que já haviam grandes tabelas modeladas seguindo a orientação relacional. Dessa forma, a fragmentação não tem como ser realizada da forma desejada, ocasionando grandes problemas de refatoração de código. No fim das contas, o problema o problema pode ser parcialmente resolvido através do uso da próxima técnica a seguir: replicação mestre-escravo.
 
 ### 2.2.2 Replicação Mestre-Escravo
 
-Na replicação mestre-escravo, os dado são replicados em vários nós do cluester. No geral, um nó do cluster é escolhido como o mestre (controlador). O nó mestre é a principal fonte dos dados e é reponsável por processar atualizações nos dados do cluster. Os nós restantes são escravos e fazem somente replicar os dados que o mestre possui. Dessa forma, toda e qualquer inserção ou atualização de dados que houver no mestre será replicada em alguns ou todos os escravos de acordo com o fator de replicação configurado no banco de dados.
+Na replicação mestre-escravo, os dado são replicados em vários nós do cluster. No geral, um nó do cluster é escolhido como o mestre (controlador). O nó mestre é a principal fonte dos dados e é reponsável por processar atualizações nos dados do cluster. Os nós restantes são escravos e fazem somente replicar os dados que o mestre possui. Dessa forma, toda e qualquer inserção ou atualização de dados que houver no mestre será replicada em alguns ou todos os escravos de acordo com o fator de replicação configurado no banco de dados.
 <br/><br/>
-<center>![Replicação Mestre-Escravo](http://www.netexpertise.eu/images/Replication.png)</center>
+<center>![Replicação Mestre-Escravo](imagens/Replication.png)</center>
 <br/><br/>
 Essa configuração é muito interessante quando se tem um número muito grande de leituras no banco de dados, uma vez que é possível distribuir a carga entre os nós do cluster. Entretanto, como antes de chegar aos nós escravos, toda e qualquer operação de atualização é processada pelo mestre, ficamos dependentes da capacidade do mestre de processar o volume total de atualizações. É interessante observar, que essa técnica embora aumente consideravelmente a velocidade de leitura dos dados, não é muito boa quando se deseja fazer muitas gravações, uma vez que a replicação dos dados faz com que a gravação dos dados em todos os nós do cluster seja demorada.
 
@@ -238,7 +234,7 @@ Todavia, todo sistema tem suas falhas e apesar dos grandes benefícios que essa 
 
 Na replicação ponto, diferentemente da mestre-escravo, não há um mestre. Todos os nós do cluster operam de forma igual, com leituras e gravações, de forma que ainda que alguns nós falhem nenhum dado é perdido. Essa forma de replicação numa rede ponto a ponto é interessante do ponto de vista da do desempenho, que em geral é maior que na replicação mestre-escravo, como também por retirar o ponto único de falha que era o mestre na topologia anterior.
 <br/><br/>
-<center>![P2P Replicação](http://docs.oracle.com/cd/B19306_01/server.102/b14226/repln001.gif)</center>
+<center>![P2P Replicação](imagens/repln001.png)</center>
 <br/><br/>
 Todavia, essa forma de replicação também sofre com o problema de inconsistência dos dados em algumas situações, mas de uma maneira um pouco diferente. Se duas gravações de um mesmo dado forem realizadas em nós diferentes ao mesmo tempo, haverá um conflito de gravação. Enquanto na topologia anterior se tinha inconsistência na leitura, nesta topologia a inconsistência é de gravação. As inconsistências de leitura são temporárias, uma vez que os dados atualizados serão eventualmente replicados. As inconsistências de gravação são para sempre. Ambas inconsistências podem ser tratadas de forma satisfatória para a maioria dos casos. Esse tratamento será abordado mais à frente.
 
@@ -252,11 +248,11 @@ Nada melhor do que um exemplo para ilustrar a situação e compreendê-la melhor
 
 De forma a lidar com essas situações de conflito de escrita, existem dois tipos de abordagens possíveis: a pessimista e a positiva. A abordagem pessimista parte do princípio que antes de qualquer gravação, cada usuário tem que obter a permissão para gravar no banco de dados. Dessa forma, quando cada funcionário do hospital tentasse gravar, o banco tentaria dar a permissão para gravar. Quem obtiver a permissão primeiro, impede que qualquer outro funcionário manipule o dado até que a operação de gravação do anterior seja finalizada. No cenário aqui descrito, o funcionário que obteve a permissão de gravar, vai realizar a operação com sucesso, enquanto o outro ao tentar gravar vai ver o dado da última atualização e vai verificar se realmente deseja atualizar aquele dado. Podemos observar que ainda assim não impede de termos inconsistências nos nossos dados, uma vez que há ainda a possibilidade de uma pessoa mesmo que intencionalmente, sobrescrever um dado atualizado por um desatualizado. A abordagem otimista, por outro lado, verificaria o dado a ser gravado foi alterado desde a sua última leitura e se sim, informaria ao funcionário da situação e que ele deveria analisar o valor antes de realmente atualizar.
 
-Como se pode observar, cada abordagem tem seus prós e contras. É preciso entretanto, analisar o contexto da aplicação que está sendo projetada, levando em consideração principalmente a topologia de rede, no caso de umcluster de máquinas. Em um único servidor é muito mais fácil de lidar com conflitos de gravação do que em um ambiente com replicação distribuída, como no caso da replicação ponto a ponto. Isso é pode ocorrer porque diferente nós podem ter os mesmos dados com valores diferentes e como nessa topologia de replicação não existem um nó master para organizar a sequência de atualizações, os dados terminam por ficarem inconsistentes. 
+Como se pode observar, cada abordagem tem seus prós e contras. É preciso entretanto, analisar o contexto da aplicação que está sendo projetada, levando em consideração principalmente a topologia de rede, no caso de um cluster de máquinas. Em um único servidor é muito mais fácil de lidar com conflitos de gravação do que em um ambiente com replicação distribuída, como no caso da replicação ponto a ponto. Isso é pode ocorrer porque diferente nós podem ter os mesmos dados com valores diferentes e como nessa topologia de replicação não existem um nó master para organizar a sequência de atualizações, os dados terminam por ficarem inconsistentes. 
 
 ### 2.3.2 Consistência de Leitura
 
-Consistência de leitura significa que toda vez que alguma consulta for realizada no sistema, os dados mais atualizados para aquela consulta serão retornados. Imagine a situação de um software hospitalar que monitora as medicações tomadas pelo paciente durante a internação. O paciente Sr. Sick tomou Xmg do antibiótico X para uma grave infecção, o qual está armazenado na tabela medicamentos. A enfermeira Cecília deu o remédio ao paciente às 19h. Uma hora depois é a hora do Sr. Sick tomar o medicamento novamente. Cecília e outra enfermeira do hospital chamada Márcia, vêem ao mesmo tempo que o Dr. Sick tem que tomar o remédio. Na retirada do medicamento do estoque, ambas atualizam o banco de dados com a informação que vão atendê-lo ao mesmo tempo. Acontece que Cecília foi mais rápida, retirou o remédio, injetou o remédio no Sr. Sick e atualizou o sistema. Entretanto, o banco de dados gravou a atualização da Márcia e não a da Cecília. Como a última informação fornecida a Márcia era de que o Sr. Sick ainda não havia tomado o remédio, ela aplica a injeção no Sr. Sick e o paciente morre de overdose devido à alta dosagem do remédio. Dessa forma, a leitura da Márcia foi uma <b>leitura inconsistente</b>, pois ela não estava com os dados atualizados no momento da sua consulta.
+Consistência de leitura significa que toda vez que alguma consulta for realizada no sistema, os dados mais atualizados para aquela consulta serão retornados. Imagine a situação de um software hospitalar que monitora as medicações tomadas pelo paciente durante a internação. O paciente Sr. Sick tomou Xmg do antibiótico X para uma grave infecção, o qual está armazenado na tabela medicamentos. A enfermeira Cecília deu o remédio ao paciente às 19h. Uma hora depois é a hora do Sr. Sick tomar o medicamento novamente. Cecília e outra enfermeira do hospital chamada Márcia, veem ao mesmo tempo que o Dr. Sick tem que tomar o remédio. Na retirada do medicamento do estoque, ambas atualizam o banco de dados com a informação que vão atendê-lo ao mesmo tempo. Acontece que Cecília foi mais rápida, retirou o remédio, injetou o remédio no Sr. Sick e atualizou o sistema. Entretanto, o banco de dados gravou a atualização da Márcia e não a da Cecília. Como a última informação fornecida a Márcia era de que o Sr. Sick ainda não havia tomado o remédio, ela aplica a injeção no Sr. Sick e o paciente morre de overdose devido à alta dosagem do remédio. Dessa forma, a leitura da Márcia foi uma <b>leitura inconsistente</b>, pois ela não estava com os dados atualizados no momento da sua consulta.
 
 Os bancos relacionais, visando contornar esse tipo de problema, suportam transações. Dessa forma, se a liberação do remédio para retirada em estoque estivesse na mesma <b>transação</b> da atualização do atendimento no banco de dados, o paciente não haveria morrido, uma vez que uma das enfermeiras não conseguiria retirar o medicamento caso a outra já tivesse iniciado o processo de atualização do banco. Assim, apenas uma enfermeira teria o medicamento em mãos e o Sr. Sick só receberia uma única dosagem, não sofrendo overdose. Entretanto, as pessoas costumam afirmar que os bancos de dados NoSQL não suportam transações. Pelo menos não do jeito que os bancos relacionais suportam com as transações ACID. Pela lógica, como esses bancos não relacionais não possuem o conceito de transação, não conseguem garantir a consistência dos dados. Esse pensamento não está inteiramente correto, uma vez que os banco de dados NoSQL fornecem consistência sim, mas de uma maneira ligeiramente diferente. Se pensarmos nos bancos de dados orientados a agregados, por exemplo, eles não possuem transações entre agregados. Por outro lado, fornecem operações atômicas em cada agregado, o que signfica que a consistência é fornecida <b>POR AGREGADO</b>.
 
@@ -271,13 +267,13 @@ Bancos de dados Chave-Valor são também chamados de armazenamento chave-valor. 
 No Riak, os dados são armazenados em buckets (baldes). Um bucket é uma estrutura de dados para separar as chaves dos objetos. De forma a facilitar o entendimento, imagine o bucket como uma URL ou um nome de pacote para uma classe. Dentro de um bucket é possível armazenar qualquer tipo de conteúdo. O Riak não faz distinção de tipo de dado armazenado, o que o torna um recurso poderoso. Quem deve saber ler o conteúdo é a aplicação que vai fazer uso dessa base de dados. Entretanto, cada bucket possui uma estrutura de dados bem definida, de forma bidimensional, com uma chave e um valor. Cada chave é uma identificação única que representa um determinado valor, como pode ser visto na figura abaixo:
 <br/><br/>
 
-<center>![Bucket do Riak](https://dl.dropboxusercontent.com/u/33955026/bucketRiak.png)</center>
+<center>![Bucket do Riak](imagens/bucketRiak.png)</center>
 
 <br/><br/>
 
 Dessa forma, é fácil perceber que a estrutura de um bucket é como se fosse uma tabela do modelo relacional com apenas duas colunas, uma para a chave e a outra para o valor. A diferença aqui é que apesar de a chave se assemelhar a uma chave-primária no modelo relacional, a coluna do valor não possui uma restrição de tipo de dados como no modelo relacional. Dessa forma, o valor pode ser qualquer coisa, desde um XML, JSON até dados serializados. Para compreender melhor o funcionamento de uma estrutura de chave-valor, tomando como base o modelo do Riak, imaginemos que uma determinada aplicação deseja armazenar as informações da sessão do usuário em um armazenamento persistente (o que por sinal, é muito comum). Para essa situação seria possível armazenar todos os dados da sessão do usuário num bucket com uma chave e um único valor. Assim, teríamos um único objeto na base de dados que armazenaria todos os dados da sessão de um usuário. Um exemplo de como ficaria um bucket com os dados da sessão num único objeto, observe a figura abaixo:
 <br/><br/>
-<center>![Bucket Sessão Usuário](https://dl.dropboxusercontent.com/u/33955026/bucket.jpg)</center>
+<center>![Bucket Sessão Usuário](imagens/bucket.jpg)</center>
 <br/><br/>
 
 ### 2.4.1 Consistência
@@ -347,7 +343,7 @@ A consistência num banco de dados MongoDB é configurável. O MongoDB possui o 
 
 O servidor primário aceita todas as operações de escritas oriundas de aplicações clientes. Entretanto, um conjunto de réplicas só pode possuir um único servidor primário. Uma vez que apenas um único servidor do cluster aceita operações de escrita, a estratégia de utilizar conjunto de réplicas provê consistência estrita, a qual garante que qualquer leitura por um dado dentro do conjunto de réplicas sempre obterá o valor mais atualizado.
 
-![MongoDB Diagrama](http://docs.mongodb.org/manual/_images/replica-set-read-write-operations-primary.png)
+<center>![MongoDB Diagrama](imagens/replica-set-read-write-operations-primary.png)</center>
 
 ### 2.5.2 Transações
 
@@ -365,7 +361,7 @@ Se um servidor primário falhar, os nós restantes do cluster votam um novo mest
 
 Bancos de dados orientados a documentos podem ser utilizados para uma série de casos, como Log de Eventos, Sistemas Gerenciadores de Conteúdo, blogs, análise de dados web, análise de dados em tempo real, aplicações de loja virtuais, entre muitos outros casos. 
 
-Em relação aos logs de eventos, as aplicações precisam utilizar formas diferentes de log de acordo com suas necessidades. Numa empresa como a DATAPREV, existem váris aplicações que fazem seus logs com estrutura e conteúdos diversos. Um banco de dados baseado em documentos, por suportar vários tipos diferentes de conteúdo, poderia atuar como uma base central de logs para a empresa. Esse tipo de abordagem facilitaria bastante o armazenamento e o gerenciamento de logs das mais diversas aplicações a nível corporativo.
+Em relação aos logs de eventos, as aplicações precisam utilizar formas diferentes de log de acordo com suas necessidades. Numa empresa como a DATAPREV, existem várias aplicações que fazem seus logs com estrutura e conteúdos diversos. Um banco de dados baseado em documentos, por suportar vários tipos diferentes de conteúdo, poderia atuar como uma base central de logs para a empresa. Esse tipo de abordagem facilitaria bastante o armazenamento e o gerenciamento de logs das mais diversas aplicações a nível corporativo.
 
 Uma vez que banco de dados de documentos não possuem um esquema de dados bem definido como nos relacionais, gerenciadores de conteúdo podem fazer um ótimo uso desse tipo de banco, pois podem armazenar os mais diversos tipos de conteúdo, como comentários de usuários, registros de usuários, perfis, entre outros. Blogs por exemplo, que possuem em seus posts conteúdos variados, encontrariam num banco de dados orientado a documentos um ótimo recurso.
 
@@ -384,7 +380,7 @@ Os bancos de dados orientados a famílias de colunas, armazenam os dados em fam�
 
 Assim como outros nos outros bancos NoSQL abordados até aqui, apesar de termos uma estrutura flexível, o esqueleto inicial é montado visando consultas ou acessos frequentemente realizados, de tal forma a otimizar o modelo do banco à necessidade da aplicação.
 
-![Modelo Familia de Colunas](http://kellabyte.com/wp-content/uploads/2012/02/cassandra-columnfamily.png)
+<center>![Modelo Familia de Colunas](imagens/cassandra-columnfamily.png)</center>
 
 A figura acima, mostra de forma simples a estrutura da família de colunas do banco de dados Cassandra. É possível notar que existe uma única chave (Row Key) para várias colunas. Cada coluna possui pelo menos três atributos: o nome da coluna, um valor e um timestamp. Cada família de colunas pode ter 1 ou mais colunas, podendo inclusive haver famílias de colunas com números de colunas diferentes.
 
@@ -441,7 +437,7 @@ Uma informação importante é que o Cassandra armazena as famílias de colunas 
 
 ### 2.6.1 Consistência
 
-Quando uma escrita é recebeida pelo Cassandra, o dado é primeiramente gravado num log de commits, depois gravado para uma estrutura em memória chamada <b>memtable</b>. Uma operação de escrita só é considerada bem sucedida, caso os dados tenham sido gravados no log de commits e na memtable. Todas as escritas são armazenadas em memória e de tempos em tempos são movidas para uma estrutura persistente conhecida como <b>SSTable</b>. As SSTables não aceitam uma nova escrita até que sejam limpas. Caso haja alterações nos dados, uma nova SSTable é criada para armazenar a alteração. Obviamente, todo esse processo gera bastante lixo, com SSTables não utilizadas e devido a isso a coleta desse lixo é feita através de um processo chamado compactação.
+Quando uma escrita é recebida pelo Cassandra, o dado é primeiramente gravado num log de commits, depois gravado para uma estrutura em memória chamada <b>memtable</b>. Uma operação de escrita só é considerada bem sucedida, caso os dados tenham sido gravados no log de commits e na memtable. Todas as escritas são armazenadas em memória e de tempos em tempos são movidas para uma estrutura persistente conhecida como <b>SSTable</b>. As SSTables não aceitam uma nova escrita até que sejam limpas. Caso haja alterações nos dados, uma nova SSTable é criada para armazenar a alteração. Obviamente, todo esse processo gera bastante lixo, com SSTables não utilizadas e devido a isso a coleta desse lixo é feita através de um processo chamado compactação.
 
 O Cassandra faz uso de várias estratégias de consistência. Essas estratégias são configuradas no banco de dados de forma a adequar o banco de dados à realidade da aplicação. As formas de consistência que o Cassandra pode assumir está fora do escopo desse artigo e você pode obter essa informação <a href="http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html">aqui</a>.
 
@@ -450,6 +446,8 @@ O Cassandra faz uso de várias estratégias de consistência. Essas estratégias
 O Cassandra não possui suporte a transações da forma tradicional. Entretanto, o banco fornece atomicidade em operações a nível de linhas, o que significa que inserir ou atualizar colunas para uma determinada linha de coluna, será tratada como uma operação única com dois resultados possíveis: sucesso ou falha. Os dados são gravados primeiro em logs e depois na memtable, só sendo considerados se ambas as operações forem bem sucedidas. Caso um nó falhe, o log é utilizado para aplicar as mudanças no nó.
 
 ### 2.6.3 Quando utilizar?
+
+Deve-se utilizar bancos orientados a família de colunas nas seguintes situações:
 
 - Log de Eventos
 
@@ -469,7 +467,7 @@ Com muita frequência vemos soluções que buscam resolver problemas distintos u
 
 Se observarmos, ao utilizar um banco de dados relacional para todos os tipos de problemas para uma plataforma de e-commerce por exemplo, a arquitetura ficaria mais ou menos assim:
 
-![Arquitetura BD Relacional](https://dl.dropboxusercontent.com/u/33955026/e-commerceSGBDR.png)
+<center>![Arquitetura BD Relacional](imagens/e-commerceSGBDR.png)</center>
 
 Como se pode ver, todos os dados são armazenados dentro de um único banco de dados. Informações de sessão de usuário, o carrinho de compras, dados de pedidos, estão todos juntos. Nem todos esses dados armazenados possuem os mesmos requisitos de disponibilidade, consistência ou backup. Nesse momento, cabe se perguntar: Realmente é preciso armazenar informações de sessão com as mesmas regras de backup dos dados de pedidos? Os requisitos de disponibilidade das informações de sessão é igual aos demais dados armazenados?
 
@@ -499,11 +497,92 @@ Por fim, existe uma forte tendência de utilizar bancos de dados NoSQL para fins
 
 O desafio é muito grande e depende de bastante capacitação. Entretanto, acredito que a DATAPREV tem mentes capacitadas para lidar com esse novo desafio de criar aplicações modernas voltadas para o alto desempenho em clusters, fazendo uso da persistência poliglota.
 
-
-
-
 ## Referências
-<Lista referências bibliográficas, matérias na intranet, ferramentas internas etc>
+
+Gray, Jim (Setembro 1981). "The Transaction Concept: Virtues and Limitations" (PDF). Proceedings of the 7th International Conference on Very Large Databases. 19333 Vallco Parkway, Cupertino CA 95014: Tandem Computers. pp. 144–154. 
+
+Gray, Jim;Reuter, Andreas, Distributed Transaction Processing: Concepts and Techniques. Morgan Kaufmann, 1993. ISBN 1-55860-190-2.
+
+ C. J. Date, Relational Database Writings
+ 
+Dan McCreary, XRX: Simple, Elegant, Disruptive on XML.com
+
+Date, Christopher ‘Chris’ J; Pascal, Fabian (2012-08-12) [2005], "Type vs. Domain and Class" (World Wide Web log), Database debunkings, Google
+
+(2006), "4. On the notion of logical difference", Date on Database: writings 2000–2006, The expert’s voice in database; Relational database select writings, USA: Apress, p. 39, ISBN 978-1-59059-746-0, "Class seems to be indistinguishable from type, as that term is classically understood".
+
+(2004), "26. Object/Relational databases", An introduction to database systems (8th ed.), Pearson Addison Wesley, p. 859, ISBN 978-0-321-19784-9, "...any such rapprochement should be firmly based on the relational model".
+Neward, Ted (2006-06-26). "The Vietnam of Computer Science". Interoperability Happens.
+
+J2EE Design and Development by Rod Johnson, © 2002 Wrox Press, p. 256.
+ "RDBMS dominate the database market, but NoSQL systems are catching up". DB-Engines.com. 21 Nov 2013. 
+ 
+K. Grolinger, W.A. Higashino, A. Tiwari, M.A.M. Capretz (2013). "Data management in cloud environments: NoSQL and NewSQL data stores". JoCCASA, Springer. 
+
+Lith, Adam; Jakob Mattson (2010). "Investigating storage solutions for large data: A comparison of well performing and scalable data storage solutions for real time extraction and batch insertion of data" (PDF). 
+Göteborg: Department of Computer Science and Engineering, Chalmers University of Technology. p. 70. "Carlo Strozzi first used the term NoSQL in 1998 as a name for his open source relational database that did not offer a SQL interface[...]"
+
+"NoSQL Relational Database Management System: Home Page". Strozzi.it. 2 October 2007.
+
+"NoSQL 2009". Blog.sym-link.com. 12 May 2009.
+
+Mike Chapple. "The ACID Model".
+
+A Yes for a NoSQL Taxonomy. High Scalability (2009-11-05).
+The enterprise class NoSQL database. djondb. http://tinman.cs.gsu.edu/~raj/8711/sp13/djondb/Report.pdf
+
+Undefined Blog: Meeting with DjonDB. Undefvoid.blogspot.com.
+
+Sandy (14 January 2011). "Key Value stores and the NoSQL movement". http://dba.stackexchange.com/questions/607/what-is-a-key-value-store-database: Stackexchange."Key–value stores allow the application developer to store schema-less data. This data usually consists of a string that represents the key, and the actual data that is considered to be the value in the "key–value" relationship. The data itself is usually some kind of primitive of the programming language (a string, an integer, or an array) or an object that is being marshaled by the programming language's bindings to the key–value store. This structure replaces the need for a fixed data model and allows proper formatting."
+
+Marc Seeger (21 September 2009). "Key-Value Stores: a practical overview". http://blog.marc-seeger.de/2009/09/21/key-value-stores-a-practical-overview/: Marc Seeger. "Key–value stores provide a high-performance alternative to relational database systems with respect to storing and accessing data. This paper provides a short overview of some of the currently available key–value stores and their interface to the Ruby programming language."
+
+"Riak: An Open Source Scalable Data Store". 28 November 2010. * OpenLink Virtuoso
+
+"Setting up Cassandra in the Cloud", Cassandra Wiki
+
+"Instaclustr Managed Apache Cassandra Hosting", Instaclustr.com
+
+Instaclustr Providers & Pricing, Instaclustr.com
+
+"Java Datastore API", Google App Engine
+
+App Engine Pricing, Google Cloud Platform
+
+"Neo4J in the Cloud", Neo4J Wiki
+
+"MongoDB on Azure, MongoDB.org
+
+"MongoLab Product Overview", MongoLab.com
+
+"MongoLab Plans and Pricing", MongoLab.com
+
+"Amazon ElastiCache", Amazon Web Services
+
+"Amazon ElastiCache Free Usage Tier", Amazon Web Services
+
+"Amazon ElastiCache Pricing", Amazon Web Services
+
+"RedisToGo Documentation", RedisToGo.com
+
+Redis Cloud by Redis Labs, Redis-Cloud.com
+
+"How it works", Database.com
+
+"Database.com Pricing", Database.com
+
+Pramod Sadalage and Martin Fowler (2012). NoSQL Distilled: A Brief Guide to the Emerging World of Polyglot Persistence. Addison-Wesley. ISBN 0-321-82662-0.
+
+Dan McCreary & Ann Kelly (2013). Making Sense of NoSQL: A guide for managers and the rest of us. ISBN 9781617291074.
+Christof Strauch (2012). "NoSQL Databases".
+
+Moniruzzaman AB, Hossain SA (2013). "NoSQL Database: New Era of Databases for Big data Analytics - Classification, Characteristics and Comparison".
+
+Kai Orend (2013). Analysis and Classification of NoSQL Databases and Evaluation of their Ability to Replace an Object-relational Persistence Layer.
+
+Ganesh Krishnan, Sarang Kulkarni, Dharmesh Kirit Dadbhawala. "Method and system for versioned sharing, consolidating and reporting information".
+
+Sugam Sharma. "A Brief Review on Modern NoSQL Data Models, Handling Big Data".
 
 
 n/
