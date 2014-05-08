@@ -3,7 +3,13 @@
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$$if(pandoc_makefile_path)$$pandoc_makefile_path$$endif$]{$documentclass$}
 
 % ajusta "margens" do artigo
-\usepackage[bottom=3cm,top=3cm,left=2cm,right=2cm]{geometry}
+\usepackage[bottom=2cm,top=3cm,left=3cm,right=2cm]{geometry}
+
+% define o tamanho do corpo do texto
+\textheight = 630pt
+
+% define o espaço após corpo do texto
+\footskip = 20pt
 
 % define espaçamento entre linhas (\onehalfspacing, \doublespacing ou \setstretch{1.5})
 \usepackage{setspace}
@@ -190,6 +196,9 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+% adiciona linha no rodapé
+\renewcommand{\footrulewidth}{0.4pt}
 
 \begin{document}
 
