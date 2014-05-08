@@ -21,7 +21,7 @@ tags:
 
 # Desafios
 
-O principal desafio desse artigo é apresentar formas de se projetar aplicações altamente escaláveis, ótima performance e com um custo extremamente baixo, considerando os custos que se teria hoje para fornecer a mesma capacidade planejada. Esse artigo foi motivado pela necessidade de melhorar o desempenho das aplicações utilizadas na DATAPREV que fazem uso massivo de dados, como por exemplo, ferramentas de Bussines Intelligence (BI), Big Data, entre outras ferramentas que encontram o maior gargalo de performance os bancos de dados relacionais.
+O principal desafio desse artigo é apresentar formas de se projetar aplicações altamente escaláveis, ótima performance e com um custo extremamente baixo, considerando os custos que se teria hoje para fornecer a mesma capacidade planejada. Esse artigo foi motivado pela necessidade de melhorar o desempenho das aplicações utilizadas na DATAPREV que fazem uso massivo de dados, como por exemplo, ferramentas de *Bussines Intelligence* (BI), Big Data, entre outras ferramentas que encontram o maior gargalo de performance os bancos de dados relacionais.
 
 # Benefícios e/ou recomendações
 
@@ -63,7 +63,7 @@ Com toda essa problemática em torno da utilização de bancos relacionais em cl
 
 # 2 NoSQL
 
-O termo NoSQL foi cunhado no final dos anos 90, quando Carlo Strozzi lançou o seu banco de dados relacional Strozzi NoSQL para ambientes Unix. O Strozzi possui uma forma de operação baseada no paradigma de operadores de streams (stream-operators), em detrimento do SQL (Structured Query Language). Esse banco relacional era manipulado através de shell scripts encadeados (pipelines) e as suas tabelas eram armazenadas em arquivos ASCII. 
+O termo NoSQL foi cunhado no final dos anos 90, quando Carlo Strozzi lançou o seu banco de dados relacional Strozzi NoSQL para ambientes Unix. Strozzi possui uma forma de operação baseada no paradigma de operadores de streams (*stream-operators*), em detrimento do SQL (*Structured Query Language*). Esse banco relacional era manipulado através de *shell scripts* encadeados (*pipelines*) e as suas tabelas eram armazenadas em arquivos ASCII. 
 
 No entanto, o termo "NoSQL" tal qual utilizamos hoje tem uma origem um tanto curiosa. John Oskarsson, desenvolvedor de software do Last.fm, queria conhecer mais sobre os tipos de armazenamento de dados que estavam sendo apresentados num evento sobre o Hadoop em São Francisco, Estados Unidos. O tempo era muito curto para conhecer todas as iniciativas e John teve uma ideia de fazer encontro para envolver todos os interessados em conhecê-lo. John precisava de um nome para a reunião e pediu sugestões no canal #cassandra no IRC. Eric Evans, blogueiro de tecnologia e funcionário da Rackspace Hosting na época, sugeriu "NoSQL". Oskarsson gostou da sugestão e realizou o primeiro encontro "NoSQL", no qual vários sistemas de armazenamento de arquivos que não faziam uso da linguagem SQL foram apresentados, como Cassandra, Voldemort, HBase, Dynomite, Hypertable, CouchDB e MongoDB entre outros. 
 
