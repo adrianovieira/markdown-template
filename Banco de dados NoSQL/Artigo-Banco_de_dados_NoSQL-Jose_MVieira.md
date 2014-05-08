@@ -53,15 +53,13 @@ Percebendo esses problemas, surgiram formas diferentes de resolvê-los, entre el
 
 Nos anos 90, houve uma bolha especulativa de empresas de Internet, com forte aumento das ações dessas empresas nas bolsas de valores. Essa bolha ficou conhecida como **Bolha da Internet** ou bolha das empresas .com. Essas empresas tiveram grande acesso a capital de risco e cresceram a formar grandes empresas web. Com o crescimento dessas empresas na Internet, veio o aumento do volume de dados armazenados em suas sistemas de informação, com a coleta de grandes conjuntos de dados, como links, redes sociais, logs de aplicação, mapeamento. Esse aumento absurdo no volume de dados foi oriundo da grande quantidade de usuários desses sistemas.
 
-Nesse momento, com a forte ascensão no volume de dados, essas empresas começaram a ter problemas no armazenamento e na manipulação desse volume. Obviamente, lidar com tantos dados e tráfegos de usuários requer mais poder computacional e a tendência, com o crescimento rápido das empresas era aumentar cada vez mais. Dito isso, havia duas abordagens possíveis para suportar essa demanda: escalar verticalmente ou horizontalmente. Escalar verticalmente, significa adquirir máquinas mais poderosas e maiores, com mais processadores, memória e capacidade de armazenamento numa única máquina. Entretanto, máquinas maiores são mais caras à medida que vai aumentando de tamanho. Para piorar, havia a questão de limite de espaço físico nas instalação das empresas, que não teria como comportar máquinas tão grandes. A outra abordagem seria comprar máquinas comuns, as quais são conhecidamente muito mais baratas, interligá-las em rede e fazê-las funcionar como se fosse uma única máquina. Essa interligação e funcionamento como uma única máquina é chamada de **cluster**. Essa estratégia em cluster terminou sendo a mais adotada, muito por conta do custo mais acessível, como também pelo fato de ser mais resiliente, uma vez que ainda que algumas máquinas do cluster falhem, o cluster como um todo continua a funcionar.
+Nesse momento, com a forte ascensão no volume de dados, essas empresas começaram a ter problemas no armazenamento e na manipulação desse volume. Obviamente, lidar com tantos dados e tráfegos de usuários requer mais poder computacional e a tendência, com o crescimento rápido das empresas era aumentar cada vez mais. Dito isso, havia duas abordagens possíveis para suportar essa demanda: escalar verticalmente ou horizontalmente (fig. \ref{vert_hori}). Escalar verticalmente, significa adquirir máquinas mais poderosas e maiores, com mais processadores, memória e capacidade de armazenamento numa única máquina. Entretanto, máquinas maiores são mais caras à medida que vai aumentando de tamanho. Para piorar, havia a questão de limite de espaço físico nas instalação das empresas, que não teria como comportar máquinas tão grandes. A outra abordagem seria comprar máquinas comuns, as quais são conhecidamente muito mais baratas, interligá-las em rede e fazê-las funcionar como se fosse uma única máquina. Essa interligação e funcionamento como uma única máquina é chamada de **cluster**. Essa estratégia em cluster terminou sendo a mais adotada, muito por conta do custo mais acessível, como também pelo fato de ser mais resiliente, uma vez que ainda que algumas máquinas do cluster falhem, o cluster como um todo continua a funcionar.
 
-![Escalabilidade Horizontal vs Vertical](imagens/Untitled.png)
+![Escalabilidade Vertical ou Horizontal\label{vert_hori}](imagens/Untitled.png)
 
 Com a utilização cada vez mais frequente de clusters de máquinas, novos problemas apareceram. Os bancos de dados relacionais não foram projetados para serem executados em clusters. Alguns bancos relacionais ofereciam algum suporte à utilização em cluster, fazendo uso de subsistemas de discos ou fragmentando o banco de dados. Entretanto, nenhuma das abordagens parece satisfatória, uma vez que a primeira ainda possui o subsistema como SPOF (Single Point of Failure ou Único Ponto de Falha) e a segunda faz com que a aplicação tenha que lidar com a complexidade de fragmentação do banco.
 
-Com toda essa problemática em torno da utilização de bancos relacionais em clusters e devido à necessidade de se escalar horizontalmente, dado o custo benefício, as empresas se viram obrigadas a encontrar uma maneira para armazenar o grande volume de dados que detinham. Eis que surge nesse cenário duas empresas de grande influência: Google e Amazon. Essas empresas começaram a investir em pesquisas e experimentos com grande volumes de dados armazenados em clusters. Como resultado, a Google publicou o artigo "BigTable: A Distributed Storage System for Structured Data", no qual relata a criação do banco de dados distribuído chamado BigTable, seu modelo de dados, como também sua arquitetura e implementação. A Amazon trouxe resultados em 2007 com o sistema de armazenamento Dynamo.
-
-
+Com toda essa problemática em torno da utilização de bancos relacionais em clusters e devido à necessidade de se escalar horizontalmente, dado o custo benefício, as empresas se viram obrigadas a encontrar uma maneira para armazenar o grande volume de dados que detinham. Eis que surge nesse cenário duas empresas de grande influência: Google&tarde; e Amazon&tarde;. Essas empresas começaram a investir em pesquisas e experimentos com grande volumes de dados armazenados em clusters. Como resultado, a Google publicou o artigo "BigTable: A Distributed Storage System for Structured Data", no qual relata a criação do banco de dados distribuído chamado BigTable, seu modelo de dados, como também sua arquitetura e implementação. A Amazon&tarde; trouxe resultados em 2007 com o sistema de armazenamento Dynamo.
 
 # 2 NoSQL
 
@@ -90,93 +88,98 @@ Para entender melhor a noção de agregados na prática, suponha que seja necess
 
 ![Modelo de Dados Relacional](imagens/diagrama1.jpg)
 
+\pagebreak
+
 No banco de dados os dados ficariam da seguinte forma:
 
 ![Exemplo de Dados Relacionais](imagens/1exemplodadosrelacionaisartigo1.png)
+
+\pagebreak
 
 Ao transformamos esse modelo seguindo a orientação agregada, o modelo poderia ficar da seguinte maneira:
 
 ![Modelo de Dados Agregados](imagens/diagramaagregado1.jpg)
 
+\pagebreak
+
 Podemos observar que ficou um pouco diferente no modelo de dados agregados, uma vez que devemos valorizar a unidade (agregado) que queremos manipular na nossa aplicação. É fácil perceber que nesse modelo, existem dois agregados principais, os quais são cliente e pedido. O cliente possui uma lista de endereços para cobrança, enquanto o pedido possui uma lista de itens solicitados, uma lista de endereços para envio e pagamentos. Se observarmos bem, o agregado pagamento também possui um endereço para cobrança. Agora observemos como ficariam os dados representados em JSON:
 
 ```json
-    {
-      "clientes":[
+{
+  "clientes":[
+  {
+      "id":1,
+      "nome": "Guilherme",
+      "enderecoCobranca":[{"cidade":"Recife"}]
+  },
+  {
+      "id":2,
+      "nome": "Tiago",
+      "enderecoCobranca":[{"cidade":"Salvador"}]
+  },
+  {
+      "id":3,
+      "nome": "João",
+      "enderecoCobranca":[{"cidade":"Salvador"}]
+  }      
+  ],
+  "pedidos":[
       {
           "id":1,
-          "nome": "Guilherme",
-          "enderecoCobranca":[{"cidade":"Recife"}]
+          "cliente_id":1,
+          "itens":[
+              {
+               "id_produto":1,
+               "preco":300,
+               "nome":"Violão"
+              }
+              ],
+          "enderecoEnvio":[{"cidade":"Recife"}],
+          "pagamento":[
+              {
+                  "infoCartao":"7845756214532550",
+                  "enderecoCobranca":{"cidade":"Recife"}
+              }
+            ]
       },
       {
           "id":2,
-          "nome": "Tiago",
-          "enderecoCobranca":[{"cidade":"Salvador"}]
+          "cliente_id":2,
+          "itens":[
+              {
+               "id_produto":2,
+               "preco":1500,
+               "nome":"iPad"
+              }
+              ],
+          "enderecoEnvio":[{"cidade":"Salvador"}],
+          "pagamento":[
+              {
+                  "infoCartao":"2145652389541260",
+                  "enderecoCobranca":{"cidade":"Salvador"}
+              }
+            ] 
       },
       {
           "id":3,
-          "nome": "João",
-          "enderecoCobranca":[{"cidade":"Salvador"}]
-      }      
-      ],
-      "pedidos":[
-          {
-              "id":1,
-              "cliente_id":1,
-              "itens":[
-                  {
-                   "id_produto":1,
-                   "preco":300,
-                   "nome":"Violão"
-                  }
-                  ],
-              "enderecoEnvio":[{"cidade":"Recife"}],
-              "pagamento":[
-                  {
-                      "infoCartao":"7845756214532550",
-                      "enderecoCobranca":{"cidade":"Recife"}
-                  }
-                ]
-          },
-          {
-              "id":2,
-              "cliente_id":2,
-              "itens":[
-                  {
-                   "id_produto":2,
-                   "preco":1500,
-                   "nome":"iPad"
-                  }
-                  ],
-              "enderecoEnvio":[{"cidade":"Salvador"}],
-              "pagamento":[
-                  {
-                      "infoCartao":"2145652389541260",
-                      "enderecoCobranca":{"cidade":"Salvador"}
-                  }
-                ] 
-          },
-          {
-              "id":3,
-              "cliente_id":3,
-              "itens":[
-                  {
-                   "id_produto":3,
-                   "preco":2500,
-                   "nome":"Notebook Dell"
-                  }
-                  ],
-              "endereçoEnvio":[{"cidade":"Natal"}],
-              "pagamento":[
-                  {
-                      "infoCartao":"7958451269541250",
-                      "enderecoCobranca":{"cidade":"Natal"}
-                  }
-                ] 
-          }
-       ]      
-    }
-    
+          "cliente_id":3,
+          "itens":[
+              {
+               "id_produto":3,
+               "preco":2500,
+               "nome":"Notebook Dell"
+              }
+              ],
+          "endereçoEnvio":[{"cidade":"Natal"}],
+          "pagamento":[
+              {
+                  "infoCartao":"7958451269541250",
+                  "enderecoCobranca":{"cidade":"Natal"}
+              }
+            ] 
+      }
+   ]      
+}
 ```
 
 É importante observar que na implementação agregada temos a repetição de muitos dados, em especial no registro de endereço. Se observarmos da perspectiva de negócio, esse modelo se ajusta bem à noção de que não é desejável para o sistema a ser implementado, que o endereço de envio ou de cobrança sejam alterados.
@@ -251,7 +254,7 @@ Como se pode observar, cada abordagem tem seus prós e contras. É preciso entre
 
 Consistência de leitura significa que toda vez que alguma consulta for realizada no sistema, os dados mais atualizados para aquela consulta serão retornados. Imagine a situação de um software hospitalar que monitora as medicações tomadas pelo paciente durante a internação. O paciente Sr. Sick tomou Xmg do antibiótico X para uma grave infecção, o qual está armazenado na tabela medicamentos. A enfermeira Cecília deu o remédio ao paciente às 19h. Uma hora depois é a hora do Sr. Sick tomar o medicamento novamente. Cecília e outra enfermeira do hospital chamada Márcia, veem ao mesmo tempo que o Dr. Sick tem que tomar o remédio. Na retirada do medicamento do estoque, ambas atualizam o banco de dados com a informação que vão atendê-lo ao mesmo tempo. Acontece que Cecília foi mais rápida, retirou o remédio, injetou o remédio no Sr. Sick e atualizou o sistema. Entretanto, o banco de dados gravou a atualização da Márcia e não a da Cecília. Como a última informação fornecida a Márcia era de que o Sr. Sick ainda não havia tomado o remédio, ela aplica a injeção no Sr. Sick e o paciente morre de overdose devido à alta dosagem do remédio. Dessa forma, a leitura da Márcia foi uma **leitura inconsistente**, pois ela não estava com os dados atualizados no momento da sua consulta.
 
-Os bancos relacionais, visando contornar esse tipo de problema, suportam transações. Dessa forma, se a liberação do remédio para retirada em estoque estivesse na mesma **transação** da atualização do atendimento no banco de dados, o paciente não haveria morrido, uma vez que uma das enfermeiras não conseguiria retirar o medicamento caso a outra já tivesse iniciado o processo de atualização do banco. Assim, apenas uma enfermeira teria o medicamento em mãos e o Sr. Sick só receberia uma única dosagem, não sofrendo overdose. Entretanto, as pessoas costumam afirmar que os bancos de dados NoSQL não suportam transações. Pelo menos não do jeito que os bancos relacionais suportam com as transações ACID. Pela lógica, como esses bancos não relacionais não possuem o conceito de transação, não conseguem garantir a consistência dos dados. Esse pensamento não está inteiramente correto, uma vez que os banco de dados NoSQL fornecem consistência sim, mas de uma maneira ligeiramente diferente. Se pensarmos nos bancos de dados orientados a agregados, por exemplo, eles não possuem transações entre agregados. Por outro lado, fornecem operações atômicas em cada agregado, o que signfica que a consistência é fornecida **POR AGREGADO**.
+Os bancos relacionais, visando contornar esse tipo de problema, suportam transações. Dessa forma, se a liberação do remédio para retirada em estoque estivesse na mesma **transação** da atualização do atendimento no banco de dados, o paciente não haveria morrido, uma vez que uma das enfermeiras não conseguiria retirar o medicamento caso a outra já tivesse iniciado o processo de atualização do banco. Assim, apenas uma enfermeira teria o medicamento em mãos e o Sr. Sick só receberia uma única dosagem, não sofrendo overdose. Entretanto, as pessoas costumam afirmar que os bancos de dados NoSQL não suportam transações. Pelo menos não do jeito que os bancos relacionais suportam com as transações ACID. Pela lógica, como esses bancos não relacionais não possuem o conceito de transação, não conseguem garantir a consistência dos dados. Esse pensamento não está inteiramente correto, uma vez que os banco de dados NoSQL fornecem consistência sim, mas de uma maneira ligeiramente diferente. Se pensarmos nos bancos de dados orientados a agregados, por exemplo, eles não possuem transações entre agregados. Por outro lado, fornecem operações atômicas em cada agregado, o que signfica que a consistência é fornecida **por agregado**.
 
 Um observador mais atento logo perceberia que nem todos os dados podem ser modelados em um único agregado para atender às necessidade do sistema, o que termina por provocar a necessidade de operações com múltiplos agregados e por sua vez uma inconsistência nos dados no período de tempo entre a atualização de um agregado e a do outro. Esse período é conhecido na literatura como **janela de inconsistência**. Existem bancos de dados que possuem uma janela de inconsistência muito pequena, tão pequena quanto o tempo que um banco relacional levaria entre a atualização em uma tabela e na outra. A diferença sutil é que no banco de dados relacional ou todas as atualizações ocorrem, ou nenhuma ocorre, enquanto nos bancos NoSQL é possível que a atualização de um agregado ocorra e no outro não. Pelo menos, não de forma imediata. Em bancos NoSQL as atualizações podem levar um tempo para serem replicadas em todos os nós de um cluster. Os dados de um agregado podem ser salvos em um nó, enquanto os de outro agregado em outro nó e ao atualizar cada agregado os outros nós são informados que precisam ser atualizados por algum mecanismo implementado pelo banco de dados. A questão aqui é que ainda que os dados não tenham sido replicados nos outros nós do cluster, os dados já estão disponíveis para leitura, uma vez que as operações atômicas foram realizadas em cada nó e finalizadas com sucesso. Em um banco relacional isso não ocorre. O banco relacional só torna o dado disponível para leitura após a replicação em todos os nós do cluster, assegurando que qualquer consulta sempre terá o último dado atualizado. Dessa forma, é justo dizer que os bancos de dados NoSQL oferecem consistência, mas não em 100% do tempo para todos os dados. Devido a isso, esses bancos são chamados de **eventualmente consistentes** pois sua consistência é **eventual**.
 
@@ -341,6 +344,8 @@ A consistência num banco de dados MongoDB é configurável. O MongoDB possui o 
 O servidor primário aceita todas as operações de escritas oriundas de aplicações clientes. Entretanto, um conjunto de réplicas só pode possuir um único servidor primário. Uma vez que apenas um único servidor do cluster aceita operações de escrita, a estratégia de utilizar conjunto de réplicas provê consistência estrita, a qual garante que qualquer leitura por um dado dentro do conjunto de réplicas sempre obterá o valor mais atualizado.
 
 ![MongoDB Diagrama](imagens/replica-set-read-write-operations-primary.png)
+
+\pagebreak
 
 ### 2.5.2 Transações
 
@@ -471,6 +476,8 @@ Com muita frequência vemos soluções que buscam resolver problemas distintos u
 Se observarmos, ao utilizar um banco de dados relacional para todos os tipos de problemas para uma plataforma de e-commerce por exemplo, a arquitetura ficaria mais ou menos assim:
 
 ![Arquitetura BD Relacional](imagens/e-commerceSGBDR.png)
+
+\pagebreak
 
 Como se pode ver, todos os dados são armazenados dentro de um único banco de dados. Informações de sessão de usuário, o carrinho de compras, dados de pedidos, estão todos juntos. Nem todos esses dados armazenados possuem os mesmos requisitos de disponibilidade, consistência ou backup. Nesse momento, cabe se perguntar: Realmente é preciso armazenar informações de sessão com as mesmas regras de backup dos dados de pedidos? Os requisitos de disponibilidade das informações de sessão é igual aos demais dados armazenados?
 
