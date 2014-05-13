@@ -12,35 +12,55 @@ makefile					Arquivo usado pelo comando *make* para conversão
 							(fontes).
 template/	  				Repositório de *templates* a serem usados na conversão
 							de fontes. Conforme tipo de arquivo destino.
-template/latex.template 	Usado para converter pata latex, PDF.
-template/odt.template 		Usado para converter pata latex, PDF.
-imagens/					Imagens padrão usadas pelo próprio *template*.  bibliografia/				Arquivos de padrão de estilos (CSL) usados para formatar
+template/latex.template 	Usado para converter para latex, PDF.
+template/odt.template 		Usado para converter para ODT.
+imagens/					Imagens padrão usadas pelo próprio *template*.  
+bibliografia/				Arquivos de padrão de estilos (CSL) usados para formatar
 							citações e referências.
 
-Artigo-metadados-comuns.md	Arquivo contendo parâmetros de padrão geral para 
-							conversão de textosArtigo-estrutura.md			Exemplo de estrutura padrão para escrever artigos.~~~
-Forma de uso------------
+
+Artigo-metadados-comuns.md	Arquivo contendo parâmetros de padrão geral para 
+							conversão de textos
+
+Artigo-estrutura.md			Exemplo de estrutura padrão para escrever artigos.
+~~~
+
+Forma de uso
+------------
 
 Para usar esse template é necessário possuir instalado na máquina as ferramentas:
 
 ```
 - pandoc		Ferramento de conversão de e para múltiplos formatos.
 - pdflatex		Utilitário para gerar PDF a partir de fonte em LaTeX.
-- make			Utilitário para conversão automatiza de arquivos textos em 
-				pandoc/markdown.```O arquivo *makefile* contem uma explicação simplificada e pode ser acessada digitando-se:
+
+- make			Utilitário para conversão automatiza de arquivos textos em 
+				pandoc/markdown.
+```
+
+O arquivo *makefile* contem uma explicação simplificada e pode ser acessada digitando-se:
 
 ```bash
-$ make```
+$ make
+```
 
 ou 
 
 ```bash
-$ make help```
-Para utilizar o comando *make* para automatizar o processo de conversão de arquivos deve-se usar da forma descrita a seguir.
-Sintaxe:
-```bash
-$ make <tipo_conversão> <artigo=nome_do_artigo.md>```
-Onde:
+$ make help
+```
+
+
+Para utilizar o comando *make* para automatizar o processo de conversão de arquivos deve-se usar da forma descrita a seguir.
+
+
+Sintaxe:
+
+```bash
+$ make <tipo_conversão> <artigo=nome_do_artigo.md>
+```
+
+Onde:
 
 - **tipo_conversão**: tipos de conversão a ser realizada.  
 - **nome_do_artigo**: nome do arquivo a ser convertido.
@@ -71,10 +91,15 @@ Também pode ser realizada a conversão a partir de diretório externo ao própr
 Supondo que haja uma estrutura própria para o artigo que está sendo criado a sintaxe precisará o local origem do arquivo "*makefile*" do template.
 
 Sintaxe:
-```bash
-$ make -f <TEMPLATE_DIR_PATH/makefile> <tipo_conversão> <artigo=nome_do_artigo.md>```
-Onde:
- - ***TEMPLATE_DIR_PATH***: local onde estiver o arquivo *makefile* do template.
+
+```bash
+$ make -f <TEMPLATE_DIR_PATH/makefile> <tipo_conversão> <artigo=nome_do_artigo.md>
+```
+
+
+Onde:
+
+ - ***TEMPLATE_DIR_PATH***: local onde estiver o arquivo *makefile* do template.
 
 Exemplo:
 
@@ -88,7 +113,11 @@ imagens/							Imagens usadas no meu artigo somente.
 markdown-template/
 	./makefile
 	./template/
-	./imagens/	./bibliografia/	./Artigo-metadados-comuns.md	./Artigo-estrutura.md	~~~
+	./imagens/
+	./bibliografia/
+	./Artigo-metadados-comuns.md
+	./Artigo-estrutura.md	
+~~~
 
 Comando:
 
