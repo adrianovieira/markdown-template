@@ -22,6 +22,11 @@ tags:
 - por vírgula
 ...
 
+Introdução
+==========
+
+<Descreve e contextualiza o leitor do problema que o artigo irá abordar e buscar resolver>
+
 Desafios
 ========
 
@@ -31,11 +36,6 @@ Benefícios e/ou recomendações
 =============================
 
 <descreva os principais ganhos propostos pelo artigo, como melhoria de indicadores, processo de trabalho, etc>
-
-Introdução
-==========
-
-<Descreve e contextualiza o leitor do problema que o artigo irá abordar e buscar resolver>
 
 Tópicos do artigo
 =================
