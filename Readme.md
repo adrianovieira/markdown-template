@@ -28,14 +28,17 @@ Artigo-estrutura.md			Exemplo de estrutura padrão para escrever artigos.
 Forma de uso
 ------------
 
+### Pré-requisitos
+
 Para usar esse template é necessário possuir instalado na máquina as ferramentas:
 
 ```
-- pandoc		Ferramento de conversão de e para múltiplos formatos.
-- pdflatex		Utilitário para gerar PDF a partir de fonte em LaTeX.
+- pandoc-1.12+	    Ferramento de conversão de e para múltiplos formatos.
+ - pandoc-citeproc  Para suporte a citações (CSL).
+- pdflatex-jul/2013	Utilitário para gerar PDF a partir de fonte em LaTeX.
 
-- make			Utilitário para conversão automatiza de arquivos textos em 
-				pandoc/markdown.
+- make			    Utilitário para conversão automatiza de arquivos textos em 
+				    pandoc/markdown.
 ```
 
 O arquivo *makefile* contem uma explicação simplificada e pode ser acessada digitando-se:
