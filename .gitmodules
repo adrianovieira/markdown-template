@@ -1,0 +1,4 @@
+[submodule "crie-conteudo-nao-leiaute"]
+	path = crie-conteudo-nao-leiaute
+	url = git@www-git.prevnet:adriano.vieira/crie-conteudo-nao-leiaute.git
+	branch = master
