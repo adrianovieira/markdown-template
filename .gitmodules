@@ -1,0 +1,4 @@
+[submodule "template"]
+	path = markdown-template
+	url = git@www-git.prevnet:documentos/markdown-template.git
+	branch = master
