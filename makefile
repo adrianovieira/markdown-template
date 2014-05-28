@@ -14,17 +14,28 @@ SOURCE_DOC_PATH=$(dir $(SOURCE_DOC_MD))
 PANDOC_MAKEFILE_PATH =$(dir $(MAKEFILE_LIST))
 
 SOURCE_DOC := $(artigo:.md=)
-PANDOC_METADATA_COMMON=$(PANDOC_MAKEFILE_PATH)/Artigo-metadados-comuns.md
-PANDOC_TEMPLATE_LATEX=$(PANDOC_MAKEFILE_PATH)/template/latex.template
-PANDOC_TEMPLATE_ODT=$(PANDOC_MAKEFILE_PATH)/template/odt.template
-PANDOC_BIBLIOGRAPHY_CSL=$(PANDOC_MAKEFILE_PATH)/bibliografia/associacao-brasileira-de-normas-tecnicas-ufmg-face-full.csl
+
+ifeq ($(OS),Windows_NT)
+	PATHSEP=\\
+else
+	PATHSEP=/
+endif
+
+PANDOC_METADATA_COMMON=$(PANDOC_MAKEFILE_PATH)$(PATHSEP)Artigo-metadados-comuns.md
+PANDOC_TEMPLATE_LATEX=$(PANDOC_MAKEFILE_PATH)$(PATHSEP)template$(PATHSEP)latex.template
+PANDOC_TEMPLATE_ODT=$(PANDOC_MAKEFILE_PATH)$(PATHSEP)template$(PATHSEP)odt.template
+PANDOC_BIBLIOGRAPHY_CSL=$(PANDOC_MAKEFILE_PATH)$(PATHSEP)bibliografia$(PATHSEP)associacao-brasileira-de-normas-tecnicas-ufmg-face-full.csl
  
 # nome do arquivo com .md
 SOURCE_DOC_MD=$(SOURCE_DOC).md
 
-RM=/bin/rm
+ifeq ($(OS),Windows_NT)
+	RM=del /f /q
+else
+	RM=rm -f
+endif
  
-PANDOC=/usr/local/bin/pandoc
+PANDOC=pandoc
  
 PANDOC_OPTIONS=--smart --standalone --highlight-style zenburn --variable pandoc_makefile_path=$(PANDOC_MAKEFILE_PATH)
  
