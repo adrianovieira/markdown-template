@@ -188,6 +188,15 @@ Com o intuito de agilizar, facilitar contribuições na criação do artigo e o 
 
 Esse ambiente usa o sistema de controle de fontes *Git-SCM*^[Git-SCM (<http://www.git-scm.com/>)] e com camada *web Gitlab*^[Gitlab (<https://www.gitlab.com/>)].
 
+*Template* para arte final
+--------------------------
+
+O uso de *template* busca facilitar a conversão de textos escritos em *pandoc/markdown* para outros formatos (*PDF*, *ODT* etc). Inicialmente está previsto e funcional a conversão apenas para *PDF*.
+
+No *Git* institucional há o repositório *markdown-template*^[*markdown-template* (http://www-git/documentos/markdown-template/)] que contem o *template* e rotinas (*scripts*) que automatizam a conversão e geração da arte final em *PDF*.
+
+Nesse repositório também há um descritivo^[*Wiki* (<http://www-git/documentos/markdown-template/wikis/home>)] que mostra como esse *template* pode ser usado.
+
 Conclusão
 =========
 
