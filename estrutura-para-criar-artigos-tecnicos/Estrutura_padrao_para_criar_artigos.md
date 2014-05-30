@@ -118,7 +118,7 @@ Apresente a conclusão do artigo.
 Referências
 ===========
 
-Lista referências bibliográficas, matérias na intranet, ferramentas
+Lista de referências bibliográficas, matérias na intranet, ferramentas
 internas etc.
 
 Caso no desenvolvimento do texto tenha sido usado o recurso de "citações"
@@ -175,7 +175,7 @@ references:
 Métodos para construção até a publicação
 ========================================
 
-O leitor irá encontrar nos artigos alguns tópicos base e uma apresentação final que será comum a todos os artigos produzidos. Para alcançar essa homogeneidade os artigos são produzidos com técnicas e tecnologias simplificadas. Sendo que arte final é produzida por processo automatizado. 
+O leitor irá encontrar nos artigos alguns tópicos base e uma apresentação final que será comum a todos os artigos produzidos. Para alcançar essa homogeneidade os artigos são produzidos com técnicas e tecnologias simplificadas. Sendo que a arte final é produzida por processo automatizado. 
 
 Para tanto, é sugerido ao autor que preocupe-se em criar o conteúdo de seu artigo escrevendo-o em "texto puro" com uso algumas técnicas de marcação para estruturar e destacar o texto escrito. Nesse sentido, usaria padrões sintáticos de formatação em "*markdown estendido*"^[*Pandoc* (<http://johnmacfarlane.net/pandoc>)], evitando uso de ferramentas de escritório (ex: MS Word&trade;/LibreOffice&trade;). 
 
@@ -239,7 +239,7 @@ references:
     year: 2014
     month: 02
 - id: ID-pandocRefVieira
-  title: "Crie Conteúdo, não leiaute; padrões sintáticos de formatação *markdown* estendido & *Pandoc*"
+  title: "Crie Conteúdo, não leiaute; padrões sintáticos de formatação markdown estendido & Pandoc"
   author:
   - family: Vieira
     given: Adriano dos Santos
