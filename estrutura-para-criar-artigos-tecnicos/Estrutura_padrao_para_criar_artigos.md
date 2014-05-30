@@ -208,7 +208,7 @@ O tema e/ou assunto dos artigos a serem escritos podem ser propostos voluntariam
 
 Considerando um canal para troca de experiências, a publicação na rede social ***Ond@*** facilita o acesso ao artigo pelos técnicos da área especialista do assunto, bem como alcançar um público que se interessa e/ou domine o tema tratado.
 
-Nessa linha tem-se percebido a facilidade de disseminação dos trabalhos realizados e ainda um local de fácil acesso e publicação das atividades desenvolvidas internamente. Com isso, mais contribuições podem ser dadas e melhorias podem ser implementadas ao dia a dia de trabalho.
+Nessa linha tem-se percebido a facilidade de disseminação dos trabalhos realizados e ainda um local de fácil acesso e publicação das atividades desenvolvidas na empresa. Com isso, mais contribuições podem ser dadas e melhorias podem ser implementadas ao dia a dia de trabalho.
 
 Conclusão
 =========
