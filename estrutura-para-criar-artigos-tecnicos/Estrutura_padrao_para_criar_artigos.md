@@ -3,7 +3,7 @@ remark: metadados para a ser usado pelo parser de conversão para pdf
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Estrutura padrão para criar artigos técnicos
-abstract: 'Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “Markdown/Pandoc” (arquivo salvo com extenção: .md).'
+abstract: 'Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “*Markdown/Pandoc*”.'
 author:
 - affiliation: SUPS
   name: Adriano dos Santos Vieira
@@ -105,7 +105,7 @@ Subtópicos do artigo
 ##### Subtópicos do artigo
 
 Apresenta sub(sub)tópicos de estrutura padrão para artigos a serem 
-produzidos com uso de textos com marcação “markdown/pandoc”.
+produzidos com uso de textos com marcação “Markdown/Pandoc”.
 
 Conclusão
 =========
@@ -179,7 +179,7 @@ Para tanto, é sugerido ao autor que preocupe-se em criar o conteúdo de seu art
 Use *Markdown* estendido
 ------------------------
 
-Na comunidade "Portal de Tecnologia" na ***Ond@*** há artigo como referência inicial para uso de técnicas em *Pandoc/Mardown*^[@ID-pandocRefVieira] que é a ferramenta atualmente utilizada para conversão de conteúdos nesse padrão para outros (aqui utilizamos *PDF*).
+Na comunidade "Portal de Tecnologia" na ***Ond@*** há artigo como referência inicial para uso de técnicas em *Markdown/Pandoc*^[@ID-pandocRefVieira] que é a ferramenta atualmente utilizada para conversão de conteúdos nesse padrão para outros (aqui utilizamos *PDF*).
 
 Use Git-SCM
 -----------
@@ -191,7 +191,7 @@ Esse ambiente usa o sistema de controle de fontes *Git-SCM*^[Git-SCM (<http://ww
 *Template* para a arte final
 ----------------------------
 
-O uso de *template* busca facilitar a conversão de textos escritos em *pandoc/markdown* para outros formatos (*PDF*, *ODT* etc). Inicialmente está previsto e funcional a conversão apenas para *PDF*.
+O uso de *template* busca facilitar a conversão de textos escritos em *Markdown/Pandoc* (arquivo salvo com extenção: ***.md***) para outros formatos (*PDF*, *ODT* etc). Inicialmente está previsto e funcional a conversão apenas para *PDF*.
 
 No *Git* institucional há o repositório *markdown-template*^[*markdown-template* (<http://www-git/documentos/markdown-template/>)] que contem o *template* e rotinas (*scripts*) que automatizam a conversão e geração da arte final em *PDF*.
 
