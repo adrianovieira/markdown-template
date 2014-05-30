@@ -22,15 +22,19 @@ tags:
 Introdução
 ==========
 
+O desenvolvimento de artigos tem buscado valorizar o conhecimento das equipes nas tecnologias, processos e serviços gerenciados pela DIT. Além disso, também visa a divulgação dos trabalhos realizados, implantação de novas funcionalidades ou tecnologias etc. 
+
+Assim o que tem acontecido (desde fevereiro/14) é que na SUPS se tem produzido um conjunto de artigos. Foi proposto e cada departamento tem publicado mensalmente dois ou três artigos técnicos.
+
 Desafios
 ========
 
-Haver uma forma padronizada para a estrutura dos artigos a serem produzidos.
+Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem produzidos.
 
 Benefícios e/ou recomendações
 =============================
 
-Considera-se que uma estrutura padrão facilite a autoria do artigo, bem como a leitura por facilitar a identificação do elementos e tópicos do corpo do texto.
+Considera-se que uma estrutura padrão facilite a autoria do artigo, bem como a leitura por oferecer a identificação dos elementos e tópicos do corpo do texto.
 
 Estrutura padrão para criar artigos
 ===================================
@@ -57,8 +61,8 @@ superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento NNN - SIGLA'
 tags:
 - Tech0xA      <= sempre colocar essa!
-- Markdown
 - Pandoc
+- Markdown
 - Artigos
 ...
 
@@ -114,8 +118,10 @@ Referências
 Lista referências bibliográficas, matérias na intranet, ferramentas
 internas etc.
 
-Caso tenha sido usado o recurso de "citações" (ex: @IDCitacao ou variações)
-não será necessário listar, pois o "Pandoc" identificará e listará com base nos metadados de referências criados no fim do arquivo.
+Caso no desenvolvimento do texto tenha sido usado o recurso de "citações"
+(ex: @IDCitacao ou variações) não será necessário listar, pois o "Pandoc"
+identificará e listará com base nos metadados de referências criados no 
+fim do arquivo.
 
 ---
 remark: metadados com alguns dados para listar referências bibliográficas.
