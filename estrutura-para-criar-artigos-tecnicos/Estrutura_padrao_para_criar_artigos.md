@@ -30,7 +30,7 @@ Haver uma forma padronizada para a estrutura dos artigos a serem produzidos.
 Benefícios e/ou recomendações
 =============================
 
-
+Considera-se que uma estrutura padrão facilite a autoria do artigo, bem como a leitura por facilitar a identificação do elementos e tópicos do corpo do texto.
 
 Estrutura padrão para criar artigos
 ===================================
@@ -115,7 +115,7 @@ Lista referências bibliográficas, matérias na intranet, ferramentas
 internas etc.
 
 Caso tenha sido usado o recurso de "citações" (ex: @IDCitacao ou variações)
-não será necessário listar, pois o "Pandoc" identificará e listará.
+não será necessário listar, pois o "Pandoc" identificará e listará com base nos metadados de referências criados no fim do arquivo.
 
 ---
 remark: metadados com alguns dados para listar referências bibliográficas.
