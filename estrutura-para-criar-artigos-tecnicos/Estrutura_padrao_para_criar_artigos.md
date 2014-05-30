@@ -167,7 +167,7 @@ references:
 ```
 \setstretch{1.5}
 
->*"Também está disponível na Ond@^[Ond@ (<http://onda.dataprev.gov.br>)] e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-estruturaVieira.
+>*"Também está disponível na **Ond@**^[***Ond@*** (<http://onda.dataprev.gov.br>)] e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-estruturaVieira.
 
 Métodos para construção até a publicação
 ========================================
@@ -179,7 +179,7 @@ Para tanto, é sugerido ao autor que preocupe-se em criar o conteúdo de seu art
 Use *Markdown* estendido
 ------------------------
 
-Na comunidade "Portal de Tecnologia" na Ond@ há artigo como referência inicial para uso de técnicas em *Pandoc/Mardown*^[@ID-pandocRefVieira] que é a ferramenta atualmente utilizada para conversão de conteúdos nesse padrão para outros (aqui utilizamos *PDF*).
+Na comunidade "Portal de Tecnologia" na ***Ond@*** há artigo como referência inicial para uso de técnicas em *Pandoc/Mardown*^[@ID-pandocRefVieira] que é a ferramenta atualmente utilizada para conversão de conteúdos nesse padrão para outros (aqui utilizamos *PDF*).
 
 Use Git-SCM
 -----------
@@ -189,13 +189,26 @@ Com o intuito de agilizar, facilitar contribuições na criação do artigo e o 
 Esse ambiente usa o sistema de controle de fontes *Git-SCM*^[Git-SCM (<http://www.git-scm.com/>)] e com camada *web Gitlab*^[Gitlab (<https://www.gitlab.com/>)].
 
 *Template* para a arte final
----------------------------
+----------------------------
 
 O uso de *template* busca facilitar a conversão de textos escritos em *pandoc/markdown* para outros formatos (*PDF*, *ODT* etc). Inicialmente está previsto e funcional a conversão apenas para *PDF*.
 
 No *Git* institucional há o repositório *markdown-template*^[*markdown-template* (http://www-git/documentos/markdown-template/)] que contem o *template* e rotinas (*scripts*) que automatizam a conversão e geração da arte final em *PDF*.
 
 Nesse repositório também há um descritivo^[*Wiki* (<http://www-git/documentos/markdown-template/wikis/home>)] que mostra como esse *template* pode ser usado.
+
+Publique artigos
+----------------
+
+Os artigos são escritos por funcionários da Dataprev e podem ser realizados por um ou mais autores, conforme tema e abordagem definidos. O processo de aprovação passa pelo chefe imediato na área de lotação do autor e, ainda, por revisão final pela assessoria SUPS ou DIT.
+
+O tema e/ou assunto dos artigos a serem escritos podem ser propostos voluntariamente e aquele que sentir-se motivado manifesta-se ao chefe imediato que define quando os artigos serão publicados. Outro viés é o chefe definir o assunto de interesse conforme planejamento interno do setor, o plano de ações, PDTI ou visão para onde a empresa está caminhando.
+
+### A ***Ond@***
+
+Considerando um canal para troca de experiências, a publicação na rede social ***Ond@*** facilita o acesso ao artigo pelos técnicos da área especialista do assunto, bem como alcançar um público que se interessa e/ou domine o tema tratado.
+
+Nessa linha tem-se percebido a facilidade de disseminação dos trabalhos realizados e ainda um local de fácil acesso e publicação das atividades desenvolvidas internamente. Com isso, mais contribuições podem ser dadas e melhorias podem ser implementadas ao dia a dia de trabalho.
 
 Conclusão
 =========
