@@ -32,7 +32,7 @@ Assim, o que tem acontecido (desde fevereiro/2014) é que na SUPS se tem produzi
 Desafios
 ========
 
-Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem produzidos.
+Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publicados.
 
 Benefícios e/ou recomendações
 =============================
