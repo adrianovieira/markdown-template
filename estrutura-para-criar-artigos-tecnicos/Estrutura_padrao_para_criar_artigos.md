@@ -17,6 +17,9 @@ tags:
 - Markdown
 - Pandoc
 - Artigos
+- Git
+- SCM
+- Template
 ...
  
 Introdução
