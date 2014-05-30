@@ -31,6 +31,7 @@ Benefícios e/ou recomendações
 =============================
 
 
+
 Estrutura padrão para criar artigos
 ===================================
 
@@ -160,7 +161,7 @@ references:
 ```
 \setstretch{1.5}
 
->*"Também está disponível na Ond@ e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-onda.
+>*"Também está disponível na Ond@ e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-ondaVieira.
 
 Conclusão
 =========
@@ -173,7 +174,7 @@ Referências
 ---
 remark: referências usadas no artigo
 references:
-- id: ID-onda
+- id: ID-ondaVieira
   title: "Estrutura para criar artigos técnicos"
   author:
   - family: Vieira
