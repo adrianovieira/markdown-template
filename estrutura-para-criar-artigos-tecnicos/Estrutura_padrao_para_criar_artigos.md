@@ -174,7 +174,7 @@ Métodos para construção até a publicação
 
 O leitor irá encontrar nos artigos alguns tópicos base e uma apresentação final que será comum a todos os artigos produzidos. Para alcançar essa homogeneidade os artigos são produzidos com técnicas e tecnologias simplificadas. Sendo que arte final é produzida por processo automatizado. 
 
-Para tanto, é sugerido ao autor que preocupe-se em criar o conteúdo de seu artigo escrevendo-o em "texto puro" com uso algumas técnicas de marcação para estruturar e destacar o texto escrito. Nesse sentido, usaria padrões sintáticos de formatação em "*markdown estendido*"^[Pandoc (<http://johnmacfarlane.net/pandoc>)], evitando uso de ferramentas de escritório (ex: MS Word&trade;/Office). 
+Para tanto, é sugerido ao autor que preocupe-se em criar o conteúdo de seu artigo escrevendo-o em "texto puro" com uso algumas técnicas de marcação para estruturar e destacar o texto escrito. Nesse sentido, usaria padrões sintáticos de formatação em "*markdown estendido*"^[*Pandoc* (<http://johnmacfarlane.net/pandoc>)], evitando uso de ferramentas de escritório (ex: MS Word&trade;/LibreOffice&trade;). 
 
 Use *Markdown* estendido
 ------------------------
@@ -193,7 +193,7 @@ Esse ambiente usa o sistema de controle de fontes *Git-SCM*^[Git-SCM (<http://ww
 
 O uso de *template* busca facilitar a conversão de textos escritos em *pandoc/markdown* para outros formatos (*PDF*, *ODT* etc). Inicialmente está previsto e funcional a conversão apenas para *PDF*.
 
-No *Git* institucional há o repositório *markdown-template*^[*markdown-template* (http://www-git/documentos/markdown-template/)] que contem o *template* e rotinas (*scripts*) que automatizam a conversão e geração da arte final em *PDF*.
+No *Git* institucional há o repositório *markdown-template*^[*markdown-template* (<http://www-git/documentos/markdown-template/>)] que contem o *template* e rotinas (*scripts*) que automatizam a conversão e geração da arte final em *PDF*.
 
 Nesse repositório também há um descritivo^[*Wiki* (<http://www-git/documentos/markdown-template/wikis/home>)] que mostra como esse *template* pode ser usado.
 
@@ -219,7 +219,7 @@ Referências
 ===========
 
 ---
-remark: referências usadas no artigo
+remark: referências usadas nesse artigo
 references:
 - id: ID-estruturaVieira
   title: "Estrutura padrão para criar artigos técnicos"
@@ -228,7 +228,7 @@ references:
     given: Adriano dos Santos
   URL: 'https://onda.byyou.com/artigos?1=1&space=portaldetecnologia-community&app_ByYouSocialArticle_articleId=1608757133'
   accessed:
-    month: 02
+    month: 05
     year: 2014
   publisher: Dataprev
   type: webpage
@@ -242,7 +242,7 @@ references:
     given: Adriano dos Santos
   URL: 'https://onda.byyou.com/artigos?app_ByYouSocialArticle_articleId=1644605620&space=portaldetecnologia-community'
   accessed:
-    month: 3
+    month: 5
     year: 2014
   publisher: Dataprev
   type: article
