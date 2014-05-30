@@ -2,7 +2,7 @@
 remark: metadados para a ser usado pelo parser de conversão para pdf
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
-title: Estrutura padrão para criar artigos
+title: Estrutura padrão para criar artigos técnicos
 abstract: 'Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “Markdown/Pandoc” (arquivo salvo com extenção: .md).'
 author:
 - affiliation: SUPS
@@ -41,7 +41,7 @@ Estrutura padrão para criar artigos
 remark: metadados para a ser usado pelo parser de conversão para pdf
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
-title: Estrutura padrão para criar artigos
+title: Estrutura padrão para criar artigos técnicos
 abstract: Resumo identificando ou destacando ponto importantes do artigo. 
 Traz o pontencial leitor a se sentir atraído a ler o todo.
 author:
