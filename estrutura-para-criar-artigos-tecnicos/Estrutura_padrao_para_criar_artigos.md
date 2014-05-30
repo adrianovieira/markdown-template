@@ -41,7 +41,7 @@ Estrutura padrão para criar artigos
 remark: metadados para a ser usado pelo parser de conversão para pdf
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
-title: Estrutura padrão para artigos
+title: Estrutura padrão para criar artigos
 abstract: Resumo identificando ou destacando ponto importantes do artigo. 
 Traz o pontencial leitor a se sentir atraído a ler o todo.
 author:
@@ -161,7 +161,7 @@ references:
 ```
 \setstretch{1.5}
 
->*"Também está disponível na Ond@ e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-ondaVieira.
+>*"Também está disponível na Ond@^[Ond@ (<http://onda.dataprev.gov.br>)] e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-ondaVieira.
 
 Conclusão
 =========
