@@ -24,7 +24,7 @@ Introdução
 
 O desenvolvimento de artigos tem buscado valorizar o conhecimento das equipes nas tecnologias, processos e serviços gerenciados pela DIT. Além disso, também visa a divulgação dos trabalhos realizados, implantação de novas funcionalidades ou tecnologias etc. 
 
-Assim o que tem acontecido (desde fevereiro/14) é que na SUPS se tem produzido um conjunto de artigos. Foi proposto e cada departamento tem publicado mensalmente dois ou três artigos técnicos.
+Assim, o que tem acontecido (desde fevereiro/2014) é que na SUPS se tem produzido um conjunto de artigos. Foi proposto e cada departamento tem publicado mensalmente dois ou três artigos técnicos.
 
 Desafios
 ========
@@ -167,7 +167,26 @@ references:
 ```
 \setstretch{1.5}
 
->*"Também está disponível na Ond@^[Ond@ (<http://onda.dataprev.gov.br>)] e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-ondaVieira.
+>*"Também está disponível na Ond@^[Ond@ (<http://onda.dataprev.gov.br>)] e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-estruturaVieira.
+
+Métodos para construção até a publicação
+========================================
+
+O leitor irá encontrar nos artigos alguns tópicos base e uma apresentação final que será comum a todos os artigos produzidos. Para alcançar essa homogeneidade os artigos são produzidos com técnicas e tecnologias simplificadas. Sendo que arte final é produzida por processo automatizado. 
+
+Para tanto, é sugerido ao autor que preocupe-se em criar o conteúdo de seu artigo escrevendo-o em "texto puro" com uso algumas técnicas de marcação para estruturar e destacar o texto escrito. Nesse sentido, usaria padrões sintáticos de formatação em "*markdown estendido*"^[Pandoc (<http://johnmacfarlane.net/pandoc>)], evitando uso de ferramentas de escritório (ex: MS Word&trade;/Office). 
+
+Use *Markdown* estendido
+------------------------
+
+Na comunidade "Portal de Tecnologia" na Ond@ há artigo como referência inicial para uso de técnicas em *Pandoc/Mardown*^[@ID-pandocRefVieira] que é a ferramenta atualmente utilizada para conversão de conteúdos nesse padrão para outros (aqui utilizamos *PDF*).
+
+Use Git-SCM
+-----------
+
+Com o intuito de agilizar, facilitar contribuições na criação do artigo e o processo automatizado para gerar a arte final é indicado que o conteúdo e respectivas imagens sejam mantidos no *Git*^[Git-SCM (<http://www-git>)] institucional.
+
+Esse ambiente usa o sistema de controle de fontes *Git-SCM*^[Git-SCM (<http://www.git-scm.com/>)] e com camada *web Gitlab*^[Gitlab (<https://www.gitlab.com/>)].
 
 Conclusão
 =========
@@ -180,7 +199,7 @@ Referências
 ---
 remark: referências usadas no artigo
 references:
-- id: ID-ondaVieira
+- id: ID-estruturaVieira
   title: "Estrutura padrão para criar artigos técnicos"
   author:
   - family: Vieira
@@ -194,4 +213,18 @@ references:
   issued:
     year: 2014
     month: 02
+- id: ID-pandocRefVieira
+  title: "Crie Conteúdo, não leiaute; padrões sintáticos de formatação *markdown* estendido & *Pandoc*"
+  author:
+  - family: Vieira
+    given: Adriano dos Santos
+  URL: 'https://onda.byyou.com/artigos?app_ByYouSocialArticle_articleId=1644605620&space=portaldetecnologia-community'
+  accessed:
+    month: 3
+    year: 2014
+  publisher: Dataprev
+  type: article
+  issued:
+    year: 2014
+    month: 3
 ...
