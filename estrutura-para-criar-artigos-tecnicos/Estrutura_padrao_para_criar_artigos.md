@@ -184,7 +184,7 @@ Na comunidade "Portal de Tecnologia" na Ond@ há artigo como referência inicial
 Use Git-SCM
 -----------
 
-Com o intuito de agilizar, facilitar contribuições na criação do artigo e o processo automatizado para gerar a arte final é indicado que o conteúdo e respectivas imagens sejam mantidos no *Git*^[Git-SCM (<http://www-git>)] institucional.
+Com o intuito de agilizar, facilitar contribuições na criação do artigo e o processo automatizado para gerar a arte final é indicado que o conteúdo e respectivas imagens sejam mantidos no *Git*^[*Git* institucional (<http://www-git/>)] institucional.
 
 Esse ambiente usa o sistema de controle de fontes *Git-SCM*^[Git-SCM (<http://www.git-scm.com/>)] e com camada *web Gitlab*^[Gitlab (<https://www.gitlab.com/>)].
 
