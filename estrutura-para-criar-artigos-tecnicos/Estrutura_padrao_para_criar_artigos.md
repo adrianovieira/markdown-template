@@ -175,7 +175,7 @@ Referências
 remark: referências usadas no artigo
 references:
 - id: ID-ondaVieira
-  title: "Estrutura para criar artigos técnicos"
+  title: "Estrutura padrão para criar artigos técnicos"
   author:
   - family: Vieira
     given: Adriano dos Santos
