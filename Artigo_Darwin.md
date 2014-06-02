@@ -1,3 +1,4 @@
+![](/imagens/marcadataprev2014.jpg)
 #### [Diretoria de Infraestrutura de TIC - DIT]
 ##### [Superintendência de Planejamento e Suporte de TIC - SUPS]
 ##### [Departamento de Suporte de TIC - DEST]
