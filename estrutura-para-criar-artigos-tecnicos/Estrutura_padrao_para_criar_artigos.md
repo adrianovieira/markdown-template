@@ -216,7 +216,9 @@ Nessa linha tem-se percebido a facilidade de disseminação dos trabalhos realiz
 Conclusão
 =========
 
+Desde o começo dessa iniciativa, em fevereiro deste ano, cerca de 17 artigos já foram publicados na comunidade até o momento.
 
+Com esse artigo espera-se que os autores tenham uma referência de como estruturarem seus artigos, bem como na utilização das tecnologias usadas para a autoria e publicação de artigos.
 
 Referências
 ===========
