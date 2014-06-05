@@ -1,8 +1,8 @@
 [submodule "markdown-template"]
 	path = markdown-template
-	url = git@www-git.prevnet:documentos/markdown-template.git
+	url = http://www-git.prevnet/documentos/markdown-template.git
 	branch = master
 [submodule "crie-conteudo-nao-leiaute"]
 	path = crie-conteudo-nao-leiaute
-	url = git@www-git.prevnet:adriano.vieira/crie-conteudo-nao-leiaute.git
+	url = http://www-git.prevnet/adriano.vieira/crie-conteudo-nao-leiaute.git
 	branch = master
