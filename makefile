@@ -36,8 +36,8 @@ else
 endif
  
 PANDOC=pandoc
- 
-PANDOC_OPTIONS=--smart --standalone --highlight-style zenburn --variable pandoc_makefile_path=$(PANDOC_MAKEFILE_PATH)
+
+PANDOC_OPTIONS=--smart --standalone --highlight-style zenburn --variable pandoc_makefile_path=$(subst \,/,$(PANDOC_MAKEFILE_PATH))
  
 PANDOC_HTML_OPTIONS=--to html5
 PANDOC_PDF_OPTIONS=--template=$(PANDOC_TEMPLATE_LATEX) --filter pandoc-citeproc --csl=$(PANDOC_BIBLIOGRAPHY_CSL)
