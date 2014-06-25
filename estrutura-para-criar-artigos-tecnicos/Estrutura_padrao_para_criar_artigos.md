@@ -3,7 +3,7 @@ remark: metadados para a ser usado pelo parser de conversão para pdf
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Estrutura padrão para criar artigos técnicos
-abstract: 'Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “*Markdown/Pandoc*”.'
+abstract: 'Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “*Markdown/Pandoc*”. Também apresenta o método para construção até a publicação de artigos.'
 author:
 - affiliation: SUPS
   name: Adriano dos Santos Vieira
@@ -170,7 +170,7 @@ references:
 ```
 \setstretch{1.5}
 
->*"Também está disponível na **Ond@**^[***Ond@*** (<http://onda.dataprev.gov.br>)] e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-estruturaVieira.
+>*"Esta estrutura também está disponível na **Ond@**^[***Ond@*** (<http://onda.dataprev.gov.br>)] e, por ser mais dinâmica, deve ser a referência mais atual de estrutura a ser usada."* - @ID-estruturaVieira.
 
 Métodos para construção até a publicação
 ========================================
@@ -203,15 +203,20 @@ Nesse repositório também há um descritivo^[*Wiki* (<http://www-git/documentos
 Publique artigos
 ----------------
 
-Os artigos são escritos por funcionários da Dataprev e podem ser realizados por um ou mais autores, conforme tema e abordagem definidos. O processo de aprovação passa pelo chefe imediato na área de lotação do autor e, ainda, por revisão final pela assessoria SUPS ou DIT.
+Os artigos são escritos por funcionários da Dataprev e podem ser realizados por um ou mais autores, conforme tema e abordagem definidos. O processo de aprovação passa pelo chefe imediato na área de lotação do autor e, ainda, por revisão final pela assessoria SUPS ou DIT. Para a revisão final é necessário que o artigo (***.md*** e respectivas imagens) estejam salvos no repositório onde todos os artigos serão integrados (**Git Documentos -> Artigos**^[Git Documentos -> Artigos (<http://www-git/documentos/artigos/>)]).
 
 O tema e/ou assunto dos artigos a serem escritos podem ser propostos voluntariamente e aquele que sentir-se motivado manifesta-se ao chefe imediato que define quando os artigos serão publicados. Outro viés é o chefe definir o assunto de interesse conforme planejamento interno do setor, o plano de ações, PDTI ou visão para onde a empresa está caminhando.
 
 ### A ***Ond@***
 
-Considerando um canal para troca de experiências, a publicação na rede social ***Ond@*** facilita o acesso ao artigo pelos técnicos da área especialista do assunto, bem como alcançar um público que se interessa e/ou domine o tema tratado.
+Considerando um canal para troca de experiências, a publicação na rede social ***Ond@*** facilita o acesso ao artigo pelos técnicos da área especialista do assunto, bem como objetiva alcançar um público que se interesse e/ou domine o tema tratado.
 
-Nessa linha tem-se percebido a facilidade de disseminação dos trabalhos realizados e ainda um local de fácil acesso e publicação das atividades desenvolvidas na empresa. Com isso, mais contribuições podem ser dadas e melhorias podem ser implementadas ao dia a dia de trabalho.
+Uma vez revisado e pronto, a publicação deve ser feita como segue:
+
+1. Realiza-se a publicação do arquivo em *PDF* na área de "Documentos -> Artigos" na comunidade "Portal de Tecnologia";
+1. Publicar o resumo do artigo como um "artigo" também na comunidade, fazendo ligação (*link*) ao *PDF* publicado.
+
+Nessa linha tem-se percebido a facilidade de disseminação dos trabalhos realizados e ainda um local de fácil acesso e divulgação das atividades desenvolvidas na empresa. Com isso, mais contribuições podem ser dadas e melhorias podem ser implementadas ao dia a dia de trabalho.
 
 Conclusão
 =========
