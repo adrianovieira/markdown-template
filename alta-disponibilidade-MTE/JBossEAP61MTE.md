@@ -3,7 +3,7 @@ remark: metadados para a ser usado pelo parser de conversão para pdf
 date: 27 de junho de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Implantação de Alta Disponibilidade para as Aplicações do MTE
-abstract: Este artigo apresenta um resumo do trabalho realizado para implantar o ambiente de alta disponibilidade para as aplicações do MTE, utilizando JBoss EAP 6.1 e JAVA 6.
+abstract: 'Este artigo apresenta um resumo do trabalho realizado para implantar o ambiente de alta disponibilidade para as aplicações do MTE, utilizando JBoss EAP 6.1 e JAVA 6.'
 author:
 - affiliation: DSAA
   name: Álvaro Teixeira Gonçalves
@@ -66,17 +66,17 @@ Nosaa proposta consiste em implantar uma nova infraestrutura:
 Antes da Implantação:
 ---------------------
 
-- Servidores de Apresentação APACHE v2.2.15 com Mod_JK.
-- Servidores de Aplicação JBoss v.4.2.2-GA. 
-- JAVA 5.
-- Servidores RHEL 5.0 - 64 bits.
+- Servidores de Apresentação APACHE^[Apache HTTP Server (<https://httpd.apache.org/>)] v2.2.15 com Mod_JK^[Apache Tomcat Connectors (http://tomcat.apache.org/connectors-doc/)].
+- Servidores de Aplicação JBoss^[Red Hat JBoss Enterprise Application Platform (<http://jboss.org/>)] v.4.2.2-GA. 
+- JAVA SE JDK 5^[Java Platform, Standard Edition Development Kit (<http://java.oracle.com>)].
+- Servidores RHEL^[Red Hat Enterprise Linux (<http://www.redhat.com/products/enterprise-linux/>)] 5.0 - 64 bits.
 
 Depois da Implantação:
 ----------------------
 
-- Servidores de Apresentação APACHE v2.2.15 com Mod_Cluster.
+- Servidores de Apresentação APACHE v2.2.15 com Mod_Cluster^[mod_cluster (<http://mod-cluster.jboss.org/>)].
 - Servidores de Aplicação JBoss EAP 6.1. 
-- JAVA 6.
+- JAVA SE JDK 6.
 - Servidores RHEL 6.3 - 64 bits.
 
 Desvantagens da INFRA antes da implantação:
@@ -94,11 +94,11 @@ Vantagem da INFRA proposta:
 - Versão dos Servidores de Aplicação (JBoss) atualizada.
 - Versão do JAVA atualizada e já atendendo novas funcionalidades das aplicações.
 - Tipo de balanceamento - Inteligente e dinâmico, com cálculos efetuados nas informações dos servidores de aplicação e apresentação.
-- Recuperação do serviço com recuperação de falhas (INFRA capaz de efetuar a replicação da sessão do usuário).
+- Recuperação do serviço com recuperação de falhas (**infraestrutura** capaz de efetuar a replicação da sessão do usuário).
 - Gerenciamento Centralizado.
 - Elasticidade do Ambiente.
 - Outras vantagens podem ser consultadas em 
- [@Manual].
+ (@ManualJBossEAP62 e @ManualJBossEAP63).
 
 Esforço Envolvido na Implantação:
 ---------------------------------
@@ -127,22 +127,86 @@ Referências
 ===========
 
 ---
-remark: metadados com alguns dados para listar referências bibliográficas. Use quantos identificadores (ID) necessitar para listar as diferentes referências usadas no artigo
+remark: referências usadas nesse artigo
 references:
-- id: Manual
-  title: "JBoss EAP 6.1 Administration and Configuration Guide"
-  author: Red Hat
-  - family: EAP
-    given: JBoss
-  container-title:
+- id: ManualJBossEAP62
+  title: "JBoss Enterprise Application Platform 6.2 - Administration and Configuration Guide"
+  author:
+  - family: Chaudhary
+    given: Nidhi
+  - family: Costi 
+    given: Lucas
+  - family: Dickenson
+    given: Russell
+  - family: Gilda
+    given: Sande
+  - family: Goyal
+    given: Vikram
+  - family: Logue
+    given: Eamon
+  - family: Mison
+    given: Darrin
+  - family: Mumford
+    given: Scott
+  - family: Ryan
+    given: David
+  - family: Stanley-Jones
+    given: Misty
+  - family: Verma
+    given: Keerat
+  - family: Wells
+    given: Tom
   URL: 'https://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/6.2/html-single/Administration_and_Configuration_Guide/index.html'
   accessed:
     day: 29
-    month: abr.
+    month: 04
     year: 2014
-  publisher: Red Hat.
-  type: ebook
+  publisher: Red Hat, Inc
+  type: book
+  issue: Ed 1
+  issued:
+    year: 2013
+
+- id: ManualJBossEAP63
+  title: "JBoss Enterprise Application Platform 6.3 - Administration and Configuration Guide"
+  author:
+  - family: Chaudhary
+    given: Nidhi
+  - family: Costi 
+    given: Lucas
+  - family: Dickenson
+    given: Russell
+  - family: Gilda
+    given: Sande
+  - family: Goyal
+    given: Vikram
+  - family: Logue
+    given: Eamon
+  - family: Mison
+    given: Darrin
+  - family: Mumford
+    given: Scott
+  - family: Ryan
+    given: David
+  - family: Stanley-Jones
+    given: Misty
+  - family: Verma
+    given: Keerat
+  - family: Wells
+    given: Tom
+  - family: Moore
+    given: Nichola
+  - family: Srinivas
+    given: Nidhi
+  URL: 'https://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/6.3/html-single/Administration_and_Configuration_Guide/index.html'
+  accessed:
+    day: 29
+    month: 04
+    year: 2014
+  publisher: Red Hat, Inc
+  type: book
+  issue: Ed 1
   issued:
     year: 2014
-    month: abr.
+
 ...
