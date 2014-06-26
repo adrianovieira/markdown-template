@@ -20,6 +20,7 @@ tags:
 - Java
 - disponibilidade
 - MTE
+...
 
 Introdução
 ==========
@@ -126,23 +127,7 @@ Referências
 ---
 remark: metadados com alguns dados para listar referências bibliográficas. Use quantos identificadores (ID) necessitar para listar as diferentes referências usadas no artigo
 references:
-- id:
-  title: "JBoss EAP 6.1 Release Notes"
-  author: Red Hat
-  - family: EAP
-    given: JBoss
-  container-title:
-  URL: 'https://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/6.2/html-single/6.2.0_Release_Notes/index.html'
-  accessed:
-    day: 29
-    month: abr.
-    year: 2014
-  publisher: Red Hat.
-  type: ebook
-  issued:
-    year: 2014
-    month: abr.
-- id:
+- id: Manual
   title: "JBoss EAP 6.1 Administration and Configuration Guide"
   author: Red Hat
   - family: EAP
@@ -158,3 +143,4 @@ references:
   issued:
     year: 2014
     month: abr.
+...
