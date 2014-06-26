@@ -97,6 +97,8 @@ Vantagem da INFRA proposta:
 - Recuperação do serviço com recuperação de falhas (INFRA capaz de efetuar a replicação da sessão do usuário).
 - Gerenciamento Centralizado.
 - Elasticidade do Ambiente.
+- Outras vantagens podem ser consultadas em 
+ [@Manual].
 
 Esforço Envolvido na Implantação:
 ---------------------------------
