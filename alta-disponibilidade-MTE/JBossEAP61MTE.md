@@ -40,9 +40,13 @@ Este artigo apresenta o trabalho realizado.
 O Cliente MTE
 =============
 
-O Cliente MTE atualmente possui uma representação significativa para a DATAPREV.
+A Dataprev fornece serviço para diversos clientes e entre estes há o MTE^[Ministério do Trabalho e Emprego (<http://www.mte.gov.br>)]. Entre os serviços prestados para o MTE está a operação/sustentação do ambiente **Mais Emprego**[^1]
 
-Principais características:
+>>"Portal MTE Mais Emprego - Sistema informatizado que atende à completude da integração das políticas de trabalho, emprego e renda e evolui ao agregar ao pagamento do benefício, as políticas de Intermediação de Mão de Obra e de qualificação profissional." - Portal MTE Mais Emprego[^2]
+
+Esse ambiente operado pela Dataprev consiste de sistemas integrados entre si que atendem  ao empregador e, principalmente, ao cidadão. 
+
+Principais características^[informações obtidas a partir da área de negócio]:
 ---------------------------
 
 - São mais de 7.100 Pontos de Atendimento.
@@ -132,6 +136,9 @@ Conclusão
 
 Referências
 ===========
+
+[^1]: Mais Emprego (<http://maisemprego.mte.gov.br>)
+[^2]: Portal MTE - Mais Emprego (<http://portal.mte.gov.br/spetr/portal-mais-emprego/>)
 
 ---
 remark: referências usadas nesse artigo
