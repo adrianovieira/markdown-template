@@ -30,7 +30,7 @@ O servidor de aplicação JBoss EAP 6.1 juntamente com o JAVA 6 proveem recursos
 Desafios
 ========
 
-Implantar INFRA com suporte à alta disponibilidade para as aplicações do MTE em plataforma atualizada e compatível com replicação de sessão.
+Implantar infraestrutura com suporte à alta disponibilidade para as aplicações do MTE em plataforma atualizada e compatível com replicação de sessão.
 
 Benefícios e/ou recomendações
 =============================
@@ -40,15 +40,18 @@ Este artigo apresenta o trabalho realizado.
 O Cliente MTE
 =============
 
-O Cliente MTE atualmente possui uma representação significativa para a DATAPREV:
+O Cliente MTE atualmente possui uma representação significativa para a DATAPREV.
+
+Principais características:
+---------------------------
+
 - São mais de 7.100 Pontos de Atendimento.
 - Acesso via WEB e através dos Postos de Atendimento cadastrados pelo MTE. 
-- Média de 200.000 Acessos/Atendimentos diários
+- Média de 200.000 Acessos/Atendimentos diários.
 
 Os sistemas/aplicações do MTE
-=============================
+-----------------------------
 
-O Cliente MTE hospeda as seguintes aplicações (on-line) nos ambientes da DATAPREV:
 - IMO - Intermediação de Mão-de-Obra.
 - SD - Seguro Desemprego.
 - CAGED - Cadastro Geral de Empregados e Desempregados.
@@ -61,7 +64,7 @@ O Cliente MTE hospeda as seguintes aplicações (on-line) nos ambientes da DATAP
 A Proposta
 ==========
  
-Nosaa proposta consiste em implantar uma nova infraestrutura:
+Nossa proposta consiste em implantar uma nova infraestrutura:
 
 Antes da Implantação:
 ---------------------
@@ -79,8 +82,10 @@ Depois da Implantação:
 - JAVA SE JDK 6.
 - Servidores RHEL 6.3 - 64 bits.
 
-Desvantagens da INFRA antes da implantação:
--------------------------------------------
+![Ambiente de Produção com JBoss EAP 6.1](imagens/jb61.jpg)
+
+Desvantagens da infraestrutura antes da implantação:
+----------------------------------------------------
 
 - Versão dos Servidores de Aplicação (JBoss) desatualizada.
 - Versão do JAVA muito antiga e em desuso.
@@ -88,17 +93,19 @@ Desvantagens da INFRA antes da implantação:
 - Recuperação do serviço não existe e o usuário perde sempre sua sessão (retrabalho).
 - Gerenciamento descentralizado.
 
-Vantagem da INFRA proposta:
----------------------------
+Vantagem da infraestrutura proposta:
+------------------------------------
 
 - Versão dos Servidores de Aplicação (JBoss) atualizada.
 - Versão do JAVA atualizada e já atendendo novas funcionalidades das aplicações.
-- Tipo de balanceamento - Inteligente e dinâmico, com cálculos efetuados nas informações dos servidores de aplicação e apresentação.
 - Recuperação do serviço com recuperação de falhas (**infraestrutura** capaz de efetuar a replicação da sessão do usuário).
 - Gerenciamento Centralizado.
 - Elasticidade do Ambiente.
 - Outras vantagens podem ser consultadas em 
  (@ManualJBossEAP62 e @ManualJBossEAP63).
+ - Tipo de balanceamento - Inteligente e dinâmico, com cálculos efetuados nas informações dos servidores de aplicação e apresentação.
+ 
+![Diagrama de Balanceamento com mod_cluster](imagens/modcluster.jpg)
 
 Esforço Envolvido na Implantação:
 ---------------------------------
