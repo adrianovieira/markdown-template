@@ -86,6 +86,8 @@ Depois da Implantação:
 - JAVA SE JDK 6.
 - Servidores RHEL 6.3 - 64 bits.
 
+\pagebreak
+
 ![Ambiente de Produção com JBoss EAP 6.1](imagens/jb61.jpg)
 
 Desvantagens da infraestrutura antes da implantação:
