@@ -1,6 +1,6 @@
 ---
-remark: metadados para a ser usado pelo parser de conversão para pdf
-date: 28 de fevereiro de 2014
+remark: metadados para ser usado pelo parser de conversão para pdf
+date: 01 de julho de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Descrição técnica do processo de alteração de estruturas em bancos de dados Oracle
 abstract: Neste artigo, serão destacadas as etapas que compõem o processo de alteração de estruturas em bancos de dados Oracle nos ambientes de desenvolvimento, treinamento, teste integrado, teste automatizado, homologação, produção e sustentação da Dataprev.
@@ -14,7 +14,7 @@ diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Suporte de TIC - DEST'
 tags:
-- Tech0xA      <= sempre colocar essa!
+- Tech0xA
 - SGBD
 - Oracle
 - Banco de Dados
