@@ -1,24 +1,45 @@
-![](/imagens/marcadataprev2014.jpg)
-#### [Diretoria de Infraestrutura de TIC - DIT]
-##### [Superintendência de Planejamento e Suporte de TIC - SUPS]
-##### [Departamento de Suporte de TIC - DEST]
+---
+remark: metadados para a ser usado pelo parser de conversão para pdf
+date: 28 de fevereiro de 2014
+tipo_artigo: Artigo técnico de Infraestrutura de TIC
+title: Descrição técnica do processo de alteração de estruturas em bancos de dados Oracle
+abstract: Neste artigo, serão destacadas as etapas que compõem o processo de alteração de estruturas em bancos de dados Oracle nos ambientes de desenvolvimento, treinamento, teste integrado, teste automatizado, homologação, produção e sustentação da Dataprev.
+author:
+- affiliation: DEST/DSBD
+  name: Darwin Bicalho Fernandes
+responsibility:
+- affiliation: DEST
+  name: Diogo Costa Martins Pizaneschi
+diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
+superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
+departamento: 'Departamento de Suporte de TIC - DEST'
+tags:
+- Tech0xA      <= sempre colocar essa!
+- SGBD
+- Oracle
+- Banco de Dados
+- Alteração de Estruturas
+...
 
-# Artigo técnico de Infraestrutura de TIC
+Introdução
+========
+A crescente necessidade de desenvolvimento de novos sistemas e alteração dos sistemas já existentes têm exigido uma alta sinergia entre as equipes técnicas e gerencias para conseguir atender às expectativas dos clientes da Dataprev e cumprir os prazos acordados.
 
-**Descrição técnica do processo de alteração de estruturas em bancos de dados Oracle**
+O desenvolvimento de novos sistemas e alteração dos sistemas já existentes acabam gerando modificações nas estruturas de bancos de dados que podem ocorrer tanto durante a fase de projeto, como na fase de desenvolvimento/manutenção do sistema. No primeiro caso, representa um refinamento da aplicação e/ou experimentação de novas percepções, uma vez que o esquema não está completamente definido. No segundo, retrata uma evolução da realidade considerada, como por exemplo, reformulação das necessidades dos usuários, correção de um erro de projeto, adaptação de novos componentes ou melhoria no desempenho da aplicação.
 
-**Autor(es):** Darwin Bicalho Fernandes (DEST/DSBD)
+De acordo com Pascutti (2012), banco de dados é um conjunto de dados integrados que tem por objetivo atender a uma comunidade de usuários. É uma coleção lógica e coerente de dados com algum significado inerente.
 
-**Responsável:** Diogo Costa Martins Pizaneschi
+Na Dataprev existem três áreas técnicas que trabalham no processo de alteração de estruturas de banco de dados, descritas abaixo:
 
+- **COGD** (Coordenação de Gestão de Dados);
+- **DPJS** (Divisão de Projeto da Solução);
+- **DSBD** (Divisão de Suporte à Banco de Dados).
 
+Cada uma destas três áreas possui um enfoque específico. Entretanto, o processo de alteração de estruturas em bancos de dados não estava bem organizado e isso acabava gerando dúvidas sobre a forma de atuação de cada equipe, além de poder comprometer os prazos previstos de entregas aos clientes.
 
-**Resumo**
+Pensando nisso, foi criado um projeto na Dataprev, chamado “Implantação do processo de alteração de estruturas de banco de dados Oracle para o cliente MTE”, com o objetivo de organizar e agilizar os processos de alteração de estruturas em bancos de dados dos sistemas do cliente MTE (Ministério do Trabalho e Emprego) adequando-os à norma N/BD/001 que trata sobre o “Uso do ambiente de desenvolvimento de banco de dados corporativo Oracle”. O trabalho realizado no projeto foi estendido para atender aos demais clientes da Dataprev.
 
-Neste artigo, serão destacadas as etapas que compõem o processo de alteração de estruturas em bancos de dados Oracle nos ambientes de desenvolvimento, treinamento, teste integrado, teste automatizado, homologação, produção e sustentação da Dataprev.
-
-
-Tags: SGBD  Oracle  Banco de Dados  Alteração de Estruturas
+No artigo, primeiro serão apresentados conceitos importantes para o entendimento do texto e em seguida será descrito o novo processo de alteração de estruturas em bancos de dados Oracle utilizado pela Dataprev nos ambientes de desenvolvimento, treinamento, teste integrado, teste automatizado, homologação, produção e sustentação.
 
 
 Desafios
@@ -40,27 +61,6 @@ Entre os benefícios do processo de alteração de estruturas em bancos de dados
 - Utilização da ferramenta SDM (*Service Desk Manager*) no processo de alteração de estruturas de banco de dados;
 - Agilidade no atendimento das alterações de estruturas de dados nos ambientes de desenvolvimento, treinamento, teste integrado e teste automatizado que antes demoravam até 5 dias úteis e agora são realizadas em até 1 dia útil;
 - Maior autonomia dos administradores de dados.
-
-
-Introdução
-========
-A crescente necessidade de desenvolvimento de novos sistemas e alteração dos sistemas já existentes têm exigido uma alta sinergia entre as equipes técnicas e gerencias para conseguir atender às expectativas dos clientes da Dataprev e cumprir os prazos acordados.
-
-O desenvolvimento de novos sistemas e alteração dos sistemas já existentes acabam gerando modificações nas estruturas de bancos de dados que podem ocorrer tanto durante a fase de projeto, como na fase de desenvolvimento/manutenção do sistema. No primeiro caso, representa um refinamento da aplicação e/ou experimentação de novas percepções, uma vez que o esquema não está completamente definido. No segundo, retrata uma evolução da realidade considerada, como por exemplo, reformulação das necessidades dos usuários, correção de um erro de projeto, adaptação de novos componentes ou melhoria no desempenho da aplicação.
-
-De acordo com Pascutti (2012), banco de dados é um conjunto de dados integrados que tem por objetivo atender a uma comunidade de usuários. É uma coleção lógica e coerente de dados com algum significado inerente.
-
-Na Dataprev existem três áreas técnicas que trabalham no processo de alteração de estruturas de banco de dados, descritas abaixo:
-
-- **COGD** (Coordenação de Gestão de Dados);
-- **DPJS** (Divisão de Projeto da Solução);
-- **DSBD** (Divisão de Suporte à Banco de Dados).
-
-Cada uma destas três áreas possui um enfoque específico. Entretanto, o processo de alteração de estruturas em bancos de dados não estava bem organizado e isso acabava gerando dúvidas sobre a forma de atuação de cada equipe, além de poder comprometer os prazos previstos de entregas aos clientes.
-
-Pensando nisso, foi criado um projeto na Dataprev, chamado “Implantação do processo de alteração de estruturas de banco de dados Oracle para o cliente MTE”, com o objetivo de organizar e agilizar os processos de alteração de estruturas em bancos de dados dos sistemas do cliente MTE (Ministério do Trabalho e Emprego) adequando-os à norma N/BD/001 que trata sobre o “Uso do ambiente de desenvolvimento de banco de dados corporativo Oracle”. O trabalho realizado no projeto foi estendido para atender aos demais clientes da Dataprev.
-
-No artigo, primeiro serão apresentados conceitos importantes para o entendimento do texto e em seguida será descrito o novo processo de alteração de estruturas em bancos de dados Oracle utilizado pela Dataprev nos ambientes de desenvolvimento, treinamento, teste integrado, teste automatizado, homologação, produção e sustentação.
 
 
 Conceitos
@@ -162,7 +162,8 @@ As alterações são realizadas pelos administradores de dados das unidades de d
 
 Na figura abaixo temos o fluxo do processo de alteração de estruturas de dados nos ambientes de desenvolvimento, treinamento, teste integrado e teste automatizado:
 
-![](/imagens/Fluxo_Des_Trein_Testes.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/Fluxo_Des_Trein_Testes.jpg)
+
 
 ### Documentação do processo ###
 
@@ -237,7 +238,7 @@ Nos ambientes de homologação, produção e sustentação podem existir duas si
 
 Na figura abaixo temos o fluxo do processo de alteração de estruturas de dados nos ambientes de homologação, produção e sustentação:
 
-![](/imagens/Fluxo_Hom_Prod_Sust.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/Fluxo_Hom_Prod_Sust.jpg)
 
 ### Documentação do processo ###
 
@@ -247,7 +248,7 @@ A etapa de modelar os objetos na ferramenta de modelagem de dados (Oracle Design
 
 Atualmente a ferramenta utilizada na empresa é o Oracle Designer, que deverá ser substituída gradualmente pela ferramenta *Infosphere Data Architect* (IDA) da IBM nos próximos meses. A figura abaixo mostra a tela inicial da ferramenta Oracle Designer.
 
-![](/imagens/OD_1.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_1.jpg)
 
 **Informar baseline a ser aplicada**
 	
@@ -271,53 +272,53 @@ Para realizar o batimento da configuração criada no Oracle Designer, é necess
 
 Antes de criar uma nova “*workarea*”, é necessário verificar se já existe alguma “*workarea*” com o mesmo nome e versão no repositório que é ilustrado na figura abaixo:
 
-![](/imagens/WA_1.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_1.jpg)
 
 Caso não exista, para criar a “*workarea*” é necessário clicar em “*New...*”, conforme destacado em vermelho na próxima imagem:
 
-![](/imagens/WA_2.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_2.jpg)
 
 Em seguida, irá abrir a tela para a criação da “*workarea*” para realizar o batimento com o banco, onde devemos cadastrar o nome da configuração.
 
 Por exemplo, em uma configuração com o nome **A_MTE_CAGED_20130719{1.106}**, a área de banco de dados DSBD costuma cadastrar a workarea com o nome **WA_A_MTE_CAGED_20130719_1_106_DBF**, onde acrescenta a sigla **WA** no início do nome indicando “**workarea**”, substitui “{} e .” por “_” e nas três últimas letras “**DBF**” são indicadas as iniciais do nome da pessoa que criou a workarea, conforme a figura abaixo:
 
-![](/imagens/WA_3.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_3.jpg)
 
 Entre as etapas da criação da criação da “workarea”, temos que associar o nome da configuração onde consta as alterações de estruturas de banco. No exemplo, a configuração se chama **A_MTE_CAGED_20130719{1.106}** e após a localização da configuração no repositório, usando o filtro, é necessário selecionar a configuração e clicar na seta para a direita, conforme indicado nas próximas imagens:
 
-![](/imagens/WA_4.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_4.jpg)
 
 Clicar em OK para incluir a configuração na “*workarea*”:
 
-![](/imagens/WA_5.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_5.jpg)
 
 Para finalizar a criação da “*workarea*”, clicar em finish na tela abaixo:
 
-![](/imagens/WA_6.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_6.jpg)
 
 Ao término da criação da “*workarea*”, é necessário selecionar no repositório a “*workarea*” criada e clicar em OK:
 
-![](/imagens/WA_7.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_7.jpg)
 
 Clicar em *Design Editor* para abrir a “*workarea*” que contém a configuração do *Designer*:
 
-![](/imagens/OD_2.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_2.jpg)
 
 Expandir o repositório, selecionar o *schema* (no exemplo, o *schema* se chama **CAGED**), clicar em *Generate*, listado no menu, e depois em *Generate Database from Server Model...*
 
-![](/imagens/OD_3.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_3.jpg)
 
 Na próxima tela é necessário informar os seguintes dados: usuário (*schema*), senha, em *connect* informar a entrada cadastrada do banco no arquivo “tnsnames.ora”, em *file prefix* o nome dos arquivos de diferença que serão gerados e em *directory* o local que os arquivos serão salvos, conforme exibido na próxima tela:
 
-![](/imagens/OD_4.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_4.jpg)
 
 Após os dados preenchidos clicar na aba “*Objects*” e depois em “*Start*” para iniciar o batimento com o banco, conforme exibido na figura:
 
-![](/imagens/OD_5.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_5.jpg)
 
 Durante o batimento das diferenças da configuração com o banco de dados é exibida a próxima tela:
 
-![](/imagens/OD_6.jpg)
+![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_6.jpg)
 	
 Por fim, ao término do batimento são gerados arquivos que contém as diferenças encontradas entre a configuração cadastrada na ferramenta de modelagem e o banco de dados. Estas diferenças são encaminhadas aos administradores de dados para que seja possível elaborar o formulário de implantação de estrutura de banco de dados.
 
@@ -445,4 +446,3 @@ GALANTE, Renata. *Um modelo de evolução de esquemas conceituais para bancos de
 PASCUTTI, Márcia. *Administrador de Banco de Dados*. Disponível em: <http://200.17.98.44/pronatec/wp-content/uploads/2012/07/admbd.pdf>. Acesso em: 19 mai. 2014.
 
 *Uso do Ambiente de Desenvolvimento de Banco de Dados Corporativo Oracle*. Norma N/BD/001/00 (2010). [S.l.]: Dataprev, [S.d.]. Disponível em: <http://www-dtpnet/sites/default/files/N_BD_001_00.pdf>. Acesso em: 15 mai. 2014.
-
