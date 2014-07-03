@@ -162,7 +162,7 @@ As alterações são realizadas pelos administradores de dados das unidades de d
 
 Na figura abaixo temos o fluxo do processo de alteração de estruturas de dados nos ambientes de desenvolvimento, treinamento, teste integrado e teste automatizado:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/Fluxo_Des_Trein_Testes.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/Fluxo_Des_Trein_Testes.jpg)
 
 
 ### Documentação do processo ###
@@ -238,7 +238,7 @@ Nos ambientes de homologação, produção e sustentação podem existir duas si
 
 Na figura abaixo temos o fluxo do processo de alteração de estruturas de dados nos ambientes de homologação, produção e sustentação:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/Fluxo_Hom_Prod_Sust.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/Fluxo_Hom_Prod_Sust.jpg)
 
 ### Documentação do processo ###
 
@@ -248,7 +248,7 @@ A etapa de modelar os objetos na ferramenta de modelagem de dados (Oracle Design
 
 Atualmente a ferramenta utilizada na empresa é o Oracle Designer, que deverá ser substituída gradualmente pela ferramenta *Infosphere Data Architect* (IDA) da IBM nos próximos meses. A figura abaixo mostra a tela inicial da ferramenta Oracle Designer.
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_1.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/OD_1.jpg)
 
 **Informar baseline a ser aplicada**
 	
@@ -272,53 +272,53 @@ Para realizar o batimento da configuração criada no Oracle Designer, é necess
 
 Antes de criar uma nova “*workarea*”, é necessário verificar se já existe alguma “*workarea*” com o mesmo nome e versão no repositório que é ilustrado na figura abaixo:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_1.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/WA_1.jpg)
 
 Caso não exista, para criar a “*workarea*” é necessário clicar em “*New...*”, conforme destacado em vermelho na próxima imagem:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_2.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/WA_2.jpg)
 
 Em seguida, irá abrir a tela para a criação da “*workarea*” para realizar o batimento com o banco, onde devemos cadastrar o nome da configuração.
 
 Por exemplo, em uma configuração com o nome **A_MTE_CAGED_20130719{1.106}**, a área de banco de dados DSBD costuma cadastrar a workarea com o nome **WA_A_MTE_CAGED_20130719_1_106_DBF**, onde acrescenta a sigla **WA** no início do nome indicando “**workarea**”, substitui “{} e .” por “_” e nas três últimas letras “**DBF**” são indicadas as iniciais do nome da pessoa que criou a workarea, conforme a figura abaixo:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_3.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/WA_3.jpg)
 
 Entre as etapas da criação da criação da “workarea”, temos que associar o nome da configuração onde consta as alterações de estruturas de banco. No exemplo, a configuração se chama **A_MTE_CAGED_20130719{1.106}** e após a localização da configuração no repositório, usando o filtro, é necessário selecionar a configuração e clicar na seta para a direita, conforme indicado nas próximas imagens:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_4.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/WA_4.jpg)
 
 Clicar em OK para incluir a configuração na “*workarea*”:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_5.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/WA_5.jpg)
 
 Para finalizar a criação da “*workarea*”, clicar em finish na tela abaixo:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_6.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/WA_6.jpg)
 
 Ao término da criação da “*workarea*”, é necessário selecionar no repositório a “*workarea*” criada e clicar em OK:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/WA_7.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/WA_7.jpg)
 
 Clicar em *Design Editor* para abrir a “*workarea*” que contém a configuração do *Designer*:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_2.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/OD_2.jpg)
 
 Expandir o repositório, selecionar o *schema* (no exemplo, o *schema* se chama **CAGED**), clicar em *Generate*, listado no menu, e depois em *Generate Database from Server Model...*
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_3.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/OD_3.jpg)
 
 Na próxima tela é necessário informar os seguintes dados: usuário (*schema*), senha, em *connect* informar a entrada cadastrada do banco no arquivo “tnsnames.ora”, em *file prefix* o nome dos arquivos de diferença que serão gerados e em *directory* o local que os arquivos serão salvos, conforme exibido na próxima tela:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_4.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/OD_4.jpg)
 
 Após os dados preenchidos clicar na aba “*Objects*” e depois em “*Start*” para iniciar o batimento com o banco, conforme exibido na figura:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_5.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/OD_5.jpg)
 
 Durante o batimento das diferenças da configuração com o banco de dados é exibida a próxima tela:
 
-![](artigos/processo-alteracao-estruturas-bd-oracle/imagens/OD_6.jpg)
+![](http://www-git/documentos/artigos/tree/processo-alteracao-estruturas-bd-oracle/processo-alteracao-estruturas-bd-oracle/imagens/OD_6.jpg)
 	
 Por fim, ao término do batimento são gerados arquivos que contém as diferenças encontradas entre a configuração cadastrada na ferramenta de modelagem e o banco de dados. Estas diferenças são encaminhadas aos administradores de dados para que seja possível elaborar o formulário de implantação de estrutura de banco de dados.
 
