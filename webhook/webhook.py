@@ -30,9 +30,14 @@ def index():
            import ipdb; ipdb.set_trace() # ativado para debug interativo
 
         hookdata = json.loads(request.data)
-        if hookdata['object_kind'] != 'merge_request':
-           print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
-           return '{"status": "ERROR", "message": "not a merge request"}'
+        hookdata_ok = False
+        try:
+            if hookdata['object_kind']:
+               if hookdata['object_kind'] != 'merge_request':
+                  raise
+        except: # IndexError: ou caso nao seja "merge_request"
+            print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
+            return '{"status": "ERROR", "message": "not a merge request"}'
 
         print "\nProcessing merge request ...\n"
 
