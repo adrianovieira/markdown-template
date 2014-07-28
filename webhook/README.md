@@ -6,6 +6,4 @@ Webhook simples para realizar conversão automatizada de documentos/artigos para
 A fazer
 -------
 
-~~~ um monte de código ainda precisa ser escrito ~~~
-
-
+```um monte de código ainda precisa ser escrito```
