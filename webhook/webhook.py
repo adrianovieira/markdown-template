@@ -13,15 +13,15 @@ app = Flask(__name__)
 
 '''
 commentMR: post comment to Merge Request
-'''
-def commentMR():
-  '''
-  POST /projects/:id/merge_request/:merge_request_id/comments
 
-  id (required) - The ID of a project
-  merge_request_id (required) - ID of merge request
-  note (required) - Text of comment
-  '''
+@params:
+  id: The ID of a project (required)
+  merge_request_id: ID of merge request (required)
+  note: Text of comment (required)
+'''
+def commentMR(target_project_id, merge_request_id, note):
+  #POST /projects/:id/merge_request/:merge_request_id/comments
+
   commented = False
 
   return commented
