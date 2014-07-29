@@ -12,6 +12,21 @@ import ConfigParser
 app = Flask(__name__)
 
 '''
+commentMR: post comment to Merge Request
+'''
+def commentMR():
+  '''
+  POST /projects/:id/merge_request/:merge_request_id/comments
+
+  id (required) - The ID of a project
+  merge_request_id (required) - ID of merge request
+  note (required) - Text of comment
+  '''
+  commented = False
+
+  return commented
+
+'''
 getConfig: obtem dados de configuracao do ambiente
 '''
 def getConfig():
