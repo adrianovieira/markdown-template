@@ -8,6 +8,7 @@ character encoding: UTF-8
 from flask import Flask, request, json
 import requests
 import ConfigParser
+import gitlab
 
 app = Flask(__name__)
 
@@ -22,6 +23,10 @@ commentMR: post comment to Merge Request
 def commentMR(target_project_id, merge_request_id, note):
   #POST /projects/:id/merge_request/:merge_request_id/comments
   commented = False
+
+  print "target_project_id: {}".format(target_project_id)+\
+        ", merge_request_id: {}".format(merge_request_id)+\
+        ", note: "+note
 
   return commented
 
@@ -108,6 +113,9 @@ def index():
         return 'Aplicacao para webhook! \n Use adequadamente!'
 
    elif request.method == 'POST':
+    ok_git=app.gitlab = gitlab.Gitlab(app.setup['gitlab_url'])
+    ok_git=app.gitlab.login(app.setup['webhook_user'], app.setup['webhook_pass'])
+
     if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
        import ipdb; ipdb.set_trace() # ativado para debug interativo
 
@@ -123,7 +131,10 @@ def index():
             if hookdata['object_attributes']['merge_status'] == GL_STATUS['cannot_be_merged']:
               app_msg_status = "cannot be merged"
               commentMR(hookdata['object_attributes']['target_project_id'], \
-                        hookdata['object_attributes']['iid'], \
+                        hookdata['object_attributes']['id'], \
+                        'merge não aceito. Verique "branch" e solicite novamente!')
+              app.gitlab.addcommenttomergerequest(hookdata['object_attributes']['target_project_id'], \
+                        hookdata['object_attributes']['id'], \
                         'merge não aceito. Verique "branch" e solicite novamente!')
               raise # caso nao possa ser feito merge via gitlab "merge request invalido"
           else:
@@ -137,6 +148,10 @@ def index():
 
     print "\nProcessing merge request ...\n"
 
+    app.gitlab.addcommenttomergerequest(hookdata['object_attributes']['target_project_id'], \
+              hookdata['object_attributes']['id'], \
+              'Processing merge request ...')
+
     #print hookdata # ['object_attributes']['source_branch']
 
     return '{"status": "OK"}'
@@ -148,10 +163,10 @@ app.setup = {} # global de configuracao
 
 if __name__ == '__main__':
   if getConfig(): # obtem dados de configuracao inicial
-     if app.setup['DEBUG'] == 'True':
-        app.debug = True
-        app.run(host='0.0.0.0')
-     else:
-        app.run()
+    if app.setup['DEBUG'] == 'True':
+      app.debug = True
+      app.run(host='0.0.0.0')
+    else:
+      app.run()
   else:
     print "ERROR: trying to read dist-config file."
