@@ -21,7 +21,6 @@ commentMR: post comment to Merge Request
 '''
 def commentMR(target_project_id, merge_request_id, note):
   #POST /projects/:id/merge_request/:merge_request_id/comments
-
   commented = False
 
   return commented
@@ -90,8 +89,13 @@ DEBUG_LEVEL1 = 1 # mostra algumas mensagens na console
 DEBUG_INTERATIVO = 9 # ipdb ativado: "ipdb.set_trace()"
 
 '''
-Gitlab status
+Gitlab status and merge_status
 '''
+GL_STATE = {
+   'CLOSED':'closed',
+   'OPENED':'opened'
+   }
+
 GL_STATUS = {
    'merge_request':'merge_request',
    'cannot_be_merged':'cannot_be_merged'
@@ -104,21 +108,28 @@ def index():
         return 'Aplicacao para webhook! \n Use adequadamente!'
 
    elif request.method == 'POST':
-    print app.setup
     if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
        import ipdb; ipdb.set_trace() # ativado para debug interativo
 
     hookdata = json.loads(request.data)
-    hookdata_ok = False
+    print hookdata
     try:
       app_msg_status = "not a merge request"
       if hookdata['object_kind'] or hookdata['object_attributes']:
         if hookdata['object_kind'] != GL_STATUS['merge_request']:
           raise
         if hookdata['object_attributes']:
-          if hookdata['object_attributes']['merge_status'] == GL_STATUS['cannot_be_merged']:
-            app_msg_status = "cannot be merged"
-            raise # caso nao possa ser feito merge via gitlab "merge request invalido"
+          if hookdata['object_attributes']['state'] == GL_STATE['OPENED']:
+            if hookdata['object_attributes']['merge_status'] == GL_STATUS['cannot_be_merged']:
+              app_msg_status = "cannot be merged"
+              commentMR(hookdata['object_attributes']['target_project_id'], \
+                        hookdata['object_attributes']['iid'], \
+                        'merge não aceito. Verique "branch" e solicite novamente!')
+              raise # caso nao possa ser feito merge via gitlab "merge request invalido"
+          else:
+            app_msg_status = "MR "+hookdata['object_attributes']['state']+\
+                             " - "+hookdata['object_attributes']['merge_status']
+            raise
     except: # IndexError: ou caso nao seja "merge_request"
         print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
         status = '{"status": "ERROR", "message": "'+app_msg_status+'"}'
@@ -126,7 +137,7 @@ def index():
 
     print "\nProcessing merge request ...\n"
 
-    print hookdata # ['object_attributes']['source_branch']
+    #print hookdata # ['object_attributes']['source_branch']
 
     return '{"status": "OK"}'
 
