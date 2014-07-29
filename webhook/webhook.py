@@ -108,6 +108,9 @@ def index():
 
     return '{"status": "OK"}'
 
+'''
+Inicia aplicacao
+'''
 app.setup = {} # global de configuracao
 
 if __name__ == '__main__':
