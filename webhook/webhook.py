@@ -4,12 +4,9 @@ import ConfigParser
 
 app = Flask(__name__)
 
-app.setup = {}
-
 '''
 Config: obtem dados de configuracao do ambiente
 '''
-app.setup = {} # global de configuracao
 def getConfig():
   Config = ConfigParser.ConfigParser()
   '''
@@ -110,6 +107,8 @@ def index():
     print hookdata # ['object_attributes']['source_branch']
 
     return '{"status": "OK"}'
+
+app.setup = {} # global de configuracao
 
 if __name__ == '__main__':
   if getConfig(): # obtem dados de configuracao inicial
