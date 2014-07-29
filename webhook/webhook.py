@@ -12,7 +12,7 @@ import ConfigParser
 app = Flask(__name__)
 
 '''
-Config: obtem dados de configuracao do ambiente
+getConfig: obtem dados de configuracao do ambiente
 '''
 def getConfig():
   Config = ConfigParser.ConfigParser()
