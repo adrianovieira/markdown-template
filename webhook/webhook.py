@@ -103,7 +103,8 @@ GL_STATE = {
 
 GL_STATUS = {
    'merge_request':'merge_request',
-   'cannot_be_merged':'cannot_be_merged'
+   'cannot_be_merged':'cannot_be_merged',
+   'can_be_merged':'can_be_merged'
    }
 
 @app.route('/',methods=['GET', 'POST'])
@@ -113,26 +114,29 @@ def index():
         return 'Aplicacao para webhook! \n Use adequadamente!'
 
    elif request.method == 'POST':
+
     ok_git=app.gitlab = gitlab.Gitlab(app.setup['gitlab_url'])
+
     ok_git=app.gitlab.login(app.setup['webhook_user'], app.setup['webhook_pass'])
 
     if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
        import ipdb; ipdb.set_trace() # ativado para debug interativo
 
     hookdata = json.loads(request.data)
+
     print hookdata
+
     try:
       app_msg_status = "not a merge request"
       if hookdata['object_kind'] or hookdata['object_attributes']:
         if hookdata['object_kind'] != GL_STATUS['merge_request']:
           raise
+
         if hookdata['object_attributes']:
           if hookdata['object_attributes']['state'] == GL_STATE['OPENED']:
             if hookdata['object_attributes']['merge_status'] == GL_STATUS['cannot_be_merged']:
               app_msg_status = "cannot be merged"
-              commentMR(hookdata['object_attributes']['target_project_id'], \
-                        hookdata['object_attributes']['id'], \
-                        'merge não aceito. Verique "branch" e solicite novamente!')
+
               app.gitlab.addcommenttomergerequest(hookdata['object_attributes']['target_project_id'], \
                         hookdata['object_attributes']['id'], \
                         'merge não aceito. Verique "branch" e solicite novamente!')
@@ -141,18 +145,22 @@ def index():
             app_msg_status = "MR "+hookdata['object_attributes']['state']+\
                              " - "+hookdata['object_attributes']['merge_status']
             raise
+
     except: # IndexError: ou caso nao seja "merge_request"
         print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
         status = '{"status": "ERROR", "message": "'+app_msg_status+'"}'
         return status
 
-    print "\nProcessing merge request ...\n"
+    if hookdata['object_attributes']['state'] == GL_STATE['OPENED'] and \
+       hookdata['object_attributes']['merge_status'] == GL_STATUS['can_be_merged']:
+      print "\nProcessing merge request ...\n"
 
-    app.gitlab.addcommenttomergerequest(hookdata['object_attributes']['target_project_id'], \
-              hookdata['object_attributes']['id'], \
-              'Processing merge request ...')
+      # simples adição de comentário ao merge request
+      app.gitlab.addcommenttomergerequest(hookdata['object_attributes']['target_project_id'], \
+                hookdata['object_attributes']['id'], \
+                'Processing merge request ...['+hookdata['object_attributes']['merge_status']+']')
 
-    #print hookdata # ['object_attributes']['source_branch']
+      #print hookdata # ['object_attributes']['source_branch']
 
     return '{"status": "OK"}'
 
