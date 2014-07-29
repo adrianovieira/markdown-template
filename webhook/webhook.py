@@ -1,3 +1,10 @@
+# coding: utf-8
+'''
+App: Webhook
+description: permitir hook de conversão pandoc em "documentos/artigos"
+author: Adriano dos Santos Vieira
+character encoding: UTF-8
+'''
 from flask import Flask, request, json
 import requests
 import ConfigParser
@@ -109,7 +116,7 @@ def index():
     return '{"status": "OK"}'
 
 '''
-Inicia aplicacao
+Inicia aplicação
 '''
 app.setup = {} # global de configuracao
 
