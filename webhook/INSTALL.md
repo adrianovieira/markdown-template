@@ -6,7 +6,7 @@ Webhook simples para realizar conversão automatizada de documentos/artigos para
 Estrutura do diretório
 ----------------------
 
-```
+```markdown
 README.md:                   Este documento
 INSTALL.md                   Instruções para instalação desse hook web
 webhook.py                   A aplicação para hook web do repositório
@@ -26,4 +26,4 @@ Instalação
 1. Instale os requisitos necessários para a aplicação  
    ```pip install -r requirements.txt```  
 1. Crie o arquivo ```webhook.cfg``` com os dados específicos do ambiente em que está para ser instalado.  
-   Tenha como referência os parâmetros contidos no arquivo ```webhook-dist.cfg```.  
+   Tenha como referência os parâmetros contidos no arquivo ```webhook-dist.cfg```.
