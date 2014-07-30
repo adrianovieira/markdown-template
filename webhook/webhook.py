@@ -10,6 +10,8 @@ import requests
 import ConfigParser
 import gitlab
 
+# ipdb: inclusão desse módulo é autorealizada na função "index()"
+
 app = Flask(__name__)
 
 '''
@@ -40,11 +42,16 @@ def pandocParser(p_app_setup, p_webhook_data):
 
 '''
 getConfig: obtem dados de configuracao do ambiente
+
+abtidos dos arquivos:
+webhook-dist.cfg - padrão para o "webhook" (obrigatório)
+webhook.cfg - personalizado para o ambiente de trabalho/produção (opcional)
 '''
 def getConfig():
   Config = ConfigParser.ConfigParser()
+
   '''
-  obtem dados de configuracao padrao
+  # obtem dados de configuracao padrao
   '''
   try:
     ok = Config.read('webhook-dist.cfg')
@@ -107,6 +114,7 @@ DEBUG_INTERATIVO = 9 # ipdb ativado: "ipdb.set_trace()"
 
 '''
 Gitlab status and merge_status
+constantes para comparação com o webhook
 '''
 GL_STATE = {
    'CLOSED':'closed',
@@ -128,10 +136,14 @@ def index():
   elif request.method == 'POST':
 
     if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
-       import ipdb; ipdb.set_trace() # ativado para debug interativo
+       import ipdb; ipdb.set_trace() # ativação de debug interativo
 
+    # abtem dados do webhook gitlab
     webhook_data = json.loads(request.data)
 
+    if app.debug: print webhook_data
+
+    # abre conexao com servidor gitlab
     try:
       app.gitlab = gitlab.Gitlab(app.setup['gitlab_url'])
       if not hasattr(app, 'gitlab'): raise
@@ -140,6 +152,7 @@ def index():
       if app.debug: print app.log_message
       return '{"status": "'+app.log_message+'"}'
 
+    # autentica na servidor gitlab
     try:
       ok = app.gitlab.login(app.setup['webhook_user'], app.setup['webhook_pass'])
       if not ok: raise
@@ -148,8 +161,7 @@ def index():
       if app.debug: print app.log_message
       return '{"status": "'+app.log_message+'"}'
 
-    if app.debug: print webhook_data
-
+    # avalia webhook iniciado pelo gitlab
     try:
       app.log_message = "not a merge request"
       if webhook_data['object_kind'] or webhook_data['object_attributes']:
@@ -163,18 +175,19 @@ def index():
 
               app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
                         webhook_data['object_attributes']['id'], \
-                        'merge não aceito. Verique "branch" e solicite novamente!')
+                        'merge não aceito. Verique *branch* e solicite novamente!')
               raise # caso nao possa ser feito merge via gitlab "merge request invalido"
           else:
             app.log_message = "MR "+webhook_data['object_attributes']['state']+\
                              " - "+webhook_data['object_attributes']['merge_status']
             raise
 
-    except: # IndexError: ou caso nao seja "merge_request"
+    except: # array IndexError: ou caso nao seja "merge_request"
         if app.debug: print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
         status = '{"status": "ERROR", "message": "'+app.log_message+'"}'
         return status
 
+    # processa o webhook para "merge request"
     if webhook_data['object_attributes']['state'] == GL_STATE['OPENED'] and \
        webhook_data['object_attributes']['merge_status'] == GL_STATUS['can_be_merged']:
       if app.debug: print "\nProcessing merge request ...\n"
@@ -182,13 +195,14 @@ def index():
       # simples adição de comentário ao merge request
       app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
                 webhook_data['object_attributes']['id'], \
-                'Processing merge request ...['+webhook_data['object_attributes']['merge_status']+']')
+                'Processando *merge request* ...[*'+webhook_data['object_attributes']['merge_status']+'*]')
 
       # realisar a conversao de artigo para PDF
       pandocParser(app.setup, webhook_data)
 
     return '{"status": "OK"}'
 
+# trata erro http/500, mesmo quando em modo debug=true
 @app.errorhandler(500)
 def internal_error(error):
 
