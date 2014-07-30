@@ -127,14 +127,26 @@ def index():
 
    elif request.method == 'POST':
 
-    ok_git=app.gitlab = gitlab.Gitlab(app.setup['gitlab_url'])
-
-    ok_git=app.gitlab.login(app.setup['webhook_user'], app.setup['webhook_pass'])
-
     if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
        import ipdb; ipdb.set_trace() # ativado para debug interativo
 
     webhook_data = json.loads(request.data)
+
+    try:
+      app.gitlab = gitlab.Gitlab(app.setup['gitlab_url'])
+      if not hasattr(app, 'gitlab'): raise
+    except:
+      app.log_message = "ERROR: trying to set gitlab url."
+      if app.debug: print app.log_message
+      return '{"status": "'+app.log_message+'"}'
+
+    try:
+      ok = app.gitlab.login(app.setup['webhook_user'], app.setup['webhook_pass'])
+      if not ok: raise
+    except:
+      app.log_message = "ERROR: trying to set gitlab user/pass; or gitlab_url error."
+      if app.debug: print app.log_message
+      return '{"status": "'+app.log_message+'"}'
 
     if app.debug: print webhook_data
 
@@ -176,6 +188,11 @@ def index():
       pandocParser(app.setup, webhook_data)
 
     return '{"status": "OK"}'
+
+@app.errorhandler(500)
+def internal_error(error):
+
+    return '{"status": "500 error"}'
 
 '''
 Inicia aplicação
