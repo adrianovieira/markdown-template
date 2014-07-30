@@ -11,7 +11,7 @@ A fazer
 Estrutura do diretório
 ----------------------
 
-```
+```markdown
 README.md:                   Este documento
 INSTALL.md                   Instruções para instalação desse hook web
 webhook.py                   A aplicação para hook web do repositório
