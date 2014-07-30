@@ -121,11 +121,11 @@ GL_STATUS = {
 
 @app.route('/',methods=['GET', 'POST'])
 def index():
-   app_msg_status = ''
-   if request.method == 'GET':
-        return 'Aplicacao para webhook! \n Use adequadamente!'
 
-   elif request.method == 'POST':
+  if request.method == 'GET':
+    return 'Aplicacao para webhook! \n Use adequadamente!'
+
+  elif request.method == 'POST':
 
     if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
        import ipdb; ipdb.set_trace() # ativado para debug interativo
@@ -151,7 +151,7 @@ def index():
     if app.debug: print webhook_data
 
     try:
-      app_msg_status = "not a merge request"
+      app.log_message = "not a merge request"
       if webhook_data['object_kind'] or webhook_data['object_attributes']:
         if webhook_data['object_kind'] != GL_STATUS['merge_request']:
           raise
@@ -159,20 +159,20 @@ def index():
         if webhook_data['object_attributes']:
           if webhook_data['object_attributes']['state'] == GL_STATE['OPENED']:
             if webhook_data['object_attributes']['merge_status'] == GL_STATUS['cannot_be_merged']:
-              app_msg_status = "cannot be merged"
+              app.log_message = "cannot be merged"
 
               app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
                         webhook_data['object_attributes']['id'], \
                         'merge não aceito. Verique "branch" e solicite novamente!')
               raise # caso nao possa ser feito merge via gitlab "merge request invalido"
           else:
-            app_msg_status = "MR "+webhook_data['object_attributes']['state']+\
+            app.log_message = "MR "+webhook_data['object_attributes']['state']+\
                              " - "+webhook_data['object_attributes']['merge_status']
             raise
 
     except: # IndexError: ou caso nao seja "merge_request"
         if app.debug: print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
-        status = '{"status": "ERROR", "message": "'+app_msg_status+'"}'
+        status = '{"status": "ERROR", "message": "'+app.log_message+'"}'
         return status
 
     if webhook_data['object_attributes']['state'] == GL_STATE['OPENED'] and \
