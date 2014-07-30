@@ -13,22 +13,30 @@ import gitlab
 app = Flask(__name__)
 
 '''
-commentMR: post comment to Merge Request
+pandocParser: realizara a conversão do artigo para PDF
 
 @params:
-  id: The ID of a project (required)
-  merge_request_id: ID of merge request (required)
+  p_app_setup: The ID of a project (required)
+  p_webhook_data: ID of merge request (required)
   note: Text of comment (required)
 '''
-def commentMR(target_project_id, merge_request_id, note):
-  #POST /projects/:id/merge_request/:merge_request_id/comments
-  commented = False
+def pandocParser(p_app_setup, p_webhook_data):
 
-  print "target_project_id: {}".format(target_project_id)+\
-        ", merge_request_id: {}".format(merge_request_id)+\
-        ", note: "+note
+  converted = False
 
-  return commented
+  print 'APP_Setup:'
+  print p_app_setup
+
+  print 'WEBHook_data:'
+  print p_webhook_data
+
+  # insere comentário no merge request
+  #      "falta <obter-nome-do-artigo>
+  app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
+            webhook_data['object_attributes']['id'], \
+            'O artigo **'+'<obter-nome-do-artigo>'+'** será convertido!')
+
+  return converted
 
 '''
 getConfig: obtem dados de configuracao do ambiente
@@ -160,7 +168,8 @@ def index():
                 webhook_data['object_attributes']['id'], \
                 'Processing merge request ...['+webhook_data['object_attributes']['merge_status']+']')
 
-      #print webhook_data # ['object_attributes']['source_branch']
+      # realisar a conversao de artigo para PDF
+      pandocParser(app.setup, webhook_data)
 
     return '{"status": "OK"}'
 
