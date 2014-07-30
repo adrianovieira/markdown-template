@@ -24,11 +24,11 @@ def pandocParser(p_app_setup, p_webhook_data):
 
   converted = False
 
-  print 'APP_Setup:'
-  print p_app_setup
+  if app.debug: print 'APP_Setup:'
+  if app.debug: print p_app_setup
 
-  print 'WEBHook_data:'
-  print p_webhook_data
+  if app.debug: print 'WEBHook_data:'
+  if app.debug: print p_webhook_data
 
   # insere comentário no merge request
   #      "falta <obter-nome-do-artigo>
@@ -47,8 +47,10 @@ def getConfig():
   obtem dados de configuracao padrao
   '''
   try:
-    Config.read('webhook-dist.cfg')
+    ok = Config.read('webhook-dist.cfg')
+    if not ok: raise
   except:
+    app.log_message = "ERROR: trying to read dist-config file."
     return False
 
   app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
@@ -66,7 +68,8 @@ def getConfig():
   obtem dados de configuracao personalizados
   '''
   try:
-    Config.read('webhook.cfg')
+    ok = Config.read('webhook.cfg')
+    if not ok: raise
     if Config.get('enviroment', 'gitlab_url'):
       app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
     if Config.get('enviroment', 'webhook_user'):
@@ -88,7 +91,8 @@ def getConfig():
     if Config.get('enviroment', 'DEBUG'):
       app.setup['DEBUG'] = Config.get('enviroment', 'DEBUG')
   except:
-    print "WARNING: can't read custom-config file."
+    app.log_message = "WARNING: can't read custom-config file."
+    print app.log_message
     pass
 
   return True
@@ -132,7 +136,7 @@ def index():
 
     webhook_data = json.loads(request.data)
 
-    print webhook_data
+    if app.debug: print webhook_data
 
     try:
       app_msg_status = "not a merge request"
@@ -155,13 +159,13 @@ def index():
             raise
 
     except: # IndexError: ou caso nao seja "merge_request"
-        print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
+        if app.debug: print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
         status = '{"status": "ERROR", "message": "'+app_msg_status+'"}'
         return status
 
     if webhook_data['object_attributes']['state'] == GL_STATE['OPENED'] and \
        webhook_data['object_attributes']['merge_status'] == GL_STATUS['can_be_merged']:
-      print "\nProcessing merge request ...\n"
+      if app.debug: print "\nProcessing merge request ...\n"
 
       # simples adição de comentário ao merge request
       app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
@@ -186,4 +190,4 @@ if __name__ == '__main__':
     else:
       app.run()
   else:
-    print "ERROR: trying to read dist-config file."
+    print app.log_message #"ERROR: trying to read dist-config file."
