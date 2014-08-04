@@ -21,8 +21,8 @@ teste/                       Alguns scripts NodeJS para teste de POST neste hook
 Instalação
 ----------
 
-1. Para ambiente de produção veja o manual do ***Flask***
-   (Deployment Options <http://flask.pocoo.org/docs/deploying/>)
+1. Para ambiente de produção veja o manual do ***Flask***  
+   (Deployment Options)<http://flask.pocoo.org/docs/deploying/>
    1. Caso venha ser uma instalação para contribuir com o desenvolvimento, considere a criação de ambiente virtual.  
       ```virtualenv --help```
 1. Instale os requisitos necessários para a aplicação  
