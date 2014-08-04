@@ -21,8 +21,10 @@ teste/                       Alguns scripts NodeJS para teste de POST neste hook
 Instalação
 ----------
 
-1. Considere avaliar a necessidade de criação de ambiente virtual, principalmente se instalando para contribuir com o desenvolvimento deste *web hook*.  
-   ```virtualenv --help```
+1. Para ambiente de produção veja o manual do ***Flask***
+   (Deployment Options <http://flask.pocoo.org/docs/deploying/>)
+   1. Caso venha ser uma instalação para contribuir com o desenvolvimento, considere a criação de ambiente virtual.  
+      ```virtualenv --help```
 1. Instale os requisitos necessários para a aplicação  
    ```pip install -r requirements.txt```  
 1. Crie o arquivo ```webhook.cfg``` com os dados específicos do ambiente em que está para ser instalado.  
