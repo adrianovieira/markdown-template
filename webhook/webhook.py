@@ -31,8 +31,7 @@ def gitCheckout(p_target_project_id, p_mergerequest_id, p_git_branch):
 
   # insere comentário no merge request
   #      "falta <obter-nome-do-artigo> == BRANCH
-  mergerequest_comment = 'O artigo **<'+p_git_branch+ \
-                          '>** será obtido do repositório!'
+  mergerequest_comment = "O artigo **["+p_git_branch+"]** sera obtido do repositorio!"
 
   app.log_message = mergerequest_comment
   if app.debug: print app.log_message
@@ -149,7 +148,8 @@ constantes para comparação com o webhook
 '''
 GL_STATE = {
    'CLOSED':'closed',
-   'OPENED':'opened'
+   'OPENED':'opened',
+   'REOPENED':'reopened'
    }
 
 GL_STATUS = {
@@ -203,6 +203,10 @@ def index():
           if webhook_data['object_attributes']['target_branch'] != app.setup['gitlab_target_branch']:
             app.log_message = "target branch not allowed"
             raise
+
+          if webhook_data['object_attributes']['state'] == GL_STATE['REOPENED']:
+            app.log_message = "reopen not allowed for a merge request"
+            raise # não trata reopened, pois esse modo não inclui novos commits
 
           if webhook_data['object_attributes']['state'] == GL_STATE['OPENED']:
             if webhook_data['object_attributes']['merge_status'] == GL_STATUS['cannot_be_merged']:
