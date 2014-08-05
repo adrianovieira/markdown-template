@@ -36,7 +36,7 @@ def gitCheckout(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
   if app.debug: print app.log_message
 
   # insere comentário no merge request
-  app.gitlab.addcommenttomergerequest(p_target_project_id, \
+  if app.debug: app.gitlab.addcommenttomergerequest(p_target_project_id, \
                                       p_mergerequest_id, mergerequest_comment)
 
   return result
