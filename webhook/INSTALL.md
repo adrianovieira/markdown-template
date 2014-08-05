@@ -26,6 +26,11 @@ Instalação
    1.1. Caso venha ser uma instalação para contribuir com o desenvolvimento, considere a criação de ambiente virtual.  
       ```virtualenv --help```
 1. Instale os requisitos necessários para a aplicação  
-   ```pip install -r requirements.txt```  
+   Conforme sistema operacional  
+   - ```<yum|apt-get|port> install libgit2```  
+   - ```pip install -r requirements.txt```  
+   - [Pandoc Installing](<http://johnmacfarlane.net/pandoc/installing.html>) ```http://johnmacfarlane.net/pandoc/installing.html```
+     - Assegure-se de que as fontes extras a seguir estejam instaladas  
+       ```framed``` e ```ulem```.
 1. Crie o arquivo ```webhook.cfg``` com os dados específicos do ambiente em que está para ser instalado.  
    Tenha como referência os parâmetros contidos no arquivo ```webhook-dist.cfg```.
