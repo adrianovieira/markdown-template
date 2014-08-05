@@ -15,6 +15,34 @@ import gitlab
 app = Flask(__name__)
 
 '''
+gitCheckout: obtem "branch" de repositorio de "documentos/artigos"
+
+@params:
+  p_target_project_id: The ID of a project (required)
+  p_mergerequest_id: ID of merge request (required)
+  p_git_branch: "branch" do artigo para conversão em PDF (required)
+'''
+def gitCheckout(p_target_project_id, p_mergerequest_id, p_git_branch):
+
+  result = False
+
+  if app.debug: print 'APP_Setup:'
+  if app.debug: print p_git_branch
+
+  # insere comentário no merge request
+  #      "falta <obter-nome-do-artigo> == BRANCH
+  mergerequest_comment = 'O artigo **<'+p_git_branch+ \
+                          '>** será obtido do repositório!'
+
+  app.log_message = mergerequest_comment
+  if app.debug: print app.log_message
+
+  app.gitlab.addcommenttomergerequest(p_target_project_id, p_mergerequest_id, \
+                                      mergerequest_comment)
+
+  return result
+
+'''
 pandocParser: realizara a conversão do artigo para PDF
 
 @params:
