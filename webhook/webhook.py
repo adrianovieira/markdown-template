@@ -61,7 +61,8 @@ def pandocParser(p_app_setup, p_webhook_data):
 
   # insere comentário no merge request
   #      "falta <obter-nome-do-artigo>
-  app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
+  if app.debug: app.gitlab.addcommenttomergerequest( \
+            webhook_data['object_attributes']['target_project_id'], \
             webhook_data['object_attributes']['id'], \
             'O artigo **'+'<obter-nome-do-artigo>'+'** será convertido!')
 
@@ -236,7 +237,8 @@ def index():
       if app.debug: print app.log_message
 
       # simples adição de comentário ao merge request
-      app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
+      if app.debug:  app.gitlab.addcommenttomergerequest( \
+                                          webhook_data['object_attributes']['target_project_id'], \
                                           webhook_data['object_attributes']['id'], \
                                           'Processando *merge request* ...[*'+ \
                                           webhook_data['object_attributes']['merge_status']+'*]')
