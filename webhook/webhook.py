@@ -89,6 +89,7 @@ def getConfig():
     return False
 
   app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
+  app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
   app.setup['webhook_user'] = Config.get('enviroment', 'webhook_user')
   app.setup['webhook_pass'] = Config.get('enviroment', 'webhook_pass')
   app.setup['production'] = Config.get('enviroment', 'production')
@@ -107,6 +108,8 @@ def getConfig():
     if not ok: raise
     if Config.get('enviroment', 'gitlab_url'):
       app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
+    if Config.get('enviroment', 'gitlab_target_branch'):
+      app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
     if Config.get('enviroment', 'webhook_user'):
       app.setup['webhook_user'] = Config.get('enviroment', 'webhook_user')
     if Config.get('enviroment', 'webhook_pass'):
@@ -197,13 +200,17 @@ def index():
           raise
 
         if webhook_data['object_attributes']:
+          if webhook_data['object_attributes']['target_branch'] != app.setup['gitlab_target_branch']:
+            app.log_message = "target branch not allowed"
+            raise
+
           if webhook_data['object_attributes']['state'] == GL_STATE['OPENED']:
             if webhook_data['object_attributes']['merge_status'] == GL_STATUS['cannot_be_merged']:
               app.log_message = "cannot be merged"
 
               app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
                         webhook_data['object_attributes']['id'], \
-                        'merge não aceito. Verique *branch* e solicite novamente!')
+                        '*merge* não aceito. Verique *branch* e solicite novamente!')
               raise # caso nao possa ser feito merge via gitlab "merge request invalido"
           else:
             app.log_message = "MR "+webhook_data['object_attributes']['state']+\
@@ -211,24 +218,34 @@ def index():
             raise
 
     except: # array IndexError: ou caso nao seja "merge_request"
-        if app.debug: print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
         status = '{"status": "ERROR", "message": "'+app.log_message+'"}'
+        if app.debug: print 'Aplicacao webhook para "Merge Request"! \n Use adequadamente!'
+        if app.debug: print "ERROR: "+app.log_message
         return status
 
     # processa o webhook para "merge request"
+    status = '{"status": "nOK"}'
+    app.log_message = '{"type": "WARNING", "message": "processing"}'
     if webhook_data['object_attributes']['state'] == GL_STATE['OPENED'] and \
        webhook_data['object_attributes']['merge_status'] == GL_STATUS['can_be_merged']:
       if app.debug: print "\nProcessing merge request ...\n"
+      if app.debug: print app.log_message
 
       # simples adição de comentário ao merge request
       app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
-                webhook_data['object_attributes']['id'], \
-                'Processando *merge request* ...[*'+webhook_data['object_attributes']['merge_status']+'*]')
+                                          webhook_data['object_attributes']['id'], \
+                                          'Processando *merge request* ...[*'+ \
+                                          webhook_data['object_attributes']['merge_status']+'*]')
 
-      # realisar a conversao de artigo para PDF
-      pandocParser(app.setup, webhook_data)
+      # obtem do repositório a branch a converter para PDF
+      if gitCheckout(webhook_data['object_attributes']['target_project_id'], \
+                     webhook_data['object_attributes']['id'], \
+                     webhook_data['object_attributes']['source_branch']):
+        # realisar a conversao de artigo para PDF
+        if pandocParser(app.setup, webhook_data):
+           status = '{"status": "OK"}'
 
-    return '{"status": "OK"}'
+    return status
 
 # trata erro http/500, mesmo quando em modo debug=true
 @app.errorhandler(500)
