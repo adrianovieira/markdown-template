@@ -22,22 +22,22 @@ gitCheckout: obtem "branch" de repositorio de "documentos/artigos"
   p_mergerequest_id: ID of merge request (required)
   p_git_branch: "branch" do artigo para conversão em PDF (required)
 '''
-def gitCheckout(p_target_project_id, p_mergerequest_id, p_git_branch):
+def gitCheckout(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
 
   result = False
 
-  if app.debug: print 'APP_Setup:'
-  if app.debug: print p_git_branch
+  if app.debug: print 'mergerequest_branch:'
+  if app.debug: print p_mergerequest_branch
 
-  # insere comentário no merge request
-  #      "falta <obter-nome-do-artigo> == BRANCH
-  mergerequest_comment = "O artigo **["+p_git_branch+"]** sera obtido do repositorio!"
+  # <obter-nome-do-artigo> == BRANCH
+  mergerequest_comment = u"A ***branch* [%s]** e artigo serão obtidos do repositório!" % p_mergerequest_branch
 
   app.log_message = mergerequest_comment
   if app.debug: print app.log_message
 
-  app.gitlab.addcommenttomergerequest(p_target_project_id, p_mergerequest_id, \
-                                      mergerequest_comment)
+  # insere comentário no merge request
+  app.gitlab.addcommenttomergerequest(p_target_project_id, \
+                                      p_mergerequest_id, mergerequest_comment)
 
   return result
 
@@ -217,7 +217,7 @@ def index():
                         '*merge* não aceito. Verique *branch* e solicite novamente!')
               raise # caso nao possa ser feito merge via gitlab "merge request invalido"
           else:
-            app.log_message = "MR "+webhook_data['object_attributes']['state']+\
+            app.log_message = "merge request "+webhook_data['object_attributes']['state']+\
                              " - "+webhook_data['object_attributes']['merge_status']
             raise
 
