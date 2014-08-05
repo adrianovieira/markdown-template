@@ -2,26 +2,24 @@ var http = require('http');
 
 // dados teste para testar o merge
 var gitlab_mergerequest_body = {
-  "object_kind": "merge_request",
-  "object_attributes": {
-    "id": 99,
-    "target_branch": "master",
-    "source_branch": "ms-viewport",
-    "source_project_id": 14,
-    "author_id": 51,
-    "assignee_id": 6,
-    "title": "MS-Viewport",
-    "created_at": "2013-12-03T17:23:34Z",
-    "updated_at": "2013-12-03T17:23:34Z",
-    "st_commits": null,
-    "st_diffs": null,
-    "milestone_id": null,
-    "state": "opened",
-    "merge_status": "unchecked",
-    "target_project_id": 14,
-    "iid": 1,
-    "description": ""
-  }
+    'object_attributes': {
+        'target_project_id': 42,
+        'target_branch': 'master',
+        'merge_status': 'can_be_merged',
+        'source_branch': 'postgres-ha-concluido',
+        'created_at': '2014-08-05T14: 32: 32.575Z',
+        'title': 'PostgresHaConcluido',
+        'updated_at': '2014-08-05T14: 32: 33.522Z',
+        'assignee_id': 'None',
+        'iid': 20,
+        'state': 'opened',
+        'author_id': 13,
+        'milestone_id': 'None',
+        'id': 33,
+        'source_project_id': 42,
+        'description': ''
+    },
+    'object_kind': 'merge_request'
 };
 
 var mergereqString = JSON.stringify(gitlab_mergerequest_body);
@@ -61,4 +59,3 @@ req.on('error', function(e) {
 
 req.write(mergereqString);
 req.end();
-
