@@ -88,17 +88,18 @@ def getConfig():
     app.log_message = "ERROR: trying to read dist-config file."
     return False
 
-  app.setup['gitlab_host'] = Config.get('enviroment', 'gitlab_host')
-  app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
-  app.setup['webhook_user'] = Config.get('enviroment', 'webhook_user')
-  app.setup['webhook_pass'] = Config.get('enviroment', 'webhook_pass')
   app.setup['production'] = Config.get('enviroment', 'production')
-  app.setup['template_path'] = Config.get('enviroment', 'template_path')
+  app.setup['gitlab_host'] = Config.get('enviroment', 'gitlab_host')
+  app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
+  app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
+  app.setup['gitlab_webhook_user'] = Config.get('enviroment', 'gitlab_webhook_user')
+  app.setup['gitlab_webhook_pass'] = Config.get('enviroment', 'gitlab_webhook_pass')
+  app.setup['path_template'] = Config.get('enviroment', 'path_template')
+  app.setup['path_tmp'] = Config.get('enviroment', 'path_tmp')
   app.setup['pandoc'] = Config.get('enviroment', 'pandoc')
-  app.setup['pdflatex'] = Config.get('enviroment', 'pdflatex')
   app.setup['make'] = Config.get('enviroment', 'make')
-  app.setup['DEBUG_LEVEL'] = Config.get('enviroment', 'DEBUG_LEVEL')
   app.setup['DEBUG'] = Config.get('enviroment', 'DEBUG')
+  app.setup['DEBUG_LEVEL'] = Config.get('enviroment', 'DEBUG_LEVEL')
 
   '''
   obtem dados de configuracao personalizados
@@ -106,28 +107,30 @@ def getConfig():
   try:
     ok = Config.read('webhook.cfg')
     if not ok: raise
-    if Config.get('enviroment', 'gitlab_host'):
-      app.setup['gitlab_host'] = Config.get('enviroment', 'gitlab_host')
-    if Config.get('enviroment', 'gitlab_target_branch'):
-      app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
-    if Config.get('enviroment', 'webhook_user'):
-      app.setup['webhook_user'] = Config.get('enviroment', 'webhook_user')
-    if Config.get('enviroment', 'webhook_pass'):
-      app.setup['webhook_pass'] = Config.get('enviroment', 'webhook_pass')
     if Config.get('enviroment', 'production'):
       app.setup['production'] = Config.get('enviroment', 'production')
-    if Config.get('enviroment', 'template_path'):
-      app.setup['template_path'] = Config.get('enviroment', 'template_path')
+    if Config.get('enviroment', 'gitlab_host'):
+      app.setup['gitlab_host'] = Config.get('enviroment', 'gitlab_host')
+    if Config.get('enviroment', 'gitlab_webhook_user'):
+      app.setup['gitlab_webhook_user'] = Config.get('enviroment', 'gitlab_webhook_user')
+    if Config.get('enviroment', 'gitlab_webhook_pass'):
+      app.setup['gitlab_webhook_pass'] = Config.get('enviroment', 'gitlab_webhook_pass')
+    if Config.get('enviroment', 'gitlab_url'):
+      app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
+    if Config.get('enviroment', 'gitlab_target_branch'):
+      app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
+    if Config.get('enviroment', 'path_template'):
+      app.setup['path_template'] = Config.get('enviroment', 'path_template')
+    if Config.get('enviroment', 'path_tmp'):
+      app.setup['path_tmp'] = Config.get('enviroment', 'path_tmp')
     if Config.get('enviroment', 'pandoc'):
       app.setup['pandoc'] = Config.get('enviroment', 'pandoc')
-    if Config.get('enviroment', 'pdflatex'):
-      app.setup['pdflatex'] = Config.get('enviroment', 'pdflatex')
     if Config.get('enviroment', 'make'):
       app.setup['make'] = Config.get('enviroment', 'make')
-    if Config.get('enviroment', 'DEBUG_LEVEL'):
-      app.setup['DEBUG_LEVEL'] = Config.get('enviroment', 'DEBUG_LEVEL')
     if Config.get('enviroment', 'DEBUG'):
       app.setup['DEBUG'] = Config.get('enviroment', 'DEBUG')
+    if Config.get('enviroment', 'DEBUG_LEVEL'):
+      app.setup['DEBUG_LEVEL'] = Config.get('enviroment', 'DEBUG_LEVEL')
   except:
     app.log_message = "WARNING: can't read custom-config file."
     print app.log_message
