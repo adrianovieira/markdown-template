@@ -16,14 +16,45 @@ import zipfile, StringIO
 app = Flask(__name__)
 
 '''
-gitCheckout: obtem "branch" de repositorio de "documentos/artigos"
+artigoPandocParser: realizara a conversão do artigo para PDF
+
+@params:
+  p_target_project_id: The ID of a project (necessário)
+  p_mergerequest_id: ID of merge request (necessário)
+  p_app_artigo_path: path para o artigo (necessário)
+  p_app_artigo_name: nome do artigo (necessário)
+'''
+def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
+                 p_app_artigo_path, p_app_artigo_name):
+
+  result = False
+
+  import ipdb; ipdb.set_trace()
+
+  if app.debug: print 'APP_Artigo:'
+  if app.debug: print p_app_artigo_path
+  if app.debug: print p_app_artigo_name
+
+  app.log_message = u'O artigo **%s** será convertido para ***PDF***!' % p_app_artigo_name
+  if app.debug: print app.log_message
+
+  # insere comentário no merge request
+  #      "falta <obter-nome-do-artigo>
+  # insere comentário no merge request
+  if app.debug: app.gitlab.addcommenttomergerequest(p_target_project_id, \
+                                      p_mergerequest_id, app.log_message)
+
+  return result
+
+'''
+artigoDownload_zip: obtem "branch" de repositorio de "documentos/artigos"
 
 @params:
   p_target_project_id: The ID of a project (required)
   p_mergerequest_id: ID of merge request (required)
   p_mergerequest_branch: "branch" do artigo para conversão em PDF (required)
 '''
-def gitCheckout(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
+def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
 
   result = False
 
@@ -89,37 +120,6 @@ def gitCheckout(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
                                           p_mergerequest_id, app.log_message)
       if app.debug: print app.log_message
 
-
-  return result
-
-'''
-pandocParser: realizara a conversão do artigo para PDF
-
-@params:
-  p_target_project_id: The ID of a project (necessário)
-  p_mergerequest_id: ID of merge request (necessário)
-  p_app_artigo_path: path para o artigo (necessário)
-  p_app_artigo_name: nome do artigo (necessário)
-'''
-def pandocParser(p_target_project_id, p_mergerequest_id,\
-                 p_app_artigo_path, p_app_artigo_name):
-
-  result = False
-
-  import ipdb; ipdb.set_trace()
-
-  if app.debug: print 'APP_Artigo:'
-  if app.debug: print p_app_artigo_path
-  if app.debug: print p_app_artigo_name
-
-  app.log_message = u'O artigo **%s** será convertido!' % p_app_artigo_name
-  if app.debug: print app.log_message
-
-  # insere comentário no merge request
-  #      "falta <obter-nome-do-artigo>
-  # insere comentário no merge request
-  if app.debug: app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                      p_mergerequest_id, app.log_message)
 
   return result
 
@@ -302,12 +302,12 @@ def index():
                                           webhook_data['object_attributes']['merge_status']+'*]')
 
       # obtem do repositório a branch a converter para PDF
-      if gitCheckout(webhook_data['object_attributes']['target_project_id'], \
+      if artigoDownload_zip(webhook_data['object_attributes']['target_project_id'], \
                      webhook_data['object_attributes']['id'], \
                      webhook_data['object_attributes']['source_branch']):
 
         # realisar a conversao de artigo para PDF
-        if pandocParser(webhook_data['object_attributes']['target_project_id'], \
+        if artigoPandocParser(webhook_data['object_attributes']['target_project_id'], \
                         webhook_data['object_attributes']['id'], \
                         app.artigo_path, app.artigo_name):
            status = '{"status": "nOK"}'
