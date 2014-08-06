@@ -63,7 +63,7 @@ def gitCheckout(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
       app.log_message = u"***branch*** não contem diretório **[%s]** do artigo" % p_mergerequest_branch
       zip_content.getinfo(zip_member_artigo_dir) # verifica se diretorio de artigo existe
 
-      app.log_message = u"***branch*** não contem arquivo **[%s].md** do artigo" % p_mergerequest_branch
+      app.log_message = u"***branch*** não contem arquivo **[%s.md]** do artigo" % p_mergerequest_branch
       zip_content.getinfo(zip_member_artigo_name) # verifica se artigo existe
 
       app.log_message = u"Extraindo **branch** do artigo %s.md" % p_mergerequest_branch
