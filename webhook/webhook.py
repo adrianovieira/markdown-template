@@ -112,7 +112,7 @@ def pandocParser(p_target_project_id, p_mergerequest_id,\
   if app.debug: print p_app_artigo_path
   if app.debug: print p_app_artigo_name
 
-  app.log_message = 'O artigo **%s** será convertido!' % p_app_artigo_name
+  app.log_message = u'O artigo **%s** será convertido!' % p_app_artigo_name
   if app.debug: print app.log_message
 
   # insere comentário no merge request
@@ -120,11 +120,6 @@ def pandocParser(p_target_project_id, p_mergerequest_id,\
   # insere comentário no merge request
   if app.debug: app.gitlab.addcommenttomergerequest(p_target_project_id, \
                                       p_mergerequest_id, app.log_message)
-
-  if app.debug: app.gitlab.addcommenttomergerequest( \
-            webhook_data['object_attributes']['target_project_id'], \
-            webhook_data['object_attributes']['id'], \
-            'O artigo **'+'<obter-nome-do-artigo>'+'** será convertido!')
 
   return result
 
