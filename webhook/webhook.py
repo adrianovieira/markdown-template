@@ -269,8 +269,9 @@ app.setup = {} # global de configuracao
 
 if __name__ == '__main__':
   if getConfig(): # obtem dados de configuracao inicial
-    if app.setup['DEBUG'] == 'True':
-      app.debug = True
+    if app.setup['production'] == 'False': # para devel ou testes
+      if app.setup['DEBUG'] == 'True':
+        app.debug = True
       app.run(host='0.0.0.0')
     else:
       app.run()
