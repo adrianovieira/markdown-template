@@ -29,7 +29,8 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
 
   result = False
 
-  import ipdb; ipdb.set_trace()
+  if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
+     import ipdb; ipdb.set_trace() # ativação de debug interativo
 
   if app.debug: print 'APP_Artigo:'
   if app.debug: print p_app_artigo_path
@@ -224,9 +225,6 @@ def index():
     return 'Aplicacao para webhook! \n Use adequadamente!'
 
   elif request.method == 'POST':
-
-    if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
-       import ipdb; ipdb.set_trace() # ativação de debug interativo
 
     # abtem dados do webhook gitlab
     webhook_data = json.loads(request.data)
