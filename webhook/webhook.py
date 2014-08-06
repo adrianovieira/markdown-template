@@ -265,7 +265,7 @@ def index():
 
               app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
                         webhook_data['object_attributes']['id'], \
-                        '*merge* não aceito. Verique *branch* e solicite novamente!')
+                        '***merge request* não aceito**. Verique *branch* e solicite novamente!')
               raise # caso nao possa ser feito merge via gitlab "merge request invalido"
           else:
             app.log_message = "merge request "+webhook_data['object_attributes']['state']+\
@@ -283,14 +283,14 @@ def index():
     app.log_message = '{"type": "WARNING", "message": "processing"}'
     if webhook_data['object_attributes']['state'] == GL_STATE['OPENED'] and \
        webhook_data['object_attributes']['merge_status'] == GL_STATUS['can_be_merged']:
-      if app.debug: print "\nProcessing merge request ...\n"
+      if app.debug: print "\nProcessing merge request to build PDF...\n"
       if app.debug: print app.log_message
 
       # simples adição de comentário ao merge request
       if app.debug:  app.gitlab.addcommenttomergerequest( \
                                           webhook_data['object_attributes']['target_project_id'], \
                                           webhook_data['object_attributes']['id'], \
-                                          'Processando *merge request* ...[*'+ \
+                                          'Processando *merge request* para gerar PDF...[*'+ \
                                           webhook_data['object_attributes']['merge_status']+'*]')
 
       # obtem do repositório a branch a converter para PDF
@@ -298,7 +298,11 @@ def index():
                      webhook_data['object_attributes']['id'], \
                      webhook_data['object_attributes']['source_branch']):
 
+        import ipdb; ipdb.set_trace()
         app.log_message = ''
+        if app.debug: print app.log_message
+
+        if app.debug: print webhook_data
         # realisar a conversao de artigo para PDF
         #if pandocParser(app.setup, webhook_data):
         #   status = '{"status": "OK"}'
