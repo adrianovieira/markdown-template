@@ -78,6 +78,10 @@ def gitCheckout(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
       # extrai o zip para um diretório temporário
       zip_content.extractall(path_zip_extract)
 
+      # dados para parser de artigo
+      app.artigo_path = path_zip_extract +'/'+ zip_member_artigo_dir
+      app.artigo_name = p_mergerequest_branch+'.md'
+
       result = True
 
     except:
@@ -92,28 +96,37 @@ def gitCheckout(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
 pandocParser: realizara a conversão do artigo para PDF
 
 @params:
-  p_app_setup: The ID of a project (required)
-  p_webhook_data: ID of merge request (required)
-  note: Text of comment (required)
+  p_target_project_id: The ID of a project (necessário)
+  p_mergerequest_id: ID of merge request (necessário)
+  p_app_artigo_path: path para o artigo (necessário)
+  p_app_artigo_name: nome do artigo (necessário)
 '''
-def pandocParser(p_app_setup, p_webhook_data):
+def pandocParser(p_target_project_id, p_mergerequest_id,\
+                 p_app_artigo_path, p_app_artigo_name):
 
-  converted = False
+  result = False
 
-  if app.debug: print 'APP_Setup:'
-  if app.debug: print p_app_setup
+  import ipdb; ipdb.set_trace()
 
-  if app.debug: print 'WEBHook_data:'
-  if app.debug: print p_webhook_data
+  if app.debug: print 'APP_Artigo:'
+  if app.debug: print p_app_artigo_path
+  if app.debug: print p_app_artigo_name
+
+  app.log_message = 'O artigo **%s** será convertido!' % p_app_artigo_name
+  if app.debug: print app.log_message
 
   # insere comentário no merge request
   #      "falta <obter-nome-do-artigo>
+  # insere comentário no merge request
+  if app.debug: app.gitlab.addcommenttomergerequest(p_target_project_id, \
+                                      p_mergerequest_id, app.log_message)
+
   if app.debug: app.gitlab.addcommenttomergerequest( \
             webhook_data['object_attributes']['target_project_id'], \
             webhook_data['object_attributes']['id'], \
             'O artigo **'+'<obter-nome-do-artigo>'+'** será convertido!')
 
-  return converted
+  return result
 
 '''
 getConfig: obtem dados de configuracao do ambiente
@@ -298,14 +311,11 @@ def index():
                      webhook_data['object_attributes']['id'], \
                      webhook_data['object_attributes']['source_branch']):
 
-        import ipdb; ipdb.set_trace()
-        app.log_message = ''
-        if app.debug: print app.log_message
-
-        if app.debug: print webhook_data
         # realisar a conversao de artigo para PDF
-        #if pandocParser(app.setup, webhook_data):
-        #   status = '{"status": "OK"}'
+        if pandocParser(webhook_data['object_attributes']['target_project_id'], \
+                        webhook_data['object_attributes']['id'], \
+                        app.artigo_path, app.artigo_name):
+           status = '{"status": "nOK"}'
 
     return status
 
