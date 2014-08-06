@@ -9,6 +9,7 @@ from flask import Flask, request, json
 import requests
 import ConfigParser
 import gitlab
+import zipfile, StringIO
 
 # ipdb: inclusão desse módulo é autorealizada na função "index()"
 
@@ -26,18 +27,64 @@ def gitCheckout(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
 
   result = False
 
-  if app.debug: print 'mergerequest_branch:'
-  if app.debug: print p_mergerequest_branch
+  app.log_message = u"A ***branch* [%s]** e artigo serão obtidos do repositório!" \
+                            % p_mergerequest_branch
 
-  # <obter-nome-do-artigo> == BRANCH
-  mergerequest_comment = u"A ***branch* [%s]** e artigo serão obtidos do repositório!" % p_mergerequest_branch
-
-  app.log_message = mergerequest_comment
   if app.debug: print app.log_message
 
   # insere comentário no merge request
   if app.debug: app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                      p_mergerequest_id, mergerequest_comment)
+                                      p_mergerequest_id, app.log_message)
+
+  # url para download do repositório como arquivo zip
+  zip_file_req_branch_url = app.setup['gitlab_url']+'/repository/archive.zip?ref='\
+                                            +p_mergerequest_branch
+  app.log_message = "Obtendo **branch** do artigo %s.md" % p_mergerequest_branch
+  if app.debug: print app.log_message
+
+  zip_file_req_branch = requests.get(zip_file_req_branch_url)
+  if not zip_file_req_branch.ok:
+    app.log_message = "**branch [%s]** não obtida - status: [%s]" \
+                      % p_mergerequest_branch % zip_file_req_branch.status_code
+    if app.debug: print app.log_message
+
+  if zip_file_req_branch.ok:
+
+    # obtem conteúdo do arquivo zip obtido
+    zip_content = zipfile.ZipFile(StringIO.StringIO(zip_file_req_branch.content))
+
+    try:
+      # diretorio e nome de artigo == branch (do merge request)
+      repo_name = str.split(app.setup['gitlab_url'], '/')
+      repo_name = str.split(app.setup['gitlab_url'], '/')[len(repo_name)-1]
+      zip_member_artigo_dir = repo_name+'.git/'+p_mergerequest_branch+'/'
+      zip_member_artigo_name = zip_member_artigo_dir+p_mergerequest_branch+'.md'
+
+      app.log_message = u"***branch*** não contem diretório **[%s]** do artigo" % p_mergerequest_branch
+      zip_content.getinfo(zip_member_artigo_dir) # verifica se diretorio de artigo existe
+
+      app.log_message = u"***branch*** não contem arquivo **[%s].md** do artigo" % p_mergerequest_branch
+      zip_content.getinfo(zip_member_artigo_name) # verifica se artigo existe
+
+      app.log_message = u"Extraindo **branch** do artigo %s.md" % p_mergerequest_branch
+      if app.debug: print app.log_message
+
+      # obtem informacões da branch
+      branch_info = app.gitlab.getrepositorybranch(p_target_project_id, p_mergerequest_branch)
+
+      # local para extrair arquivos (conforme ID do último commit)
+      path_zip_extract = app.setup['path_tmp']+'/'+branch_info['commit']['id']
+
+      # extrai o zip para um diretório temporário
+      zip_content.extractall(path_zip_extract)
+
+      result = True
+
+    except:
+      app.gitlab.addcommenttomergerequest(p_target_project_id, \
+                                          p_mergerequest_id, app.log_message)
+      if app.debug: print app.log_message
+
 
   return result
 
@@ -189,7 +236,7 @@ def index():
 
     # autentica na servidor gitlab
     try:
-      ok = app.gitlab.login(app.setup['webhook_user'], app.setup['webhook_pass'])
+      ok = app.gitlab.login(app.setup['gitlab_webhook_user'], app.setup['gitlab_webhook_pass'])
       if not ok: raise
     except:
       app.log_message = "ERROR: trying to set gitlab user/pass; or gitlab_host error."
@@ -250,9 +297,11 @@ def index():
       if gitCheckout(webhook_data['object_attributes']['target_project_id'], \
                      webhook_data['object_attributes']['id'], \
                      webhook_data['object_attributes']['source_branch']):
+
+        app.log_message = ''
         # realisar a conversao de artigo para PDF
-        if pandocParser(app.setup, webhook_data):
-           status = '{"status": "OK"}'
+        #if pandocParser(app.setup, webhook_data):
+        #   status = '{"status": "OK"}'
 
     return status
 
