@@ -20,7 +20,7 @@ gitCheckout: obtem "branch" de repositorio de "documentos/artigos"
 @params:
   p_target_project_id: The ID of a project (required)
   p_mergerequest_id: ID of merge request (required)
-  p_git_branch: "branch" do artigo para conversão em PDF (required)
+  p_mergerequest_branch: "branch" do artigo para conversão em PDF (required)
 '''
 def gitCheckout(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
 
@@ -88,7 +88,7 @@ def getConfig():
     app.log_message = "ERROR: trying to read dist-config file."
     return False
 
-  app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
+  app.setup['gitlab_host'] = Config.get('enviroment', 'gitlab_host')
   app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
   app.setup['webhook_user'] = Config.get('enviroment', 'webhook_user')
   app.setup['webhook_pass'] = Config.get('enviroment', 'webhook_pass')
@@ -106,8 +106,8 @@ def getConfig():
   try:
     ok = Config.read('webhook.cfg')
     if not ok: raise
-    if Config.get('enviroment', 'gitlab_url'):
-      app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
+    if Config.get('enviroment', 'gitlab_host'):
+      app.setup['gitlab_host'] = Config.get('enviroment', 'gitlab_host')
     if Config.get('enviroment', 'gitlab_target_branch'):
       app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
     if Config.get('enviroment', 'webhook_user'):
@@ -177,7 +177,7 @@ def index():
 
     # abre conexao com servidor gitlab
     try:
-      app.gitlab = gitlab.Gitlab(app.setup['gitlab_url'])
+      app.gitlab = gitlab.Gitlab(app.setup['gitlab_host'])
       if not hasattr(app, 'gitlab'): raise
     except:
       app.log_message = "ERROR: trying to set gitlab url."
@@ -189,7 +189,7 @@ def index():
       ok = app.gitlab.login(app.setup['webhook_user'], app.setup['webhook_pass'])
       if not ok: raise
     except:
-      app.log_message = "ERROR: trying to set gitlab user/pass; or gitlab_url error."
+      app.log_message = "ERROR: trying to set gitlab user/pass; or gitlab_host error."
       if app.debug: print app.log_message
       return '{"status": "'+app.log_message+'"}'
 
