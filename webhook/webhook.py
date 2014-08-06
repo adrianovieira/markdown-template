@@ -10,6 +10,7 @@ import requests
 import ConfigParser
 import gitlab
 import zipfile, StringIO
+import os, subprocess
 
 # ipdb: inclusão desse módulo é autorealizada na função "index()"
 
@@ -36,14 +37,39 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
   if app.debug: print p_app_artigo_path
   if app.debug: print p_app_artigo_name
 
-  app.log_message = u'O artigo **%s** será convertido para ***PDF***!' % p_app_artigo_name
+  app.log_message = u'O artigo **%s** está sendo convertido para ***PDF***!' % p_app_artigo_name
   if app.debug: print app.log_message
 
   # insere comentário no merge request
-  #      "falta <obter-nome-do-artigo>
-  # insere comentário no merge request
-  if app.debug: app.gitlab.addcommenttomergerequest(p_target_project_id, \
+  app.gitlab.addcommenttomergerequest(p_target_project_id, \
                                       p_mergerequest_id, app.log_message)
+
+  # DIRETORIOS TEMPORARIOS E DIRETORIO DE TEMPLATE PANDOC-PARSER
+
+  root_dir=os.popen("pwd").read()[:-1]
+  os.chdir(p_app_artigo_path)
+  parse=subprocess.Popen(["make", "-f", app.setup['path_template']+"/makefile", "pdf", \
+                    "artigo="+p_app_artigo_name],\
+                    stdout=subprocess.PIPE).communicate()[0]
+  os.chdir(root_dir)
+
+  if parse == '':
+      app.log_message = 'Ocorreu erro (*make*) na conversão do arquivo (%s) para ***PDF***!'\
+                        % p_app_artigo_name
+  if "[ OK ]" in parse:
+      app.log_message = 'O artigo (%s) foi convertido para ***PDF***!'\
+                        % p_app_artigo_name
+      result = True
+  else:
+    app.log_message = 'Ocorreu erro (*pandoc*) na conversão do arquivo (%s) para ***PDF***! '+\
+                      '\```%s```'\
+                          % p_app_artigo_name % parse
+
+  if app.debug: print app.log_message
+
+  app.gitlab.addcommenttomergerequest(p_target_project_id, \
+                                      p_mergerequest_id, app.log_message)
+
 
   return result
 
@@ -308,7 +334,11 @@ def index():
         if artigoPandocParser(webhook_data['object_attributes']['target_project_id'], \
                         webhook_data['object_attributes']['id'], \
                         app.artigo_path, app.artigo_name):
-           status = '{"status": "nOK"}'
+          status = '{"status": "OK"}'
+        else:
+          status = '{"status": "notOK"}'
+      else:
+        status = '{"status": "notOK"}'
 
     return status
 
