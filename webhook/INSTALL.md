@@ -6,10 +6,10 @@ Webhook simples para realizar conversão automatizada de documentos/artigos para
 Estrutura do diretório
 ----------------------
 
-```markdown
-README.md:                   Este documento
-INSTALL.md                   Instruções para instalação desse hook web
-webhook.py                   A aplicação para hook web do repositório
+```texinfo
+README.md:                   Visão geral desse Web Hook
+INSTALL.md                   Este documento
+webhook.py                   A aplicação para Web Hook do repositório
                              *documentos/artigos* no gitlab
 webhook-dist.cfg:            Arquivo de configuração padrão (obrigatório)
 requirements.txt:            Requisitos padrão para a aplicação
@@ -25,12 +25,12 @@ Instalação
    [Deployment Options](<http://flask.pocoo.org/docs/deploying/>) ```http://flask.pocoo.org/docs/deploying/```  
    1.1. Caso venha ser uma instalação para contribuir com o desenvolvimento, considere a criação de ambiente virtual.  
       ```virtualenv --help```
-1. Instale os requisitos necessários para a aplicação  
+1. Instale os requisitos necessários para executar a aplicação  
    Conforme sistema operacional  
-   - ```<yum|apt-get|port> install libgit2```  
-   - ```pip install -r requirements.txt```  
+   - ```<yum|apt-get|port> install make```  Ferramenta para executar um grupo de scripts de forma automatizada
    - [Pandoc Installing](<http://johnmacfarlane.net/pandoc/installing.html>) ```http://johnmacfarlane.net/pandoc/installing.html```
      - Assegure-se de que as fontes extras a seguir estejam instaladas  
        ```framed``` e ```ulem```.
+   - ```pip install -r requirements.txt```  
 1. Crie o arquivo ```webhook.cfg``` com os dados específicos do ambiente em que está para ser instalado.  
    Tenha como referência os parâmetros contidos no arquivo ```webhook-dist.cfg```.
