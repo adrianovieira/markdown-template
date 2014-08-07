@@ -2,7 +2,7 @@
 '''
 App: Webhook
 description: permitir hook de conversão pandoc em "documentos/artigos"
-author: Adriano dos Santos Vieira
+author: Adriano dos Santos Vieira <adriano.vieira@dataprev.gov.br>
 character encoding: UTF-8
 '''
 from flask import Flask, request, json
