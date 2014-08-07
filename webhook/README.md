@@ -1,20 +1,22 @@
 WebHook
 =======
 
-Webhook simples para realizar conversão automatizada de documentos/artigos para PDF
+*Web Hook* para realizar conversão automatizada de documentos/artigos para PDF
 
 A fazer
 -------
 
-```um monte de código ainda precisa ser escrito```
+- ~~Criar roteiro de instalação desse Web Hook~~
+- Definir e implementar método para disponibilizar o PDF gerado
+- Definir regra para exclusão de arquivos temporários gerados pelo Web Hook
 
 Estrutura do diretório
 ----------------------
 
-```markdown
+```texinfo
 README.md:                   Este documento
-INSTALL.md                   Instruções para instalação desse hook web
-webhook.py                   A aplicação para hook web do repositório
+INSTALL.md                   Instruções para instalação desse Web Hook
+webhook.py                   A aplicação para Web Hook do repositório
                              *documentos/artigos* no gitlab
 webhook-dist.cfg:            Arquivo de configuração padrão (obrigatório)
 requirements.txt:            Requisitos padrão para a aplicação
