@@ -3,6 +3,17 @@ WebHook
 
 Webhook simples para realizar conversão automatizada de documentos/artigos para PDF.
 
+Pré-requisitos
+--------------
+
+Para instalação desse *Web Hook* são consideradas as seguintes premissas tecnológicas:
+
+- Plataforma para implantação (*deploy*): ***Linux***
+- Linguagem: Python 2.7.x
+- Framework: Flask 0.10 (ou superior)
+- Parser PDF: Pandoc 0.12.3 (ou superior)
+- Utilário construtor: GNU Make
+
 Estrutura do diretório
 ----------------------
 
