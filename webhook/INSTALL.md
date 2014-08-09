@@ -14,7 +14,7 @@ Para instalação desse *Web Hook* são consideradas as seguintes premissas tecn
 - Framework: Flask 0.10 (ou superior)
 - Parser PDF: Pandoc 0.12.3 (ou superior)
 - Utilitário construtor: GNU Make
-- Template Pandoc: www-git/documentos/markdown-template
+- Template Pandoc: http://www-git/documentos/markdown-template
 
 Estrutura do diretório
 ----------------------
