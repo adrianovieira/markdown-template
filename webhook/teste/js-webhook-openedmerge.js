@@ -10,11 +10,11 @@ var gitlab_mergerequest_body = {
         'created_at': '2014-08-07T15: 24: 56.404Z',
         'title': 'Teste',
         'updated_at': '2014-08-07T15: 26: 15.752Z',
-        'assignee_id': None,
+        'assignee_id': "None",
         'iid': 45,
         'state': 'opened',
         'author_id': 13,
-        'milestone_id': None,
+        'milestone_id': "None",
         'id': 58,
         'source_project_id': 42,
         'description': ''
