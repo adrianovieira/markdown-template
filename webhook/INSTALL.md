@@ -34,3 +34,13 @@ Instalação
    - ```pip install -r requirements.txt```  
 1. Crie o arquivo ```webhook.cfg``` com os dados específicos do ambiente em que está para ser instalado.  
    Tenha como referência os parâmetros contidos no arquivo ```webhook-dist.cfg```.
+1. Configure URL no servidor para ***download*** do PDF gerado
+   - raiz: a mesma de ```path_tmp``` em ```webhook.cfg```
+     - exemplo se em **webconfig.cfg**:  
+       ```path_tmp = /var/tmp/webhook_tmp/download```
+
+       exemplo no *apache*:  
+       ```Alias /download /var/tmp/webhook_tmp/download```
+
+   - download será como a seguir:
+     ```http://< servidor_webhook >/download/<link_artigo_PDF>
