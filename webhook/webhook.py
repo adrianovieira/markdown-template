@@ -56,10 +56,16 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
   if parse == '':
       app.log_message = 'Ocorreu erro (*make*) na conversão do arquivo (%s) para ***PDF***!'\
                         % p_app_artigo_name
+
+  import ipdb; ipdb.set_trace()
   if "[ OK ]" in parse:
-      app.log_message = 'O artigo (%s) foi convertido para ***PDF***!'\
-                        % p_app_artigo_name
-      result = True
+    download_path = app.setup['path_tmp']+"/"+app.artigo_branch_id
+    download = os.popen("mkdir -p "+download_path).read()
+    download = os.popen("cp "+p_app_artigo_path+p_app_artigo_name+'.pdf'+" "\
+                             +download_path)
+    link = app.setup['webhook_host_url']+'/download/'+app.artigo_branch_id+'/'+p_app_artigo_name+'.pdf'
+    app.log_message = 'O artigo (%s) foi convertido para ***[PDF](%s) ***!' % (p_app_artigo_name, link)
+    result = True
   else:
     app.log_message = 'Ocorreu erro (*pandoc*) na conversão do arquivo (%s) para ***PDF***! '+\
                       '\```%s```'\
@@ -137,8 +143,9 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
       zip_content.extractall(path_zip_extract)
 
       # dados para parser de artigo
+      app.artigo_branch_id = branch_info['commit']['id']
       app.artigo_path = path_zip_extract +'/'+ zip_member_artigo_dir
-      app.artigo_name = p_mergerequest_branch+'.md'
+      app.artigo_name = p_mergerequest_branch
 
       result = True
 
@@ -254,6 +261,7 @@ def index():
 
     # abtem dados do webhook gitlab
     webhook_data = json.loads(request.data)
+    app.setup['webhook_host_url'] = request.host_url
 
     if app.debug: print webhook_data
 
