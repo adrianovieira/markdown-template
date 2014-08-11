@@ -57,7 +57,6 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
       app.log_message = 'Ocorreu erro (*make*) na conversão do arquivo (%s) para ***PDF***!'\
                         % p_app_artigo_name
 
-  import ipdb; ipdb.set_trace()
   if "[ OK ]" in parse:
     download_path = app.setup['path_tmp']+"/"+app.artigo_branch_id
     download = os.popen("mkdir -p "+download_path).read()
