@@ -50,11 +50,11 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
   os.chdir(p_app_artigo_path)
   parse=subprocess.Popen(["make", "-f", app.setup['path_template']+"/makefile", "pdf", \
                     "artigo="+p_app_artigo_name],\
-                    stdout=subprocess.PIPE).communicate()[0]
+                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT).communicate()[0]
   os.chdir(root_dir)
 
   if parse == '':
-      app.log_message = 'Ocorreu erro (*make*) na conversão do arquivo (%s) para ***PDF***!'\
+      app.log_message = 'Ocorreu erro ( ***make*** ) na conversão do arquivo (%s) para ***PDF***!'\
                         % p_app_artigo_name
 
   if "[ OK ]" in parse:
@@ -66,15 +66,15 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
     app.log_message = 'O artigo (%s) foi convertido para ***[PDF](%s) ***!' % (p_app_artigo_name, link)
     result = True
   else:
-    app.log_message = 'Ocorreu erro (*pandoc*) na conversão do arquivo (%s) para ***PDF***! '+\
-                      '\```%s```'\
-                          % p_app_artigo_name % parse
+    app.log_message = u'Ocorreu erro ( ***pandoc*** ) na conversão do arquivo (%s) para ***PDF***!' % p_app_artigo_name
+    if app.debug: print parse
+    app.gitlab.addcommenttomergerequest(p_target_project_id, \
+                                        p_mergerequest_id, parse)
 
   if app.debug: print app.log_message
 
   app.gitlab.addcommenttomergerequest(p_target_project_id, \
                                       p_mergerequest_id, app.log_message)
-
 
   return result
 
