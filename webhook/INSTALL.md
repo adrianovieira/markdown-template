@@ -56,4 +56,4 @@ Instalação
        ```Alias /download /var/tmp/webhook_tmp/download```
 
    - download será como a seguir:
-     ```http://< servidor_webhook >/download/<link_artigo_PDF>
+     ```http://<servidor_webhook>/download/<link_artigo_PDF>```
