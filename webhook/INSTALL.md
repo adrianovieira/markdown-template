@@ -57,3 +57,6 @@ Instalação
 
    - download será como a seguir:
      ```http://<servidor_webhook>/download/<link_artigo_PDF>```
+1. Configure web hook para o projeto  
+   Esse web hook é para conversão automatizada de artigos quando for solicitado ***"merge request"*** via interface do *Gitlab*.
+   - acesse e configure o web hook em <http://www-git/documentos/artigos/hooks>
