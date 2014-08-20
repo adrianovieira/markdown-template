@@ -4,20 +4,19 @@ tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Arquitetura Oracle Multitenant
 abstract: Este artigo tem como objetivo apresentar a option Oracle Multitenant, incluída a partir do Oracle Database 12c Enterprise Edition. Esta nova option promove a consolidação dos ambientes de banco de dados de forma simplificada, não exigindo alterações nas aplicações. Nesta arquitetura, um multitenant container database (CDB) pode conter vários pluggable databases (PDBs).
 author:
-- affiliation: SUPS
+- affiliation: DEST/DSBD
   name: Ana Cristina Lobo Pickel
 responsibility:
-- affiliation: SUPS
+- affiliation: DEST/DSBD
   name: Henrique de Souza Mello
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
-superintendência: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
+superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Suporte de TIC - DEST'
 tags:
 - Oracle 12c
 - Databases
 - Feature
 - Multitenant
-
 ---
 
 Introdução
