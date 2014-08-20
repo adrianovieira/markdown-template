@@ -231,7 +231,7 @@ references:
     day: 15
     month: Agosto
     year: 2014
-  publisher: Oracle
+  publisher: Oracle Corporation
   type: book
   issued:
     year: 2014
@@ -247,7 +247,7 @@ references:
     day: 15
     month: Agosto
     year: 2014
-  publisher: Oracle
+  publisher: Oracle Corporation
   type: book
   issued:
     year: 2014	
@@ -260,21 +260,24 @@ references:
     day: 15
     month: Agosto
     year: 2014
-  publisher: Oracle
+  publisher: Oracle Corporation
   type: webpage
   issued:
     year: 2014	
 	
 - id: Oracle2014D
   title: Oracle Multitenant - Oracle White Paper June 2013
-  author: Oracle
+  author:
+  - family: Llewellyn
+    given: Bryn
   URL: 'http://www.oracle.com/technetwork/database/multitenant/overview/multitenant-wp-12c-2078248.pdf'
   accessed:
     day: 15
     month: Agosto
     year: 2014
-  publisher: Oracle
+  publisher: Oracle Corporation
   type: article
   issued:
     year: 2013		
+    month: 06
 ---
