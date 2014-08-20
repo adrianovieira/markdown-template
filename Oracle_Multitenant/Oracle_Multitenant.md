@@ -221,7 +221,11 @@ Referências
 references:
 - id: Oracle2014A
   title: Oracle® Database Concepts 12c Release 1 (12.1)
-  author: Oracle
+  author:
+  - family: Ashdown
+    given: Lance
+  - family: Kyte
+    given: Tom
   URL: 'http://docs.oracle.com/database/121/CNCPT/toc.htm'
   accessed:
     day: 15
@@ -231,10 +235,13 @@ references:
   type: book
   issued:
     year: 2014
+    month: 08
 	
 - id: Oracle2014B
   title: Oracle® Database Administrator's Guide 12c Release 1 (12.1)
-  author: Oracle
+  author:
+  - family: Urbano
+    given: Randy
   URL: 'http://docs.oracle.com/database/121/ADMIN/toc.htm'
   accessed:
     day: 15
@@ -244,17 +251,17 @@ references:
   type: book
   issued:
     year: 2014	
+    month: 07
 
 - id: Oracle2014C
   title: Oracle® Database New Features Guide 12c Release 1 (12.1)
-  author: Oracle
   URL: 'http://docs.oracle.com/database/121/NEWFT/toc.htm'
   accessed:
     day: 15
     month: Agosto
     year: 2014
   publisher: Oracle
-  type: book
+  type: webpage
   issued:
     year: 2014	
 	
@@ -270,4 +277,4 @@ references:
   type: article
   issued:
     year: 2013		
-
+---
