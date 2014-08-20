@@ -40,7 +40,7 @@ Algumas motivações para a consolidação são elencadas abaixo:
 A nova feature Oracle Multitenant possibilita a consolidação dos ambientes de banco de dados de forma transparente, sem requerer modificações ou causar impacto nos níveis de desempenho das aplicações.
 
 
-Este artigo tem como objetivo apresentar arquitetura Oracle Multitenant.
+Este artigo tem como objetivo apresentar arquitetura Oracle Multitenant tendo como referência @Oracle2014A, @Oracle2014B, @Oracle2014C e ainda @Oracle2014D.
 
 
 Desafios
