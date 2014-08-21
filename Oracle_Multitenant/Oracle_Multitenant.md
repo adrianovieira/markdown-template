@@ -17,6 +17,7 @@ tags:
 - Databases
 - Feature
 - Multitenant
+
 ---
 
 Introdução
@@ -51,7 +52,7 @@ Alguns desafios são apresentados na adoção do Oracle Multitenant:
 
   - Mapear o ambiente atual, identificando as necessidades de consolidação e os benefícios a serem alcançados;
 
-  - Planejar o novo ambiente a ser consolidado e
+  - Planejar o novo ambiente a ser consolidado, identificando os requisitos necessários para a escolha da estratégia de consolidação e
 
   - Identificar os recursos (software e hardware) requeridos para o ambiente planejado.
 
@@ -212,8 +213,7 @@ Conclusão
 
 A option Oracle Multitenant oferece novos recursos que possibilitam a consolidação de banco de dados, e promove diversos benefícios, dentre eles, um melhor aproveitamento de recursos de hardware, melhoria no gerenciamento e administração de todo ambiente, a economia em custos em TI e assim por diante. 
 
-Cada Empresa deve avaliar seu ambiente de banco de dados e identificar suas necessidades de consolidação. Em caso positivo, um planejamento prévio deve ser elaborado, para que o novo ambiente consolidado através do Oracle Multitenant seja devidamente implantado.
-
+Apesar dos benefícios evidentes que a tecnologia traz, cada Empresa deve avaliar seu ambiente de banco de dados e identificar suas necessidades de consolidação. Em caso positivo, um planejamento prévio deve ser elaborado, para que o novo ambiente consolidado através do Oracle Multitenant seja devidamente implantado.
 
 Referências
 ===========
