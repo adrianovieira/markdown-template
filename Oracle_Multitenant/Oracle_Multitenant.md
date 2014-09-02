@@ -69,7 +69,7 @@ A adoção da arquitetura Oracle Multitenant  traz os seguintes benefícios :
 
   - Facilidade no gerenciamento e monitoração do ambiente consolidado – apenas um único banco de dados físico (um set de arquivos e uma instance) será gerenciado e monitorado. Estratégias de backup e recuperação também ficarão simplificadas.
 
-  - Separação de dados e código – apesar da consolidação em um único banco de dados físico, é possível recuperar point-in-time ou executar  flashback somente um pluggable database (PDB), sem afetar os outros pluggable databases (PDBs) que estão compartilhando o mesmo container database (CDB).
+  - Separação de dados e código – apesar da consolidação em um único banco de dados físico, é possível recuperar point-in-time ou executar flashback em somente um pluggable database (PDB), sem afetar os outros pluggable databases (PDBs) que estão compartilhando o mesmo container database (CDB).
 
   - Facilidade na análise de performance – é muito mais simples coletar métricas para um único banco de dados. Realizar ajustes em uma SGA  é muito mais simples e rápido do que em várias SGAs.
 
@@ -100,9 +100,9 @@ Um CDB possui os seguintes componentes:
   
 Cada container possui um único ID e nome dentro do CDB. A figura 1 mostra um CBD com vários PDBs.
 
-![Figura 1 - CDB com PDBs](imagens/Figura1.jpg)	
+![CDB com PDBs](imagens/Figura1.jpg)	
 
-*Figura 1 - CDB com PDBs*
+\pagebreak
 
 
 Arquitetura do Dicionário de Dados em um CDB
@@ -111,16 +111,16 @@ Arquitetura do Dicionário de Dados em um CDB
 
 Em uma arquitetura non-CDB, o dicionário de dados será comum, ou seja, este conterá linhas que descrevem entidades do Oracle e linhas que descrevem entidades criadas pelos usuários. A figura 2 mostra primeiro o dicionário de dados com metadados do Oracle logo após a criação do banco de dados. Em seguida, é mostrado o dicionário de dados com metadados do Oracle e metadados de tabelas de usuários.
 
-![Figura 2 - Dicionário de Dados Comum](imagens/Figura2.jpg)	
+![Dicionário de Dados Comum](imagens/Figura2.jpg)	
 
-*Figura 2 - Dicionário de Dados Comum*
+\pagebreak
 
 
 Já em uma arquitetura CBD, o dicionário de dados é dividido entre o Root e os PDBs. Esta divisão, permite que o Oracle gerencie cada PDB e o Root de forma separada. A figura 3 mostra este cenário.
 
-![Figura 3 - Dicionários de Dados Separados](imagens/Figura3.jpg)
+![Dicionários de Dados Separados](imagens/Figura3.jpg)
 
-*Figura 3 - Dicionários de Dados Separados*
+\pagebreak
 
 
 Existem ponteiros no dicionário de dados do PDB para o dicionário de dados do Root. Em cada PDB a tabela OBJ$ tem um ponteiro para a tabela OBJ$ no Root, que por conseguinte armazena sua definição.
@@ -144,9 +144,9 @@ Services em um CDB
 
 Clientes devem conectar-se aos PDBs através de serviços. Uma conexão utiliza um nome de serviço e inicia uma nova sessão em um PDB. Uma sessão possui um current container exclusivo. A figura 4 mostra dois clientes que se conectam a PDBs usando dois listeners diferentes.
 
-![Figura 4 - Services em um CBD](imagens/Figura4.jpg)
+![Services em um CBD](imagens/Figura4.jpg)
 
-*Figura 4 - Services em um CBD*
+\pagebreak
 
 
 Common e Local Users em um CDB
@@ -159,9 +159,9 @@ Um usuário local é aquele que pode operar em somente um único PDB e sua ident
 
 A figura 5 mostra as possibilidades de usuários em um CDB.
 
-![Figura 5 – Usuários em um CBD](imagens/Figura5.jpg)
+![Usuários em um CBD](imagens/Figura5.jpg)
 
-*Figura 5 – Usuários em um CBD*
+\pagebreak
 
 
 Common e Local Roles em um CDB
@@ -202,9 +202,9 @@ Um CDB possui os seguintes arquivos físicos:
 
 A figura 6 mostra os aspectos de armazenamento da arquitetura física em um CDB.
 
-![Figura 6 – Arquitetura física em um CDB](imagens/Figura6.jpg)
+![Arquitetura física de um CDB](imagens/Figura6.jpg)
 
-*Figura 6 – Arquitetura física em um CDB*
+\pagebreak
 
 
 Conclusão
