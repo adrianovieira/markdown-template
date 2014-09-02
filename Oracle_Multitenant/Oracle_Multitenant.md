@@ -20,6 +20,8 @@ tags:
 
 ---
 
+\hyphenpenalty 10000
+
 Introdução
 ==========
 
