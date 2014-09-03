@@ -195,11 +195,9 @@ Nesta etapa, os administradores de dados compartilham o objeto solicitado pela e
 
 **Realizar a modelagem na ferramenta**
 
-Nesta etapa, a equipe de desenvolvimento cadastra na ferramenta de modelagem de dados Oracle Designer os objetos que serão utilizados pelo sistema.
+Nesta etapa, a equipe de desenvolvimento em conjunto com os ADs efetuam a criação dos objetos que serão utilizados pelo sistema na ferramenta de modelagem de dados Oracle Designer.
 
-Se a equipe de desenvolvimento solicitar a aplicação no banco de dados do ambiente de desenvolvimento, a equipe de administradores de dados (COGD) primeiro atualiza o modelo lógico e físico antes de atualizar o banco de dados.
-
-Caso a modelagem realizada pela equipe de desenvolvimento seja para aplicar nos ambientes de testes ou treinamento, primeiro é necessário gerar uma *baseline*, ou seja, criar uma configuração no Oracle Designer. As configurações são estáticas, ou seja, ao realizar alterações na modelagem é necessário que seja gerada uma nova configuração para refletir as alterações realizadas.
+A atuação em conjunta da equipe de desenvolvimento com os ADs visa garantir um modelo de dados com mais qualidade e, consequentemente, melhorar a qualidade dos sistemas desenvolvidos na empresa.
 
 **Informar baseline a ser aplicada**
 
@@ -213,20 +211,15 @@ A configuração possui um nome e é através deste nome que os administradores 
 
 Esta etapa é realizada pelos administradores de dados e consiste em atualizar o modelo lógico e físico do banco de dados.
 
-Na ferramenta de modelagem (Oracle Designer) são executadas as seguintes etapas:
-
-- criação de *workarea* de trabalho;
-- criação do banco de dados na opção *Oracle Databases* no *Designer Editor DB Admin Navigator*;
-- criação do usuário da aplicação na opção *Users* no *Designer Editor DB Admin Navigator*;
-- criação de *tablespaces* de 128k para os dados, índice de PK e índices secundários (FK, UK, performance) na opção *Storage* do *Designer Editor DB Admin*;
-- criação do storage de 128k na opção *Storage Definitions* do *Designer Editor DB Admin*;
-- criação das estruturas da aplicação com suas respectivas tablespaces previamente definidas no *Designer Editor* na opção *Table Implementations*.
+Na ferramenta de modelagem (Oracle Designer) é realizada a criação das estruturas da aplicação com suas respectivas tablespaces previamente definidas no *Designer Editor* na opção *Table Implementations*.
 
 **Atualizar banco de dados**
 
 Após a etapa de atualização dos modelos, os administradores de dados efetuam o batimento do modelo que consta na ferramenta de modelagem com o banco de dados. Após o batimento, são geradas pela ferramenta de modelagem as diferenças que devem ser aplicadas no banco.
 
 A próxima etapa consiste em preparar os scripts para aplicar no banco, onde deverá ser realizada uma análise dos scripts gerados pela ferramenta de modelagem e efetuar as modificações necessárias, além de conceder os privilégios e sinônimos caso precise. Em seguida, são executados os scripts no banco.
+
+Ao final do processo, quando é alcançada uma versão estável do modelo lógico e físico que se pretende promover para o ambiente de homologação, é gerada uma versão consistente (configuração) do modelo de dados.
 
 
 Processo nos ambientes de Homologação, Produção e Sustentação
