@@ -164,6 +164,7 @@ Na figura abaixo temos o fluxo do processo de alteração de estruturas de dados
 
 ![Fluxo de alteração de estruturas de banco nos ambientes de desenvolvimento, treinamento, teste integrado e teste automatizado](imagens/Fluxo_Des_Trein_Testes.jpg)
 
+\pagebreak
 
 ### Documentação do processo ###
 
@@ -233,15 +234,19 @@ Na figura abaixo temos o fluxo do processo de alteração de estruturas de dados
 
 ![Fluxo de alteração de estruturas de banco nos ambientes de homologação, produção e sustentação](imagens/Fluxo_Hom_Prod_Sust.jpg)
 
+\pagebreak
+
 ### Documentação do processo ###
 
 **Modelar os objetos na ferramenta de modelagem**
 	
-A etapa de modelar os objetos na ferramenta de modelagem de dados (Oracle Designer) é realizada pela equipe de desenvolvimento e envolve a criação e/ou exclusão de objetos no modelo lógico do sistema.
+A etapa de 	 de dados (Oracle Designer) é realizada pela equipe de desenvolvimento e envolve a criação e/ou exclusão de objetos no modelo lógico do sistema.
 
 Atualmente a ferramenta utilizada na empresa é o Oracle Designer, que deverá ser substituída gradualmente pela ferramenta *Infosphere Data Architect* (IDA) da IBM nos próximos meses. A figura abaixo mostra a tela inicial da ferramenta Oracle Designer.
 
 ![Oracle Designer](imagens/OD_1.jpg)
+
+\pagebreak
 
 **Informar baseline a ser aplicada**
 	
@@ -267,9 +272,13 @@ Antes de criar uma nova *workarea*, é necessário verificar se já existe algum
 
 ![Workareas existentes no Oracle Designer](imagens/WA_1.jpg)
 
+\pagebreak
+
 Caso não exista, para criar a *workarea* é necessário clicar em *New...*, conforme destacado em vermelho na próxima imagem:
 
 ![Criação de nova workarea](imagens/WA_2.jpg)
+
+\pagebreak
 
 Em seguida, irá abrir a tela para a criação da *workarea* para realizar o batimento com o banco, onde devemos cadastrar o nome da configuração.
 
@@ -277,41 +286,61 @@ Por exemplo, em uma configuração com o nome **A_MTE_CAGED_20130719{1.106}**, a
 
 ![Padrão utilizado na criação de nova workarea](imagens/WA_3.jpg)
 
+\pagebreak
+
 Entre as etapas da criação da criação da *workarea*, temos que associar o nome da configuração onde consta as alterações de estruturas de banco. No exemplo, a configuração se chama **A_MTE_CAGED_20130719{1.106}** e, após a localização da configuração no repositório, usando o filtro, é necessário selecionar a configuração e clicar na seta para a direita, conforme indicado nas próximas imagens:
 
 ![Etapa de seleção da configuração que será usada na workarea](imagens/WA_4.jpg)
+
+\pagebreak
 
 Clicar em OK para incluir a configuração na *workarea*:
 
 ![Inclusão da configuração na workarea](imagens/WA_5.jpg)
 
+\pagebreak
+
 Para finalizar a criação da workarea*, clicar em finish na tela abaixo:
 
 ![Finalizar a criação da workarea](imagens/WA_6.jpg)
+
+\pagebreak
 
 Ao término da criação da *workarea*, é necessário selecionar no repositório a *workarea* criada e clicar em OK:
 
 ![Selecionar a workarea que será utilizada](imagens/WA_7.jpg)
 
+\pagebreak
+
 Clicar em *Design Editor* para abrir a *workarea* que contém a configuração do *Designer*:
 
 ![Passo para abrir o Design Editor](imagens/OD_2.jpg)
+
+\pagebreak
 
 Expandir o repositório MTE, selecionar o *schema* (no exemplo, o *schema* se chama **CAGED**), clicar em *Generate*, listado no menu, e depois em *Generate Database from Server Model...*
 
 ![Passos para efetuar o batimento da configuração do Oracle Designer com o banco](imagens/OD_3.jpg)
 
+\pagebreak
+
 Na próxima tela é necessário informar os seguintes dados: usuário (schema), senha, *connect* (informar a entrada cadastrada do banco no arquivo “tnsnames.ora”), *file prefix* (nome dos arquivos de diferença que serão gerados) e *directory* (local que os arquivos serão salvos), conforme exibido na próxima tela:
 
 ![Tela onde deve ser informado os dados de acesso ao banco e dos arquivos de batimento que serão gerados](imagens/OD_4.jpg)
+
+\pagebreak
 
 Após os dados preenchidos clicar na aba *Objects* e depois em *Start* para iniciar o batimento com o banco, conforme exibido na figura:
 
 ![Tela onde pode ser selecionado os objetos do banco que irão participar do batimento](imagens/OD_5.jpg)
 
+\pagebreak
+
 Durante o batimento das diferenças da configuração com o banco de dados é exibida a próxima tela:
 
 ![Tela de execução do batimento da configuração com o banco](imagens/OD_6.jpg)
+
+\pagebreak
 	
 Por fim, ao término do batimento são gerados arquivos que contém as diferenças encontradas entre a configuração cadastrada na ferramenta de modelagem e o banco de dados. Estas diferenças são encaminhadas aos administradores de dados para que seja possível elaborar o formulário de implantação de estrutura de banco de dados.
 
