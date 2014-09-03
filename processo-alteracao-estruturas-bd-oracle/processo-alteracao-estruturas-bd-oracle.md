@@ -251,7 +251,7 @@ A equipe de desenvolvimento informa para os administradores de dados da sua resp
 	
 A criação de uma configuração na ferramenta de modelagem de dados é efetuada somente após as alterações de estruturas de dados já terem sido previamente cadastradas na ferramenta de modelagem.
 
-Nesta etapa, o administrador de dados cria uma configuração (*baseline*) na ferramenta de modelagem para efetuar o batimento com o banco de dados.
+Nesta etapa, o administrador de dados cria uma configuração na ferramenta de modelagem para efetuar o batimento com o banco de dados.
 
 Após a criação de uma configuração, não é possível fazer alterações nesta mesma configuração. As configurações são estáticas, ou seja, ao realizar alterações na modelagem é necessário que seja gerada uma nova configuração para refletir as alterações realizadas.
 
@@ -263,37 +263,37 @@ Após a criação da configuração na ferramenta de modelagem, a equipe de admi
 
 Para realizar o batimento da configuração criada no Oracle Designer, é necessário que seja criada uma *workarea*, ou seja, criar uma área de trabalho que deverá ser associada com a configuração criada na ferramenta de modelagem Oracle Designer.
 
-Antes de criar uma nova “*workarea*”, é necessário verificar se já existe alguma “*workarea*” com o mesmo nome e versão no repositório que é ilustrado na figura abaixo:
+Antes de criar uma nova *workarea*, é necessário verificar se já existe alguma *workarea* com o mesmo nome e versão no repositório que é ilustrado na figura abaixo:
 
 ![Workareas existentes no Oracle Designer](imagens/WA_1.jpg)
 
-Caso não exista, para criar a “*workarea*” é necessário clicar em “*New...*”, conforme destacado em vermelho na próxima imagem:
+Caso não exista, para criar a *workarea* é necessário clicar em *New...*, conforme destacado em vermelho na próxima imagem:
 
 ![Criação de nova workarea](imagens/WA_2.jpg)
 
-Em seguida, irá abrir a tela para a criação da “*workarea*” para realizar o batimento com o banco, onde devemos cadastrar o nome da configuração.
+Em seguida, irá abrir a tela para a criação da *workarea* para realizar o batimento com o banco, onde devemos cadastrar o nome da configuração.
 
-Por exemplo, em uma configuração com o nome **A_MTE_CAGED_20130719{1.106}**, a área de banco de dados DSBD costuma cadastrar a workarea com o nome **WA_A_MTE_CAGED_20130719_1_106_DBF**, onde acrescenta a sigla **WA** no início do nome indicando “**workarea**”, substitui “{} e .” por “_” e nas três últimas letras “**DBF**” são indicadas as iniciais do nome da pessoa que criou a workarea, conforme a figura abaixo:
+Por exemplo, em uma configuração com o nome **A_MTE_CAGED_20130719{1.106}**, a área de banco de dados DSBD costuma cadastrar a workarea com o nome **WA_A_MTE_CAGED_20130719_1_106_DBF**, onde acrescenta a sigla **WA** no início do nome indicando **workarea**, substitui “{} e .” por “_” e nas três últimas letras **DBF** são indicadas as iniciais do nome da pessoa que criou a workarea, conforme a figura abaixo:
 
 ![Padrão utilizado na criação de nova workarea](imagens/WA_3.jpg)
 
-Entre as etapas da criação da criação da “workarea”, temos que associar o nome da configuração onde consta as alterações de estruturas de banco. No exemplo, a configuração se chama **A_MTE_CAGED_20130719{1.106}** e, após a localização da configuração no repositório, usando o filtro, é necessário selecionar a configuração e clicar na seta para a direita, conforme indicado nas próximas imagens:
+Entre as etapas da criação da criação da *workarea*, temos que associar o nome da configuração onde consta as alterações de estruturas de banco. No exemplo, a configuração se chama **A_MTE_CAGED_20130719{1.106}** e, após a localização da configuração no repositório, usando o filtro, é necessário selecionar a configuração e clicar na seta para a direita, conforme indicado nas próximas imagens:
 
 ![Etapa de seleção da configuração que será usada na workarea](imagens/WA_4.jpg)
 
-Clicar em OK para incluir a configuração na “*workarea*”:
+Clicar em OK para incluir a configuração na *workarea*:
 
 ![Inclusão da configuração na workarea](imagens/WA_5.jpg)
 
-Para finalizar a criação da “*workarea*”, clicar em finish na tela abaixo:
+Para finalizar a criação da workarea*, clicar em finish na tela abaixo:
 
 ![Finalizar a criação da workarea](imagens/WA_6.jpg)
 
-Ao término da criação da “*workarea*”, é necessário selecionar no repositório a “*workarea*” criada e clicar em OK:
+Ao término da criação da *workarea*, é necessário selecionar no repositório a *workarea* criada e clicar em OK:
 
 ![Selecionar a workarea que será utilizada](imagens/WA_7.jpg)
 
-Clicar em *Design Editor* para abrir a “*workarea*” que contém a configuração do *Designer*:
+Clicar em *Design Editor* para abrir a *workarea* que contém a configuração do *Designer*:
 
 ![Passo para abrir o Design Editor](imagens/OD_2.jpg)
 
@@ -305,7 +305,7 @@ Na próxima tela é necessário informar os seguintes dados: usuário (schema), 
 
 ![Tela onde deve ser informado os dados de acesso ao banco e dos arquivos de batimento que serão gerados](imagens/OD_4.jpg)
 
-Após os dados preenchidos clicar na aba “*Objects*” e depois em “*Start*” para iniciar o batimento com o banco, conforme exibido na figura:
+Após os dados preenchidos clicar na aba *Objects* e depois em *Start* para iniciar o batimento com o banco, conforme exibido na figura:
 
 ![Tela onde pode ser selecionado os objetos do banco que irão participar do batimento](imagens/OD_5.jpg)
 
@@ -373,7 +373,7 @@ Nesta etapa, a equipe de desenvolvimento deverá providenciar as correções sol
 
 Caso a RDM esteja correta, a equipe de banco de dados (DSBD) irá preparar os scripts necessários para que a mudança seja realizada no banco de dados.
 
-Nesta etapa, a equipe DSBD irá preparar todos os scripts que devem ser aplicados no banco, originados do projeto físico e/ou do batimento com a ferramenta de modelagem (Oracle Designer). Em seguida, é verificado se os novos objetos estão com as “*tablespaces*” corretas e caso não esteja, o script é ajustado.
+Nesta etapa, a equipe DSBD irá preparar todos os scripts que devem ser aplicados no banco, originados do projeto físico e/ou do batimento com a ferramenta de modelagem (Oracle Designer). Em seguida, é verificado se os novos objetos estão com as *tablespaces* corretas e caso não esteja, o script é ajustado.
 
 Depois são preparados os scripts de privilégios que deverão ser concedidos para os usuários. São criadas as *roles* de consulta (*select*) e de atualização (*insert*, *update* e *delete*) que devem ser atualizadas após a criação das novas estruturas no banco de dados.
 
@@ -401,7 +401,7 @@ Comando:
 
     create public synonym EMPRESAS for caged.EMPRESAS; 
 
-Também é nesta etapa que definimos a melhor estratégia de “*rollback*” que será utilizada caso apresente algum problema durante a aplicação dos scripts no banco, ou seja, a estratégia para voltar ao estado anterior da aplicação dos scripts no banco. Existem algumas estratégias, como, por exemplo, utilização do *flashback* (através da criação de um *restore point*), criação de scripts de retorno e até mesmo a restauração do *backup* realizado antes da execução da mudança.
+Também é nesta etapa que definimos a melhor estratégia de *rollback* que será utilizada caso apresente algum problema durante a aplicação dos scripts no banco, ou seja, a estratégia para voltar ao estado anterior da aplicação dos scripts no banco. Existem algumas estratégias, como, por exemplo, utilização do *flashback* (através da criação de um *restore point*), criação de scripts de retorno e até mesmo a restauração do *backup* realizado antes da execução da mudança.
 
 **Aprovar a RDM**
 
@@ -415,7 +415,7 @@ A equipe de gestão de mudanças do DEGT ou o CAB fará a avaliação da RDM e c
 
 A etapa de atualização do banco de dados consiste na execução dos scripts de banco que foram previamente preparados pela DSBD.
 
-O acesso ao banco de dados é realizado através de alguma ferramenta (exemplo: putty, SQL Developer, etc.) utilizando o próprio usuário “*owner*” do esquema do banco ou outro usuário com permissões para alteração de estruturas.
+O acesso ao banco de dados é realizado através de alguma ferramenta (exemplo: putty, SQL Developer, etc.) utilizando o próprio usuário *owner* do esquema do banco ou outro usuário com permissões para alteração de estruturas.
 
 **Finalizar a SDM**
 
