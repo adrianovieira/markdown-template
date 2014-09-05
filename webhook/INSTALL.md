@@ -1,7 +1,7 @@
 WebHook
 =======
 
-Webhook simples para realizar conversão automatizada de documentos/artigos para PDF.
+***Gitlab***^[http://www.gitlab.com/] *Web Hook* para realizar conversão automatizada de documentos/artigos para PDF.
 
 Pré-requisitos
 --------------
@@ -76,4 +76,4 @@ Instalação
      ```http://<servidor_webhook>/download/<link_artigo_PDF>```
 1. Configure web hook para o projeto  
    Esse web hook é para conversão automatizada de artigos quando for solicitado ***"merge request"*** via interface do *Gitlab*.
-   - acesse e configure o web hook em <http://www-git/documentos/artigos/hooks>
+   - acesse e configure o web hook para *merge request* do projeto em <http://www-git/documentos/artigos/hooks>
