@@ -7,8 +7,8 @@ A fazer
 -------
 
 - ~~Criar roteiro de instalação desse Web Hook~~
-- Definir e implementar método para disponibilizar o PDF gerado
-- Definir regra para exclusão de arquivos temporários gerados pelo Web Hook
+- ~~Definir e implementar método para disponibilizar o PDF gerado~~
+- ~~Definir regra para exclusão de arquivos temporários gerados pelo Web Hook~~
 
 Estrutura do diretório
 ----------------------
