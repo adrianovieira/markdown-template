@@ -19,7 +19,7 @@ Para instalação desse *Web Hook* são consideradas as seguintes premissas tecn
 ### Configuração de servidor
 
 - Memória: 4GB RAM - no mínimo
-- Armazenamento: 50GB - sem considerar necessidade do S.O.
+- Armazenamento: 50GB - sem considerar necessidade do S.O.  
   Esse armazenamento servirá para manter os arquivos a serem convertidos e os arquivos PDF gerados.
 
 Estrutura do diretório
