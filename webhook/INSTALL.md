@@ -28,9 +28,9 @@ O acesso a esse webhook se dará via HTTP. Assim é necessário haver "apelido" 
 
 Exemplo de acesso:
 
-- ```http://hook-git/artigos-webhook/```  
+- ```http://hook.www-git/artigos-webhook/```  
   Caminho para acesso ao serviço webhook de conversão *Pandoc/markdown*.
-- ```http://hook-git/artigos-download/```  
+- ```http://hook.www-git/artigos-download/```  
   Caminho para acesso aos artigos PDF gerados na conversão.
 
 Estrutura do diretório
