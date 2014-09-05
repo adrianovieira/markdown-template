@@ -26,7 +26,7 @@ Para instalação desse *Web Hook* são consideradas as seguintes premissas tecn
 
 O acesso a esse webhook se dará via HTTP. Assim, é necessário haver "apelido" para acesso ao serviço.
 
-Exemplo de acesso:
+Exemplo para a forma de acesso:
 
 - ```http://hook.www-git/artigos-webhook/```  
   Caminho para acesso ao serviço webhook de conversão *Pandoc/markdown*.
