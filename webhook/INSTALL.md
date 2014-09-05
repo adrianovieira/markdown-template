@@ -22,6 +22,17 @@ Para instalação desse *Web Hook* são consideradas as seguintes premissas tecn
 - Armazenamento: 50GB - sem considerar necessidade do S.O.  
   Esse armazenamento servirá para manter os arquivos a serem convertidos e os arquivos PDF gerados.
 
+### Modo de acesso ao serviço
+
+O acesso a esse webhook se dará via HTTP. Assim é necessário haver "apelido" para o serviço.
+
+Exemplo de acesso:
+
+- ```http://hook-git/artigos-webhook/```  
+  Caminho para acesso ao serviço webhook de conversão *Pandoc/markdown*.
+- ```http://hook-git/artigos-download/```  
+  Caminho para acesso aos artigos PDF gerados na conversão.
+
 Estrutura do diretório
 ----------------------
 
