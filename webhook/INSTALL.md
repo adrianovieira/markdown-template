@@ -24,7 +24,7 @@ Para instalação desse *Web Hook* são consideradas as seguintes premissas tecn
 
 ### Modo de acesso ao serviço
 
-O acesso a esse webhook se dará via HTTP. Assim é necessário haver "apelido" para o serviço.
+O acesso a esse webhook se dará via HTTP. Assim, é necessário haver "apelido" para acesso ao serviço.
 
 Exemplo de acesso:
 
